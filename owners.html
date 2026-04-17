@@ -18,8 +18,8 @@
                 <span class="logo-back">Back</span><span class="logo-home">Home</span>
             </a>
             <div class="lang-toggle">
-                <button class="lang-btn active">EN</button>
-                <button class="lang-btn">SO</button>
+                <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" onclick="setLanguage('so')">SO</button>
             </div>
         </div>
     </nav>
@@ -28,17 +28,19 @@
     <section class="cta" style="padding-top: 80px; min-height: 60vh;">
         <div class="container">
             <div class="cta-content">
-                <span class="section-label">FOR OWNERS</span>
-                <h2 class="section-title">List your property</h2>
-                <p class="section-subtitle">We are currently verifying properties.<br>Leave your details and we will get back to you.</p>
+                <span class="section-label" data-i18n="owner-label">FOR OWNERS</span>
+                <h2 class="section-title" data-i18n="owner-title">List your property</h2>
+                <p class="section-subtitle" data-i18n="owner-subtitle">We are currently verifying properties.<br>Leave your details and we will get back to you.</p>
 
                 <form class="waitlist-form" id="owner-form">
                     <div class="form-inputs" style="grid-template-columns: 1fr;">
-                        <input type="text" placeholder="Full name" required class="form-input" style="margin-bottom: 20px;">
-                        <input type="email" placeholder="Email address" required class="form-input" style="margin-bottom: 20px;">
-                        <input type="text" placeholder="City of property" required class="form-input" style="margin-bottom: 20px;">
+                        <input type="text" placeholder="Full name" data-i18n="ph-name" required class="form-input" style="margin-bottom: 20px;">
+                        <input type="email" placeholder="Email address" data-i18n="ph-email" required class="form-input" style="margin-bottom: 20px;">
+                        <input type="text" placeholder="City of property" data-i18n="ph-city-prop" required class="form-input" style="margin-bottom: 20px;">
+                        <!-- Added Property Description field as requested -->
+                        <textarea placeholder="Property description" data-i18n="ph-desc" required class="form-input" style="margin-bottom: 20px; min-height: 120px; padding-top: 16px; resize: vertical;"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Submit property details</button>
+                    <button type="submit" class="btn btn-primary btn-block" data-i18n="btn-submit-prop">Submit property details</button>
                 </form>
             </div>
         </div>
@@ -51,44 +53,27 @@
                 <a href="/" class="logo">
                     <span class="logo-back">Back</span><span class="logo-home">Home</span>
                 </a>
-                <p>Connecting the Somali diaspora with trusted homes across Mogadishu, Garowe and Hargeisa.</p>
+                <p data-i18n="footer-text">Connecting the Somali diaspora with trusted homes across Mogadishu, Garowe and Hargeisa.</p>
             </div>
             
             <div class="footer-links">
                 <div class="footer-nav">
-                    <h4>PLATFORM</h4>
-                    <a href="index.html#problem">How it works</a>
-                    <a href="index.html#waitlist">Join waitlist</a>
-                    <a href="owners.html">For owners</a>
+                    <h4 data-i18n="foot-plat">PLATFORM</h4>
+                    <a href="/" data-i18n="foot-how">How it works</a>
+                    <a href="/#waitlist" data-i18n="foot-join">Join waitlist</a>
+                    <a href="owners.html" data-i18n="foot-own">For owners</a>
                 </div>
                 <div class="footer-nav">
-                    <h4>COMPANY</h4>
+                    <h4 data-i18n="foot-comp">COMPANY</h4>
                     <a href="mailto:hello@backhome.so">hello@backhome.so</a>
-                    <a href="#" onclick="alert('Unsubscribe coming soon!')">Unsubscribe</a>
-                    <a href="#" onclick="alert('Privacy policy coming soon!')">Privacy policy</a>
-                    <a href="#" onclick="alert('Terms of use coming soon!')">Terms of use</a>
+                    <a href="#" onclick="alert('Unsubscribe coming soon!')" data-i18n="foot-unsub">Unsubscribe</a>
+                    <a href="#" onclick="alert('Privacy policy coming soon!')" data-i18n="foot-priv">Privacy policy</a>
+                    <a href="#" onclick="alert('Terms of use coming soon!')" data-i18n="foot-terms">Terms of use</a>
                 </div>
             </div>
         </div>
     </footer>
     
     <script src="script.js"></script>
-    <script>
-        const ownerForm = document.getElementById('owner-form');
-        if (ownerForm) {
-            ownerForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const btn = ownerForm.querySelector('button[type="submit"]');
-                btn.textContent = 'Details Submitted!';
-                btn.style.backgroundColor = '#4caf50';
-                
-                setTimeout(() => {
-                    btn.textContent = 'Submit property details';
-                    btn.style.backgroundColor = '';
-                    ownerForm.reset();
-                }, 3000);
-            });
-        }
-    </script>
 </body>
 </html>

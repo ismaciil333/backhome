@@ -18,8 +18,8 @@
                 <span class="logo-back">Back</span><span class="logo-home">Home</span>
             </a>
             <div class="lang-toggle">
-                <button class="lang-btn active">EN</button>
-                <button class="lang-btn">SO</button>
+                <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" onclick="setLanguage('so')">SO</button>
             </div>
         </div>
     </nav>
@@ -29,52 +29,51 @@
         <div class="container hero-container">
             <div class="hero-content">
                 <div class="badge">
-                    <span class="dot"></span> Pre-launch — join early
+                    <span class="dot"></span> <span data-i18n="hero-badge">Pre-launch — join early</span>
                 </div>
                 
-                <h1 class="hero-title">
-                    Find trusted<br>
-                    homes in <span class="highlight">Somalia</span>
+                <h1 class="hero-title" data-i18n="hero-title">
+                    Find trusted<br>homes in <span class="highlight">Somalia</span>
                 </h1>
                 
-                <p class="hero-subtitle">
+                <p class="hero-subtitle" data-i18n="hero-subtitle">
                     Launching in Mogadishu, Garowe and Hargeisa. Built for the diaspora, backed by local owners.
                 </p>
                 
                 <div class="hero-buttons">
-                    <a href="#waitlist" class="btn btn-primary">Join the waitlist</a>
-                    <a href="owners.html" class="btn btn-secondary">List your property</a>
+                    <a href="#waitlist" class="btn btn-primary" data-i18n="btn-join">Join the waitlist</a>
+                    <a href="owners.html" class="btn btn-secondary" data-i18n="btn-list-property">List your property</a>
                 </div>
             </div>
 
             <div class="hero-graphics">
                 <div class="launch-card">
-                    <p class="launch-label">LAUNCHING IN</p>
+                    <p class="launch-label" data-i18n="launch-label">LAUNCHING IN</p>
                     
                     <div class="city-list">
                         <div class="city-item">
-                            <span class="city-name">Mogadishu</span>
-                            <span class="city-badge">Coming soon</span>
+                            <span class="city-name" data-i18n="city-mog">Mogadishu</span>
+                            <span class="city-badge" data-i18n="city-soon">Coming soon</span>
                         </div>
                         <div class="city-item">
-                            <span class="city-name">Hargeisa</span>
-                            <span class="city-badge">Coming soon</span>
+                            <span class="city-name" data-i18n="city-harg">Hargeisa</span>
+                            <span class="city-badge" data-i18n="city-soon">Coming soon</span>
                         </div>
                         <div class="city-item">
-                            <span class="city-name">Garowe</span>
-                            <span class="city-badge">Coming soon</span>
+                            <span class="city-name" data-i18n="city-gar">Garowe</span>
+                            <span class="city-badge" data-i18n="city-soon">Coming soon</span>
                         </div>
                         <div class="city-item">
-                            <span class="city-name">Kismayo</span>
-                            <span class="city-badge">Coming soon</span>
+                            <span class="city-name" data-i18n="city-kis">Kismayo</span>
+                            <span class="city-badge" data-i18n="city-soon">Coming soon</span>
                         </div>
                         <div class="city-item">
-                            <span class="city-name">Galkayo</span>
-                            <span class="city-badge">Coming soon</span>
+                            <span class="city-name" data-i18n="city-gal">Galkayo</span>
+                            <span class="city-badge" data-i18n="city-soon">Coming soon</span>
                         </div>
                         <div class="city-item">
-                            <span class="city-name">Bosaso</span>
-                            <span class="city-badge">Coming soon</span>
+                            <span class="city-name" data-i18n="city-bos">Bosaso</span>
+                            <span class="city-badge" data-i18n="city-soon">Coming soon</span>
                         </div>
                     </div>
                 </div>
@@ -90,34 +89,34 @@
     <section id="problem" class="problem bg-white">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">THE PROBLEM</span>
-                <h2 class="section-title">Renting in Somalia shouldn't be this hard</h2>
-                <p class="section-subtitle">The diaspora faces the same obstacles every visit — and no platform<br>has solved it. Until now.</p>
+                <span class="section-label" data-i18n="prob-label">THE PROBLEM</span>
+                <h2 class="section-title" data-i18n="prob-title">Renting in Somalia shouldn't be this hard</h2>
+                <p class="section-subtitle" data-i18n="prob-subtitle">The diaspora faces the same obstacles every visit — and no platform<br>has solved it. Until now.</p>
             </div>
 
             <div class="problem-cards">
                 <div class="card">
                     <div class="card-content">
-                        <h3>Scam listings</h3>
-                        <p>Pay in advance, arrive to find the property doesn't exist — or looks nothing like the photos.</p>
+                        <h3 data-i18n="prob-card1-title">Scam listings</h3>
+                        <p data-i18n="prob-card1-desc">Pay in advance, arrive to find the property doesn't exist — or looks nothing like the photos.</p>
                     </div>
-                    <span class="tag">No verification</span>
+                    <span class="tag" data-i18n="prob-card1-tag">No verification</span>
                 </div>
 
                 <div class="card">
                     <div class="card-content">
-                        <h3>Middlemen & inflated prices</h3>
-                        <p>Agents add 20–40% markups and offer nothing in return. Your rent funds their margin, not your comfort.</p>
+                        <h3 data-i18n="prob-card2-title">Middlemen & inflated prices</h3>
+                        <p data-i18n="prob-card2-desc">Agents add 20–40% markups and offer nothing in return. Your rent funds their margin, not your comfort.</p>
                     </div>
-                    <span class="tag">No transparency</span>
+                    <span class="tag" data-i18n="prob-card2-tag">No transparency</span>
                 </div>
                 
                 <div class="card">
                     <div class="card-content">
-                        <h3>Built for everyone except you</h3>
-                        <p>Generic rental platforms don't understand Somalia's market, your currency, or your language.</p>
+                        <h3 data-i18n="prob-card3-title">Built for everyone except you</h3>
+                        <p data-i18n="prob-card3-desc">Generic rental platforms don't understand Somalia's market, your currency, or your language.</p>
                     </div>
-                    <span class="tag">Not diaspora-ready</span>
+                    <span class="tag" data-i18n="prob-card3-tag">Not diaspora-ready</span>
                 </div>
             </div>
             
@@ -131,29 +130,29 @@
     <section id="early-access" class="early-access bg-beige">
         <div class="container early-access-container">
             <div class="early-content">
-                <span class="section-label">EARLY ACCESS</span>
-                <h2 class="section-title">Why join early</h2>
-                <p class="section-subtitle">Be among the first to access trusted homes<br>when we launch.</p>
+                <span class="section-label" data-i18n="early-label">EARLY ACCESS</span>
+                <h2 class="section-title" data-i18n="early-title">Why join early</h2>
+                <p class="section-subtitle" data-i18n="early-subtitle">Be among the first to access trusted homes<br>when we launch.</p>
 
                 <ul class="benefits-list">
-                    <li><span class="list-dot"></span> First access to homes</li>
-                    <li><span class="list-dot"></span> No middlemen</li>
-                    <li><span class="list-dot"></span> Built for the diaspora</li>
+                    <li><span class="list-dot"></span> <span data-i18n="early-list1">First access to homes</span></li>
+                    <li><span class="list-dot"></span> <span data-i18n="early-list2">No middlemen</span></li>
+                    <li><span class="list-dot"></span> <span data-i18n="early-list3">Built for the diaspora</span></li>
                 </ul>
             </div>
 
             <div class="early-cards">
                 <div class="perk-card">
-                    <h3>Early access</h3>
-                    <p>See homes before anyone else in your city.</p>
+                    <h3 data-i18n="early-card1-title">Early access</h3>
+                    <p data-i18n="early-card1-desc">See homes before anyone else in your city.</p>
                 </div>
                 <div class="perk-card">
-                    <h3>Trusted network</h3>
-                    <p>Only verified renters and owners.</p>
+                    <h3 data-i18n="early-card2-title">Trusted network</h3>
+                    <p data-i18n="early-card2-desc">Only verified renters and owners.</p>
                 </div>
                 <div class="perk-card">
-                    <h3>Shape the platform</h3>
-                    <p>Help us build something that works for you.</p>
+                    <h3 data-i18n="early-card3-title">Shape the platform</h3>
+                    <p data-i18n="early-card3-desc">Help us build something that works for you.</p>
                 </div>
             </div>
         </div>
@@ -167,16 +166,16 @@
     <section class="cta bg-white" id="waitlist">
         <div class="container">
             <div class="cta-content">
-                <span class="section-label">GET STARTED</span>
-                <h2 class="section-title">Ready to find your home?</h2>
-                <p class="section-subtitle">Be among the first to hear when BackHome launches in your city.</p>
+                <span class="section-label" data-i18n="cta-label">GET STARTED</span>
+                <h2 class="section-title" data-i18n="cta-title">Ready to find your home?</h2>
+                <p class="section-subtitle" data-i18n="cta-subtitle">Be among the first to hear when BackHome launches in your city.</p>
 
                 <form class="waitlist-form" id="form">
                     <div class="form-inputs">
-                        <input type="email" placeholder="Email address" required class="form-input">
-                        <input type="text" placeholder="Interested city (optional)" class="form-input">
+                        <input type="email" placeholder="Email address" data-i18n="ph-email" required class="form-input">
+                        <input type="text" placeholder="Interested city (optional)" data-i18n="ph-city" class="form-input">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Join the waitlist</button>
+                    <button type="submit" class="btn btn-primary btn-block" data-i18n="btn-join">Join the waitlist</button>
                 </form>
             </div>
         </div>
@@ -189,22 +188,22 @@
                 <a href="/" class="logo">
                     <span class="logo-back">Back</span><span class="logo-home">Home</span>
                 </a>
-                <p>Connecting the Somali diaspora with trusted homes across Mogadishu, Garowe and Hargeisa.</p>
+                <p data-i18n="footer-text">Connecting the Somali diaspora with trusted homes across Mogadishu, Garowe and Hargeisa.</p>
             </div>
             
             <div class="footer-links">
                 <div class="footer-nav">
-                    <h4>PLATFORM</h4>
-                    <a href="#problem">How it works</a>
-                    <a href="#waitlist">Join waitlist</a>
-                    <a href="owners.html">For owners</a>
+                    <h4 data-i18n="foot-plat">PLATFORM</h4>
+                    <a href="#problem" data-i18n="foot-how">How it works</a>
+                    <a href="#waitlist" data-i18n="foot-join">Join waitlist</a>
+                    <a href="owners.html" data-i18n="foot-own">For owners</a>
                 </div>
                 <div class="footer-nav">
-                    <h4>COMPANY</h4>
+                    <h4 data-i18n="foot-comp">COMPANY</h4>
                     <a href="mailto:hello@backhome.so">hello@backhome.so</a>
-                    <a href="#" onclick="alert('Unsubscribe coming soon!')">Unsubscribe</a>
-                    <a href="#" onclick="alert('Privacy policy coming soon!')">Privacy policy</a>
-                    <a href="#" onclick="alert('Terms of use coming soon!')">Terms of use</a>
+                    <a href="#" onclick="alert('Unsubscribe coming soon!')" data-i18n="foot-unsub">Unsubscribe</a>
+                    <a href="#" onclick="alert('Privacy policy coming soon!')" data-i18n="foot-priv">Privacy policy</a>
+                    <a href="#" onclick="alert('Terms of use coming soon!')" data-i18n="foot-terms">Terms of use</a>
                 </div>
             </div>
         </div>
