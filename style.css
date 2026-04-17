@@ -477,9 +477,23 @@ body {
 }
 
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 48px;
+  .container { padding: 0 20px; }
+  
+  .hero-title { font-size: 40px; }
+  .section-title { font-size: 32px; }
+  
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
   }
+  
+  .hero-buttons .btn {
+    width: 100%;
+  }
+  
+  .launch-card { padding: 24px; }
+  .card { padding: 24px; }
+  .perk-card { padding: 24px; }
   
   .problem-cards {
     grid-template-columns: 1fr;
@@ -491,5 +505,11 @@ body {
   
   .footer-container {
     grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 }
