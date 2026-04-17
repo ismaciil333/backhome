@@ -4,7 +4,7 @@ const translations = {
         "so": "Kahor-bilaabasho — hore u soo biir"
     },
     "hero-title": {
-        "en": "Find trusted<br>homes in <span class=\"highlight\">Somalia</span>",
+        "en": "Find verified<br>homes in <span class=\"highlight\">Somalia</span>",
         "so": "Ka hel guryo lagu kalsoon yahay<br><span class=\"highlight\">Soomaaliya</span>"
     },
     "hero-subtitle": {
@@ -108,7 +108,7 @@ const translations = {
         "so": "Sababta aad mar hore u soo biirto"
     },
     "early-subtitle": {
-        "en": "Be among the first to access trusted homes<br>when we launch.",
+        "en": "Be among the first to access verified homes<br>when we launch.",
         "so": "Noqo kuwa ugu horreeya ee galaangal u yeesha guryaha lagu kalsoon yahay<br>marka aan bilowno."
     },
     "early-list1": {
@@ -132,7 +132,7 @@ const translations = {
         "so": "Arag guryaha magaaladaada ka hor cid kasta oo kale."
     },
     "early-card2-title": {
-        "en": "Trusted network",
+        "en": "Verified network",
         "so": "Shabakad lagu kalsoon yahay"
     },
     "early-card2-desc": {
@@ -168,7 +168,7 @@ const translations = {
         "so": "Magaaladaad xiisaynayso (ikhtiyaari)"
     },
     "footer-text": {
-        "en": "Connecting the Somali diaspora with trusted homes across Mogadishu, Garowe and Hargeisa.",
+        "en": "Connecting the Somali diaspora with verified homes across Mogadishu, Garowe and Hargeisa.",
         "so": "Ku xirka qurba-joogta Soomaaliyeed guryo lagu kalsoon yahay oo ku yaal Muqdisho, Garoowe iyo Hargeysa."
     },
     "foot-plat": {
