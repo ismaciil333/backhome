@@ -37,6 +37,13 @@ body {
 /* NAVBAR */
 .navbar {
   padding: 24px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background-color: rgba(249, 247, 244, 0.85); /* Matches bg-beige with transparency */
+  border-bottom: 1px solid rgba(235, 231, 224, 0.6);
 }
 
 .nav-container {
@@ -151,21 +158,33 @@ body {
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: opacity 0.2s;
-  border: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent; /* default placeholder for transitions */
 }
 
-.btn:active { opacity: 0.8; }
+.btn:active { transform: scale(0.98); }
 
 .btn-primary {
   background: var(--brand-solid);
   color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* initial */
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(38, 38, 38, 0.2);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--brand-solid);
   border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: var(--brand-solid);
+  color: white;
+  border-color: var(--brand-solid);
 }
 
 .btn-block {
@@ -178,6 +197,13 @@ body {
   border-radius: var(--radius-lg);
   padding: 40px;
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border-color);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.launch-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
 }
 
 .launch-label {
@@ -261,7 +287,7 @@ body {
 
 /* PROBLEMS */
 .problem {
-  padding: 100px 0 40px;
+  padding: 140px 0 60px;
 }
 
 .section-header {
@@ -284,6 +310,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
 }
 
 .card-content h3 {
@@ -312,7 +345,7 @@ body {
 
 /* EARLY ACCESS */
 .early-access {
-  padding: 100px 0 40px;
+  padding: 140px 0 60px;
 }
 
 .early-access-container {
@@ -355,6 +388,13 @@ body {
   padding: 32px 40px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.perk-card:hover {
+  transform: translateX(6px) translateY(-2px); /* nice subtle slide for horizontal stack */
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
 }
 
 .perk-card h3 {
