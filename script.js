@@ -164,8 +164,8 @@ const translations = {
         "so": "Cinwaanka Iimaylka"
     },
     "ph-city": {
-        "en": "Interested city (optional)",
-        "so": "Magaaladaad xiisaynayso (ikhtiyaari)"
+        "en": "Select a city",
+        "so": "Dooro magaalada"
     },
     "footer-text": {
         "en": "Connecting the Somali diaspora with verified homes across Mogadishu, Garowe and Hargeisa.",

@@ -173,7 +173,21 @@
                 <form class="waitlist-form" id="form">
                     <div class="form-inputs-stacked">
                         <input type="email" placeholder="Email address" data-i18n="ph-email" required class="form-input">
-                        <input type="text" placeholder="Interested city (optional)" data-i18n="ph-city" class="form-input">
+                        <div class="select-wrapper">
+                            <select class="form-input" required>
+                                <option value="" disabled selected data-i18n="ph-city">Interested city</option>
+                                <option value="Mogadishu" data-i18n="city-mog">Mogadishu</option>
+                                <option value="Hargeisa" data-i18n="city-harg">Hargeisa</option>
+                                <option value="Bosaso" data-i18n="city-bos">Bosaso</option>
+                                <option value="Garowe" data-i18n="city-gar">Garowe</option>
+                                <option value="Galkayo" data-i18n="city-gal">Galkayo</option>
+                                <option value="Borama" data-i18n="city-bora">Borama</option>
+                                <option value="Kismayo" data-i18n="city-kis">Kismayo</option>
+                                <option value="Baidoa" data-i18n="city-bai">Baidoa</option>
+                                <option value="Burao" data-i18n="city-bur">Burao</option>
+                                <option value="Merca" data-i18n="city-mer">Merca</option>
+                            </select>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block" data-i18n="btn-join">Join the waitlist</button>
                 </form>

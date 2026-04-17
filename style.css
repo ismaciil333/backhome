@@ -459,6 +459,38 @@ body {
   border-color: var(--brand-accent);
 }
 
+/* CUSTOM SELECT */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%231f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+select.form-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 48px;
+  color: var(--text-dark);
+}
+
+select.form-input:invalid {
+  color: var(--text-light); /* Makes "Interested city" gray like placeholder */
+}
+
 /* CITY CHIPS */
 .city-selector-group {
   margin-bottom: 32px;
