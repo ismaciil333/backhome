@@ -452,6 +452,48 @@ body {
   border-color: var(--brand-accent);
 }
 
+/* CITY CHIPS */
+.city-selector-group {
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.city-selector-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+
+.city-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.city-chip {
+  background: white;
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  padding: 10px 16px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.city-chip:hover {
+  border-color: var(--brand-solid);
+  color: var(--brand-solid);
+}
+
+.city-chip.active {
+  background: var(--brand-solid);
+  color: white;
+  border-color: var(--brand-solid);
+}
+
 /* FOOTER */
 .footer {
   padding: 80px 0;

@@ -290,6 +290,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // City chips selection logic
+    const cityChips = document.querySelectorAll('.city-chip');
+    const selectedCityInput = document.getElementById('selected-city');
+    
+    cityChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            // If already active, deselect
+            if(chip.classList.contains('active')) {
+                chip.classList.remove('active');
+                if(selectedCityInput) selectedCityInput.value = '';
+                return;
+            }
+            
+            // Remove active class from all chips
+            cityChips.forEach(c => c.classList.remove('active'));
+            // Add active class to the clicked chip
+            chip.classList.add('active');
+            // Update hidden input
+            if(selectedCityInput) selectedCityInput.value = chip.dataset.city;
+        });
+    });
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
