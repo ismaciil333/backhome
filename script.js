@@ -294,28 +294,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // City chips selection logic
-    const cityChips = document.querySelectorAll('.city-chip');
-    const selectedCityInput = document.getElementById('selected-city');
-    
-    cityChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            // If already active, deselect
-            if(chip.classList.contains('active')) {
-                chip.classList.remove('active');
-                if(selectedCityInput) selectedCityInput.value = '';
-                return;
-            }
-            
-            // Remove active class from all chips
-            cityChips.forEach(c => c.classList.remove('active'));
-            // Add active class to the clicked chip
-            chip.classList.add('active');
-            // Update hidden input
-            if(selectedCityInput) selectedCityInput.value = chip.dataset.city;
-        });
-    });
-
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -328,5 +306,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
+    });
+
+    // Scroll Reveal Animation (Intersection Observer)
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
+
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
     });
 });
