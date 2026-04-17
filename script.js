@@ -230,6 +230,10 @@ const translations = {
     "btn-submit-prop": {
         "en": "Submit property details",
         "so": "Gudbi macluumaadka guriga"
+    },
+    "btn-back": {
+        "en": "Back",
+        "so": "Dib u noqo"
     }
 };
 
