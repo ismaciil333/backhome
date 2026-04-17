@@ -167,10 +167,6 @@ const translations = {
         "en": "Interested city (optional)",
         "so": "Magaaladaad xiisaynayso (ikhtiyaari)"
     },
-    "spam-notice": {
-        "en": "No spam. Unsubscribe anytime.",
-        "so": "Spam ma jiro. Waka noqon kartaa isqoridda markasta."
-    },
     "footer-text": {
         "en": "Connecting the Somali diaspora with verified homes across Mogadishu, Garowe and Hargeisa.",
         "so": "Ku xirka qurba-joogta Soomaaliyeed guryo lagu kalsoon yahay oo ku yaal Muqdisho, Garoowe iyo Hargeysa."

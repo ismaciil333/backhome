@@ -459,13 +459,6 @@ body {
   border-color: var(--brand-accent);
 }
 
-.spam-notice {
-  text-align: center;
-  color: var(--text-light);
-  font-size: 14px;
-  margin-top: 16px;
-}
-
 /* CITY CHIPS */
 .city-selector-group {
   margin-bottom: 32px;
