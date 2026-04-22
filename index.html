@@ -301,10 +301,10 @@ details[open] .faq-body{max-height:300px;}
           Pre-launch · Spring 2026
         </div>
         <h1 class="hero-headline">
-          <span class="word" style="animation-delay:.05s">Come</span><span class="word" style="animation-delay:.10s">home</span><span class="word" style="animation-delay:.15s">to</span><span class="word" style="animation-delay:.20s">a</span><br>
-          <span class="word" style="animation-delay:.25s">place</span><span class="word" style="animation-delay:.30s">that's</span><span class="word accent" style="animation-delay:.37s">yours.</span>
+          <span class="word" style="animation-delay:.05s">Find</span><span class="word" style="animation-delay:.10s">a</span><span class="word" style="animation-delay:.15s">place</span><span class="word" style="animation-delay:.20s">that</span><br>
+          <span class="word" style="animation-delay:.25s">feels</span><span class="word" style="animation-delay:.30s">like</span><span class="word accent" style="animation-delay:.37s">home.</span>
         </h1>
-        <p class="hero-sub">Verified rentals across Somalia, built for the diaspora. No scams, no middlemen, no inflated prices — just trusted homes from owners you can reach.</p>
+        <p class="hero-sub" id="hero-sub-text">Verified rentals across Somalia, built for the diaspora. No scams, no middlemen, no inflated prices — just safe, trusted homes booked securely through BackHOME.</p>
         <div class="hero-cta">
           <a href="#cta" class="btn btn-primary btn-lg" id="hero-join-btn">
             Join the waitlist
@@ -714,20 +714,6 @@ details[open] .faq-body{max-height:300px;}
           <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
       </form>
-      <div class="cta-trust">
-        <div class="trust-item">
-          <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          No spam, ever
-        </div>
-        <div class="trust-item">
-          <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Unsubscribe anytime
-        </div>
-        <div class="trust-item">
-          <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Early access included
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -819,11 +805,398 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 20);
 });
 
+// ===== TRANSLATIONS =====
+const TRANSLATIONS = {
+  en: {
+    'nav-why':        'Why BackHome',
+    'nav-how':        'How it works',
+    'nav-faq':        'FAQ',
+    'nav-join':       'Join waitlist',
+    'hero-badge':     'Pre-launch · Spring 2026',
+    'hero-sub':       'Verified rentals across Somalia, built for the diaspora. No scams, no middlemen, no inflated prices — just safe, trusted homes booked securely through BackHOME.',
+    'hero-join':      'Join the waitlist',
+    'hero-list':      'List your property',
+    'stat-1-label':   'On the waitlist',
+    'stat-2-label':   'Cities at launch',
+    'stat-3-label':   'Verified listings',
+    'card-head':      'LAUNCHING IN',
+    'card-live':      'Updated live',
+    'city-mog':       'Mogadishu',
+    'city-mog-meta':  'Banaadir · 47 homes lined up',
+    'city-hrg':       'Hargeisa',
+    'city-hrg-meta':  'Maroodi Jeex · 38 homes lined up',
+    'city-gar':       'Garowe',
+    'city-gar-meta':  'Nugaal · 24 homes lined up',
+    'city-kis':       'Kismayo',
+    'city-kis-meta':  'Jubbada Hoose · 18 homes lined up',
+    'city-gal':       'Galkayo',
+    'city-gal-meta':  'Mudug · 12 homes lined up',
+    'city-bos':       'Bosaso',
+    'city-bos-meta':  'Bari · 9 homes lined up',
+    'card-foot-wait': '1,800+ waiting',
+    'card-foot-reply':'Avg. reply · 4h',
+    'status-hot':     'Opening soon',
+    'status-soon-1':  'Summer 2026',
+    'status-soon-2':  'Autumn 2026',
+    'prob-eyebrow':   'The problem',
+    'prob-h2-1':      'Renting back home shouldn\'t feel',
+    'prob-h2-2':      'like a gamble.',
+    'prob-body':      "Every summer, the same story. You pay upfront, fly in, and hope. We've been there too — that's why we're building something different.",
+    'prob-01-h3':     'Fake listings',
+    'prob-01-body':   "You wire the deposit, land at the airport, and discover the villa in the photos doesn't exist — or looks nothing like it did online.",
+    'prob-01-stat':   'of diaspora renters report at least one scam',
+    'prob-02-h3':     'Middlemen markups',
+    'prob-02-body':   'Agents inflate rent 20–40% and offer nothing in return. Every shilling goes to their margin instead of your comfort.',
+    'prob-02-stat':   'average markup',
+    'prob-03-h3':     'Built for no one',
+    'prob-03-body':   "Generic rental platforms don't understand Somalia — not the currency, the language, the neighborhoods, or how we actually rent.",
+    'prob-03-stat':   'platforms serving the Somali diaspora today',
+    'how-eyebrow':    'How it works',
+    'how-h2-1':       'Three steps.',
+    'how-h2-2':       'Zero surprises.',
+    'how-body':       "We visit every property, verify every owner, and stay with you through the whole stay. That's the whole promise.",
+    'how-s1-tag':     'Step 01 —',
+    'how-s1-h3':      'Browse verified homes',
+    'how-s1-body':    'Every listing has been walked by a BackHome team member. Real photos, real measurements, real neighborhoods.',
+    'how-s2-tag':     'Step 02 —',
+    'how-s2-h3':      'Book directly through BackHome',
+    'how-s2-body':    'No agents, no hidden fees. You deal directly with the BackHome team. We handle everything for you — from paperwork and secure payments to protection and a seamless booking experience.',
+    'how-s3-tag':     'Step 03 —',
+    'how-s3-h3':      'Arrive with confidence',
+    'how-s3-body':    "Keys are ready. The house matches the photos. If anything's off, our local team is an hour away, every day of your stay.",
+    'ver-h2-1':       'Every home visited, photographed,',
+    'ver-h2-2':       'measured.',
+    'ver-p1':         'In-person inspection',
+    'ver-p2':         'Owner ID verified',
+    'ver-p3':         'Protected payment',
+    'testi-eyebrow':  'Early voices',
+    'testi-h2-1':     'What the diaspora',
+    'testi-h2-2':     'is saying.',
+    'testi-q1':       "Last summer I lost €2,400 to a villa that didn't exist. If BackHome had been there, I'd have booked it twice.",
+    'testi-q1-em':    "I'd have booked it twice.",
+    'testi-q2':       "Finally a platform that speaks Somali, uses the right neighborhoods, and doesn't treat us like tourists.",
+    'testi-q2-em':    'speaks Somali,',
+    'testi-q3':       "I own three homes in Garowe. BackHome gives me direct access to families I'd never reach — and handles the hard part.",
+    'testi-q3-em':    'direct access to families',
+    'faq-eyebrow':    'Questions',
+    'faq-h2':         "Everything you're wondering.",
+    'faq-q1':         'When does BackHome launch?',
+    'faq-a1':         'First homes go live in Mogadishu and Hargeisa in summer 2026, followed by Garowe shortly after. Everyone on the waitlist gets seven days of exclusive early access before the public launch.',
+    'faq-q2':         'How are properties verified?',
+    'faq-a2':         "Our team visits every home in person, takes photos in natural light, measures every room, and verifies the owner's ID and title documents. No listing goes live without this visit.",
+    'faq-q3':         'Can I pay in USD, EUR or GBP?',
+    'faq-a3':         'Yes — you can pay in your local currency via our protected payment system. Funds are held securely and only released to the owner at check-in.',
+    'faq-q4':         'What if something goes wrong when I arrive?',
+    'faq-a4':         "Our local team is on-call around the clock. If your property doesn't match what was listed, we'll relocate you within 24 hours or issue a full refund — no questions asked.",
+    'faq-q5':         'I own a property. How do I list?',
+    'faq-a5':         "Head to our <a href='list-your-property.html'>property listing page</a>. Submit your details and you'll hear from us within 48 hours to schedule an in-person verification visit.",
+    'cta-h2-1':       'Be first through',
+    'cta-h2-2':       'the door.',
+    'cta-body':       'Waitlist members get seven days of exclusive access before public launch, plus zero booking fees on their first stay.',
+    'cta-ph':         'Your email address',
+    'cta-btn':        'Join waitlist',
+    'modal-h2':       "You're on the list.",
+    'modal-body':     "We'll reach out as soon as BackHome opens in your city. Seven days before anyone else — that's the deal.",
+    'modal-btn':      'Got it',
+    'footer-desc':    'Connecting the Somali diaspora with verified homes across Mogadishu, Hargeisa, Garowe, Kismayo, Galkayo and Bosaso.',
+    'foot-platform':  'Platform',
+    'foot-how':       'How it works',
+    'foot-join':      'Join waitlist',
+    'foot-owners':    'For owners',
+    'foot-company':   'Company',
+    'foot-faq':       'FAQ',
+    'foot-careers':   'Careers',
+    'foot-press':     'Press',
+    'foot-legal':     'Legal',
+    'foot-privacy':   'Privacy policy',
+    'foot-terms':     'Terms',
+    'foot-cookies':   'Cookies',
+    'foot-unsub':     'Unsubscribe',
+    'foot-copy':      '© 2026 BackHome. Made with care for the Somali diaspora.',
+    'toast-city':     'saved to your waitlist',
+    'toast-join':     'English selected'
+  },
+  so: {
+    'nav-why':        'Maxay BackHome u gaarka tahay',
+    'nav-how':        'Sida u shaqeysa',
+    'nav-faq':        'Su\u2019aalaha',
+    'nav-join':       'Ku biir liiska sugitaanka',
+    'hero-badge':     'La\u2019aantaas · Xagaaga 2026',
+    'hero-sub':       'Guryaha xaqiijiyay oo ku yaal Soomaaliya, loogu talagalay dadka reer dibedda. Xayeysiisyo been ah ma jiraan, dhexdhexaadiyeyaasha ma jiraan, qiime xad dhaaf ah ma jiro — guri ammaan ah oo degnaanshaha lagu baad ku dalban kartaa BackHOME.',
+    'hero-join':      'Ku biir liiska',
+    'hero-list':      'Gurigaaga ku darsoo',
+    'stat-1-label':   'Liiska sugaan',
+    'stat-2-label':   'Magaalo bilaabaysa',
+    'stat-3-label':   'Guryaha xaqiijiyay',
+    'card-head':      'KU BILAABMAYSA',
+    'card-live':      'Casriya si toos ah',
+    'city-mog':       'Muqdisho',
+    'city-mog-meta':  'Banaadir · 47 guri diyaar ah',
+    'city-hrg':       'Hargeysa',
+    'city-hrg-meta':  'Maroodijeex · 38 guri diyaar ah',
+    'city-gar':       'Garoowe',
+    'city-gar-meta':  'Nugaal · 24 guri diyaar ah',
+    'city-kis':       'Kismaayo',
+    'city-kis-meta':  'Jubbada Hoose · 18 guri diyaar ah',
+    'city-gal':       'Gaalkacyo',
+    'city-gal-meta':  'Mudug · 12 guri diyaar ah',
+    'city-bos':       'Boosaaso',
+    'city-bos-meta':  'Bari · 9 guri diyaar ah',
+    'card-foot-wait': '1,800+ sugaya',
+    'card-foot-reply':'Jawaab celinta dhexe · 4s',
+    'status-hot':     'Dhaw furey',
+    'status-soon-1':  'Xagaaga 2026',
+    'status-soon-2':  'Dayrta 2026',
+    'prob-eyebrow':   'Dhibaatada',
+    'prob-h2-1':      'Kirade guriga hooyo waa inaysan ahayn',
+    'prob-h2-2':      'qiyaas.',
+    'prob-body':      'Sanad kasta, sheekadu waa isku mid. Lacagta horta bixisaa, duulimaad qaadataa, oo rajada ku tiirsan. Annaguna halkaas ayaannu joogay — sidaas daraaddeed ayaan wax ka dhisnaynaa.',
+    'prob-01-h3':     'Xayeysiisyo beenta ah',
+    'prob-01-body':   'Maamuuska bixisaa, garoonka soo degtaa, oo aad ka ogaataa gurigii sawirka ku jiray inuu jirin — ama si weyn uga duwan sawirka.',
+    'prob-01-stat':   'kiradeyaasha reer dibedda ee hal xayeysiis been ah ugu yaraan soo wajahay',
+    'prob-02-h3':     'Qiimaha dhexdhexaadiyeyaasha',
+    'prob-02-body':   'Wakiiladu kirada 20-40% kordhiyaan iyaga oo waxba ku biirin. Shilinkastaaba dakhligooda ayuu aadaa, raaxadaadana kuma biiraan.',
+    'prob-02-stat':   'kordhinta dhexdhexaadiyeyaasha celcelis ahaan',
+    'prob-03-h3':     'Cidna uma diyaar-garoobna',
+    'prob-03-body':   'Goobaha kiradda guud ahaan Soomaaliya kuma fahmaan — lacagta, luqadda, xaafadaha, iyo habka kiradda.',
+    'prob-03-stat':   'goob adeegta dadka Soomaalida reer dibedda maanta',
+    'how-eyebrow':    'Sida u shaqeysa',
+    'how-h2-1':       'Saddex tallaabo.',
+    'how-h2-2':       'Yaab la\u2019aan buuxda.',
+    'how-body':       'Guryaha kasta ayaannu booqdaa, mulkiilahaana xaqiijiyaa, kana gacan saarnaa muddada joogitaankaaga oo dhan. Taasina waa ballanqaadkayaga oo dhan.',
+    'how-s1-tag':     'Talllaabo 01 —',
+    'how-s1-h3':      'Guryaha xaqiijiyay raadi',
+    'how-s1-body':    'Liiska kasta kooxda BackHome ayaa si joogta ah u socotay. Sawirro runta ah, cabirro sax ah, xaafado la og yahay.',
+    'how-s2-tag':     'Tallaabo 02 —',
+    'how-s2-h3':      'Toos uga qabso BackHome',
+    'how-s2-body':    'Wakiil ma jiro, kharash qarsoodi ah ma jiro. Toos ayaad la xiriirtaa kooxda BackHome. Wax walba ayaan kuu qabanaa — warqadaha, lacagta ammaan ah, ilaalinta, iyo waayo\u2019aragnimo fiican.',
+    'how-s3-tag':     'Tallaabo 03 —',
+    'how-s3-h3':      'Kalsoonaan la soo gal',
+    'how-s3-body':    'Furahaagu diyaar buu yahay. Gurigu sawirka waxa uu la mid yahay. Hadduu wax khaldan yahay, kooxdayada deegaanku hal saacad kuma fogaan doonto, maalin kasta muddada joogitaankaaga.',
+    'ver-h2-1':       'Guri walba la booqday, sawirray,',
+    'ver-h2-2':       'la cabbirray.',
+    'ver-p1':         'Booqasho shakhsi ahaaneed',
+    'ver-p2':         'Aqoonsigu mulkiilahaas xaqiijiyay',
+    'ver-p3':         'Lacag bixinta ilaalisan',
+    'testi-eyebrow':  'Codadka hore',
+    'testi-h2-1':     'Dadka reer dibeddu',
+    'testi-h2-2':     'maxay leeyihiin.',
+    'testi-q1':       'Sanadkii hore €2,400 baan lumiyay guri aan jirin. BackHome hadduu jiray, laba jeer baan dalban lahaa.',
+    'testi-q1-em':    'laba jeer baan dalban lahaa.',
+    'testi-q2':       'Ugu dambeyntii goob Af-Soomaali ku hadasha, xaafadaha sax ah isticmaasha, oo loo arkin mutaacumo ah.',
+    'testi-q2-em':    'Af-Soomaali ku hadasha,',
+    'testi-q3':       'Saddex guri ayaan leeyahay Garoowe. BackHome fursad buu ii siiyaa qoysaska aan abid gaadhi karin — waxa adagna ayuu qabtaa.',
+    'testi-q3-em':    'fursad buu ii siiyaa qoysaska',
+    'faq-eyebrow':    'Su\u2019aalaha',
+    'faq-h2':         'Waxa aad is weydiinayso oo dhan.',
+    'faq-q1':         'Goorma ayay BackHome bilaabmaysaa?',
+    'faq-a1':         'Guryaha ugu horreeya Muqdisho iyo Hargeysa ayay xagaaga 2026 furmayaan, Garoowena taa ka dib. Liiska sugitaanka ku jira oo dhan toddoba maalmood oo xaq u gaar ah ayay helaan ka hor dadweynaha.',
+    'faq-q2':         'Sida guryaha loo xaqiijiyaa?',
+    'faq-a2':         'Kooxdayada guri kasta ayay si shaqsiyan u booqataa, sawirro iftiinka dabiiciga ah leh ayay qaadataa, qolkasta ayay cabiraan, aqoonsigana mulkiilahauna xaqiijiyaa. Liis kale ma furmo booqashada la\u2019aanteed.',
+    'faq-q3':         'Ma bixin karaa USD, EUR ama GBP?',
+    'faq-a3':         'Haa — lacagta gobolkaaga ku bixin kartaa habka lacagbixinta ilaalisan. Lacagtu si ammaan ah ayay ku haysan doontaa oo mulkiilahaagu ma helayo ilaa maalinta soo galaynta.',
+    'faq-q4':         'Maxaa dhacay hadduu wax khaldan yahay marka aan soo galo?',
+    'faq-a4':         'Kooxdayada gobalka ayaa xaaladda joogta ah diyaar u ah. Haddey gurigu liiska ka duwan yahay, 24 saacadood gudahood ayaan kuu meelmarin doonnaa ama lacagta oo dhan ayaannu kuu soo celinaa — su\u2019aal la\'aan.',
+    'faq-q5':         'Guri ayaan leeyahay. Sideen u darsadaa?',
+    'faq-a5':         "Aad <a href='list-your-property.html'>bogga guryaha</a>. Xogta noo dir oo 48 saacadood gudahood ayaannu kula soo xiriiri doonaa si booqasho xaqiijin ah loo qabsado.",
+    'cta-h2-1':       'Kii ugu horreeyaha noqo',
+    'cta-h2-2':       'albaabka.',
+    'cta-body':       'Xubnahaas liiska sugitaanka ku jira toddoba maalmood oo xaq u gaar ah ayay helaan ka hor dadweynaha, kharashka dhigashada kiradda koowaadna waa eber.',
+    'cta-ph':         'Cinwaankaaga iimaylka',
+    'cta-btn':        'Ku biir liiska',
+    'modal-h2':       'Liiska ayaad ku jirtaa.',
+    'modal-body':     'Magaaladaada markay BackHome furto ayaannu kula soo xiriiri doonaa. Toddoba maalmood ka hor cid kale — taasaa ballanqaadka ah.',
+    'modal-btn':      'Waad fahmay',
+    'footer-desc':    'Dadka Soomaalida reer dibedda waxaan u xidnaa guryaha xaqiijiyay ee Muqdisho, Hargeysa, Garoowe, Kismaayo, Gaalkacyo iyo Boosaaso.',
+    'foot-platform':  'Goobta',
+    'foot-how':       'Sida u shaqeysa',
+    'foot-join':      'Ku biir liiska',
+    'foot-owners':    'Mulkiileyaasha',
+    'foot-company':   'Shirkadda',
+    'foot-faq':       'Su\u2019aalaha',
+    'foot-careers':   'Fursadaha shaqo',
+    'foot-press':     'Warbaahinta',
+    'foot-legal':     'Sharciga',
+    'foot-privacy':   'Xeerka asturnaanta',
+    'foot-terms':     'Shuruudaha',
+    'foot-cookies':   'Cookies',
+    'foot-unsub':     'Ka diiwaanso',
+    'foot-copy':      '© 2026 BackHome. Jacayl dadka Soomaalida reer dibedda ah ayuu lasoo jeedaa.',
+    'toast-city':     'liiskaaga sugitaanka ayaa lagu daray',
+    'toast-join':     'Af-Soomaali la doortay'
+  }
+};
+
+let currentLang = 'en';
+
 // ===== LANG TOGGLE =====
 function setLang(lang) {
+  currentLang = lang;
   document.getElementById('lang-en').classList.toggle('active', lang === 'en');
   document.getElementById('lang-so').classList.toggle('active', lang === 'so');
-  showToast(lang === 'so' ? 'Af-Soomaali la doortay' : 'English selected');
+  const T = TRANSLATIONS[lang];
+
+  // Nav
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks[0] && (navLinks[0].textContent = T['nav-why']);
+  navLinks[1] && (navLinks[1].textContent = T['nav-how']);
+  navLinks[2] && (navLinks[2].textContent = T['nav-faq']);
+  document.querySelector('.nav-right .btn')?.childNodes.forEach(n => { if(n.nodeType===3) n.textContent = T['nav-join'] + ' '; });
+
+  // Hero
+  document.getElementById('hero-sub-text').textContent = T['hero-sub'];
+  const joinBtn = document.getElementById('hero-join-btn');
+  if(joinBtn) joinBtn.childNodes.forEach(n=>{ if(n.nodeType===3) n.textContent = T['hero-join'] + ' '; });
+  const listBtn = document.querySelector('.hero-cta .btn-ghost');
+  if(listBtn) listBtn.textContent = T['hero-list'];
+
+  // Stats
+  document.querySelector('#stat-1 + .stat-label').textContent = T['stat-1-label'];
+  document.querySelector('#stat-2 + .stat-label').textContent = T['stat-2-label'];
+  document.querySelector('#stat-3 + .stat-label').textContent = T['stat-3-label'];
+
+  // City card
+  document.querySelector('.city-card-head-left').textContent = T['card-head'];
+  const liveEl = document.querySelector('.city-card-head-right');
+  if(liveEl) liveEl.innerHTML = `<span class="live-dot"></span>${T['card-live']}`;
+
+  const cityNames = document.querySelectorAll('.city-name');
+  const cityMetas = document.querySelectorAll('.city-meta');
+  const cityKeys = ['mog','hrg','gar','kis','gal','bos'];
+  cityKeys.forEach((k,i)=>{
+    if(cityNames[i]) cityNames[i].textContent = T['city-'+k];
+    if(cityMetas[i]) cityMetas[i].textContent = T['city-'+k+'-meta'];
+  });
+  const statusPills = document.querySelectorAll('.status-pill');
+  if(statusPills[0]) statusPills[0].textContent = T['status-hot'];
+  if(statusPills[1]) statusPills[1].textContent = T['status-hot'];
+  if(statusPills[2]) statusPills[2].textContent = T['status-soon-1'];
+  if(statusPills[3]) statusPills[3].textContent = T['status-soon-1'];
+  if(statusPills[4]) statusPills[4].textContent = T['status-soon-2'];
+  if(statusPills[5]) statusPills[5].textContent = T['status-soon-2'];
+  document.querySelector('.foot-left span:last-child').textContent = T['card-foot-wait'];
+  document.querySelector('.foot-right').textContent = T['card-foot-reply'];
+
+  // Problem
+  const probEyebrow = document.querySelector('#problem .eyebrow');
+  if(probEyebrow) probEyebrow.textContent = T['prob-eyebrow'];
+  const probH2 = document.querySelector('#problem .section-h2');
+  if(probH2) probH2.innerHTML = `${T['prob-h2-1']} <em>${T['prob-h2-2']}</em>`;
+  const probBody = document.querySelector('#problem .section-body');
+  if(probBody) probBody.textContent = T['prob-body'];
+  const probCards = document.querySelectorAll('.problem-card');
+  if(probCards[0]){
+    probCards[0].querySelector('.problem-h3').textContent = T['prob-01-h3'];
+    probCards[0].querySelector('.problem-body').textContent = T['prob-01-body'];
+    probCards[0].querySelector('.problem-stat-label').textContent = T['prob-01-stat'];
+    probCards[1].querySelector('.problem-h3').textContent = T['prob-02-h3'];
+    probCards[1].querySelector('.problem-body').textContent = T['prob-02-body'];
+    probCards[1].querySelector('.problem-stat-label').textContent = T['prob-02-stat'];
+    probCards[2].querySelector('.problem-h3').textContent = T['prob-03-h3'];
+    probCards[2].querySelector('.problem-body').textContent = T['prob-03-body'];
+    probCards[2].querySelector('.problem-stat-label').textContent = T['prob-03-stat'];
+  }
+
+  // How it works
+  const howEyebrow = document.querySelector('#how .eyebrow');
+  if(howEyebrow) howEyebrow.textContent = T['how-eyebrow'];
+  const howH2 = document.querySelector('#how .section-h2');
+  if(howH2) howH2.innerHTML = `${T['how-h2-1']} <em>${T['how-h2-2']}</em>`;
+  const howBody = document.querySelector('#how .section-body');
+  if(howBody) howBody.textContent = T['how-body'];
+  const steps = document.querySelectorAll('.how-step');
+  if(steps[0]){
+    steps[0].querySelector('.how-step-tag').textContent = T['how-s1-tag'];
+    steps[0].querySelector('.how-step-h3').textContent = T['how-s1-h3'];
+    steps[0].querySelector('.how-step-body').textContent = T['how-s1-body'];
+    steps[1].querySelector('.how-step-tag').textContent = T['how-s2-tag'];
+    steps[1].querySelector('.how-step-h3').textContent = T['how-s2-h3'];
+    steps[1].querySelector('.how-step-body').textContent = T['how-s2-body'];
+    steps[2].querySelector('.how-step-tag').textContent = T['how-s3-tag'];
+    steps[2].querySelector('.how-step-h3').textContent = T['how-s3-h3'];
+    steps[2].querySelector('.how-step-body').textContent = T['how-s3-body'];
+  }
+
+  // Verified strip
+  const verH2 = document.querySelector('.verified-h2');
+  if(verH2) verH2.innerHTML = `${T['ver-h2-1']} <em>${T['ver-h2-2']}</em>`;
+  const vPills = document.querySelectorAll('.v-pill');
+  const vTexts = [T['ver-p1'], T['ver-p2'], T['ver-p3']];
+  vPills.forEach((p,i)=>{ const check=p.querySelector('.v-check'); p.textContent=vTexts[i]; p.prepend(check); });
+
+  // Testimonials
+  const testiEyebrow = document.querySelector('.section-paper .eyebrow');
+  if(testiEyebrow) testiEyebrow.textContent = T['testi-eyebrow'];
+  const testiH2 = document.querySelector('.section-paper .section-h2');
+  if(testiH2) testiH2.innerHTML = `${T['testi-h2-1']} <em>${T['testi-h2-2']}</em>`;
+  const testiQuotes = document.querySelectorAll('.testi-quote');
+  if(testiQuotes[0]){
+    testiQuotes[0].innerHTML = `"${T['testi-q1'].replace(T['testi-q1-em'], `<em>${T['testi-q1-em']}</em>`)}"` ;
+    testiQuotes[1].innerHTML = `"${T['testi-q2'].replace(T['testi-q2-em'], `<em>${T['testi-q2-em']}</em>`)}"` ;
+    testiQuotes[2].innerHTML = `"${T['testi-q3'].replace(T['testi-q3-em'], `<em>${T['testi-q3-em']}</em>`)}"` ;
+  }
+
+  // FAQ
+  const faqEyebrow = document.querySelector('#faq .eyebrow');
+  if(faqEyebrow) faqEyebrow.textContent = T['faq-eyebrow'];
+  const faqH2 = document.querySelector('#faq .section-h2');
+  if(faqH2) faqH2.textContent = T['faq-h2'];
+  const faqItems = document.querySelectorAll('.faq-item');
+  const faqData = [
+    {q:'faq-q1',a:'faq-a1'},{q:'faq-q2',a:'faq-a2'},{q:'faq-q3',a:'faq-a3'},
+    {q:'faq-q4',a:'faq-a4'},{q:'faq-q5',a:'faq-a5'}
+  ];
+  faqItems.forEach((item,i)=>{
+    const summ = item.querySelector('.faq-summary');
+    const icon = summ.querySelector('.faq-icon');
+    summ.textContent = T[faqData[i].q];
+    summ.appendChild(icon);
+    item.querySelector('.faq-body p').innerHTML = T[faqData[i].a];
+  });
+
+  // CTA
+  const ctaH2 = document.querySelector('.cta-h2');
+  if(ctaH2) ctaH2.innerHTML = `${T['cta-h2-1']} <em>${T['cta-h2-2']}</em>`;
+  const ctaBody = document.querySelector('.cta-body');
+  if(ctaBody) ctaBody.textContent = T['cta-body'];
+  const emailInput = document.getElementById('waitlist-email');
+  if(emailInput) emailInput.placeholder = T['cta-ph'];
+  const ctaBtn = document.querySelector('.cta-form-pill .btn');
+  if(ctaBtn) ctaBtn.childNodes.forEach(n=>{ if(n.nodeType===3) n.textContent = T['cta-btn'] + ' '; });
+
+  // Modal
+  document.querySelector('.modal-h2').textContent = T['modal-h2'];
+  document.querySelector('.modal-body').textContent = T['modal-body'];
+  document.querySelector('.modal .btn').childNodes.forEach(n=>{if(n.nodeType===3&&n.textContent.trim()) n.textContent=T['modal-btn'];});
+
+  // Footer
+  document.querySelector('.footer-desc').textContent = T['footer-desc'];
+  const footCols = document.querySelectorAll('.footer-col');
+  if(footCols[0]){
+    footCols[0].querySelector('h4').textContent = T['foot-platform'];
+    const fLinks0 = footCols[0].querySelectorAll('a');
+    fLinks0[0] && (fLinks0[0].textContent = T['foot-how']);
+    fLinks0[1] && (fLinks0[1].textContent = T['foot-join']);
+    fLinks0[2] && (fLinks0[2].textContent = T['foot-owners']);
+  }
+  if(footCols[1]){
+    footCols[1].querySelector('h4').textContent = T['foot-company'];
+    const fLinks1 = footCols[1].querySelectorAll('a');
+    fLinks1[1] && (fLinks1[1].textContent = T['foot-faq']);
+    fLinks1[2] && (fLinks1[2].textContent = T['foot-careers']);
+    fLinks1[3] && (fLinks1[3].textContent = T['foot-press']);
+  }
+  if(footCols[2]){
+    footCols[2].querySelector('h4').textContent = T['foot-legal'];
+    const fLinks2 = footCols[2].querySelectorAll('a');
+    fLinks2[0] && (fLinks2[0].textContent = T['foot-privacy']);
+    fLinks2[1] && (fLinks2[1].textContent = T['foot-terms']);
+    fLinks2[2] && (fLinks2[2].textContent = T['foot-cookies']);
+    fLinks2[3] && (fLinks2[3].textContent = T['foot-unsub']);
+  }
+  document.querySelector('.footer-copy').textContent = T['foot-copy'];
+
+  showToast(T['toast-join']);
 }
 
 // ===== TOAST =====
@@ -838,7 +1211,8 @@ function showToast(msg) {
 
 // ===== CITY ROW CLICK =====
 function cityClick(city) {
-  showToast(city + ' saved to your waitlist');
+  const T = TRANSLATIONS[currentLang];
+  showToast(city + ' ' + T['toast-city']);
   setTimeout(() => {
     document.getElementById('cta').scrollIntoView({ behavior: 'smooth' });
   }, 400);
