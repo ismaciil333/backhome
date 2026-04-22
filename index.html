@@ -74,8 +74,8 @@ input,select,textarea{font-family:var(--sans);}
 .nav-right .btn{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;flex-shrink:0;}
 @media(max-width:860px){.nav-links{display:none;}.nav-right .btn{max-width:144px;font-size:13px;padding:10px 16px;}}
 @media(max-width:560px){.nav-right{gap:6px;}.nav-right .btn{max-width:108px;font-size:12px;padding:9px 12px;}.lang-btn{padding:4px 9px;font-size:12px;}}
-.lang-pill{display:flex;align-items:center;background:var(--paper-2);border-radius:100px;padding:3px;gap:2px;}
-.lang-btn{padding:5px 12px;border-radius:100px;font-size:13px;font-weight:500;color:var(--ink-3);transition:all .2s;}
+.lang-pill{display:flex;align-items:center;background:var(--paper-2);border-radius:100px;padding:3px;gap:2px;flex-shrink:0;}
+.lang-btn{padding:5px 12px;border-radius:100px;font-size:13px;font-weight:500;color:var(--ink-3);transition:all .2s;white-space:nowrap;}
 .lang-btn.active{background:var(--ink);color:var(--white);}
 
 .hero{padding:160px 0 120px;background:var(--paper);}
@@ -203,6 +203,7 @@ details[open] .faq-icon svg{transform:rotate(45deg);stroke:var(--white);}
 details[open] .faq-body{max-height:300px;}
 .faq-body p{font-size:15px;line-height:1.65;color:var(--ink-3);padding-bottom:24px;}
 .faq-body a{color:var(--clay);text-decoration:underline;}
+@media(max-width:560px){summary.faq-summary{font-size:15px;padding:18px 0;}}
 
 /* ===================== CTA SECTION ===================== */
 .cta-section{position:relative;overflow:hidden;}
