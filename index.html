@@ -300,7 +300,7 @@ details[open] .faq-body{max-height:300px;}
           <span class="hero-badge-dot"></span>
           Pre-launch · Spring 2026
         </div>
-        <h1 class="hero-headline">
+        <h1 class="hero-headline" id="hero-headline">
           <span class="word" style="animation-delay:.05s">Find</span><span class="word" style="animation-delay:.10s">a</span><span class="word" style="animation-delay:.15s">place</span><span class="word" style="animation-delay:.20s">that</span><br>
           <span class="word" style="animation-delay:.25s">feels</span><span class="word" style="animation-delay:.30s">like</span><span class="word accent" style="animation-delay:.37s">home.</span>
         </h1>
@@ -1029,9 +1029,20 @@ const TRANSLATIONS = {
 
 let currentLang = 'en';
 
+// Headline HTML for each language (words as animated spans)
+const HEADLINES = {
+  en: '<span class="word" style="animation-delay:.05s">Find</span><span class="word" style="animation-delay:.10s">a</span><span class="word" style="animation-delay:.15s">place</span><span class="word" style="animation-delay:.20s">that</span><br><span class="word" style="animation-delay:.25s">feels</span><span class="word" style="animation-delay:.30s">like</span><span class="word accent" style="animation-delay:.37s">home.</span>',
+  so: '<span class="word" style="animation-delay:.05s">Hel</span><span class="word" style="animation-delay:.10s">meel</span><span class="word" style="animation-delay:.15s">aad</span><span class="word" style="animation-delay:.20s">ku</span><br><span class="word" style="animation-delay:.25s">dareento</span><span class="word" style="animation-delay:.30s">sida</span><span class="word accent" style="animation-delay:.37s">gurigaaga.</span>'
+};
+
+// Arrow SVG shared by primary buttons
+const ARROW_SVG = '<svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+const ARROW_SVG_SM = '<svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+
 // ===== LANG TOGGLE =====
-function setLang(lang) {
+function setLang(lang, silent) {
   currentLang = lang;
+  localStorage.setItem('bh-lang', lang);
   document.getElementById('lang-en').classList.toggle('active', lang === 'en');
   document.getElementById('lang-so').classList.toggle('active', lang === 'so');
   const T = TRANSLATIONS[lang];
@@ -1041,12 +1052,32 @@ function setLang(lang) {
   navLinks[0] && (navLinks[0].textContent = T['nav-why']);
   navLinks[1] && (navLinks[1].textContent = T['nav-how']);
   navLinks[2] && (navLinks[2].textContent = T['nav-faq']);
-  document.querySelector('.nav-right .btn')?.childNodes.forEach(n => { if(n.nodeType===3) n.textContent = T['nav-join'] + ' '; });
+  const navJoinBtn = document.querySelector('.nav-right .btn');
+  if(navJoinBtn) navJoinBtn.textContent = T['nav-join'];
 
-  // Hero
+  // Hero headline (swap words, show immediately — no re-animation on switch)
+  const h1 = document.getElementById('hero-headline');
+  if(h1) {
+    h1.innerHTML = HEADLINES[lang];
+    h1.querySelectorAll('.word').forEach(w => {
+      w.style.opacity = '1';
+      w.style.transform = 'none';
+      w.style.animation = 'none';
+    });
+  }
+
+  // Hero badge
+  const badge = document.querySelector('.hero-badge');
+  if(badge) {
+    const dot = badge.querySelector('.hero-badge-dot');
+    badge.textContent = T['hero-badge'];
+    if(dot) badge.prepend(dot);
+  }
+
+  // Hero sub + buttons
   document.getElementById('hero-sub-text').textContent = T['hero-sub'];
   const joinBtn = document.getElementById('hero-join-btn');
-  if(joinBtn) joinBtn.childNodes.forEach(n=>{ if(n.nodeType===3) n.textContent = T['hero-join'] + ' '; });
+  if(joinBtn) joinBtn.innerHTML = T['hero-join'] + ' ' + ARROW_SVG;
   const listBtn = document.querySelector('.hero-cta .btn-ghost');
   if(listBtn) listBtn.textContent = T['hero-list'];
 
@@ -1059,7 +1090,6 @@ function setLang(lang) {
   document.querySelector('.city-card-head-left').textContent = T['card-head'];
   const liveEl = document.querySelector('.city-card-head-right');
   if(liveEl) liveEl.innerHTML = `<span class="live-dot"></span>${T['card-live']}`;
-
   const cityNames = document.querySelectorAll('.city-name');
   const cityMetas = document.querySelectorAll('.city-meta');
   const cityKeys = ['mog','hrg','gar','kis','gal','bos'];
@@ -1161,13 +1191,14 @@ function setLang(lang) {
   if(ctaBody) ctaBody.textContent = T['cta-body'];
   const emailInput = document.getElementById('waitlist-email');
   if(emailInput) emailInput.placeholder = T['cta-ph'];
-  const ctaBtn = document.querySelector('.cta-form-pill .btn');
-  if(ctaBtn) ctaBtn.childNodes.forEach(n=>{ if(n.nodeType===3) n.textContent = T['cta-btn'] + ' '; });
+  const ctaSubmitBtn = document.querySelector('.cta-form-pill button[type="submit"]');
+  if(ctaSubmitBtn) ctaSubmitBtn.innerHTML = T['cta-btn'] + ' ' + ARROW_SVG_SM;
 
   // Modal
   document.querySelector('.modal-h2').textContent = T['modal-h2'];
   document.querySelector('.modal-body').textContent = T['modal-body'];
-  document.querySelector('.modal .btn').childNodes.forEach(n=>{if(n.nodeType===3&&n.textContent.trim()) n.textContent=T['modal-btn'];});
+  const modalGotIt = document.querySelector('#modal-backdrop .btn');
+  if(modalGotIt) modalGotIt.textContent = T['modal-btn'];
 
   // Footer
   document.querySelector('.footer-desc').textContent = T['footer-desc'];
@@ -1196,7 +1227,7 @@ function setLang(lang) {
   }
   document.querySelector('.footer-copy').textContent = T['foot-copy'];
 
-  showToast(T['toast-join']);
+  if(!silent) showToast(T['toast-join']);
 }
 
 // ===== TOAST =====
@@ -1304,6 +1335,12 @@ document.querySelectorAll('details.faq-item').forEach(d => {
     }
   });
 });
+
+// ===== RESTORE SAVED LANGUAGE =====
+(function(){
+  const saved = localStorage.getItem('bh-lang');
+  if(saved === 'so') setLang('so', true);
+})();
 </script>
 </body>
 </html>

@@ -498,13 +498,6 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 20);
 });
 
-// ===== LANG TOGGLE =====
-function setLang(lang) {
-  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-  document.getElementById('lang-so').classList.toggle('active', lang === 'so');
-  showToast(lang === 'so' ? 'Af-Soomaali la doortay' : 'English selected');
-}
-
 // ===== TOAST =====
 let toastTimer;
 function showToast(msg) {
@@ -515,10 +508,352 @@ function showToast(msg) {
   toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
 }
 
+// ===== TRANSLATIONS =====
+const T_SO = {
+  'nav-back':       'Dib u noqo',
+  'nav-join':       'Ku biir liiska sugitaanka',
+  'eyebrow':        'Mulkiileyaasha',
+  'h1-line1':       'Gurigaaga ku darsoo.',
+  'h1-line2-plain': 'Si fudud u buuxi.',
+  'left-body':      'Gaar u gaadh kumanaanka qoysaska reer dibedda ee la xaqiijiyay ee raadinaya sida aad bixiso. Waxaan qabanaa suuq-geynta, xaqiijinta, iyo lacagbixinta — adnagu qaado soo-dhowaynta.',
+  'ben-1-h':        'Qabsiga toos ah, dhexdhexaadiye la\'aanta',
+  'ben-1-b':        'Xiriirka ayaad haysan doontaa — ilaa dakhligaaga badan.',
+  'ben-2-h':        'Lacag bixinta ilaalisan',
+  'ben-2-b':        'Lacagtu escrow ayay ku jirtaa. Lacagta waxaad helaysaa marka martidaadu soo gasho.',
+  'ben-3-h':        'Warqadaha ayaan qabanaa',
+  'ben-3-b':        'Heshiisyada, soo-dhawaynta, iyo taageerada martida kooxdayada deegaanku way qabtaa.',
+  'step-1-label':   'Adiga ku saabsan',
+  'step-2-label':   'Xogta guriga',
+  'step-3-label':   'Cabirka & adeegyada',
+  'step-4-label':   'Faahfaahinta dambe',
+  'f-name-lbl':     'Magaca oo dhan',
+  'f-name-ph':      'm.sh. Amina Xasan',
+  'f-name-err':     'Fadlan magacaaga geli.',
+  'f-email-lbl':    'Cinwaanka iimaylka',
+  'f-email-ph':     'adigu@tusaale.com',
+  'f-email-err':    'Fadlan cinwaan iimayl sax ah geli.',
+  'f-phone-lbl':    'Telefoonka (lambarka dalka)',
+  'f-phone-ph':     '+44 7700 900000',
+  'f-phone-err':    'Fadlan lambarka telefoonkaaga geli.',
+  'f-based-lbl':    'Xaggee ayaad ku noolaataa?',
+  'f-based-ph':     'm.sh. London, Oslo, Minneapolis',
+  'f-based-err':    'Fadlan u noo sheeg xaggaad ku noolayd.',
+  'type-lbl':       'Nooca guriga',
+  'type-err':       'Fadlan nooca guriga dooro.',
+  'type-villa':     'Villa',
+  'type-apart':     'Flet',
+  'type-house':     'Guri',
+  'type-compound':  'Xero',
+  'city-lbl':       'Magaalada',
+  'city-err':       'Fadlan magaalada dooro.',
+  'city-ph':        'Magaalo dooro',
+  'neigh-lbl':      'Xaafadda',
+  'neigh-opt':      '(ikhtiyaari)',
+  'neigh-ph':       'm.sh. Hodan, Wadajir, Shaqaalaha',
+  'beds-lbl':       'Qolalka jiifka',
+  'baths-lbl':      'Musqusha',
+  'sel-ph':         'Dooro',
+  'beds-err':       'Loo baahan yahay.',
+  'baths-err':      'Loo baahan yahay.',
+  'amen-lbl':       'Adeegyada',
+  'amen-opt':       '(dhammaan dooro)',
+  'rent-lbl':       'Kirada bishiiba (USD)',
+  'rent-opt':       '(ikhtiyaari)',
+  'rent-ph':        'm.sh. 800',
+  'stay-lbl':       'Joogitaanka ugu yar',
+  'desc-lbl':       'Faahfaahinta guriga',
+  'desc-opt':       '(ikhtiyaari)',
+  'desc-ph':        'Noo sheeg gurigaaga — maxaa gaarka ka dhigaa, maxaa u dhow, xogta martidu baahan tahay...',
+  'visit-lbl':      'Goorma ayaannu booqan karnaa si xaqiijin loo sameeyo?',
+  'visit-err':      'Fadlan noo sheeg gorma ayaannu booqan karnaa.',
+  'visit-1w':       'Toddobaad gudahood',
+  'visit-2w':       '2 toddobaad gudahood',
+  'visit-1m':       'Bil gudahood',
+  'visit-flex':     'Xor',
+  'info-text':      '<strong>Maxaa xiga?</strong> Xubin ka tirsan kooxdayada BackHome ayaa kula soo xiriiri doonta 48 saacadood gudahood si ay u xaqiijiyaan xogta oo booqasho qorsheeyaan. Liistaygu bilaash buu yahay — waxaan qaadanaa farcamo yar oo aad kasban doonto.',
+  'btn-back':       'Dib u noqo',
+  'btn-continue':   'Sii wad',
+  'btn-submit':     'Guriga soo dir',
+  'success-h2-1':   'La qaatay.',
+  'success-h2-2':   'Ku soo dhawow.',
+  'success-body':   'Xubin ka tirsan kooxdayada BackHome ayaa kula soo xiriiri doonta 48 saacadood gudahood si booqasho xaqiijin ah loo qabsado.',
+  'success-back':   'Bogga hore',
+  'success-again':  'Guri kale soo dir',
+  'foot-platform':  'Goobta',
+  'foot-how':       'Sida u shaqeysa',
+  'foot-join':      'Ku biir liiska',
+  'foot-owners':    'Mulkiileyaasha',
+  'foot-legal':     'Sharciga',
+  'foot-privacy':   'Xeerka asturnaanta',
+  'foot-terms':     'Shuruudaha',
+  'foot-cookies':   'Cookies',
+  'foot-unsub':     'Ka diiwaanso',
+  'foot-copy':      '© 2026 BackHome. Jacayl dadka Soomaalida reer dibedda ah ayuu lasoo jeedaa.',
+  'footer-desc':    'Dadka Soomaalida reer dibedda waxaan u xidnaa guryaha xaqiijiyay ee Muqdisho, Hargeysa, Garoowe, Kismaayo, Gaalkacyo iyo Boosaaso.',
+  'toast-join':     'Af-Soomaali la doortay'
+};
+
+const T_EN = {
+  'nav-back':       'Back',
+  'nav-join':       'Join waitlist',
+  'eyebrow':        'For owners',
+  'h1-line1':       'List your home.',
+  'h1-line2-plain': 'Fill it, effortlessly.',
+  'left-body':      'Reach thousands of verified diaspora families looking for exactly what you offer. We handle the marketing, the vetting, and the payments — you handle the welcome.',
+  'ben-1-h':        'Direct bookings, no middlemen',
+  'ben-1-b':        'You keep the relationship — and more of the rent.',
+  'ben-2-h':        'Protected payments',
+  'ben-2-b':        'Funds held in escrow. You\'re paid the moment your guest checks in.',
+  'ben-3-h':        'We do the paperwork',
+  'ben-3-b':        'Contracts, check-ins, and guest support handled by our local team.',
+  'step-1-label':   'About you',
+  'step-2-label':   'Property basics',
+  'step-3-label':   'Size & features',
+  'step-4-label':   'Final details',
+  'f-name-lbl':     'Full name',
+  'f-name-ph':      'e.g. Amina Hassan',
+  'f-name-err':     'Please enter your full name.',
+  'f-email-lbl':    'Email address',
+  'f-email-ph':     'you@example.com',
+  'f-email-err':    'Please enter a valid email address.',
+  'f-phone-lbl':    'Phone (with country code)',
+  'f-phone-ph':     '+44 7700 900000',
+  'f-phone-err':    'Please enter your phone number.',
+  'f-based-lbl':    'Where are you based?',
+  'f-based-ph':     'e.g. London, Oslo, Minneapolis',
+  'f-based-err':    'Please tell us where you\'re based.',
+  'type-lbl':       'Property type',
+  'type-err':       'Please select a property type.',
+  'type-villa':     'Villa',
+  'type-apart':     'Apartment',
+  'type-house':     'House',
+  'type-compound':  'Compound',
+  'city-lbl':       'City',
+  'city-err':       'Please select a city.',
+  'city-ph':        'Select a city',
+  'neigh-lbl':      'Neighborhood',
+  'neigh-opt':      '(optional)',
+  'neigh-ph':       'e.g. Hodan, Wadajir, Shaqaalaha',
+  'beds-lbl':       'Bedrooms',
+  'baths-lbl':      'Bathrooms',
+  'sel-ph':         'Select',
+  'beds-err':       'Required.',
+  'baths-err':      'Required.',
+  'amen-lbl':       'Amenities',
+  'amen-opt':       '(select all that apply)',
+  'rent-lbl':       'Monthly rent (USD)',
+  'rent-opt':       '(optional)',
+  'rent-ph':        'e.g. 800',
+  'stay-lbl':       'Minimum stay',
+  'desc-lbl':       'Property description',
+  'desc-opt':       '(optional)',
+  'desc-ph':        'Tell us about your property — what makes it special, what\'s nearby, anything guests should know...',
+  'visit-lbl':      'When can we visit for verification?',
+  'visit-err':      'Please let us know when we can visit.',
+  'visit-1w':       'Within 1 week',
+  'visit-2w':       'Within 2 weeks',
+  'visit-1m':       'Within 1 month',
+  'visit-flex':     'Flexible',
+  'info-text':      "<strong>What happens next?</strong> A BackHome team member will contact you within 48 hours to confirm details and schedule an in-person visit. Listing is free — we only take a small fee when you earn.",
+  'btn-back':       'Back',
+  'btn-continue':   'Continue',
+  'btn-submit':     'Submit listing',
+  'success-h2-1':   'Got it.',
+  'success-h2-2':   'Welcome aboard.',
+  'success-body':   'A member of our team will reach out within 48 hours to schedule your property verification visit.',
+  'success-back':   'Back to home',
+  'success-again':  'Submit another property',
+  'foot-platform':  'Platform',
+  'foot-how':       'How it works',
+  'foot-join':      'Join waitlist',
+  'foot-owners':    'For owners',
+  'foot-legal':     'Legal',
+  'foot-privacy':   'Privacy policy',
+  'foot-terms':     'Terms',
+  'foot-cookies':   'Cookies',
+  'foot-unsub':     'Unsubscribe',
+  'foot-copy':      '© 2026 BackHome. Made with care for the Somali diaspora.',
+  'footer-desc':    'Connecting the Somali diaspora with verified homes across Mogadishu, Hargeisa, Garowe, Kismayo, Galkayo and Bosaso.',
+  'toast-join':     'English selected'
+};
+
+const ARROW_SVG = '<svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+const CHECK_SVG = '<svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+let currentLang = 'en';
+
+function setLang(lang, silent) {
+  currentLang = lang;
+  localStorage.setItem('bh-lang', lang);
+  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+  document.getElementById('lang-so').classList.toggle('active', lang === 'so');
+  const T = lang === 'so' ? T_SO : T_EN;
+
+  // Nav
+  const backLink = document.querySelector('.back-link');
+  if(backLink) { const svg = backLink.querySelector('svg'); backLink.textContent = T['nav-back']; backLink.prepend(svg); }
+  const navBtn = document.querySelector('.nav-right .btn-ghost');
+  if(navBtn) navBtn.textContent = T['nav-join'];
+
+  // Left col
+  const ey = document.querySelector('.left-col .eyebrow');
+  if(ey) ey.textContent = T['eyebrow'];
+  const h1 = document.querySelector('.left-col h1');
+  if(h1) h1.innerHTML = `${T['h1-line1']}<br><em>${T['h1-line2-plain']}</em>`;
+  const lb = document.querySelector('.left-body');
+  if(lb) lb.textContent = T['left-body'];
+  const bens = document.querySelectorAll('.benefit-row');
+  const benKeys = [['ben-1-h','ben-1-b'],['ben-2-h','ben-2-b'],['ben-3-h','ben-3-b']];
+  bens.forEach((b,i) => {
+    const icon = b.querySelector('.benefit-icon');
+    b.querySelector('.benefit-text h4').textContent = T[benKeys[i][0]];
+    b.querySelector('.benefit-text p').textContent = T[benKeys[i][1]];
+  });
+
+  // Step labels
+  const stepLabels = [T['step-1-label'], T['step-2-label'], T['step-3-label'], T['step-4-label']];
+
+  // Step 1 labels
+  const fNameLbl = document.querySelector('#f-name label');
+  if(fNameLbl) fNameLbl.innerHTML = `${T['f-name-lbl']} <span style="color:var(--terracotta)">*</span>`;
+  const fNameInp = document.getElementById('inp-name');
+  if(fNameInp) fNameInp.placeholder = T['f-name-ph'];
+  const fNameErr = document.querySelector('#f-name .error-msg');
+  if(fNameErr) fNameErr.textContent = T['f-name-err'];
+
+  const fEmailLbl = document.querySelector('#f-email label');
+  if(fEmailLbl) fEmailLbl.innerHTML = `${T['f-email-lbl']} <span style="color:var(--terracotta)">*</span>`;
+  const fEmailInp = document.getElementById('inp-email');
+  if(fEmailInp) fEmailInp.placeholder = T['f-email-ph'];
+  const fEmailErr = document.querySelector('#f-email .error-msg');
+  if(fEmailErr) fEmailErr.textContent = T['f-email-err'];
+
+  const fPhoneLbl = document.querySelector('#f-phone label');
+  if(fPhoneLbl) fPhoneLbl.innerHTML = `${T['f-phone-lbl']} <span style="color:var(--terracotta)">*</span>`;
+  const fPhoneInp = document.getElementById('inp-phone');
+  if(fPhoneInp) fPhoneInp.placeholder = T['f-phone-ph'];
+  const fPhoneErr = document.querySelector('#f-phone .error-msg');
+  if(fPhoneErr) fPhoneErr.textContent = T['f-phone-err'];
+
+  const fBasedLbl = document.querySelector('#f-based label');
+  if(fBasedLbl) fBasedLbl.innerHTML = `${T['f-based-lbl']} <span style="color:var(--terracotta)">*</span>`;
+  const fBasedInp = document.getElementById('inp-based');
+  if(fBasedInp) fBasedInp.placeholder = T['f-based-ph'];
+  const fBasedErr = document.querySelector('#f-based .error-msg');
+  if(fBasedErr) fBasedErr.textContent = T['f-based-err'];
+
+  // Step 2 labels
+  const fTypeLbl = document.querySelector('#f-type > label');
+  if(fTypeLbl) fTypeLbl.innerHTML = `${T['type-lbl']} <span style="color:var(--terracotta)">*</span>`;
+  const fTypeErr = document.querySelector('#f-type .error-msg');
+  if(fTypeErr) fTypeErr.textContent = T['type-err'];
+  document.getElementById('chip-villa') && (document.getElementById('chip-villa').childNodes.forEach(n=>{ if(n.nodeType===3&&n.textContent.trim()) n.textContent=T['type-villa']; }));
+  document.getElementById('chip-apartment') && (document.getElementById('chip-apartment').childNodes.forEach(n=>{ if(n.nodeType===3&&n.textContent.trim()) n.textContent=T['type-apart']; }));
+  document.getElementById('chip-house') && (document.getElementById('chip-house').childNodes.forEach(n=>{ if(n.nodeType===3&&n.textContent.trim()) n.textContent=T['type-house']; }));
+  document.getElementById('chip-compound') && (document.getElementById('chip-compound').childNodes.forEach(n=>{ if(n.nodeType===3&&n.textContent.trim()) n.textContent=T['type-compound']; }));
+
+  const fCityLbl = document.querySelector('#f-city label');
+  if(fCityLbl) fCityLbl.innerHTML = `${T['city-lbl']} <span style="color:var(--terracotta)">*</span>`;
+  const fCityErr = document.querySelector('#f-city .error-msg');
+  if(fCityErr) fCityErr.textContent = T['city-err'];
+  const citySelect = document.getElementById('inp-city');
+  if(citySelect && citySelect.options[0]) citySelect.options[0].textContent = T['city-ph'];
+
+  const neighLabel = document.querySelector('#step-2 .field:last-child label');
+  if(neighLabel) neighLabel.innerHTML = `${T['neigh-lbl']} <span style="color:var(--ink-4);font-weight:400;">${T['neigh-opt']}</span>`;
+  const neighInp = document.getElementById('inp-neighborhood');
+  if(neighInp) neighInp.placeholder = T['neigh-ph'];
+
+  // Step 3
+  const fBedsLbl = document.querySelector('#f-beds label');
+  if(fBedsLbl) fBedsLbl.innerHTML = `${T['beds-lbl']} <span style="color:var(--terracotta)">*</span>`;
+  const fBathsLbl = document.querySelector('#f-baths label');
+  if(fBathsLbl) fBathsLbl.innerHTML = `${T['baths-lbl']} <span style="color:var(--terracotta)">*</span>`;
+  const fBedsErr = document.querySelector('#f-beds .error-msg');
+  if(fBedsErr) fBedsErr.textContent = T['beds-err'];
+  const fBathsErr = document.querySelector('#f-baths .error-msg');
+  if(fBathsErr) fBathsErr.textContent = T['baths-err'];
+  // Bedroom/bathroom select placeholders
+  const bedsSelect = document.getElementById('inp-beds');
+  if(bedsSelect && bedsSelect.options[0]) bedsSelect.options[0].textContent = T['sel-ph'];
+  const bathsSelect = document.getElementById('inp-baths');
+  if(bathsSelect && bathsSelect.options[0]) bathsSelect.options[0].textContent = T['sel-ph'];
+
+  const amenLbl = document.querySelector('#step-3 .field:nth-child(2) label');
+  if(amenLbl) amenLbl.innerHTML = `${T['amen-lbl']} <span style="color:var(--ink-4);font-weight:400;">${T['amen-opt']}</span>`;
+
+  const rentLabels = document.querySelectorAll('#step-3 .field-row .field label');
+  if(rentLabels[0]) rentLabels[0].innerHTML = `${T['rent-lbl']} <span style="color:var(--ink-4);font-weight:400;">${T['rent-opt']}</span>`;
+  if(rentLabels[1]) rentLabels[1].textContent = T['stay-lbl'];
+  const rentInp = document.getElementById('inp-rent');
+  if(rentInp) rentInp.placeholder = T['rent-ph'];
+
+  // Step 4
+  const descLabel = document.querySelector('#step-4 .field:first-child label');
+  if(descLabel) descLabel.innerHTML = `${T['desc-lbl']} <span style="color:var(--ink-4);font-weight:400;">${T['desc-opt']}</span>`;
+  const descInp = document.getElementById('inp-desc');
+  if(descInp) descInp.placeholder = T['desc-ph'];
+  const visitLbl = document.querySelector('#step-4 .field:nth-child(2) label');
+  if(visitLbl) visitLbl.innerHTML = `${T['visit-lbl']} <span style="color:var(--terracotta)">*</span>`;
+  const visitErr = document.getElementById('f-visit-err');
+  if(visitErr) visitErr.textContent = T['visit-err'];
+  const visitSelect = document.getElementById('inp-visit');
+  if(visitSelect) {
+    if(visitSelect.options[0]) visitSelect.options[0].textContent = T['sel-ph'];
+    if(visitSelect.options[1]) visitSelect.options[1].textContent = T['visit-1w'];
+    if(visitSelect.options[2]) visitSelect.options[2].textContent = T['visit-2w'];
+    if(visitSelect.options[3]) visitSelect.options[3].textContent = T['visit-1m'];
+    if(visitSelect.options[4]) visitSelect.options[4].textContent = T['visit-flex'];
+  }
+  const infoText = document.querySelector('.info-text');
+  if(infoText) infoText.innerHTML = T['info-text'];
+
+  // Buttons
+  const btnBack = document.getElementById('btn-back');
+  if(btnBack) btnBack.textContent = T['btn-back'];
+  updateStepUI(); // re-render Continue/Submit with correct lang
+
+  // Success state
+  const succH2 = document.querySelector('.success-h2');
+  if(succH2) succH2.innerHTML = `${T['success-h2-1']} <em>${T['success-h2-2']}</em>`;
+  const succBody = document.querySelector('.success-body');
+  if(succBody) succBody.textContent = T['success-body'];
+  const succBtns = document.querySelectorAll('.success-btns a, .success-btns button');
+  if(succBtns[0]) succBtns[0].innerHTML = T['success-back'] + ' ' + ARROW_SVG;
+  if(succBtns[1]) succBtns[1].textContent = T['success-again'];
+
+  // Footer
+  document.querySelector('.footer-desc').textContent = T['footer-desc'];
+  const footCols = document.querySelectorAll('.footer-col');
+  if(footCols[0]){
+    footCols[0].querySelector('h4').textContent = T['foot-platform'];
+    const fl0 = footCols[0].querySelectorAll('a');
+    fl0[0] && (fl0[0].textContent = T['foot-how']);
+    fl0[1] && (fl0[1].textContent = T['foot-join']);
+    fl0[2] && (fl0[2].textContent = T['foot-owners']);
+  }
+  if(footCols[1]){
+    footCols[1].querySelector('h4').textContent = T['foot-legal'];
+    const fl1 = footCols[1].querySelectorAll('a');
+    fl1[0] && (fl1[0].textContent = T['foot-privacy']);
+    fl1[1] && (fl1[1].textContent = T['foot-terms']);
+    fl1[2] && (fl1[2].textContent = T['foot-cookies']);
+    fl1[3] && (fl1[3].textContent = T['foot-unsub']);
+  }
+  const footCopy = document.querySelector('.footer-copy');
+  if(footCopy) footCopy.textContent = T['foot-copy'];
+
+  if(!silent) showToast(T['toast-join']);
+}
+
+// ===== LANG TOGGLE (public) =====
+function setLangPublic(lang) { setLang(lang); }
+
 // ===== FORM STATE =====
 let currentStep = 1;
 const TOTAL_STEPS = 4;
 const stepLabels = ['About you', 'Property basics', 'Size & features', 'Final details'];
+const stepLabelsSO = ['Adiga ku saabsan', 'Xogta guriga', 'Cabirka & adeegyada', 'Faahfaahinta dambe'];
 
 const selectedType = { val: '' };
 const selectedAmenities = new Set();
@@ -542,14 +877,16 @@ function toggleAmenity(el) {
 }
 
 function updateStepUI() {
+  const T = currentLang === 'so' ? T_SO : T_EN;
+  const labels = currentLang === 'so' ? stepLabelsSO : stepLabels;
   document.getElementById('step-num-display').textContent = String(currentStep).padStart(2,'0');
-  document.getElementById('step-label-display').textContent = stepLabels[currentStep - 1];
+  document.getElementById('step-label-display').textContent = labels[currentStep - 1];
   document.getElementById('btn-back').style.visibility = currentStep > 1 ? 'visible' : 'hidden';
   const isLast = currentStep === TOTAL_STEPS;
   const btnNext = document.getElementById('btn-next');
   btnNext.innerHTML = isLast
-    ? 'Submit listing <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
-    : 'Continue <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+    ? T['btn-submit'] + ' ' + CHECK_SVG
+    : T['btn-continue'] + ' ' + ARROW_SVG;
 
   // segments
   for (let i = 1; i <= TOTAL_STEPS; i++) {
@@ -578,6 +915,7 @@ function validateStep(step) {
     const inp = f.querySelector('.form-input');
     if (inp) inp.classList.toggle('error', has);
   };
+  const T = currentLang === 'so' ? T_SO : T_EN;
 
   if (step === 1) {
     const name = document.getElementById('inp-name').value.trim();
@@ -614,8 +952,9 @@ function validateStep(step) {
 }
 
 function nextStep() {
+  const T = currentLang === 'so' ? T_SO : T_EN;
   if (!validateStep(currentStep)) {
-    showToast('Please fill in the highlighted fields');
+    showToast(currentLang === 'so' ? 'Fadlan meelaha la iftiimiyay buuxi' : 'Please fill in the highlighted fields');
     return;
   }
   if (currentStep < TOTAL_STEPS) {
@@ -650,13 +989,11 @@ function prevStep() {
 }
 
 function submitForm() {
-  // Generate reference code
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
   const nums = Math.floor(1000 + Math.random() * 9000);
   const letter = chars[Math.floor(Math.random() * chars.length)];
   document.getElementById('success-ref').textContent = 'Reference · BH-' + nums + '-' + letter;
 
-  // Show success
   document.getElementById('step-indicator').style.display = 'none';
   document.querySelector('.step-meta').style.display = 'none';
   for (let i = 1; i <= TOTAL_STEPS; i++) {
@@ -670,8 +1007,6 @@ function resetForm() {
   currentStep = 1;
   selectedType.val = '';
   selectedAmenities.clear();
-
-  // Clear all inputs
   document.querySelectorAll('.form-input').forEach(el => {
     if (el.tagName === 'SELECT') el.selectedIndex = 0;
     else el.value = '';
@@ -680,8 +1015,6 @@ function resetForm() {
   document.querySelectorAll('.field').forEach(f => f.classList.remove('has-error'));
   document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
   document.getElementById('property-type').value = '';
-
-  // Show form
   document.getElementById('step-indicator').style.display = '';
   document.querySelector('.step-meta').style.display = '';
   document.getElementById('step-footer').style.display = '';
@@ -693,6 +1026,13 @@ function resetForm() {
 // Init
 updateStepUI();
 showStep(1);
-</script>
+
+// ===== RESTORE SAVED LANGUAGE =====
+(function(){
+  const saved = localStorage.getItem('bh-lang');
+  if(saved === 'so') setLang('so', true);
+})();
+
 </body>
 </html>
+
