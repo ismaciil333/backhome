@@ -3,924 +3,1161 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BackHome — Kirayso guri adigoon dillaal marin</title>
+  <title>BackHome — Co-own Real Estate in Africa</title>
   <link rel="icon" type="image/svg+xml" href="logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #F8F5F0;     /* Softer, warmer beige */
-      --text-dark: #2B2927;    /* Softer dark */
-      --text-muted: #736E67;   /* Softer muted */
-      --accent: #BFA582;
-      --accent-light: #F4EFE8;
+      --bg-light: #FAFAFA;
       --white: #FFFFFF;
-      --border-color: #E6E1DA; /* Softer border */
-      --dark-bg: #1B1A18;      /* Unused from old design, kept for safety */
-      --dark-card: #2C2A27;    /* Unused */
-      --dark-card-border: #383632; /* Unused */
-      --dark-text: #E5E1D8;    /* Unused */
-      --dark-text-muted: #959088; /* Unused */
+      --text-main: #111827;
+      --text-muted: #6B7280;
+      --dark-navy: #0B1C2C;
+      --green-accent: #22543D;
+      --green-light: #F0FDF4;
+      --border-color: #E5E7EB;
+      --gold: #C8A96A;
+      --max-width: 1200px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-dark);
+      background-color: var(--bg-light);
+      color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
     a { text-decoration: none; color: inherit; }
-
-    button, input, select, textarea {
-      font-family: inherit;
-      outline: none;
-    }
-
+    ul { list-style: none; }
+    
     h1, h2, h3, h4 {
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
+      font-family: 'Playfair Display', serif;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+    
+    .serif-italic { font-style: italic; color: var(--green-accent); }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 32px;
     }
 
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    .text-highlight { color: var(--accent); }
-
-    /* ── NAVBAR ── */
-    header { 
-      padding: 30px 48px; 
+    /* NAVBAR */
+    header {
+      padding: 24px 0;
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: var(--bg-color);
-      transition: box-shadow 0.2s, padding 0.2s;
+      background: rgba(250, 250, 250, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
     }
     header.scrolled {
-      padding: 15px 48px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
       border-bottom: 1px solid var(--border-color);
     }
-
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
     }
-
-    .logo { display: inline-flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; transition: transform 0.2s; }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      font-family: 'Inter', sans-serif;
+    }
     .logo-icon { width: 32px; height: 32px; flex-shrink: 0; }
-    .logo:hover { transform: translateY(-1px); }
-    .logo span { color: var(--accent); }
-
-    .nav-actions { display: flex; align-items: center; gap: 12px; }
-
-    .lang-toggle { display: flex; }
-
-    .lang-btn {
-      padding: 9px 16px;
-      font-size: 13px;
+    .logo span { color: var(--gold); }
+    
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      font-size: 14px;
       font-weight: 600;
-      border: 1px solid var(--border-color);
-      cursor: pointer;
-      color: var(--text-dark);
-      background: transparent;
-      transition: background 0.15s;
     }
-
-    .lang-btn:first-child {
-      border-radius: 20px 0 0 20px;
-      border-right: none;
-    }
-
-    .lang-btn:last-child { border-radius: 0 20px 20px 0; }
-    .lang-btn.active { background: rgba(0,0,0,0.04); }
-    .lang-btn:hover { background: rgba(0,0,0,0.03); }
-
-    /* ── BUTTONS ── */
+    .nav-links a:hover { color: var(--green-accent); }
+    
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 24px;
-      font-size: 15px;
+      padding: 12px 24px;
+      font-size: 14px;
       font-weight: 600;
-      border-radius: 12px;
+      border-radius: 40px;
       cursor: pointer;
-      border: 1px solid var(--border-color);
-      background: transparent;
-      color: var(--text-dark);
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid transparent;
     }
-    .btn:hover {
-      background: rgba(0,0,0,0.02);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    }
-
-    .btn-primary {
-      background: var(--text-dark);
+    .btn-dark {
+      background: var(--dark-navy);
       color: var(--white);
-      border-color: var(--text-dark);
     }
-    .btn-primary:hover {
-      background: #3B3834;
-      border-color: #3B3834;
+    .btn-dark:hover {
+      background: #081420;
       transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px rgba(11, 28, 44, 0.15);
+    }
+    .btn-outline {
+      border-color: var(--border-color);
+      background: var(--white);
+    }
+    .btn-outline:hover {
+      background: var(--bg-light);
     }
 
-    /* ── LAYOUT ── */
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
-
-    .split-layout {
+    /* HERO SECTION */
+    #hero {
+      padding: 60px 0;
+    }
+    .hero-split {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 60px;
       align-items: center;
     }
-
-    /* ── SCROLL DOWN ── */
-    .scroll-down {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      margin: 80px auto 40px;
-      cursor: pointer;
-      color: var(--text-dark);
-      border: none;
-      transition: transform 0.2s;
-    }
-    .scroll-down:hover { transform: translateY(3px); }
-    .scroll-down svg { width: 16px; height: 16px; }
-
-    /* ── HERO ── */
-    #hero {
-      padding: 60px 0 0;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .hero-prelaunch {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent-light);
-      border: 1px solid var(--border-color);
-      color: #927555;
-      padding: 7px 16px;
-      border-radius: 20px;
-      font-size: 12px;
+    .hero-badge {
+      display: inline-block;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.3px;
-      margin-bottom: 32px;
-    }
-
-    .hero-prelaunch-dot {
-      width: 7px; height: 7px;
-      background: var(--accent);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .hero-title {
-      font-size: 52px;
-      font-weight: 800;
+      letter-spacing: 1.5px;
+      background: var(--border-color);
+      padding: 6px 12px;
+      border-radius: 4px;
       margin-bottom: 24px;
-      color: var(--text-dark);
-      line-height: 1.1;
+      color: var(--text-muted);
     }
-
+    .hero-title {
+      font-size: 56px;
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
     .hero-subtitle {
       font-size: 18px;
       color: var(--text-muted);
-      margin-bottom: 48px;
+      margin-bottom: 40px;
       max-width: 480px;
-      line-height: 1.7;
     }
-
-    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-
-    /* ── LAUNCHING CARD ── */
-    .launching-card {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 36px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.04);
-    }
-
-    .card-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
-
-    .city-row {
+    .hero-actions {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 14px 18px;
-      background: var(--bg-color);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      margin-bottom: 10px;
+      gap: 24px;
+      margin-bottom: 32px;
     }
-
-    .city-row-name { font-weight: 700; font-size: 15px; }
-
-    .badge-coming {
-      background: var(--accent-light);
-      color: #927555;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-    }
-
-    .card-footer {
+    .link-arrow {
+      font-size: 15px;
+      font-weight: 600;
       display: flex;
-      justify-content: space-between;
-      border-top: 1px solid var(--border-color);
-      padding-top: 20px;
-      margin-top: 10px;
+      align-items: center;
+      gap: 8px;
+    }
+    .link-arrow:hover {
+      color: var(--green-accent);
+    }
+    .hero-verify {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-size: 13px;
       color: var(--text-muted);
       font-weight: 500;
     }
-
-    .feature-item { display: flex; align-items: center; gap: 8px; }
-
-    .feature-icon-check {
-      background: #EAF5EA; color: #38A169;
-      width: 20px; height: 20px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 4px; font-size: 10px;
+    .hero-img-wrapper {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.08);
+    }
+    .hero-img-wrapper img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      display: block;
     }
 
-    .feature-icon-arrow {
-      background: #EDF2F7; color: #4A5568;
-      width: 20px; height: 20px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 4px; font-size: 10px;
+    /* STATS ROW */
+    .stats-container {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 40px;
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+    .stat-val {
+      font-size: 32px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
     }
 
-    /* ── PROBLEMS SECTION ── */
-    #problems {
-      padding: 120px 0;
+    /* INVESTMENT OPPORTUNITIES */
+    #investments {
+      padding: 100px 0;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .project-card {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 20px;
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .project-card:hover {
+      box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+      transform: translateY(-2px);
+    }
+    .project-img {
+      width: 120px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .project-info h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .project-info .loc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .project-info .desc {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .project-return {
+      text-align: right;
+    }
+    .return-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .return-val {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--green-accent);
+    }
+    .projects-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px;
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin-top: 16px;
+    }
+    .projects-footer span { font-size: 14px; color: var(--text-muted); }
+
+    /* HOW IT WORKS */
+    #how-it-works {
+      padding: 100px 0;
       background: var(--white);
       border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
+    }
+    .how-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+    .how-left h2 {
+      font-size: 40px;
+      margin: 16px 0 24px;
+    }
+    .how-left p {
+      color: var(--text-muted);
+      max-width: 400px;
+    }
+    .how-right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .feature-row {
+      display: flex;
+      gap: 24px;
+      padding: 24px;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      background: var(--bg-light);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      flex-shrink: 0;
+    }
+    .feature-text h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .feature-text p {
+      font-size: 14px;
+      color: var(--text-muted);
     }
 
-    .problems-header { margin-bottom: 56px; }
-    .problems-header h2 { font-size: 34px; margin-bottom: 16px; }
-    .problems-header p { font-size: 16px; color: var(--text-muted); max-width: 540px; }
+    /* WHY BACKHOME */
+    #why-backhome {
+      padding: 100px 0;
+    }
+    .why-header h2 {
+      font-size: 40px;
+      margin: 16px 0 24px;
+    }
+    .why-header p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 60px;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+    .why-card {
+      background: var(--white);
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+    }
+    .why-card .icon {
+      margin-bottom: 24px;
+    }
+    .why-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .why-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
 
-    .problems-grid {
+    .process-timeline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 40px;
+      border-top: 1px solid var(--border-color);
+    }
+    .process-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* IMAGE OVERLAY SECTION */
+    #image-overlay {
+      padding: 60px 0;
+    }
+    .overlay-wrapper {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      height: 500px;
+    }
+    .overlay-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .overlay-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 400px;
+      background: var(--dark-navy);
+      color: var(--white);
+      padding: 60px 48px;
+      border-top-right-radius: 40px;
+      border-bottom-right-radius: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .overlay-card h2 {
+      color: var(--white);
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+    .overlay-card ul {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .overlay-card li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    /* TESTIMONIALS */
+    #testimonials {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .test-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .test-header h2 { font-size: 40px; }
+    .test-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
-
-    .problem-card {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 40px 32px;
+    .test-card {
+      padding: 32px;
       border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 16px;
+      background: var(--bg-light);
     }
-    .problem-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.05); }
-
-    .problem-num { display: none; }
-
-    .problem-card h3 {
-      font-size: 18px;
-      margin-bottom: 12px;
-      color: var(--text-dark);
-    }
-
-    .problem-card p {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      flex: 1;
-    }
-
-    .problem-tag {
-      display: inline-block;
-      margin-top: 32px;
-      background: var(--bg-color);
-      color: var(--text-dark);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 20px;
-      align-self: flex-start;
-      border: 1px solid var(--border-color);
-    }
-
-    /* ── WHY JOIN EARLY ── */
-    #how {
-      background: var(--bg-color);
-      padding: 100px 0;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .how-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    /* Left side */
-    .how-left h2 {
-      font-size: 34px;
+    .stars {
+      color: var(--green-accent);
       margin-bottom: 16px;
-      color: var(--text-dark);
+      letter-spacing: 2px;
     }
-
-    .how-left .how-subtext {
-      font-size: 15px;
+    .test-text {
+      font-size: 14px;
       color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 36px;
-      max-width: 340px;
+      font-style: italic;
+      margin-bottom: 24px;
+      min-height: 80px;
     }
-
-    .how-bullets {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .how-bullets li {
+    .test-user {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-dark);
     }
-
-    .how-bullet-dot {
-      width: 8px;
-      height: 8px;
+    .test-user img {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
     }
-
-    /* Right side — subtle mini cards */
-    .how-right {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      padding-top: 8px;
-    }
-
-    .how-mini-card {
-      background: var(--white);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    .how-mini-card:hover {
-      box-shadow: 0 12px 32px rgba(0,0,0,0.05);
-      transform: translateY(-4px);
-    }
-
-    .how-mini-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 8px;
-    }
-
-    .how-mini-card p {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ── WAITLIST SECTION ── */
-    #waitlist {
-      padding: 120px 0;
-      background: var(--white);
-      border-top: 1px solid var(--border-color);
-      text-align: center;
-    }
-    
-    .bottom-waitlist-inner {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-
-    .bottom-waitlist-inner h2 {
-      font-size: 40px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-      color: var(--text-dark);
-    }
-    
-    .bottom-waitlist-inner p {
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--text-muted);
-      margin-bottom: 48px;
-    }
-
-    .bottom-waitlist-form {
-      max-width: 500px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .bottom-waitlist-fields {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    @media (min-width: 600px) {
-      .bottom-waitlist-fields {
-        flex-direction: row;
-      }
-      .w-email { flex: 1.5; }
-      .w-city { flex: 1; }
-    }
-
-    .bottom-waitlist-input {
-      width: 100%;
-      padding: 16px 20px;
-      border-radius: 12px;
-      font-size: 15px;
-      background: var(--bg-color);
-      border: 1px solid var(--border-color);
-      color: var(--text-dark);
-      transition: all 0.25s ease;
-      font-family: inherit;
-      outline: none;
-    }
-    
-    .bottom-waitlist-input::placeholder { color: #AFAAA1; }
-    .bottom-waitlist-input:focus { 
-      border-color: var(--accent); 
-      background: var(--white);
-      box-shadow: 0 0 0 4px rgba(191,165,130,0.1);
-    }
-
-    select.bottom-waitlist-input {
-      appearance: none;
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23736E67' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      padding-right: 40px;
-    }
-
-    .btn-submit-waitlist {
-      width: 100%;
-      padding: 16px 24px;
-      background: var(--text-dark);
-      border: 1px solid var(--text-dark);
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--white);
-      cursor: pointer;
-      transition: all 0.25s ease;
-      font-family: inherit;
-    }
-    
-    .btn-submit-waitlist:hover {
-      background: #3B3834;
-      border-color: #3B3834;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-    }
-    .form-note {
-      text-align: center;
+    .test-user-info {
       font-size: 12px;
-      margin-top: 14px;
+    }
+    .test-user-info strong { color: var(--text-main); display: block;}
+    .test-user-info span { color: var(--text-muted); }
+
+    /* FAQ */
+    #faq {
+      padding: 100px 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-header { margin-bottom: 40px; }
+    .faq-header h2 { font-size: 36px; margin-top: 12px; }
+    .faq-item {
+      border-bottom: 1px solid var(--border-color);
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .faq-item h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: var(--text-muted);
+      font-size: 15px;
+      padding-top: 0;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding-top: 16px;
+    }
+    .faq-item.active .icon-plus {
+      transform: rotate(45deg);
+    }
+    .icon-plus {
+      transition: transform 0.3s ease;
+    }
+    
+    /* BOTTOM CTA */
+    #bottom-cta {
+      padding: 80px 0;
+    }
+    .cta-card {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      padding: 80px 60px;
+    }
+    .cta-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+    .cta-bg::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to right, rgba(34, 84, 61, 0.9) 0%, rgba(34, 84, 61, 0.7) 100%);
+    }
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      color: var(--white);
+      max-width: 500px;
+    }
+    .cta-content h2 {
+      color: var(--white);
+      font-size: 44px;
+      margin-bottom: 16px;
+    }
+    .cta-content p {
+      font-size: 15px;
+      opacity: 0.9;
+      margin-bottom: 40px;
+    }
+    .cta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cta-input {
+      padding: 16px 24px;
+      border-radius: 40px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      width: 100%;
+    }
+    .cta-form .btn-dark {
+      width: 100%;
+      padding: 16px;
+    }
+
+    /* TRUST BANNER */
+    #trust {
+      padding: 60px 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .trust-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .trust-item h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      margin: 16px 0 8px;
+    }
+    .trust-item p {
+      font-size: 12px;
       color: var(--text-muted);
     }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
-      background: var(--bg-color);
-      color: var(--text-dark);
+      background: var(--white);
       padding: 80px 0 40px;
     }
-
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
       gap: 60px;
       margin-bottom: 60px;
     }
-
-    .footer-logo { display: inline-flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; transition: transform 0.2s; }
-    .footer-logo:hover { transform: translateY(-1px); }
-    .footer-logo span { color: var(--accent); }
-    .footer-tagline { font-size: 15px; color: var(--text-muted); line-height: 1.7; max-width: 320px; }
-
     .footer-col h4 {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dark);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
       margin-bottom: 24px;
     }
-
     .footer-links {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-    }
-
-    .footer-links a {
-      font-size: 15px;
+      gap: 16px;
+      font-size: 14px;
       color: var(--text-muted);
-      transition: color 0.2s ease;
     }
-    .footer-links a:hover { color: var(--accent); }
-
     .footer-bottom {
-      border-top: 1px solid var(--border-color);
-      padding-top: 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 14px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-color);
+      font-size: 13px;
       color: var(--text-muted);
     }
 
-    /* ── TOAST ── */
-    #toast {
-      position: fixed;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%) translateY(120px);
-      background: var(--text-dark);
-      border: 1px solid var(--border-color);
-      color: var(--white);
-      padding: 16px 32px;
-      border-radius: 40px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      z-index: 999;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-      white-space: nowrap;
-    }
-    #toast.show { transform: translateX(-50%) translateY(0); }
-
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-      header { padding: 20px 24px; }
-      .container { padding: 0 24px; }
-      .split-layout { grid-template-columns: 1fr; gap: 40px; }
-      .problems-grid { grid-template-columns: 1fr; }
-      .how-inner { grid-template-columns: 1fr; gap: 48px; }
-      .hero-title { font-size: 36px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .hero-split, .how-split { grid-template-columns: 1fr; gap: 40px; }
+      .stats-container { grid-template-columns: 1fr; }
+      .project-card { grid-template-columns: 1fr; }
+      .why-grid, .trust-grid, .test-grid { grid-template-columns: 1fr; }
+      .overlay-card { position: relative; width: 100%; border-radius: 0; padding: 40px; }
+      .overlay-wrapper { height: auto; display: flex; flex-direction: column-reverse; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .process-timeline { display: none; } /* Hide complex process timeline on mobile */
     }
   </style>
 </head>
 <body>
 
-<!-- ── TOAST ── -->
-<div id="toast"></div>
-
-<!-- ── NAVBAR ── -->
-<header>
-  <nav>
-    <a href="#" class="logo" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">
-      <img src="logo.svg" alt="BackHome Logo" class="logo-icon">
-      <span>Back</span><span>Home</span>
-    </a>
-    <div class="nav-actions">
-      <div class="lang-toggle">
-        <button class="lang-btn active" id="langEN" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" id="langSO" onclick="setLang('so')">SO</button>
-      </div>
-    </div>
-  </nav>
-</header>
-
-<!-- ── HERO ── -->
-<section id="hero">
-  <div class="container split-layout">
-
-    <div class="hero-left">
-      <div class="hero-prelaunch">
-        <div class="hero-prelaunch-dot"></div>
-        <span data-en="Pre-launch — join early" data-so="Ka hor-bilaab — ku soo biir">Pre-launch — join early</span>
-      </div>
-
-      <h1 class="hero-title" id="heroTitle">
-        Kirayso guri adigoon <span class="text-highlight">dillaal marin</span>
-      </h1>
-
-      <p class="hero-subtitle" data-en="Launching in Mogadishu, Garowe and Hargeisa. Built for the diaspora, backed by local owners." data-so="Bilaabmaya Muqdisho, Garoowe iyo Hargeysa. U dhisan diasporaha, taageersan mulkiilayasha maxalliga.">
-        Launching in Mogadishu, Garowe and Hargeisa. Built for the diaspora, backed by local owners.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#waitlist" class="btn btn-primary" data-en="Join the waitlist" data-so="Liiska ku soo biir">Join the waitlist</a>
-        <a href="owners.html" class="btn" data-en="List your property" data-so="Gurigaaga soo geli">List your property</a>
-      </div>
-    </div>
-
-    <div class="hero-right">
-      <div class="launching-card">
-        <div class="card-title" data-en="LAUNCHING IN" data-so="BILAABMAYA">LAUNCHING IN</div>
-
-        <div class="city-row">
-          <span class="city-row-name">Mogadishu</span>
-          <span class="badge-coming" data-en="Coming soon" data-so="Dhow u socota">Coming soon</span>
-        </div>
-        <div class="city-row">
-          <span class="city-row-name">Hargeisa</span>
-          <span class="badge-coming" data-en="Coming soon" data-so="Dhow u socota">Coming soon</span>
-        </div>
-        <div class="city-row">
-          <span class="city-row-name">Garowe</span>
-          <span class="badge-coming" data-en="Coming soon" data-so="Dhow u socota">Coming soon</span>
-        </div>
-        <div class="city-row">
-          <span class="city-row-name">Kismayo</span>
-          <span class="badge-coming" data-en="Coming soon" data-so="Dhow u socota">Coming soon</span>
-        </div>
-        <div class="city-row">
-          <span class="city-row-name">Galkayo</span>
-          <span class="badge-coming" data-en="Coming soon" data-so="Dhow u socota">Coming soon</span>
-        </div>
-        <div class="city-row">
-          <span class="city-row-name">Bosaso</span>
-          <span class="badge-coming" data-en="Coming soon" data-so="Dhow u socota">Coming soon</span>
-        </div>
-
-
-      </div>
-    </div>
-
-  </div>
-
-  <button class="scroll-down" onclick="document.getElementById('problems').scrollIntoView({behavior:'smooth'})">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 5v14M19 12l-7 7-7-7"/>
-    </svg>
-  </button>
-</section>
-
-<!-- ── PROBLEMS SECTION ── -->
-<section id="problems">
-  <div class="container">
-    <div class="problems-header">
-      <div class="section-label" data-en="THE PROBLEM" data-so="DHIBAATADA">THE PROBLEM</div>
-      <h2 data-en="Renting in Somalia shouldn't be this hard" data-so="In guri ay kiraysato qurbajoogto waa ay adagtahay maanta">Renting in Somalia shouldn't be this hard</h2>
-      <p data-en="The diaspora faces the same obstacles every visit — and no platform has solved it. Until now." data-so="Qurbajoogtu waxay la kulmaan caqabado badan marka ay dalka ku laabtaan — mana jiro xal la isku halayn karo ilaa hadda.">The diaspora faces the same obstacles every visit — and no platform has solved it. Until now.</p>
-    </div>
-
-    <div class="problems-grid">
-
-      <div class="problem-card">
-        <div class="problem-num">01</div>
-        <h3 data-en="Scam listings" data-so="Guryo been ah">Scam listings</h3>
-        <p data-en="Pay in advance, arrive to find the property doesn't exist — or looks nothing like the photos." data-so="Lacag ayaa laga qaadaa ka hor intaadan arkin guriga — mararka qaar gurigu ma jiro, ama sawirradu ma aha kuwo sax ah.">Pay in advance, arrive to find the property doesn't exist — or looks nothing like the photos.</p>
-        <span class="problem-tag" data-en="No verification" data-so="Xaqiiqada arag">No verification</span>
-      </div>
-
-      <div class="problem-card">
-        <div class="problem-num">02</div>
-        <h3 data-en="Middlemen & inflated prices" data-so="Dilaaliin iyo qiimo kordhin">Middlemen & inflated prices</h3>
-        <p data-en="Agents add 20–40% markups and offer nothing in return. Your rent funds their margin, not your comfort." data-so="Dilaaliintu waxay ku daraan kharash badan kirada — adigoo aan helin wax qiimo dheeraad ah.">Agents add 20–40% markups and offer nothing in return. Your rent funds their margin, not your comfort.</p>
-        <span class="problem-tag" data-en="No transparency" data-so="Faahfaahin dheeraad ah">No transparency</span>
-      </div>
-
-      <div class="problem-card">
-        <div class="problem-num">03</div>
-        <h3 data-en="Built for everyone except you" data-so="Xal la’aan">Built for everyone except you</h3>
-        <p data-en="Generic rental platforms don't understand Somalia's market, your currency, or your language." data-so="Ma jiro meel lagu kalsoonaan karo oo si dhab ah u xallisa dhibkan — qof walba wuxuu ku khasban yahay inuu kaligiis wax raadsado.">Generic rental platforms don't understand Somalia's market, your currency, or your language.</p>
-        <span class="problem-tag" data-en="Not diaspora-ready" data-so="Waa maxay xal?">Not diaspora-ready</span>
-      </div>
-
-    </div>
-
-    <button class="scroll-down" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 5v14M19 12l-7 7-7-7"/>
-      </svg>
-    </button>
-  </div>
-</section>
-
-<!-- ── WHY JOIN EARLY ── -->
-<section id="how">
-  <div class="container">
-    <div class="how-inner">
-
-      <!-- Left col -->
-      <div class="how-left">
-        <div class="section-label" data-en="EARLY ACCESS" data-so="HELITAANKA HORE">EARLY ACCESS</div>
-        <h2 data-en="Why join early" data-so="Maxaad ugu biiraysaa hadda?">Why join early</h2>
-        <p class="how-subtext" data-en="Be among the first to access verified homes when we launch." data-so="Noqo qof ka mid ah kuwii ugu horreeyay ee heli kara guryo la xaqiijiyay marka aan bilowno.">Be among the first to access verified homes when we launch.</p>
-        <ul class="how-bullets">
-          <li data-en="First access to homes" data-so="Helitaanka ugu horreeya ee guryaha"><span class="how-bullet-dot"></span>First access to homes</li>
-          <li data-en="No middlemen" data-so="Dillaal la’aan"><span class="how-bullet-dot"></span>No middlemen</li>
-          <li data-en="Built for the diaspora" data-so="Loogu talagalay qurbajoogta"><span class="how-bullet-dot"></span>Built for the diaspora</li>
-        </ul>
-      </div>
-
-      <!-- Right col -->
-      <div class="how-right">
-        <div class="how-mini-card">
-          <h3 data-en="Early access" data-so="Helitaan hore">Early access</h3>
-          <p data-en="See homes before anyone else in your city." data-so="Arag guryaha ka hor inta aysan cid kale ku arag magaaladaada.">See homes before anyone else in your city.</p>
-        </div>
-        <div class="how-mini-card">
-          <h3 data-en="Verified network" data-so="Shabakad la xaqiijiyay">Verified network</h3>
-          <p data-en="Only verified renters and owners." data-so="Kaliya kiraystayaal iyo milkiilayaal la hubiyay.">Only verified renters and owners.</p>
-        </div>
-        <div class="how-mini-card">
-          <h3 data-en="Shape the platform" data-so="Saamayn ku yeelo platform-ka">Shape the platform</h3>
-          <p data-en="Help us build something that works for you." data-so="Nala dhis adeeg si dhab ah kuu anfaca.">Help us build something that works for you.</p>
-        </div>
-      </div>
-
-    </div>
-
-    <button class="scroll-down" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 5v14M19 12l-7 7-7-7"/>
-      </svg>
-    </button>
-  </div>
-</section>
-
-<!-- ── WAITLIST SECTION ── -->
-<section id="waitlist" class="bottom-waitlist">
-  <div class="bottom-waitlist-inner">
-    <div class="section-label" data-en="GET STARTED" data-so="BILAAB">GET STARTED</div>
-    <h2 data-en="Ready to find your home?" data-so="Ma diyaar baa inaad hesho gurigaaga?">Ready to find your home?</h2>
-    <p data-en="Be among the first to hear when BackHome launches in your city." data-so="Noqo dadka ugu horreeya ee maqla marka BackHome laga bilaabo magaaladaada.">Be among the first to hear when BackHome launches in your city.</p>
-    
-    <form id="waitlistForm" class="bottom-waitlist-form" onsubmit="handleWaitlist(event)">
-      <div class="bottom-waitlist-fields">
-        <input type="email" id="wEmail" class="bottom-waitlist-input w-email" placeholder="Email address" required>
-        <select id="wCity" class="bottom-waitlist-input w-city">
-          <option value="" disabled selected>Interested city (optional)</option>
-          <option value="Mogadishu">Mogadishu</option>
-          <option value="Hargeisa">Hargeisa</option>
-          <option value="Garowe">Garowe</option>
-          <option value="Kismayo">Kismayo</option>
-          <option value="Galkayo">Galkayo</option>
-          <option value="Bosaso">Bosaso</option>
-        </select>
-      </div>
-      <button type="submit" class="btn-submit-waitlist" data-en="Join the waitlist" data-so="Liiska ku soo biir">Join the waitlist</button>
-    </form>
-  </div>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="#" class="footer-logo" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;" style="display:inline-flex; align-items:center; gap:8px; font-size: 22px; font-weight: 800; margin-bottom: 14px; text-decoration: none;">
+  <!-- NAVBAR -->
+  <header id="header">
+    <div class="container">
+      <nav>
+        <a href="#" class="logo" onclick="window.scrollTo(0,0)">
           <img src="logo.svg" alt="BackHome Logo" class="logo-icon">
-          <span>Back</span><span style="color: var(--accent);">Home</span>
+          <span>Back</span><span>Home</span>
         </a>
-        <p class="footer-tagline" data-en="Connecting the Somali diaspora with verified homes across Mogadishu, Garowe and Hargeisa." data-so="Ku xidaynaysa diasporaha Soomaalida guryaha aaminsan ee Muqdisho, Garoowe iyo Hargeysa.">Connecting the Somali diaspora with verified homes across Mogadishu, Garowe and Hargeisa.</p>
-      </div>
+        <div class="nav-links">
+          <a href="#how-it-works">How it works</a>
+          <a href="#investments">Investments</a>
+          <a href="#trust">About us</a>
+        </div>
+        <a href="#bottom-cta" class="btn btn-dark">Join waitlist</a>
+      </nav>
+    </div>
+  </header>
 
-      <div class="footer-col">
-        <h4 data-en="Platform" data-so="Platform">Platform</h4>
-        <div class="footer-links">
-          <a href="#problems" data-en="How it works" data-so="Sida ay u shaqeyso">How it works</a>
-          <a href="#waitlist" data-en="Join waitlist" data-so="Liiska ku soo biir">Join waitlist</a>
-          <a href="owners.html" data-en="For owners" data-so="Mulkiilayaasha">For owners</a>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container hero-split">
+      <div class="hero-left">
+        <span class="hero-badge">VERIFIED HOMES. REAL OWNERSHIP. BACK HOME.</span>
+        <h1 class="hero-title">Find a place that feels like <span class="serif-italic">home</span>.</h1>
+        <p class="hero-subtitle">BackHome makes it easy, transparent, and secure for the diaspora to co-own real estate in their home countries — with yield, community, and full ownership. Wherever you are.</p>
+        
+        <div class="hero-actions">
+          <a href="#bottom-cta" class="btn btn-dark">Join the waitlist &rarr;</a>
+          <a href="#how-it-works" class="link-arrow">Learn more &rarr;</a>
+        </div>
+
+        <div class="hero-verify">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Verified homes in Mogadishu, Hargeisa & Garowe
         </div>
       </div>
-
-      <div class="footer-col">
-        <h4 data-en="Company" data-so="Shirkadda">Company</h4>
-        <div class="footer-links">
-          <a href="mailto:hello@backhome.so">hello@backhome.so</a>
-          <a href="#" onclick="showToast('Coming soon...'); return false;" data-en="Unsubscribe" data-so="Ka bax">Unsubscribe</a>
-          <a href="#" onclick="showToast('Coming soon...'); return false;" data-en="Privacy policy" data-so="Xeerka asturnaanta">Privacy policy</a>
-          <a href="#" onclick="showToast('Coming soon...'); return false;" data-en="Terms of use" data-so="Shuruudaha isticmaalka">Terms of use</a>
+      <div class="hero-right">
+        <div class="hero-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Beautiful modern home exterior">
         </div>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <span data-en="© 2026 BackHome. All rights reserved." data-so="© 2026 BackHome. Xuquuq dhammaan way xafidan tahay.">© 2026 BackHome. All rights reserved.</span>
-      <span data-en="Built for the diaspora." data-so="U dhisan diasporaha.">Built for the diaspora.</span>
+    <div class="container">
+      <div class="stats-container">
+        <div class="stat-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <div class="stat-val">1,500+</div>
+          <div class="stat-label">People on waitlist</div>
+        </div>
+        <div class="stat-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <div class="stat-val">12+</div>
+          <div class="stat-label">Countries represented</div>
+        </div>
+        <div class="stat-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+          <div class="stat-val">100%</div>
+          <div class="stat-label">Secure & transparent</div>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<script>
-  // ── LANGUAGE TOGGLE ──
-  function setLang(lang) {
-    document.getElementById('langEN').classList.toggle('active', lang === 'en');
-    document.getElementById('langSO').classList.toggle('active', lang === 'so');
+  <!-- INVESTMENTS -->
+  <section id="investments">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">INVESTMENT OPPORTUNITIES</div>
+        <a href="#bottom-cta" class="link-arrow" style="font-size:13px;">View all projects &rarr;</a>
+      </div>
 
-    const heroTitleMap = {
-      en: 'Find verified homes in <span class="text-highlight">Somalia</span>',
-      so: 'Kirayso guri adigoon <span class="text-highlight">dillaal marin</span>'
-    };
-    document.getElementById('heroTitle').innerHTML = heroTitleMap[lang];
+      <div class="project-list">
+        
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" alt="Accra Heights" class="project-img">
+          <div class="project-info">
+            <h4>Accra Heights</h4>
+            <div class="loc">Accra, Ghana</div>
+            <div class="desc">Modern apartments in a prime location.</div>
+          </div>
+          <div class="project-return">
+            <div class="return-label">Projected return</div>
+            <div class="return-val">12.4%<span style="font-size:14px;font-weight:600;">p.a.</span></div>
+          </div>
+        </div>
 
-    document.querySelectorAll('[data-en]').forEach(el => {
-      const val = el.getAttribute(`data-${lang}`);
-      if (val) el.innerHTML = val;
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Sunset Villas" class="project-img">
+          <div class="project-info">
+            <h4>Sunset Villas</h4>
+            <div class="loc">Dakar, Senegal</div>
+            <div class="desc">Luxury villas 5 min from the beach.</div>
+          </div>
+          <div class="project-return">
+            <div class="return-label">Projected return</div>
+            <div class="return-val">11.8%<span style="font-size:14px;font-weight:600;">p.a.</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Kigali Serenity" class="project-img">
+          <div class="project-info">
+            <h4>Kigali Serenity</h4>
+            <div class="loc">Kigali, Rwanda</div>
+            <div class="desc">Gated community with high rental demand.</div>
+          </div>
+          <div class="project-return">
+            <div class="return-label">Projected return</div>
+            <div class="return-val">10.9%<span style="font-size:14px;font-weight:600;">p.a.</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09c15faa?auto=format&fit=crop&w=400&q=80" alt="Lagos Garden" class="project-img">
+          <div class="project-info">
+            <h4>Lagos Garden</h4>
+            <div class="loc">Lagos, Nigeria</div>
+            <div class="desc">Smart homes in a fast-growing area.</div>
+          </div>
+          <div class="project-return">
+            <div class="return-label">Projected return</div>
+            <div class="return-val">13.2%<span style="font-size:14px;font-weight:600;">p.a.</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=400&q=80" alt="Nairobi Living" class="project-img">
+          <div class="project-info">
+            <h4>Nairobi Living</h4>
+            <div class="loc">Nairobi, Kenya</div>
+            <div class="desc">Affordable luxury in the heart of the city.</div>
+          </div>
+          <div class="project-return">
+            <div class="return-label">Projected return</div>
+            <div class="return-val">11.5%<span style="font-size:14px;font-weight:600;">p.a.</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="projects-footer">
+        <span>More projects coming soon</span>
+        <a href="#bottom-cta" class="link-arrow" style="font-size:14px; color:var(--text-main);">Join waitlist to get early access &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="container how-split">
+      <div class="how-left">
+        <div class="section-label">HOW IT WORKS</div>
+        <h2>Investing back home <span class="serif-italic">shouldn't</span> be hard.</h2>
+        <p>BackHome gives you a simple way to invest in real estate back home — with full transparency, shared ownership, and meaningful returns.</p>
+      </div>
+      <div class="how-right">
+        
+        <div class="feature-row">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <div class="feature-text">
+            <h4>Fewer shillings</h4>
+            <p>You don't need millions to get started. Join with as little as you can and co-own high-quality real estate.</p>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <div class="feature-text">
+            <h4>Maximum returns</h4>
+            <p>We target high-yield properties in high-demand areas to give your money the best chance to grow.</p>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <div class="feature-text">
+            <h4>Built for us</h4>
+            <p>BackHome is built for the diaspora, by people who understand your journey. You're not just investing. You're <strong>building back home.</strong></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY BACKHOME -->
+  <section id="why-backhome">
+    <div class="container">
+      <div class="why-header">
+        <div class="section-label">WHY BACKHOME</div>
+        <h2>True value, <span class="serif-italic">low surprise.</span></h2>
+        <p>We cut the complexity, the hidden costs, and the risk. So you can invest back home with confidence and peace of mind.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <h4>Secure verification</h4>
+          <p>Every property goes through a rigorous legal and technical verification process.</p>
+        </div>
+        <div class="why-card">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <h4>Full, clear ownership</h4>
+          <p>You own your share. It's yours. We make sure the paperwork connects and everything is clear.</p>
+        </div>
+        <div class="why-card">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <h4>Active with cashflows</h4>
+          <p>You earn more. We manage less. Sit back and enjoy your earnings with transparent updates.</p>
+        </div>
+        <div class="why-card">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <h4>Local on-the-ground team</h4>
+          <p>Our team verifies every property on-site so you can invest with total confidence.</p>
+        </div>
+      </div>
+
+      <div class="section-label">OUR VERIFICATION PROCESS</div>
+      <div class="process-timeline">
+        <div class="process-step">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          1. Local team inspection
+        </div>
+        <div style="color:var(--border-color);">&rarr;</div>
+        <div class="process-step">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          2. Photo & video documentation
+        </div>
+        <div style="color:var(--border-color);">&rarr;</div>
+        <div class="process-step">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          3. Legal & title verification
+        </div>
+        <div style="color:var(--border-color);">&rarr;</div>
+        <div class="process-step">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          4. Approved & published
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE OVERLAY SECTION -->
+  <section id="image-overlay">
+    <div class="container">
+      <div class="overlay-wrapper">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80" alt="Home interior" class="overlay-img">
+        <div class="overlay-card">
+          <h2>Every home visited,<br>photographed,<br>measured.</h2>
+          <ul>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              In-person verification
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Detailed documentation
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              No guesswork
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Only real opportunities
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="test-header">
+        <h2>What the diaspora is <span class="serif-italic">saying</span></h2>
+      </div>
+      <div class="test-grid">
+        
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <div class="test-text">"I never knew I could co-own a villa back home. BackHome made it simple and possible."</div>
+          <div class="test-user">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Amina">
+            <div class="test-user-info">
+              <strong>Amina</strong>
+              <span>London</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <div class="test-text">"Finally, a platform I can trust with my hard-earned money."</div>
+          <div class="test-user">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Keenan">
+            <div class="test-user-info">
+              <strong>Keenan</strong>
+              <span>Toronto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <div class="test-text">"I'm earning returns and creating generational wealth back home."</div>
+          <div class="test-user">
+            <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Fadila">
+            <div class="test-user-info">
+              <strong>Fadila</strong>
+              <span>Paris</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="faq-header">
+        <div class="section-label">FAQ</div>
+        <h2>Everything you're wondering.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div>
+            <h4>What's the minimum amount?</h4>
+            <div class="faq-answer">You can start with as little as $1,000 depending on the project. Each project has its own minimum investment explicitly stated in its details.</div>
+          </div>
+          <span class="icon-plus">+</span>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div>
+            <h4>How do payouts work?</h4>
+            <div class="faq-answer">Payouts from rental yield are distributed quarterly directly to your connected bank account or digital wallet.</div>
+          </div>
+          <span class="icon-plus">+</span>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div>
+            <h4>Can I sell my share if I need to?</h4>
+            <div class="faq-answer">Yes. While real estate is a long-term investment, we have a secondary market where you can list your shares to other investors after a 12-month lock-in period.</div>
+          </div>
+          <span class="icon-plus">+</span>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div>
+            <h4>What if something happens to my share?</h4>
+            <div class="faq-answer">Your shares are legally backed by a Special Purpose Vehicle (SPV) that owns the property. You have legal ownership rights equivalent to your share percentage.</div>
+          </div>
+          <span class="icon-plus">+</span>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div>
+            <h4>Is my investment from my bed?</h4>
+            <div class="faq-answer">Yes! You can review documents, sign legally binding contracts, and monitor your portfolio entirely online from anywhere in the world.</div>
+          </div>
+          <span class="icon-plus">+</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section id="bottom-cta">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-bg"></div>
+        <div class="cta-content">
+          <h2>Be part of<br>something bigger.</h2>
+          <p>Join thousands of people already on the waitlist and start building back home.</p>
+          <div class="cta-form">
+            <input type="email" placeholder="Enter your email address" class="cta-input">
+            <button class="btn btn-dark">Join the waitlist &rarr;</button>
+          </div>
+          <p style="font-size: 12px; margin-top: 16px; margin-bottom: 0;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            No spam. Early access only.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BANNER -->
+  <section id="trust">
+    <div class="container">
+      <div class="trust-title">BackHome is built on trust</div>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <h4>Diaspora-first</h4>
+          <p>Built for us, by us.</p>
+        </div>
+        <div class="trust-item">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+          <h4>Verified properties</h4>
+          <p>100% verified before it goes live.</p>
+        </div>
+        <div class="trust-item">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <h4>Real ownership</h4>
+          <p>You own your share fully.</p>
+        </div>
+        <div class="trust-item">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <h4>Transparent</h4>
+          <p>No hidden fees. No guesswork.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="logo" style="margin-bottom: 24px;" onclick="window.scrollTo(0,0)">
+            <img src="logo.svg" alt="BackHome Logo" class="logo-icon">
+            <span>Back</span><span>Home</span>
+          </a>
+          <p style="font-size: 14px; color: var(--text-muted); max-width: 280px;">BackHome makes it easy, transparent, and secure to invest.</p>
+          <div style="margin-top: 24px; display: flex; gap: 16px;">
+            <a href="#" style="color:var(--text-muted);">Why BackHome</a>
+            <a href="#" style="color:var(--text-muted);">Waitlist</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <div class="footer-links">
+            <a href="#">About us</a>
+            <a href="#">Careers</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <div class="footer-links">
+            <a href="#">Terms of service</a>
+            <a href="#">Privacy policy</a>
+            <a href="#">Cookie policy</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div style="display:flex; gap:16px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+        </div>
+        <div>&copy; 2024 BackHome. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     });
-  }
-
-  // ── TOAST ──
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 4500);
-  }
-
-  // ── WAITLIST FORM ──
-  function handleWaitlist(e) {
-    e.preventDefault();
-    showToast("You're on the list! We'll reach out before we launch.");
-    e.target.reset();
-  }
-
-  // ── OWNERS FORM ──
-  function handleOwners(e) {
-    e.preventDefault();
-    showToast('Property submitted! We\'ll review it and be in touch shortly.');
-    e.target.reset();
-  }
-
-  // ── HEADER SCROLL EFFECT ──
-  window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 20) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-
-  // ── FORCE TOP ON REFRESH ──
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-  window.scrollTo(0, 0);
-  if (window.location.hash) {
-    window.history.replaceState(null, null, window.location.pathname);
-  }
-
-  // ── INITIALIZE LANGUAGE ──
-  setLang('en');
-</script>
+  </script>
 </body>
 </html>
