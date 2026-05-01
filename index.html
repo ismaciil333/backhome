@@ -1,1347 +1,926 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BackHome — Verified Home Rentals for the Somali Diaspora</title>
-<meta name="description" content="Verified rentals across Somalia, built for the diaspora. No scams, no middlemen, no inflated prices — just trusted homes from owners you can reach.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* ===================== DESIGN TOKENS ===================== */
-:root {
-  --ink:        #16140f;
-  --ink-2:      #2d2823;
-  --ink-3:      #5a5147;
-  --ink-4:      #8a7f71;
-  --paper:      #f6f1ea;
-  --paper-2:    #efe8dc;
-  --paper-3:    #e8dfd0;
-  --white:      #fffdf9;
-  --clay:       #b88a52;
-  --clay-2:     #c8a87c;
-  --clay-light: #e9d9bf;
-  --terracotta: #b85c3c;
-  --sage:       #3d4a3a;
-  --line:       rgba(22,20,15,0.08);
-  --line-strong:rgba(22,20,15,0.16);
-  --serif: 'Instrument Serif', Georgia, serif;
-  --sans:  'Inter', system-ui, sans-serif;
-  --mono:  'JetBrains Mono', monospace;
-  --r-sm: 8px; --r: 14px; --r-lg: 20px; --r-xl: 28px;
-  --ease: cubic-bezier(0.22,1,0.36,1);
-  --max-w: 1280px;
-  --pad: 32px;
-}
-@media(max-width:560px){:root{--pad:20px;}}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BackHome — Kirayso guri adigoon dillaal marin</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #F8F5F0;     /* Softer, warmer beige */
+      --text-dark: #2B2927;    /* Softer dark */
+      --text-muted: #736E67;   /* Softer muted */
+      --accent: #BFA582;
+      --accent-light: #F4EFE8;
+      --white: #FFFFFF;
+      --border-color: #E6E1DA; /* Softer border */
+      --dark-bg: #1B1A18;      /* Unused from old design, kept for safety */
+      --dark-card: #2C2A27;    /* Unused */
+      --dark-card-border: #383632; /* Unused */
+      --dark-text: #E5E1D8;    /* Unused */
+      --dark-text-muted: #959088; /* Unused */
+    }
 
-/* ===================== RESET ===================== */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:var(--sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;}
-a{color:inherit;text-decoration:none;}
-img,svg{display:block;}
-button{cursor:pointer;font-family:var(--sans);border:none;background:none;}
-input,select,textarea{font-family:var(--sans);}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ===================== UTILITIES ===================== */
-.container{max-width:var(--max-w);margin-inline:auto;padding-inline:var(--pad);}
-.eyebrow{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);}
+    html { scroll-behavior: smooth; }
 
-/* ===================== BUTTONS ===================== */
-.btn{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:14px 28px;border-radius:100px;font-size:15px;font-weight:500;transition:all .3s var(--ease);white-space:nowrap;}
-.btn-lg{min-height:56px;padding:16px 32px;}
-.btn-primary{background:var(--ink);color:var(--white);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 2px 8px rgba(22,20,15,.18);}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 6px 20px rgba(22,20,15,.22);}
-.btn-primary .arrow{transition:transform .3s var(--ease);}
-.btn-primary:hover .arrow{transform:translateX(3px);}
-.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line-strong);}
-.btn-ghost:hover{background:var(--white);border-color:var(--ink);}
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* ===================== NAV ===================== */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;backdrop-filter:blur(16px) saturate(180%);background:rgba(246,241,234,.78);transition:border-bottom .3s;}
-.nav.scrolled{border-bottom:1px solid var(--line);}
-.nav-inner{max-width:var(--max-w);margin-inline:auto;padding-inline:var(--pad);height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;}
-.nav-logo{font-size:18px;font-weight:700;letter-spacing:-.02em;color:var(--ink);}
-.nav-logo span{color:var(--clay);}
-.nav-links{display:flex;align-items:center;gap:32px;}
-.nav-link{font-size:14px;font-weight:500;color:var(--ink-3);position:relative;padding-bottom:2px;transition:color .2s;}
-.nav-link::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--clay);transition:width .3s var(--ease);}
-.nav-link:hover{color:var(--ink);}
-.nav-link:hover::after{width:100%;}
-.nav-right{display:flex;align-items:center;gap:12px;min-width:0;}
-.nav-right .btn{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;flex-shrink:0;}
-@media(max-width:860px){.nav-links{display:none;}.nav-right .btn{max-width:144px;font-size:13px;padding:10px 16px;}}
-@media(max-width:560px){.nav-right{gap:6px;}.nav-right .btn{max-width:108px;font-size:12px;padding:9px 12px;}.lang-btn{padding:4px 9px;font-size:12px;}}
-.lang-pill{display:flex;align-items:center;background:var(--paper-2);border-radius:100px;padding:3px;gap:2px;flex-shrink:0;}
-.lang-btn{padding:5px 12px;border-radius:100px;font-size:13px;font-weight:500;color:var(--ink-3);transition:all .2s;white-space:nowrap;}
-.lang-btn.active{background:var(--ink);color:var(--white);}
+    a { text-decoration: none; color: inherit; }
 
-.hero{padding:160px 0 120px;background:var(--paper);}
-.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;}
-.hero-badge{display:inline-flex;align-items:center;gap:10px;background:var(--paper-2);border:1px solid var(--line-strong);border-radius:100px;padding:7px 16px 7px 10px;font-size:13px;font-weight:500;color:var(--ink-3);margin-bottom:28px;}
-.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--clay);position:relative;flex-shrink:0;}
-.hero-badge-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(184,138,82,.4);animation:pulse 2s ease-out infinite;}
-@keyframes pulse{0%{transform:scale(.8);opacity:1;}100%{transform:scale(2.2);opacity:0;}}
-.hero-headline{font-family:var(--serif);font-weight:400;font-size:clamp(46px,5.5vw,72px);line-height:1.02;letter-spacing:-.02em;color:var(--ink);margin-bottom:24px;}
-.hero-headline .word{display:inline-block;margin-right:.22em;opacity:0;transform:translateY(18px);animation:wordIn .6s var(--ease) forwards;}
-.hero-headline .accent{color:var(--clay);font-style:italic;}
-@keyframes wordIn{to{opacity:1;transform:none;}}
-.hero-sub{font-size:18px;line-height:1.58;color:var(--ink-3);max-width:480px;margin-bottom:36px;}
-.hero-cta{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:40px;}
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding-top:32px;border-top:1px solid var(--line);}
-.stat-item{padding:0 20px;}
-.stat-item:first-child{padding-left:0;}
-.stat-num{font-family:var(--serif);font-size:34px;font-weight:400;color:var(--ink);line-height:1.1;}
-.stat-label{font-size:12px;color:var(--ink-3);margin-top:4px;}
+    button, input, select, textarea {
+      font-family: inherit;
+      outline: none;
+    }
 
-/* City card */
-.city-card{background:var(--white);border-radius:var(--r-xl);border:1px solid var(--line);box-shadow:0 20px 60px -20px rgba(22,20,15,.15);overflow:hidden;}
-.city-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 24px 16px;border-bottom:1px solid var(--line);}
-.city-card-head-left{font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--ink-4);}
-.city-card-head-right{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--sage);}
-.live-dot{width:6px;height:6px;border-radius:50%;background:var(--sage);animation:pulseLive 2s ease-in-out infinite;}
-@keyframes pulseLive{0%,100%{opacity:1;}50%{opacity:.4;}}
-.city-row{display:flex;align-items:center;gap:14px;padding:13px 24px;cursor:pointer;transition:background .2s var(--ease);position:relative;}
-.city-row:not(:last-child){border-bottom:1px solid var(--line);}
-.city-row:hover{background:var(--paper);}
-.city-row:hover + .city-row{border-top-color:transparent;}
-.city-thumb{width:44px;height:44px;border-radius:10px;flex-shrink:0;overflow:hidden;}
-.city-info{flex:1;min-width:0;}
-.city-name{font-size:14px;font-weight:600;color:var(--ink);}
-.city-meta{font-size:12px;color:var(--ink-4);margin-top:2px;}
-.status-pill{padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;white-space:nowrap;}
-.status-hot{background:rgba(184,92,60,.1);color:var(--terracotta);}
-.status-soon{background:rgba(22,20,15,.06);color:var(--ink-4);}
-.city-card-foot{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-top:1px solid var(--line);background:var(--paper);}
-.avatar-group{display:flex;align-items:center;}
-.avatar{width:24px;height:24px;border-radius:50%;border:2px solid var(--white);background:var(--clay-light);color:var(--ink-3);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-right:-8px;}
-.foot-left{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--ink-3);}
-.foot-right{font-size:12px;color:var(--ink-4);}
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
 
-@media(max-width:1024px){.hero-grid{gap:56px;}}
-@media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:56px;}.hero{padding:120px 0 80px;}}
-@media(max-width:560px){.hero{padding:calc(68px + 32px) 0 60px;}.hero-cta{flex-direction:column;align-items:stretch;}.hero-cta .btn{justify-content:center;}.hero-stats{gap:20px;}.stat-item{padding:0;}}
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
 
-/* ===================== SECTIONS BASE ===================== */
-.section{padding:140px 0;}
-.section-white{background:var(--white);}
-.section-paper{background:var(--paper);}
-.section-dark{background:var(--ink);}
-.section-head{max-width:680px;margin-bottom:80px;}
-.section-head .eyebrow{margin-bottom:16px;}
-.section-h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,4.5vw,64px);letter-spacing:-.02em;line-height:1.05;color:var(--ink);margin-bottom:20px;}
-.section-h2 em{font-style:italic;color:var(--clay);}
-.section-h2-white{color:var(--white);}
-.section-h2-white em{color:var(--clay-2);}
-.section-body{font-size:18px;line-height:1.6;color:var(--ink-3);}
-.section-body-white{color:rgba(246,241,234,.65);}
-.section-center{text-align:center;margin-inline:auto;}
-@media(max-width:1024px){.section{padding:100px 0;}.section-head{margin-bottom:56px;}.section-h2{font-size:clamp(32px,4vw,56px);}}
-@media(max-width:860px){.section{padding:80px 0;}}
-@media(max-width:560px){.section{padding:60px 0;}.section-h2{font-size:36px;}.section-head{margin-bottom:40px;}}
+    .text-highlight { color: var(--accent); }
 
-/* ===================== PROBLEM CARDS ===================== */
-.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.problem-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:36px;position:relative;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease);}
-.problem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--clay),var(--terracotta));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
-.problem-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px -12px rgba(22,20,15,.14);}
-.problem-card:hover::before{transform:scaleX(1);}
-.problem-num{font-family:var(--serif);font-style:italic;font-size:48px;color:var(--clay);line-height:1;margin-bottom:20px;opacity:.7;}
-.problem-h3{font-size:22px;font-weight:600;color:var(--ink);margin-bottom:12px;}
-.problem-body{font-size:15px;line-height:1.6;color:var(--ink-3);}
-.problem-stat{margin-top:24px;padding-top:24px;border-top:1px dashed var(--line-strong);display:flex;align-items:baseline;gap:10px;}
-.problem-stat-num{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--terracotta);}
-.problem-stat-label{font-family:var(--mono);font-size:11px;color:var(--ink-4);}
-@media(max-width:1024px){.problem-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:560px){.problem-grid{grid-template-columns:1fr;}}
+    /* ── NAVBAR ── */
+    header { 
+      padding: 30px 48px; 
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bg-color);
+      transition: box-shadow 0.2s, padding 0.2s;
+    }
+    header.scrolled {
+      padding: 15px 48px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border-bottom: 1px solid var(--border-color);
+    }
 
-/* ===================== HOW IT WORKS ===================== */
-.how-wrap{background:var(--line);border:1px solid var(--line);border-radius:var(--r-xl);overflow:hidden;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
-.how-step{background:var(--white);padding:40px 36px;}
-.how-step-tag{font-family:var(--mono);font-size:12px;color:var(--ink-4);margin-bottom:24px;}
-.how-step-h3{font-family:var(--serif);font-weight:400;font-size:28px;color:var(--ink);margin-bottom:14px;line-height:1.1;}
-.how-step-body{font-size:15px;line-height:1.6;color:var(--ink-3);margin-bottom:28px;}
-.how-illus{border-radius:var(--r);overflow:hidden;}
-@media(max-width:1024px){.how-wrap{grid-template-columns:1fr;}}
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-/* ===================== VERIFIED STRIP ===================== */
-.verified-strip{background:var(--paper);}
-.verified-card{background:var(--ink);border-radius:var(--r-xl);padding:48px 56px;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap;}
-.verified-h2{font-family:var(--serif);font-weight:400;font-size:36px;color:var(--white);max-width:420px;line-height:1.15;}
-.verified-h2 em{font-style:italic;color:var(--clay-2);}
-.verified-pills{display:flex;flex-direction:column;gap:12px;}
-.v-pill{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:500;color:rgba(246,241,234,.8);}
-.v-check{width:22px;height:22px;border-radius:50%;background:var(--sage);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-@media(max-width:860px){.verified-card{flex-direction:column;align-items:flex-start;padding:36px;}}
-@media(max-width:560px){.verified-card{padding:28px 24px;}}
+    .logo { display: inline-flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; transition: transform 0.2s; }
+    .logo-icon { width: 32px; height: 32px; flex-shrink: 0; }
+    .logo:hover { transform: translateY(-1px); }
+    .logo span { color: var(--accent); }
 
-/* ===================== TESTIMONIALS ===================== */
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.testi-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:32px;display:flex;flex-direction:column;}
-.testi-quote{font-family:var(--serif);font-size:20px;line-height:1.45;color:var(--ink);flex:1;margin-bottom:24px;}
-.testi-quote em{font-style:italic;color:var(--clay);}
-.testi-footer{display:flex;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:20px;}
-.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--clay-light);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--clay);flex-shrink:0;}
-.testi-name{font-size:14px;font-weight:600;color:var(--ink);}
-.testi-role{font-size:12px;color:var(--ink-4);margin-top:2px;}
-@media(max-width:1024px){.testi-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:560px){.testi-grid{grid-template-columns:1fr;}}
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
 
-/* ===================== FAQ ===================== */
-.faq-wrap{max-width:820px;margin-inline:auto;}
-details.faq-item{border-top:1px solid var(--line-strong);}
-details.faq-item:last-child{border-bottom:1px solid var(--line-strong);}
-summary.faq-summary{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0;cursor:pointer;list-style:none;font-size:17px;font-weight:500;color:var(--ink);}
-summary.faq-summary::-webkit-details-marker{display:none;}
-.faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s var(--ease);}
-.faq-icon svg{transition:transform .3s var(--ease);}
-details[open] .faq-icon{background:var(--ink);border-color:var(--ink);}
-details[open] .faq-icon svg{transform:rotate(45deg);stroke:var(--white);}
-.faq-body{overflow:hidden;max-height:0;transition:max-height .4s var(--ease);}
-details[open] .faq-body{max-height:300px;}
-.faq-body p{font-size:15px;line-height:1.65;color:var(--ink-3);padding-bottom:24px;}
-.faq-body a{color:var(--clay);text-decoration:underline;}
-@media(max-width:560px){summary.faq-summary{font-size:15px;padding:18px 0;}}
+    .lang-toggle { display: flex; }
 
-/* ===================== CTA SECTION ===================== */
-.cta-section{position:relative;overflow:hidden;}
-.cta-glow{position:absolute;inset:0;pointer-events:none;}
-.cta-glow::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(184,138,82,.12) 0%,transparent 70%);top:-100px;left:20%;}
-.cta-glow::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,60,.12) 0%,transparent 70%);bottom:-80px;right:20%;}
-.cta-inner{position:relative;max-width:720px;margin-inline:auto;text-align:center;}
-.cta-h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,64px);letter-spacing:-.02em;line-height:1.05;color:var(--white);margin-bottom:20px;}
-.cta-h2 em{font-style:italic;color:var(--clay-2);}
-.cta-body{font-size:18px;line-height:1.6;color:rgba(246,241,234,.65);margin-bottom:40px;}
-.cta-form-pill{background:var(--white);border-radius:100px;padding:6px;display:flex;align-items:center;gap:6px;max-width:520px;margin:0 auto 24px;}
-.cta-form-pill input{flex:1;background:transparent;border:none;outline:none;padding:12px 20px;font-size:15px;color:var(--ink);}
-.cta-form-pill input::placeholder{color:var(--ink-4);}
-.cta-form-pill .btn{flex-shrink:0;}
-.cta-trust{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;}
-.trust-item{display:flex;align-items:center;gap:6px;font-size:13px;color:rgba(246,241,234,.5);}
-.trust-icon{width:16px;height:16px;color:var(--clay);}
-@media(max-width:860px){.cta-form-pill{flex-direction:column;border-radius:var(--r-lg);background:transparent;padding:0;gap:10px;}.cta-form-pill input{background:var(--white);border-radius:100px;padding:14px 24px;width:100%;}.cta-form-pill .btn{width:100%;justify-content:center;}}
+    .lang-btn {
+      padding: 9px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      color: var(--text-dark);
+      background: transparent;
+      transition: background 0.15s;
+    }
 
-/* ===================== WAITLIST MODAL ===================== */
-.modal-backdrop{position:fixed;inset:0;background:rgba(22,20,15,.4);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
-.modal-backdrop.open{opacity:1;pointer-events:all;}
-.modal{background:var(--white);border-radius:var(--r-xl);padding:44px;max-width:480px;width:calc(100% - 40px);text-align:center;transform:scale(.96);transition:transform .35s var(--ease);}
-.modal-backdrop.open .modal{transform:scale(1);}
-.modal-check{width:64px;height:64px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;animation:popIn .5s var(--ease);}
-@keyframes popIn{0%{transform:scale(0);}80%{transform:scale(1.08);}100%{transform:scale(1);}}
-.modal-h2{font-family:var(--serif);font-weight:400;font-size:32px;color:var(--ink);margin-bottom:12px;}
-.modal-body{font-size:16px;line-height:1.6;color:var(--ink-3);margin-bottom:24px;}
-.modal-ref{display:inline-block;font-family:var(--mono);font-size:13px;background:var(--paper-2);border-radius:100px;padding:8px 20px;color:var(--ink-3);margin-bottom:28px;}
-.modal-close-x{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--paper-2);color:var(--ink-3);transition:background .2s;}
-.modal-close-x:hover{background:var(--paper-3);}
-.modal-rel{position:relative;}
-@media(max-width:560px){.modal{padding:32px 24px;}}
+    .lang-btn:first-child {
+      border-radius: 20px 0 0 20px;
+      border-right: none;
+    }
 
-/* ===================== FOOTER ===================== */
-.footer{background:var(--paper-2);padding:72px 0 0;}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid var(--line);}
-.footer-logo{font-size:18px;font-weight:700;letter-spacing:-.02em;margin-bottom:14px;}
-.footer-logo span{color:var(--clay);}
-.footer-desc{font-size:14px;line-height:1.6;color:var(--ink-4);max-width:260px;}
-.footer-col h4{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4);margin-bottom:16px;}
-.footer-col a{display:block;font-size:14px;color:var(--ink-3);margin-bottom:10px;transition:color .2s;}
-.footer-col a:hover{color:var(--ink);}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:16px;flex-wrap:wrap;}
-.footer-copy{font-size:13px;color:var(--ink-4);}
-.social-row{display:flex;gap:8px;}
-.social-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;color:var(--ink-3);transition:all .2s;}
-.social-btn:hover{background:var(--ink);color:var(--white);border-color:var(--ink);}
-@media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr;gap:40px;}}
-@media(max-width:560px){.footer-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
+    .lang-btn:last-child { border-radius: 0 20px 20px 0; }
+    .lang-btn.active { background: rgba(0,0,0,0.04); }
+    .lang-btn:hover { background: rgba(0,0,0,0.03); }
 
-/* ===================== ACTIVITY TICKER ===================== */
-.activity-ticker{position:fixed;bottom:32px;left:32px;z-index:99;max-width:280px;background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(22,20,15,.1);transform:translateY(20px);opacity:0;transition:opacity .4s,transform .4s var(--ease);pointer-events:none;}
-.activity-ticker.show{opacity:1;transform:none;pointer-events:all;}
-.ticker-avatar{width:28px;height:28px;border-radius:50%;background:var(--clay-light);color:var(--clay);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ticker-text{font-size:12px;color:var(--ink-3);line-height:1.4;}
-.ticker-text strong{font-weight:600;color:var(--ink);}
-.ticker-time{font-size:11px;color:var(--ink-4);white-space:nowrap;}
-@media(max-width:860px){.activity-ticker{display:none;}}
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-dark);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: rgba(0,0,0,0.02);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
 
-/* ===================== TOAST ===================== */
-.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);z-index:300;background:var(--ink);color:var(--white);border-radius:100px;padding:12px 20px;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;opacity:0;transition:opacity .3s,transform .3s var(--ease);pointer-events:none;white-space:nowrap;}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-.toast-check{width:18px;height:18px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-</style>
+    .btn-primary {
+      background: var(--text-dark);
+      color: var(--white);
+      border-color: var(--text-dark);
+    }
+    .btn-primary:hover {
+      background: #3B3834;
+      border-color: #3B3834;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* ── SCROLL DOWN ── */
+    .scroll-down {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin: 80px auto 40px;
+      cursor: pointer;
+      color: var(--text-dark);
+      border: none;
+      transition: transform 0.2s;
+    }
+    .scroll-down:hover { transform: translateY(3px); }
+    .scroll-down svg { width: 16px; height: 16px; }
+
+    /* ── HERO ── */
+    #hero {
+      padding: 60px 0 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero-prelaunch {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-light);
+      border: 1px solid var(--border-color);
+      color: #927555;
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-bottom: 32px;
+    }
+
+    .hero-prelaunch-dot {
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .hero-title {
+      font-size: 52px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: var(--text-dark);
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* ── LAUNCHING CARD ── */
+    .launching-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 36px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+    }
+
+    .card-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .city-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .city-row-name { font-weight: 700; font-size: 15px; }
+
+    .badge-coming {
+      background: var(--accent-light);
+      color: #927555;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .feature-item { display: flex; align-items: center; gap: 8px; }
+
+    .feature-icon-check {
+      background: #EAF5EA; color: #38A169;
+      width: 20px; height: 20px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 4px; font-size: 10px;
+    }
+
+    .feature-icon-arrow {
+      background: #EDF2F7; color: #4A5568;
+      width: 20px; height: 20px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 4px; font-size: 10px;
+    }
+
+    /* ── PROBLEMS SECTION ── */
+    #problems {
+      padding: 120px 0;
+      background: var(--white);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .problems-header { margin-bottom: 56px; }
+    .problems-header h2 { font-size: 34px; margin-bottom: 16px; }
+    .problems-header p { font-size: 16px; color: var(--text-muted); max-width: 540px; }
+
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .problem-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px 32px;
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .problem-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.05); }
+
+    .problem-num { display: none; }
+
+    .problem-card h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+
+    .problem-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .problem-tag {
+      display: inline-block;
+      margin-top: 32px;
+      background: var(--bg-color);
+      color: var(--text-dark);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      align-self: flex-start;
+      border: 1px solid var(--border-color);
+    }
+
+    /* ── WHY JOIN EARLY ── */
+    #how {
+      background: var(--bg-color);
+      padding: 100px 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .how-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Left side */
+    .how-left h2 {
+      font-size: 34px;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+
+    .how-left .how-subtext {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 340px;
+    }
+
+    .how-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .how-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .how-bullet-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Right side — subtle mini cards */
+    .how-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 8px;
+    }
+
+    .how-mini-card {
+      background: var(--white);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .how-mini-card:hover {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+      transform: translateY(-4px);
+    }
+
+    .how-mini-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .how-mini-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── WAITLIST SECTION ── */
+    #waitlist {
+      padding: 120px 0;
+      background: var(--white);
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+    }
+    
+    .bottom-waitlist-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .bottom-waitlist-inner h2 {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+    }
+    
+    .bottom-waitlist-inner p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+    }
+
+    .bottom-waitlist-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .bottom-waitlist-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 600px) {
+      .bottom-waitlist-fields {
+        flex-direction: row;
+      }
+      .w-email { flex: 1.5; }
+      .w-city { flex: 1; }
+    }
+
+    .bottom-waitlist-input {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-size: 15px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      transition: all 0.25s ease;
+      font-family: inherit;
+      outline: none;
+    }
+    
+    .bottom-waitlist-input::placeholder { color: #AFAAA1; }
+    .bottom-waitlist-input:focus { 
+      border-color: var(--accent); 
+      background: var(--white);
+      box-shadow: 0 0 0 4px rgba(191,165,130,0.1);
+    }
+
+    select.bottom-waitlist-input {
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23736E67' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .btn-submit-waitlist {
+      width: 100%;
+      padding: 16px 24px;
+      background: var(--text-dark);
+      border: 1px solid var(--text-dark);
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+    
+    .btn-submit-waitlist:hover {
+      background: #3B3834;
+      border-color: #3B3834;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+    .form-note {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 14px;
+      color: var(--text-muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-color);
+      color: var(--text-dark);
+      padding: 80px 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .footer-logo { display: inline-flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; transition: transform 0.2s; }
+    .footer-logo:hover { transform: translateY(-1px); }
+    .footer-logo span { color: var(--accent); }
+    .footer-tagline { font-size: 15px; color: var(--text-muted); line-height: 1.7; max-width: 320px; }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      font-size: 15px;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* ── TOAST ── */
+    #toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      background: var(--text-dark);
+      border: 1px solid var(--border-color);
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: 40px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 999;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      white-space: nowrap;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      header { padding: 20px 24px; }
+      .container { padding: 0 24px; }
+      .split-layout { grid-template-columns: 1fr; gap: 40px; }
+      .problems-grid { grid-template-columns: 1fr; }
+      .how-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-title { font-size: 36px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Back<span>Home</span></a>
-    <div class="nav-links">
-      <a href="#problem" class="nav-link">Why BackHome</a>
-      <a href="#how" class="nav-link">How it works</a>
-      <a href="#faq" class="nav-link">FAQ</a>
-    </div>
-    <div class="nav-right">
-      <div class="lang-pill">
-        <button class="lang-btn active" id="lang-en" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" id="lang-so" onclick="setLang('so')">SO</button>
-      </div>
-      <a href="#cta" class="btn btn-primary" style="min-height:40px;padding:10px 20px;font-size:14px;">Join waitlist</a>
-    </div>
-  </div>
-</nav>
+<!-- ── TOAST ── -->
+<div id="toast"></div>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <!-- LEFT -->
-      <div>
-        <div class="hero-badge">
-          <span class="hero-badge-dot"></span>
-          Pre-launch · Spring 2026
-        </div>
-        <h1 class="hero-headline" id="hero-headline">
-          <span class="word" style="animation-delay:.05s">Find</span><span class="word" style="animation-delay:.10s">a</span><span class="word" style="animation-delay:.15s">place</span><span class="word" style="animation-delay:.20s">that</span><br>
-          <span class="word" style="animation-delay:.25s">feels</span><span class="word" style="animation-delay:.30s">like</span><span class="word accent" style="animation-delay:.37s">home.</span>
-        </h1>
-        <p class="hero-sub" id="hero-sub-text">Verified rentals across Somalia, built for the diaspora. No scams, no middlemen, no inflated prices — just safe, trusted homes booked securely through BackHOME.</p>
-        <div class="hero-cta">
-          <a href="#cta" class="btn btn-primary btn-lg" id="hero-join-btn">
-            Join the waitlist
-            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-          <a href="list-your-property.html" class="btn btn-ghost btn-lg">List your property</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <div class="stat-num" data-count="1847" id="stat-1">1,847</div>
-            <div class="stat-label">On the waitlist</div>
-          </div>
-          <div class="stat-item" style="border-left:1px solid var(--line);">
-            <div class="stat-num" data-count="6" id="stat-2">6</div>
-            <div class="stat-label">Cities at launch</div>
-          </div>
-          <div class="stat-item" style="border-left:1px solid var(--line);">
-            <div class="stat-num" data-count="100" id="stat-3" data-suffix="%">100%</div>
-            <div class="stat-label">Verified listings</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT — City Card -->
-      <div>
-        <div class="city-card">
-          <div class="city-card-head">
-            <span class="city-card-head-left">LAUNCHING IN</span>
-            <span class="city-card-head-right">
-              <span class="live-dot"></span>Updated live
-            </span>
-          </div>
-
-          <!-- Mogadishu -->
-          <div class="city-row" onclick="cityClick('Mogadishu')">
-            <div class="city-thumb">
-              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="44" height="44" fill="#efe8dc"/>
-                <rect x="6" y="28" width="32" height="10" fill="#2d2823" opacity=".7"/>
-                <polygon points="10,28 18,14 26,28" fill="#b88a52"/>
-                <rect x="28" y="20" width="8" height="8" fill="#5a5147" opacity=".6"/>
-                <circle cx="34" cy="12" r="4" fill="#c8a87c" opacity=".8"/>
-              </svg>
-            </div>
-            <div class="city-info">
-              <div class="city-name">Mogadishu</div>
-              <div class="city-meta">Banaadir · 47 homes lined up</div>
-            </div>
-            <span class="status-pill status-hot">Opening soon</span>
-          </div>
-
-          <!-- Hargeisa -->
-          <div class="city-row" onclick="cityClick('Hargeisa')">
-            <div class="city-thumb">
-              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="44" height="44" fill="#e8dfd0"/>
-                <rect x="4" y="30" width="36" height="8" fill="#2d2823" opacity=".5"/>
-                <polygon points="8,30 16,18 24,30" fill="#b88a52"/>
-                <polygon points="20,30 30,12 40,30" fill="#c8a87c" opacity=".7"/>
-                <rect x="30" y="22" width="6" height="8" fill="#5a5147" opacity=".5"/>
-              </svg>
-            </div>
-            <div class="city-info">
-              <div class="city-name">Hargeisa</div>
-              <div class="city-meta">Maroodi Jeex · 38 homes lined up</div>
-            </div>
-            <span class="status-pill status-hot">Opening soon</span>
-          </div>
-
-          <!-- Garowe -->
-          <div class="city-row" onclick="cityClick('Garowe')">
-            <div class="city-thumb">
-              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="44" height="44" fill="#efe8dc"/>
-                <rect x="8" y="26" width="28" height="12" fill="#5a5147" opacity=".4"/>
-                <polygon points="14,26 22,10 30,26" fill="#b88a52" opacity=".85"/>
-                <circle cx="36" cy="14" r="5" fill="#e9d9bf"/>
-                <rect x="4" y="32" width="8" height="6" fill="#2d2823" opacity=".5"/>
-              </svg>
-            </div>
-            <div class="city-info">
-              <div class="city-name">Garowe</div>
-              <div class="city-meta">Nugaal · 24 homes lined up</div>
-            </div>
-            <span class="status-pill status-soon">Summer 2026</span>
-          </div>
-
-          <!-- Kismayo -->
-          <div class="city-row" onclick="cityClick('Kismayo')">
-            <div class="city-thumb">
-              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="44" height="44" fill="#e8dfd0"/>
-                <rect x="6" y="28" width="32" height="10" fill="#5a5147" opacity=".35"/>
-                <polygon points="6,28 15,16 24,28" fill="#c8a87c"/>
-                <polygon points="24,28 32,20 40,28" fill="#b88a52" opacity=".7"/>
-                <circle cx="38" cy="10" r="3" fill="#e9d9bf"/>
-              </svg>
-            </div>
-            <div class="city-info">
-              <div class="city-name">Kismayo</div>
-              <div class="city-meta">Jubbada Hoose · 18 homes lined up</div>
-            </div>
-            <span class="status-pill status-soon">Summer 2026</span>
-          </div>
-
-          <!-- Galkayo -->
-          <div class="city-row" onclick="cityClick('Galkayo')">
-            <div class="city-thumb">
-              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="44" height="44" fill="#efe8dc"/>
-                <rect x="4" y="30" width="36" height="10" fill="#2d2823" opacity=".3"/>
-                <polygon points="10,30 20,12 30,30" fill="#b88a52" opacity=".9"/>
-                <rect x="32" y="24" width="6" height="6" fill="#8a7f71" opacity=".5"/>
-                <circle cx="8" cy="16" r="3" fill="#c8a87c" opacity=".6"/>
-              </svg>
-            </div>
-            <div class="city-info">
-              <div class="city-name">Galkayo</div>
-              <div class="city-meta">Mudug · 12 homes lined up</div>
-            </div>
-            <span class="status-pill status-soon">Autumn 2026</span>
-          </div>
-
-          <!-- Bosaso -->
-          <div class="city-row" onclick="cityClick('Bosaso')">
-            <div class="city-thumb">
-              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="44" height="44" fill="#e8dfd0"/>
-                <rect x="6" y="28" width="32" height="10" fill="#5a5147" opacity=".38"/>
-                <polygon points="8,28 18,10 28,28" fill="#c8a87c"/>
-                <rect x="30" y="22" width="8" height="6" fill="#b88a52" opacity=".7"/>
-                <circle cx="10" cy="14" r="4" fill="#e9d9bf"/>
-              </svg>
-            </div>
-            <div class="city-info">
-              <div class="city-name">Bosaso</div>
-              <div class="city-meta">Bari · 9 homes lined up</div>
-            </div>
-            <span class="status-pill status-soon">Autumn 2026</span>
-          </div>
-
-          <div class="city-card-foot">
-            <div class="foot-left">
-              <div class="avatar-group">
-                <div class="avatar">AH</div>
-                <div class="avatar">FM</div>
-                <div class="avatar">SO</div>
-                <div class="avatar" style="font-size:8px;background:var(--paper-2);color:var(--ink-3);">+</div>
-              </div>
-              <span>1,800+ waiting</span>
-            </div>
-            <span class="foot-right">Avg. reply · 4h</span>
-          </div>
-        </div>
+<!-- ── NAVBAR ── -->
+<header>
+  <nav>
+    <a href="#" class="logo" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">
+      <img src="logo.svg" alt="BackHome Logo" class="logo-icon">
+      <span>Back</span><span>Home</span>
+    </a>
+    <div class="nav-actions">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="langEN" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="langSO" onclick="setLang('so')">SO</button>
       </div>
     </div>
-  </div>
+  </nav>
 </header>
 
-<!-- PROBLEM -->
-<section class="section section-white" id="problem">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">The problem</div>
-      <h2 class="section-h2">Renting back home shouldn't feel <em>like a gamble.</em></h2>
-      <p class="section-body">Every summer, the same story. You pay upfront, fly in, and hope. We've been there too — that's why we're building something different.</p>
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="container split-layout">
+
+    <div class="hero-left">
+      <div class="hero-prelaunch">
+        <div class="hero-prelaunch-dot"></div>
+        <span data-en="Pre-launch — join early" data-so="Ka hor-bilaab — ku soo biir">Pre-launch — join early</span>
+      </div>
+
+      <h1 class="hero-title" id="heroTitle">
+        Kirayso guri adigoon <span class="text-highlight">dillaal marin</span>
+      </h1>
+
+      <p class="hero-subtitle" data-en="Launching in Mogadishu, Garowe and Hargeisa. Built for the diaspora, backed by local owners." data-so="Bilaabmaya Muqdisho, Garoowe iyo Hargeysa. U dhisan diasporaha, taageersan mulkiilayasha maxalliga.">
+        Launching in Mogadishu, Garowe and Hargeisa. Built for the diaspora, backed by local owners.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#waitlist" class="btn btn-primary" data-en="Join the waitlist" data-so="Liiska ku soo biir">Join the waitlist</a>
+        <a href="owners.html" class="btn" data-en="List your property" data-so="Gurigaaga soo geli">List your property</a>
+      </div>
     </div>
-    <div class="problem-grid">
+
+    <div class="hero-right">
+      <div class="launching-card">
+        <div class="card-title" data-en="LAUNCHING IN" data-so="BILAABMAYA">LAUNCHING IN</div>
+
+        <div class="city-row">
+          <span class="city-row-name">Mogadishu</span>
+          <span class="badge-coming" data-en="Coming soon" data-so="Dhow u socota">Coming soon</span>
+        </div>
+        <div class="city-row">
+          <span class="city-row-name">Hargeisa</span>
+          <span class="badge-coming" data-en="Coming soon" data-so="Dhow u socota">Coming soon</span>
+        </div>
+        <div class="city-row">
+          <span class="city-row-name">Garowe</span>
+          <span class="badge-coming" data-en="Coming soon" data-so="Dhow u socota">Coming soon</span>
+        </div>
+        <div class="city-row">
+          <span class="city-row-name">Kismayo</span>
+          <span class="badge-coming" data-en="Coming soon" data-so="Dhow u socota">Coming soon</span>
+        </div>
+        <div class="city-row">
+          <span class="city-row-name">Galkayo</span>
+          <span class="badge-coming" data-en="Coming soon" data-so="Dhow u socota">Coming soon</span>
+        </div>
+        <div class="city-row">
+          <span class="city-row-name">Bosaso</span>
+          <span class="badge-coming" data-en="Coming soon" data-so="Dhow u socota">Coming soon</span>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <button class="scroll-down" onclick="document.getElementById('problems').scrollIntoView({behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M19 12l-7 7-7-7"/>
+    </svg>
+  </button>
+</section>
+
+<!-- ── PROBLEMS SECTION ── -->
+<section id="problems">
+  <div class="container">
+    <div class="problems-header">
+      <div class="section-label" data-en="THE PROBLEM" data-so="DHIBAATADA">THE PROBLEM</div>
+      <h2 data-en="Renting in Somalia shouldn't be this hard" data-so="In guri ay kiraysato qurbajoogto waa ay adagtahay maanta">Renting in Somalia shouldn't be this hard</h2>
+      <p data-en="The diaspora faces the same obstacles every visit — and no platform has solved it. Until now." data-so="Qurbajoogtu waxay la kulmaan caqabado badan marka ay dalka ku laabtaan — mana jiro xal la isku halayn karo ilaa hadda.">The diaspora faces the same obstacles every visit — and no platform has solved it. Until now.</p>
+    </div>
+
+    <div class="problems-grid">
+
       <div class="problem-card">
         <div class="problem-num">01</div>
-        <h3 class="problem-h3">Fake listings</h3>
-        <p class="problem-body">You wire the deposit, land at the airport, and discover the villa in the photos doesn't exist — or looks nothing like it did online.</p>
-        <div class="problem-stat">
-          <span class="problem-stat-num">63%</span>
-          <span class="problem-stat-label">of diaspora renters report at least one scam</span>
-        </div>
+        <h3 data-en="Scam listings" data-so="Guryo been ah">Scam listings</h3>
+        <p data-en="Pay in advance, arrive to find the property doesn't exist — or looks nothing like the photos." data-so="Lacag ayaa laga qaadaa ka hor intaadan arkin guriga — mararka qaar gurigu ma jiro, ama sawirradu ma aha kuwo sax ah.">Pay in advance, arrive to find the property doesn't exist — or looks nothing like the photos.</p>
+        <span class="problem-tag" data-en="No verification" data-so="Xaqiiqada arag">No verification</span>
       </div>
+
       <div class="problem-card">
         <div class="problem-num">02</div>
-        <h3 class="problem-h3">Middlemen markups</h3>
-        <p class="problem-body">Agents inflate rent 20–40% and offer nothing in return. Every shilling goes to their margin instead of your comfort.</p>
-        <div class="problem-stat">
-          <span class="problem-stat-num">+35%</span>
-          <span class="problem-stat-label">average markup</span>
-        </div>
+        <h3 data-en="Middlemen & inflated prices" data-so="Dilaaliin iyo qiimo kordhin">Middlemen & inflated prices</h3>
+        <p data-en="Agents add 20–40% markups and offer nothing in return. Your rent funds their margin, not your comfort." data-so="Dilaaliintu waxay ku daraan kharash badan kirada — adigoo aan helin wax qiimo dheeraad ah.">Agents add 20–40% markups and offer nothing in return. Your rent funds their margin, not your comfort.</p>
+        <span class="problem-tag" data-en="No transparency" data-so="Faahfaahin dheeraad ah">No transparency</span>
       </div>
+
       <div class="problem-card">
         <div class="problem-num">03</div>
-        <h3 class="problem-h3">Built for no one</h3>
-        <p class="problem-body">Generic rental platforms don't understand Somalia — not the currency, the language, the neighborhoods, or how we actually rent.</p>
-        <div class="problem-stat">
-          <span class="problem-stat-num">0</span>
-          <span class="problem-stat-label">platforms serving the Somali diaspora today</span>
-        </div>
+        <h3 data-en="Built for everyone except you" data-so="Xal la’aan">Built for everyone except you</h3>
+        <p data-en="Generic rental platforms don't understand Somalia's market, your currency, or your language." data-so="Ma jiro meel lagu kalsoonaan karo oo si dhab ah u xallisa dhibkan — qof walba wuxuu ku khasban yahay inuu kaligiis wax raadsado.">Generic rental platforms don't understand Somalia's market, your currency, or your language.</p>
+        <span class="problem-tag" data-en="Not diaspora-ready" data-so="Waa maxay xal?">Not diaspora-ready</span>
       </div>
+
     </div>
+
+    <button class="scroll-down" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </button>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="section section-paper" id="how">
+<!-- ── WHY JOIN EARLY ── -->
+<section id="how">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">How it works</div>
-      <h2 class="section-h2">Three steps. <em>Zero surprises.</em></h2>
-      <p class="section-body">We visit every property, verify every owner, and stay with you through the whole stay. That's the whole promise.</p>
+    <div class="how-inner">
+
+      <!-- Left col -->
+      <div class="how-left">
+        <div class="section-label" data-en="EARLY ACCESS" data-so="HELITAANKA HORE">EARLY ACCESS</div>
+        <h2 data-en="Why join early" data-so="Maxaad ugu biiraysaa hadda?">Why join early</h2>
+        <p class="how-subtext" data-en="Be among the first to access verified homes when we launch." data-so="Noqo qof ka mid ah kuwii ugu horreeyay ee heli kara guryo la xaqiijiyay marka aan bilowno.">Be among the first to access verified homes when we launch.</p>
+        <ul class="how-bullets">
+          <li data-en="First access to homes" data-so="Helitaanka ugu horreeya ee guryaha"><span class="how-bullet-dot"></span>First access to homes</li>
+          <li data-en="No middlemen" data-so="Dillaal la’aan"><span class="how-bullet-dot"></span>No middlemen</li>
+          <li data-en="Built for the diaspora" data-so="Loogu talagalay qurbajoogta"><span class="how-bullet-dot"></span>Built for the diaspora</li>
+        </ul>
+      </div>
+
+      <!-- Right col -->
+      <div class="how-right">
+        <div class="how-mini-card">
+          <h3 data-en="Early access" data-so="Helitaan hore">Early access</h3>
+          <p data-en="See homes before anyone else in your city." data-so="Arag guryaha ka hor inta aysan cid kale ku arag magaaladaada.">See homes before anyone else in your city.</p>
+        </div>
+        <div class="how-mini-card">
+          <h3 data-en="Verified network" data-so="Shabakad la xaqiijiyay">Verified network</h3>
+          <p data-en="Only verified renters and owners." data-so="Kaliya kiraystayaal iyo milkiilayaal la hubiyay.">Only verified renters and owners.</p>
+        </div>
+        <div class="how-mini-card">
+          <h3 data-en="Shape the platform" data-so="Saamayn ku yeelo platform-ka">Shape the platform</h3>
+          <p data-en="Help us build something that works for you." data-so="Nala dhis adeeg si dhab ah kuu anfaca.">Help us build something that works for you.</p>
+        </div>
+      </div>
+
     </div>
-    <div class="how-wrap">
-      <div class="how-step">
-        <div class="how-step-tag">Step 01 —</div>
-        <h3 class="how-step-h3">Browse verified homes</h3>
-        <p class="how-step-body">Every listing has been walked by a BackHome team member. Real photos, real measurements, real neighborhoods.</p>
-        <div class="how-illus">
-          <svg width="100%" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="320" height="200" fill="#f6f1ea"/>
-            <rect x="20" y="120" width="280" height="60" fill="#efe8dc"/>
-            <rect x="40" y="60" width="80" height="60" fill="#e8dfd0"/>
-            <rect x="140" y="80" width="70" height="40" fill="#e9d9bf"/>
-            <polygon points="40,60 80,20 120,60" fill="#b88a52" opacity=".7"/>
-            <polygon points="140,80 175,50 210,80" fill="#c8a87c" opacity=".6"/>
-            <rect x="60" y="130" width="20" height="20" fill="#efe8dc"/>
-            <rect x="90" y="125" width="20" height="25" fill="#efe8dc"/>
-            <circle cx="270" cy="40" r="20" fill="#e9d9bf"/>
-            <!-- grid overlay -->
-            <line x1="20" y1="140" x2="300" y2="140" stroke="#16140f" stroke-opacity=".05"/>
-            <line x1="20" y1="160" x2="300" y2="160" stroke="#16140f" stroke-opacity=".05"/>
-            <rect x="220" y="100" width="70" height="50" rx="6" fill="white" opacity=".8"/>
-            <rect x="228" y="108" width="30" height="6" rx="3" fill="#b88a52" opacity=".6"/>
-            <rect x="228" y="118" width="50" height="4" rx="2" fill="#16140f" opacity=".15"/>
-            <rect x="228" y="126" width="40" height="4" rx="2" fill="#16140f" opacity=".1"/>
-          </svg>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-step-tag">Step 02 —</div>
-        <h3 class="how-step-h3">Book directly through BackHome</h3>
-        <p class="how-step-body">No agents, no hidden fees. You deal directly with the BackHome team. We handle everything for you — from paperwork and secure payments to protection and a seamless booking experience.</p>
-        <div class="how-illus">
-          <svg width="100%" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="320" height="200" fill="#f6f1ea"/>
-            <!-- phone mockup -->
-            <rect x="100" y="20" width="120" height="160" rx="16" fill="white" opacity=".9"/>
-            <rect x="108" y="36" width="104" height="130" rx="8" fill="#f6f1ea"/>
-            <rect x="116" y="46" width="60" height="8" rx="4" fill="#b88a52" opacity=".6"/>
-            <rect x="116" y="60" width="86" height="4" rx="2" fill="#16140f" opacity=".12"/>
-            <rect x="116" y="70" width="70" height="4" rx="2" fill="#16140f" opacity=".08"/>
-            <rect x="116" y="100" width="86" height="32" rx="8" fill="#16140f"/>
-            <rect x="130" y="112" width="60" height="8" rx="4" fill="white" opacity=".9"/>
-            <rect x="116" y="144" width="86" height="12" rx="6" fill="#e9d9bf"/>
-            <circle cx="155" cy="28" r="4" fill="#e8dfd0"/>
-          </svg>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-step-tag">Step 03 —</div>
-        <h3 class="how-step-h3">Arrive with confidence</h3>
-        <p class="how-step-body">Keys are ready. The house matches the photos. If anything's off, our local team is an hour away, every day of your stay.</p>
-        <div class="how-illus">
-          <svg width="100%" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="320" height="200" fill="#f6f1ea"/>
-            <rect x="60" y="80" width="200" height="100" fill="#efe8dc"/>
-            <polygon points="60,80 160,20 260,80" fill="#b88a52" opacity=".8"/>
-            <rect x="130" y="120" width="60" height="60" fill="#e8dfd0"/>
-            <rect x="148" y="138" width="24" height="16" rx="3" fill="#2d2823" opacity=".4"/>
-            <circle cx="160" cy="146" r="3" fill="#b88a52"/>
-            <rect x="80" y="110" width="30" height="30" fill="#e9d9bf"/>
-            <rect x="210" y="110" width="30" height="30" fill="#e9d9bf"/>
-            <!-- check circle -->
-            <circle cx="260" cy="60" r="20" fill="#3d4a3a"/>
-            <polyline points="251,60 258,67 270,52" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
-        </div>
-      </div>
-    </div>
+
+    <button class="scroll-down" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </button>
   </div>
 </section>
 
-<!-- VERIFIED STRIP -->
-<section class="verified-strip section" style="padding-top:0;">
-  <div class="container">
-    <div class="verified-card">
-      <div class="verified-h2">Every home visited, photographed, <em>measured.</em></div>
-      <div class="verified-pills">
-        <div class="v-pill">
-          <div class="v-check">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          In-person inspection
-        </div>
-        <div class="v-pill">
-          <div class="v-check">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          Owner ID verified
-        </div>
-        <div class="v-pill">
-          <div class="v-check">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          Protected payment
-        </div>
+<!-- ── WAITLIST SECTION ── -->
+<section id="waitlist" class="bottom-waitlist">
+  <div class="bottom-waitlist-inner">
+    <div class="section-label" data-en="GET STARTED" data-so="BILAAB">GET STARTED</div>
+    <h2 data-en="Ready to find your home?" data-so="Ma diyaar baa inaad hesho gurigaaga?">Ready to find your home?</h2>
+    <p data-en="Be among the first to hear when BackHome launches in your city." data-so="Noqo dadka ugu horreeya ee maqla marka BackHome laga bilaabo magaaladaada.">Be among the first to hear when BackHome launches in your city.</p>
+    
+    <form id="waitlistForm" class="bottom-waitlist-form" onsubmit="handleWaitlist(event)">
+      <div class="bottom-waitlist-fields">
+        <input type="email" id="wEmail" class="bottom-waitlist-input w-email" placeholder="Email address" required>
+        <select id="wCity" class="bottom-waitlist-input w-city">
+          <option value="" disabled selected>Interested city (optional)</option>
+          <option value="Mogadishu">Mogadishu</option>
+          <option value="Hargeisa">Hargeisa</option>
+          <option value="Garowe">Garowe</option>
+          <option value="Kismayo">Kismayo</option>
+          <option value="Galkayo">Galkayo</option>
+          <option value="Bosaso">Bosaso</option>
+        </select>
       </div>
-    </div>
+      <button type="submit" class="btn-submit-waitlist" data-en="Join the waitlist" data-so="Liiska ku soo biir">Join the waitlist</button>
+    </form>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="section section-paper">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">Early voices</div>
-      <h2 class="section-h2">What the diaspora <em>is saying.</em></h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-quote">"Last summer I lost €2,400 to a villa that didn't exist. If BackHome had been there, <em>I'd have booked it twice.</em>"</div>
-        <div class="testi-footer">
-          <div class="testi-avatar">AH</div>
-          <div>
-            <div class="testi-name">Amina H.</div>
-            <div class="testi-role">Minneapolis → Mogadishu</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-quote">"Finally a platform that <em>speaks Somali,</em> uses the right neighborhoods, and doesn't treat us like tourists."</div>
-        <div class="testi-footer">
-          <div class="testi-avatar">MA</div>
-          <div>
-            <div class="testi-name">Mohamed A.</div>
-            <div class="testi-role">Oslo → Hargeisa</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-quote">"I own three homes in Garowe. BackHome gives me <em>direct access to families</em> I'd never reach — and handles the hard part."</div>
-        <div class="testi-footer">
-          <div class="testi-avatar">FO</div>
-          <div>
-            <div class="testi-name">Fatima O.</div>
-            <div class="testi-role">Property owner, Garowe</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section section-white" id="faq">
-  <div class="container">
-    <div class="section-head section-center">
-      <div class="eyebrow">Questions</div>
-      <h2 class="section-h2">Everything you're wondering.</h2>
-    </div>
-    <div class="faq-wrap">
-      <details class="faq-item">
-        <summary class="faq-summary">
-          When does BackHome launch?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-body"><p>First homes go live in Mogadishu and Hargeisa in summer 2026, followed by Garowe shortly after. Everyone on the waitlist gets seven days of exclusive early access before the public launch.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-summary">
-          How are properties verified?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-body"><p>Our team visits every home in person, takes photos in natural light, measures every room, and verifies the owner's ID and title documents. No listing goes live without this visit.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-summary">
-          Can I pay in USD, EUR or GBP?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-body"><p>Yes — you can pay in your local currency via our protected payment system. Funds are held securely and only released to the owner at check-in.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-summary">
-          What if something goes wrong when I arrive?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-body"><p>Our local team is on-call around the clock. If your property doesn't match what was listed, we'll relocate you within 24 hours or issue a full refund — no questions asked.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-summary">
-          I own a property. How do I list?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </summary>
-        <div class="faq-body"><p>Head to our <a href="list-your-property.html">property listing page</a>. Submit your details and you'll hear from us within 48 hours to schedule an in-person verification visit.</p></div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- CTA SECTION -->
-<section class="section section-dark cta-section" id="cta">
-  <div class="cta-glow"></div>
-  <div class="container">
-    <div class="cta-inner">
-      <h2 class="cta-h2">Be first through <em>the door.</em></h2>
-      <p class="cta-body">Waitlist members get seven days of exclusive access before public launch, plus zero booking fees on their first stay.</p>
-      <form class="cta-form-pill" id="waitlist-form" onsubmit="submitWaitlist(event)">
-        <input type="email" placeholder="Your email address" id="waitlist-email" required>
-        <button type="submit" class="btn btn-primary" style="flex-shrink:0;">
-          Join waitlist
-          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
+<!-- ── FOOTER ── -->
+<footer>
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-logo">Back<span>Home</span></div>
-        <p class="footer-desc">Connecting the Somali diaspora with verified homes across Mogadishu, Hargeisa, Garowe, Kismayo, Galkayo and Bosaso.</p>
+        <a href="#" class="footer-logo" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;" style="display:inline-flex; align-items:center; gap:8px; font-size: 22px; font-weight: 800; margin-bottom: 14px; text-decoration: none;">
+          <img src="logo.svg" alt="BackHome Logo" class="logo-icon">
+          <span>Back</span><span style="color: var(--accent);">Home</span>
+        </a>
+        <p class="footer-tagline" data-en="Connecting the Somali diaspora with verified homes across Mogadishu, Garowe and Hargeisa." data-so="Ku xidaynaysa diasporaha Soomaalida guryaha aaminsan ee Muqdisho, Garoowe iyo Hargeysa.">Connecting the Somali diaspora with verified homes across Mogadishu, Garowe and Hargeisa.</p>
       </div>
+
       <div class="footer-col">
-        <h4>Platform</h4>
-        <a href="#how">How it works</a>
-        <a href="#cta">Join waitlist</a>
-        <a href="list-your-property.html">For owners</a>
+        <h4 data-en="Platform" data-so="Platform">Platform</h4>
+        <div class="footer-links">
+          <a href="#problems" data-en="How it works" data-so="Sida ay u shaqeyso">How it works</a>
+          <a href="#waitlist" data-en="Join waitlist" data-so="Liiska ku soo biir">Join waitlist</a>
+          <a href="owners.html" data-en="For owners" data-so="Mulkiilayaasha">For owners</a>
+        </div>
       </div>
+
       <div class="footer-col">
-        <h4>Company</h4>
-        <a href="mailto:hello@backhome.so">hello@backhome.so</a>
-        <a href="#faq">FAQ</a>
-        <a href="#">Careers</a>
-        <a href="#">Press</a>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="#">Privacy policy</a>
-        <a href="#">Terms</a>
-        <a href="#">Cookies</a>
-        <a href="#">Unsubscribe</a>
+        <h4 data-en="Company" data-so="Shirkadda">Company</h4>
+        <div class="footer-links">
+          <a href="mailto:hello@backhome.so">hello@backhome.so</a>
+          <a href="#" onclick="showToast('Coming soon...'); return false;" data-en="Unsubscribe" data-so="Ka bax">Unsubscribe</a>
+          <a href="#" onclick="showToast('Coming soon...'); return false;" data-en="Privacy policy" data-so="Xeerka asturnaanta">Privacy policy</a>
+          <a href="#" onclick="showToast('Coming soon...'); return false;" data-en="Terms of use" data-so="Shuruudaha isticmaalka">Terms of use</a>
+        </div>
       </div>
     </div>
+
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 BackHome. Made with care for the Somali diaspora.</span>
-      <div class="social-row">
-        <!-- Instagram -->
-        <a href="#" class="social-btn" aria-label="Instagram">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-        </a>
-        <!-- Twitter/X -->
-        <a href="#" class="social-btn" aria-label="Twitter">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <!-- LinkedIn -->
-        <a href="#" class="social-btn" aria-label="LinkedIn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-      </div>
+      <span data-en="© 2026 BackHome. All rights reserved." data-so="© 2026 BackHome. Xuquuq dhammaan way xafidan tahay.">© 2026 BackHome. All rights reserved.</span>
+      <span data-en="Built for the diaspora." data-so="U dhisan diasporaha.">Built for the diaspora.</span>
     </div>
   </div>
 </footer>
 
-<!-- ACTIVITY TICKER -->
-<div class="activity-ticker" id="activity-ticker">
-  <div class="ticker-avatar" id="ticker-avatar">MA</div>
-  <div class="ticker-text" id="ticker-text"><strong>Mohamed A.</strong> joined from Oslo</div>
-  <div class="ticker-time">just now</div>
-</div>
-
-<!-- TOAST -->
-<div class="toast" id="toast">
-  <div class="toast-check">
-    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-  </div>
-  <span id="toast-text">Saved.</span>
-</div>
-
-<!-- WAITLIST MODAL -->
-<div class="modal-backdrop" id="modal-backdrop" onclick="closeModal(event)">
-  <div class="modal modal-rel">
-    <button class="modal-close-x" onclick="closeModalDirect()" aria-label="Close">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <div class="modal-check">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <h2 class="modal-h2">You're on the list.</h2>
-    <p class="modal-body">We'll reach out as soon as BackHome opens in your city. Seven days before anyone else — that's the deal.</p>
-    <div class="modal-ref" id="modal-ref">Your position · #1848</div>
-    <button class="btn btn-primary btn-lg" style="width:100%;justify-content:center;" onclick="closeModalDirect()">Got it</button>
-  </div>
-</div>
-
 <script>
-// ===== NAV SCROLL =====
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-});
+  // ── LANGUAGE TOGGLE ──
+  function setLang(lang) {
+    document.getElementById('langEN').classList.toggle('active', lang === 'en');
+    document.getElementById('langSO').classList.toggle('active', lang === 'so');
 
-// ===== TRANSLATIONS =====
-const TRANSLATIONS = {
-  en: {
-    'nav-why':        'Why BackHome',
-    'nav-how':        'How it works',
-    'nav-faq':        'FAQ',
-    'nav-join':       'Join waitlist',
-    'hero-badge':     'Pre-launch · Spring 2026',
-    'hero-sub':       'Verified rentals across Somalia, built for the diaspora. No scams, no middlemen, no inflated prices — just safe, trusted homes booked securely through BackHOME.',
-    'hero-join':      'Join the waitlist',
-    'hero-list':      'List your property',
-    'stat-1-label':   'On the waitlist',
-    'stat-2-label':   'Cities at launch',
-    'stat-3-label':   'Verified listings',
-    'card-head':      'LAUNCHING IN',
-    'card-live':      'Updated live',
-    'city-mog':       'Mogadishu',
-    'city-mog-meta':  'Banaadir · 47 homes lined up',
-    'city-hrg':       'Hargeisa',
-    'city-hrg-meta':  'Maroodi Jeex · 38 homes lined up',
-    'city-gar':       'Garowe',
-    'city-gar-meta':  'Nugaal · 24 homes lined up',
-    'city-kis':       'Kismayo',
-    'city-kis-meta':  'Jubbada Hoose · 18 homes lined up',
-    'city-gal':       'Galkayo',
-    'city-gal-meta':  'Mudug · 12 homes lined up',
-    'city-bos':       'Bosaso',
-    'city-bos-meta':  'Bari · 9 homes lined up',
-    'card-foot-wait': '1,800+ waiting',
-    'card-foot-reply':'Avg. reply · 4h',
-    'status-hot':     'Opening soon',
-    'status-soon-1':  'Summer 2026',
-    'status-soon-2':  'Autumn 2026',
-    'prob-eyebrow':   'The problem',
-    'prob-h2-1':      'Renting back home shouldn\'t feel',
-    'prob-h2-2':      'like a gamble.',
-    'prob-body':      "Every summer, the same story. You pay upfront, fly in, and hope. We've been there too — that's why we're building something different.",
-    'prob-01-h3':     'Fake listings',
-    'prob-01-body':   "You wire the deposit, land at the airport, and discover the villa in the photos doesn't exist — or looks nothing like it did online.",
-    'prob-01-stat':   'of diaspora renters report at least one scam',
-    'prob-02-h3':     'Middlemen markups',
-    'prob-02-body':   'Agents inflate rent 20–40% and offer nothing in return. Every shilling goes to their margin instead of your comfort.',
-    'prob-02-stat':   'average markup',
-    'prob-03-h3':     'Built for no one',
-    'prob-03-body':   "Generic rental platforms don't understand Somalia — not the currency, the language, the neighborhoods, or how we actually rent.",
-    'prob-03-stat':   'platforms serving the Somali diaspora today',
-    'how-eyebrow':    'How it works',
-    'how-h2-1':       'Three steps.',
-    'how-h2-2':       'Zero surprises.',
-    'how-body':       "We visit every property, verify every owner, and stay with you through the whole stay. That's the whole promise.",
-    'how-s1-tag':     'Step 01 —',
-    'how-s1-h3':      'Browse verified homes',
-    'how-s1-body':    'Every listing has been walked by a BackHome team member. Real photos, real measurements, real neighborhoods.',
-    'how-s2-tag':     'Step 02 —',
-    'how-s2-h3':      'Book directly through BackHome',
-    'how-s2-body':    'No agents, no hidden fees. You deal directly with the BackHome team. We handle everything for you — from paperwork and secure payments to protection and a seamless booking experience.',
-    'how-s3-tag':     'Step 03 —',
-    'how-s3-h3':      'Arrive with confidence',
-    'how-s3-body':    "Keys are ready. The house matches the photos. If anything's off, our local team is an hour away, every day of your stay.",
-    'ver-h2-1':       'Every home visited, photographed,',
-    'ver-h2-2':       'measured.',
-    'ver-p1':         'In-person inspection',
-    'ver-p2':         'Owner ID verified',
-    'ver-p3':         'Protected payment',
-    'testi-eyebrow':  'Early voices',
-    'testi-h2-1':     'What the diaspora',
-    'testi-h2-2':     'is saying.',
-    'testi-q1':       "Last summer I lost €2,400 to a villa that didn't exist. If BackHome had been there, I'd have booked it twice.",
-    'testi-q1-em':    "I'd have booked it twice.",
-    'testi-q2':       "Finally a platform that speaks Somali, uses the right neighborhoods, and doesn't treat us like tourists.",
-    'testi-q2-em':    'speaks Somali,',
-    'testi-q3':       "I own three homes in Garowe. BackHome gives me direct access to families I'd never reach — and handles the hard part.",
-    'testi-q3-em':    'direct access to families',
-    'faq-eyebrow':    'Questions',
-    'faq-h2':         "Everything you're wondering.",
-    'faq-q1':         'When does BackHome launch?',
-    'faq-a1':         'First homes go live in Mogadishu and Hargeisa in summer 2026, followed by Garowe shortly after. Everyone on the waitlist gets seven days of exclusive early access before the public launch.',
-    'faq-q2':         'How are properties verified?',
-    'faq-a2':         "Our team visits every home in person, takes photos in natural light, measures every room, and verifies the owner's ID and title documents. No listing goes live without this visit.",
-    'faq-q3':         'Can I pay in USD, EUR or GBP?',
-    'faq-a3':         'Yes — you can pay in your local currency via our protected payment system. Funds are held securely and only released to the owner at check-in.',
-    'faq-q4':         'What if something goes wrong when I arrive?',
-    'faq-a4':         "Our local team is on-call around the clock. If your property doesn't match what was listed, we'll relocate you within 24 hours or issue a full refund — no questions asked.",
-    'faq-q5':         'I own a property. How do I list?',
-    'faq-a5':         "Head to our <a href='list-your-property.html'>property listing page</a>. Submit your details and you'll hear from us within 48 hours to schedule an in-person verification visit.",
-    'cta-h2-1':       'Be first through',
-    'cta-h2-2':       'the door.',
-    'cta-body':       'Waitlist members get seven days of exclusive access before public launch, plus zero booking fees on their first stay.',
-    'cta-ph':         'Your email address',
-    'cta-btn':        'Join waitlist',
-    'modal-h2':       "You're on the list.",
-    'modal-body':     "We'll reach out as soon as BackHome opens in your city. Seven days before anyone else — that's the deal.",
-    'modal-btn':      'Got it',
-    'footer-desc':    'Connecting the Somali diaspora with verified homes across Mogadishu, Hargeisa, Garowe, Kismayo, Galkayo and Bosaso.',
-    'foot-platform':  'Platform',
-    'foot-how':       'How it works',
-    'foot-join':      'Join waitlist',
-    'foot-owners':    'For owners',
-    'foot-company':   'Company',
-    'foot-faq':       'FAQ',
-    'foot-careers':   'Careers',
-    'foot-press':     'Press',
-    'foot-legal':     'Legal',
-    'foot-privacy':   'Privacy policy',
-    'foot-terms':     'Terms',
-    'foot-cookies':   'Cookies',
-    'foot-unsub':     'Unsubscribe',
-    'foot-copy':      '© 2026 BackHome. Made with care for the Somali diaspora.',
-    'toast-city':     'saved to your waitlist',
-    'toast-join':     'English selected'
-  },
-  so: {
-    'nav-why':        'Maxay BackHome u gaarka tahay',
-    'nav-how':        'Sida u shaqeysa',
-    'nav-faq':        'Su\u2019aalaha',
-    'nav-join':       'Ku biir liiska',
-    'hero-badge':     'La\u2019aantaas · Xagaaga 2026',
-    'hero-sub':       'Guryaha xaqiijiyay oo ku yaal Soomaaliya, loogu talagalay dadka reer dibedda. Xayeysiisyo been ah ma jiraan, dhexdhexaadiyeyaasha ma jiraan, qiime xad dhaaf ah ma jiro — guri ammaan ah oo degnaanshaha lagu baad ku dalban kartaa BackHOME.',
-    'hero-join':      'Ku biir liiska',
-    'hero-list':      'Gurigaaga ku darsoo',
-    'stat-1-label':   'Liiska sugaan',
-    'stat-2-label':   'Magaalo bilaabaysa',
-    'stat-3-label':   'Guryaha xaqiijiyay',
-    'card-head':      'KU BILAABMAYSA',
-    'card-live':      'Casriya si toos ah',
-    'city-mog':       'Muqdisho',
-    'city-mog-meta':  'Banaadir · 47 guri diyaar ah',
-    'city-hrg':       'Hargeysa',
-    'city-hrg-meta':  'Maroodijeex · 38 guri diyaar ah',
-    'city-gar':       'Garoowe',
-    'city-gar-meta':  'Nugaal · 24 guri diyaar ah',
-    'city-kis':       'Kismaayo',
-    'city-kis-meta':  'Jubbada Hoose · 18 guri diyaar ah',
-    'city-gal':       'Gaalkacyo',
-    'city-gal-meta':  'Mudug · 12 guri diyaar ah',
-    'city-bos':       'Boosaaso',
-    'city-bos-meta':  'Bari · 9 guri diyaar ah',
-    'card-foot-wait': '1,800+ sugaya',
-    'card-foot-reply':'Jawaab celinta dhexe · 4s',
-    'status-hot':     'Dhaw furey',
-    'status-soon-1':  'Xagaaga 2026',
-    'status-soon-2':  'Dayrta 2026',
-    'prob-eyebrow':   'Dhibaatada',
-    'prob-h2-1':      'Kirade guriga hooyo waa inaysan ahayn',
-    'prob-h2-2':      'qiyaas.',
-    'prob-body':      'Sanad kasta, sheekadu waa isku mid. Lacagta horta bixisaa, duulimaad qaadataa, oo rajada ku tiirsan. Annaguna halkaas ayaannu joogay — sidaas daraaddeed ayaan wax ka dhisnaynaa.',
-    'prob-01-h3':     'Xayeysiisyo beenta ah',
-    'prob-01-body':   'Maamuuska bixisaa, garoonka soo degtaa, oo aad ka ogaataa gurigii sawirka ku jiray inuu jirin — ama si weyn uga duwan sawirka.',
-    'prob-01-stat':   'kiradeyaasha reer dibedda ee hal xayeysiis been ah ugu yaraan soo wajahay',
-    'prob-02-h3':     'Qiimaha dhexdhexaadiyeyaasha',
-    'prob-02-body':   'Wakiiladu kirada 20-40% kordhiyaan iyaga oo waxba ku biirin. Shilinkastaaba dakhligooda ayuu aadaa, raaxadaadana kuma biiraan.',
-    'prob-02-stat':   'kordhinta dhexdhexaadiyeyaasha celcelis ahaan',
-    'prob-03-h3':     'Cidna uma diyaar-garoobna',
-    'prob-03-body':   'Goobaha kiradda guud ahaan Soomaaliya kuma fahmaan — lacagta, luqadda, xaafadaha, iyo habka kiradda.',
-    'prob-03-stat':   'goob adeegta dadka Soomaalida reer dibedda maanta',
-    'how-eyebrow':    'Sida u shaqeysa',
-    'how-h2-1':       'Saddex tallaabo.',
-    'how-h2-2':       'Yaab la\u2019aan buuxda.',
-    'how-body':       'Guryaha kasta ayaannu booqdaa, mulkiilahaana xaqiijiyaa, kana gacan saarnaa muddada joogitaankaaga oo dhan. Taasina waa ballanqaadkayaga oo dhan.',
-    'how-s1-tag':     'Talllaabo 01 —',
-    'how-s1-h3':      'Guryaha xaqiijiyay raadi',
-    'how-s1-body':    'Liiska kasta kooxda BackHome ayaa si joogta ah u socotay. Sawirro runta ah, cabirro sax ah, xaafado la og yahay.',
-    'how-s2-tag':     'Tallaabo 02 —',
-    'how-s2-h3':      'Toos uga qabso BackHome',
-    'how-s2-body':    'Wakiil ma jiro, kharash qarsoodi ah ma jiro. Toos ayaad la xiriirtaa kooxda BackHome. Wax walba ayaan kuu qabanaa — warqadaha, lacagta ammaan ah, ilaalinta, iyo waayo\u2019aragnimo fiican.',
-    'how-s3-tag':     'Tallaabo 03 —',
-    'how-s3-h3':      'Kalsoonaan la soo gal',
-    'how-s3-body':    'Furahaagu diyaar buu yahay. Gurigu sawirka waxa uu la mid yahay. Hadduu wax khaldan yahay, kooxdayada deegaanku hal saacad kuma fogaan doonto, maalin kasta muddada joogitaankaaga.',
-    'ver-h2-1':       'Guri walba la booqday, sawirray,',
-    'ver-h2-2':       'la cabbirray.',
-    'ver-p1':         'Booqasho shakhsi ahaaneed',
-    'ver-p2':         'Aqoonsigu mulkiilahaas xaqiijiyay',
-    'ver-p3':         'Lacag bixinta ilaalisan',
-    'testi-eyebrow':  'Codadka hore',
-    'testi-h2-1':     'Dadka reer dibeddu',
-    'testi-h2-2':     'maxay leeyihiin.',
-    'testi-q1':       'Sanadkii hore €2,400 baan lumiyay guri aan jirin. BackHome hadduu jiray, laba jeer baan dalban lahaa.',
-    'testi-q1-em':    'laba jeer baan dalban lahaa.',
-    'testi-q2':       'Ugu dambeyntii goob Af-Soomaali ku hadasha, xaafadaha sax ah isticmaasha, oo loo arkin mutaacumo ah.',
-    'testi-q2-em':    'Af-Soomaali ku hadasha,',
-    'testi-q3':       'Saddex guri ayaan leeyahay Garoowe. BackHome fursad buu ii siiyaa qoysaska aan abid gaadhi karin — waxa adagna ayuu qabtaa.',
-    'testi-q3-em':    'fursad buu ii siiyaa qoysaska',
-    'faq-eyebrow':    'Su\u2019aalaha',
-    'faq-h2':         'Waxa aad is weydiinayso oo dhan.',
-    'faq-q1':         'Goorma ayay BackHome bilaabmaysaa?',
-    'faq-a1':         'Guryaha ugu horreeya Muqdisho iyo Hargeysa ayay xagaaga 2026 furmayaan, Garoowena taa ka dib. Liiska sugitaanka ku jira oo dhan toddoba maalmood oo xaq u gaar ah ayay helaan ka hor dadweynaha.',
-    'faq-q2':         'Sida guryaha loo xaqiijiyaa?',
-    'faq-a2':         'Kooxdayada guri kasta ayay si shaqsiyan u booqataa, sawirro iftiinka dabiiciga ah leh ayay qaadataa, qolkasta ayay cabiraan, aqoonsigana mulkiilahauna xaqiijiyaa. Liis kale ma furmo booqashada la\u2019aanteed.',
-    'faq-q3':         'Ma bixin karaa USD, EUR ama GBP?',
-    'faq-a3':         'Haa — lacagta gobolkaaga ku bixin kartaa habka lacagbixinta ilaalisan. Lacagtu si ammaan ah ayay ku haysan doontaa oo mulkiilahaagu ma helayo ilaa maalinta soo galaynta.',
-    'faq-q4':         'Maxaa dhacay hadduu wax khaldan yahay marka aan soo galo?',
-    'faq-a4':         'Kooxdayada gobalka ayaa xaaladda joogta ah diyaar u ah. Haddey gurigu liiska ka duwan yahay, 24 saacadood gudahood ayaan kuu meelmarin doonnaa ama lacagta oo dhan ayaannu kuu soo celinaa — su\u2019aal la\'aan.',
-    'faq-q5':         'Guri ayaan leeyahay. Sideen u darsadaa?',
-    'faq-a5':         "Aad <a href='list-your-property.html'>bogga guryaha</a>. Xogta noo dir oo 48 saacadood gudahood ayaannu kula soo xiriiri doonaa si booqasho xaqiijin ah loo qabsado.",
-    'cta-h2-1':       'Kii ugu horreeyaha noqo',
-    'cta-h2-2':       'albaabka.',
-    'cta-body':       'Xubnahaas liiska sugitaanka ku jira toddoba maalmood oo xaq u gaar ah ayay helaan ka hor dadweynaha, kharashka dhigashada kiradda koowaadna waa eber.',
-    'cta-ph':         'Cinwaankaaga iimaylka',
-    'cta-btn':        'Ku biir liiska',
-    'modal-h2':       'Liiska ayaad ku jirtaa.',
-    'modal-body':     'Magaaladaada markay BackHome furto ayaannu kula soo xiriiri doonaa. Toddoba maalmood ka hor cid kale — taasaa ballanqaadka ah.',
-    'modal-btn':      'Waad fahmay',
-    'footer-desc':    'Dadka Soomaalida reer dibedda waxaan u xidnaa guryaha xaqiijiyay ee Muqdisho, Hargeysa, Garoowe, Kismaayo, Gaalkacyo iyo Boosaaso.',
-    'foot-platform':  'Goobta',
-    'foot-how':       'Sida u shaqeysa',
-    'foot-join':      'Ku biir liiska',
-    'foot-owners':    'Mulkiileyaasha',
-    'foot-company':   'Shirkadda',
-    'foot-faq':       'Su\u2019aalaha',
-    'foot-careers':   'Fursadaha shaqo',
-    'foot-press':     'Warbaahinta',
-    'foot-legal':     'Sharciga',
-    'foot-privacy':   'Xeerka asturnaanta',
-    'foot-terms':     'Shuruudaha',
-    'foot-cookies':   'Cookies',
-    'foot-unsub':     'Ka diiwaanso',
-    'foot-copy':      '© 2026 BackHome. Jacayl dadka Soomaalida reer dibedda ah ayuu lasoo jeedaa.',
-    'toast-city':     'liiskaaga sugitaanka ayaa lagu daray',
-    'toast-join':     'Af-Soomaali la doortay'
-  }
-};
+    const heroTitleMap = {
+      en: 'Find verified homes in <span class="text-highlight">Somalia</span>',
+      so: 'Kirayso guri adigoon <span class="text-highlight">dillaal marin</span>'
+    };
+    document.getElementById('heroTitle').innerHTML = heroTitleMap[lang];
 
-let currentLang = 'en';
-
-// Headline HTML for each language (words as animated spans)
-const HEADLINES = {
-  en: '<span class="word" style="animation-delay:.05s">Find</span><span class="word" style="animation-delay:.10s">a</span><span class="word" style="animation-delay:.15s">place</span><span class="word" style="animation-delay:.20s">that</span><br><span class="word" style="animation-delay:.25s">feels</span><span class="word" style="animation-delay:.30s">like</span><span class="word accent" style="animation-delay:.37s">home.</span>',
-  so: '<span class="word" style="animation-delay:.05s">Hel</span><span class="word" style="animation-delay:.10s">meel</span><span class="word" style="animation-delay:.15s">aad</span><span class="word" style="animation-delay:.20s">ku</span><br><span class="word" style="animation-delay:.25s">dareento</span><span class="word" style="animation-delay:.30s">sida</span><span class="word accent" style="animation-delay:.37s">gurigaaga.</span>'
-};
-
-// Arrow SVG shared by primary buttons
-const ARROW_SVG = '<svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
-const ARROW_SVG_SM = '<svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
-
-// ===== LANG TOGGLE =====
-function setLang(lang, silent) {
-  currentLang = lang;
-  localStorage.setItem('bh-lang', lang);
-  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-  document.getElementById('lang-so').classList.toggle('active', lang === 'so');
-  const T = TRANSLATIONS[lang];
-
-  // Nav
-  const navLinks = document.querySelectorAll('.nav-link');
-  navLinks[0] && (navLinks[0].textContent = T['nav-why']);
-  navLinks[1] && (navLinks[1].textContent = T['nav-how']);
-  navLinks[2] && (navLinks[2].textContent = T['nav-faq']);
-  const navJoinBtn = document.querySelector('.nav-right .btn');
-  if(navJoinBtn) navJoinBtn.textContent = T['nav-join'];
-
-  // Hero headline (swap words, show immediately — no re-animation on switch)
-  const h1 = document.getElementById('hero-headline');
-  if(h1) {
-    h1.innerHTML = HEADLINES[lang];
-    h1.querySelectorAll('.word').forEach(w => {
-      w.style.opacity = '1';
-      w.style.transform = 'none';
-      w.style.animation = 'none';
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const val = el.getAttribute(`data-${lang}`);
+      if (val) el.innerHTML = val;
     });
   }
 
-  // Hero badge
-  const badge = document.querySelector('.hero-badge');
-  if(badge) {
-    const dot = badge.querySelector('.hero-badge-dot');
-    badge.textContent = T['hero-badge'];
-    if(dot) badge.prepend(dot);
+  // ── TOAST ──
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 4500);
   }
 
-  // Hero sub + buttons
-  document.getElementById('hero-sub-text').textContent = T['hero-sub'];
-  const joinBtn = document.getElementById('hero-join-btn');
-  if(joinBtn) joinBtn.innerHTML = T['hero-join'] + ' ' + ARROW_SVG;
-  const listBtn = document.querySelector('.hero-cta .btn-ghost');
-  if(listBtn) listBtn.textContent = T['hero-list'];
-
-  // Stats
-  document.querySelector('#stat-1 + .stat-label').textContent = T['stat-1-label'];
-  document.querySelector('#stat-2 + .stat-label').textContent = T['stat-2-label'];
-  document.querySelector('#stat-3 + .stat-label').textContent = T['stat-3-label'];
-
-  // City card
-  document.querySelector('.city-card-head-left').textContent = T['card-head'];
-  const liveEl = document.querySelector('.city-card-head-right');
-  if(liveEl) liveEl.innerHTML = `<span class="live-dot"></span>${T['card-live']}`;
-  const cityNames = document.querySelectorAll('.city-name');
-  const cityMetas = document.querySelectorAll('.city-meta');
-  const cityKeys = ['mog','hrg','gar','kis','gal','bos'];
-  cityKeys.forEach((k,i)=>{
-    if(cityNames[i]) cityNames[i].textContent = T['city-'+k];
-    if(cityMetas[i]) cityMetas[i].textContent = T['city-'+k+'-meta'];
-  });
-  const statusPills = document.querySelectorAll('.status-pill');
-  if(statusPills[0]) statusPills[0].textContent = T['status-hot'];
-  if(statusPills[1]) statusPills[1].textContent = T['status-hot'];
-  if(statusPills[2]) statusPills[2].textContent = T['status-soon-1'];
-  if(statusPills[3]) statusPills[3].textContent = T['status-soon-1'];
-  if(statusPills[4]) statusPills[4].textContent = T['status-soon-2'];
-  if(statusPills[5]) statusPills[5].textContent = T['status-soon-2'];
-  document.querySelector('.foot-left span:last-child').textContent = T['card-foot-wait'];
-  document.querySelector('.foot-right').textContent = T['card-foot-reply'];
-
-  // Problem
-  const probEyebrow = document.querySelector('#problem .eyebrow');
-  if(probEyebrow) probEyebrow.textContent = T['prob-eyebrow'];
-  const probH2 = document.querySelector('#problem .section-h2');
-  if(probH2) probH2.innerHTML = `${T['prob-h2-1']} <em>${T['prob-h2-2']}</em>`;
-  const probBody = document.querySelector('#problem .section-body');
-  if(probBody) probBody.textContent = T['prob-body'];
-  const probCards = document.querySelectorAll('.problem-card');
-  if(probCards[0]){
-    probCards[0].querySelector('.problem-h3').textContent = T['prob-01-h3'];
-    probCards[0].querySelector('.problem-body').textContent = T['prob-01-body'];
-    probCards[0].querySelector('.problem-stat-label').textContent = T['prob-01-stat'];
-    probCards[1].querySelector('.problem-h3').textContent = T['prob-02-h3'];
-    probCards[1].querySelector('.problem-body').textContent = T['prob-02-body'];
-    probCards[1].querySelector('.problem-stat-label').textContent = T['prob-02-stat'];
-    probCards[2].querySelector('.problem-h3').textContent = T['prob-03-h3'];
-    probCards[2].querySelector('.problem-body').textContent = T['prob-03-body'];
-    probCards[2].querySelector('.problem-stat-label').textContent = T['prob-03-stat'];
+  // ── WAITLIST FORM ──
+  function handleWaitlist(e) {
+    e.preventDefault();
+    showToast("You're on the list! We'll reach out before we launch.");
+    e.target.reset();
   }
 
-  // How it works
-  const howEyebrow = document.querySelector('#how .eyebrow');
-  if(howEyebrow) howEyebrow.textContent = T['how-eyebrow'];
-  const howH2 = document.querySelector('#how .section-h2');
-  if(howH2) howH2.innerHTML = `${T['how-h2-1']} <em>${T['how-h2-2']}</em>`;
-  const howBody = document.querySelector('#how .section-body');
-  if(howBody) howBody.textContent = T['how-body'];
-  const steps = document.querySelectorAll('.how-step');
-  if(steps[0]){
-    steps[0].querySelector('.how-step-tag').textContent = T['how-s1-tag'];
-    steps[0].querySelector('.how-step-h3').textContent = T['how-s1-h3'];
-    steps[0].querySelector('.how-step-body').textContent = T['how-s1-body'];
-    steps[1].querySelector('.how-step-tag').textContent = T['how-s2-tag'];
-    steps[1].querySelector('.how-step-h3').textContent = T['how-s2-h3'];
-    steps[1].querySelector('.how-step-body').textContent = T['how-s2-body'];
-    steps[2].querySelector('.how-step-tag').textContent = T['how-s3-tag'];
-    steps[2].querySelector('.how-step-h3').textContent = T['how-s3-h3'];
-    steps[2].querySelector('.how-step-body').textContent = T['how-s3-body'];
+  // ── OWNERS FORM ──
+  function handleOwners(e) {
+    e.preventDefault();
+    showToast('Property submitted! We\'ll review it and be in touch shortly.');
+    e.target.reset();
   }
 
-  // Verified strip
-  const verH2 = document.querySelector('.verified-h2');
-  if(verH2) verH2.innerHTML = `${T['ver-h2-1']} <em>${T['ver-h2-2']}</em>`;
-  const vPills = document.querySelectorAll('.v-pill');
-  const vTexts = [T['ver-p1'], T['ver-p2'], T['ver-p3']];
-  vPills.forEach((p,i)=>{ const check=p.querySelector('.v-check'); p.textContent=vTexts[i]; p.prepend(check); });
-
-  // Testimonials
-  const testiEyebrow = document.querySelector('.section-paper .eyebrow');
-  if(testiEyebrow) testiEyebrow.textContent = T['testi-eyebrow'];
-  const testiH2 = document.querySelector('.section-paper .section-h2');
-  if(testiH2) testiH2.innerHTML = `${T['testi-h2-1']} <em>${T['testi-h2-2']}</em>`;
-  const testiQuotes = document.querySelectorAll('.testi-quote');
-  if(testiQuotes[0]){
-    testiQuotes[0].innerHTML = `"${T['testi-q1'].replace(T['testi-q1-em'], `<em>${T['testi-q1-em']}</em>`)}"` ;
-    testiQuotes[1].innerHTML = `"${T['testi-q2'].replace(T['testi-q2-em'], `<em>${T['testi-q2-em']}</em>`)}"` ;
-    testiQuotes[2].innerHTML = `"${T['testi-q3'].replace(T['testi-q3-em'], `<em>${T['testi-q3-em']}</em>`)}"` ;
-  }
-
-  // FAQ
-  const faqEyebrow = document.querySelector('#faq .eyebrow');
-  if(faqEyebrow) faqEyebrow.textContent = T['faq-eyebrow'];
-  const faqH2 = document.querySelector('#faq .section-h2');
-  if(faqH2) faqH2.textContent = T['faq-h2'];
-  const faqItems = document.querySelectorAll('.faq-item');
-  const faqData = [
-    {q:'faq-q1',a:'faq-a1'},{q:'faq-q2',a:'faq-a2'},{q:'faq-q3',a:'faq-a3'},
-    {q:'faq-q4',a:'faq-a4'},{q:'faq-q5',a:'faq-a5'}
-  ];
-  faqItems.forEach((item,i)=>{
-    const summ = item.querySelector('.faq-summary');
-    const icon = summ.querySelector('.faq-icon');
-    summ.textContent = T[faqData[i].q];
-    summ.appendChild(icon);
-    item.querySelector('.faq-body p').innerHTML = T[faqData[i].a];
-  });
-
-  // CTA
-  const ctaH2 = document.querySelector('.cta-h2');
-  if(ctaH2) ctaH2.innerHTML = `${T['cta-h2-1']} <em>${T['cta-h2-2']}</em>`;
-  const ctaBody = document.querySelector('.cta-body');
-  if(ctaBody) ctaBody.textContent = T['cta-body'];
-  const emailInput = document.getElementById('waitlist-email');
-  if(emailInput) emailInput.placeholder = T['cta-ph'];
-  const ctaSubmitBtn = document.querySelector('.cta-form-pill button[type="submit"]');
-  if(ctaSubmitBtn) ctaSubmitBtn.innerHTML = T['cta-btn'] + ' ' + ARROW_SVG_SM;
-
-  // Modal
-  document.querySelector('.modal-h2').textContent = T['modal-h2'];
-  document.querySelector('.modal-body').textContent = T['modal-body'];
-  const modalGotIt = document.querySelector('#modal-backdrop .btn');
-  if(modalGotIt) modalGotIt.textContent = T['modal-btn'];
-
-  // Footer
-  document.querySelector('.footer-desc').textContent = T['footer-desc'];
-  const footCols = document.querySelectorAll('.footer-col');
-  if(footCols[0]){
-    footCols[0].querySelector('h4').textContent = T['foot-platform'];
-    const fLinks0 = footCols[0].querySelectorAll('a');
-    fLinks0[0] && (fLinks0[0].textContent = T['foot-how']);
-    fLinks0[1] && (fLinks0[1].textContent = T['foot-join']);
-    fLinks0[2] && (fLinks0[2].textContent = T['foot-owners']);
-  }
-  if(footCols[1]){
-    footCols[1].querySelector('h4').textContent = T['foot-company'];
-    const fLinks1 = footCols[1].querySelectorAll('a');
-    fLinks1[1] && (fLinks1[1].textContent = T['foot-faq']);
-    fLinks1[2] && (fLinks1[2].textContent = T['foot-careers']);
-    fLinks1[3] && (fLinks1[3].textContent = T['foot-press']);
-  }
-  if(footCols[2]){
-    footCols[2].querySelector('h4').textContent = T['foot-legal'];
-    const fLinks2 = footCols[2].querySelectorAll('a');
-    fLinks2[0] && (fLinks2[0].textContent = T['foot-privacy']);
-    fLinks2[1] && (fLinks2[1].textContent = T['foot-terms']);
-    fLinks2[2] && (fLinks2[2].textContent = T['foot-cookies']);
-    fLinks2[3] && (fLinks2[3].textContent = T['foot-unsub']);
-  }
-  document.querySelector('.footer-copy').textContent = T['foot-copy'];
-
-  if(!silent) showToast(T['toast-join']);
-}
-
-// ===== TOAST =====
-let toastTimer;
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  document.getElementById('toast-text').textContent = msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
-}
-
-// ===== CITY ROW CLICK =====
-function cityClick(city) {
-  const T = TRANSLATIONS[currentLang];
-  showToast(city + ' ' + T['toast-city']);
-  setTimeout(() => {
-    document.getElementById('cta').scrollIntoView({ behavior: 'smooth' });
-  }, 400);
-}
-
-// ===== WAITLIST FORM =====
-function submitWaitlist(e) {
-  e.preventDefault();
-  const email = document.getElementById('waitlist-email').value;
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!re.test(email)) { showToast('Please enter a valid email address'); return; }
-  const pos = 1848 + Math.floor(Math.random() * 20);
-  document.getElementById('modal-ref').textContent = 'Your position · #' + pos;
-  document.getElementById('modal-backdrop').classList.add('open');
-  document.getElementById('waitlist-form').reset();
-}
-
-// ===== MODAL =====
-function closeModal(e) {
-  if (e.target === document.getElementById('modal-backdrop')) closeModalDirect();
-}
-function closeModalDirect() {
-  document.getElementById('modal-backdrop').classList.remove('open');
-}
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModalDirect();
-});
-
-// ===== COUNT-UP STATS =====
-function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-function animateCount(el, target, suffix) {
-  const dur = 1600;
-  const start = performance.now();
-  function tick(now) {
-    const p = Math.min((now - start) / dur, 1);
-    const val = Math.round(easeOutCubic(p) * target);
-    el.textContent = (target >= 1000 ? val.toLocaleString() : val) + (suffix || '');
-    if (p < 1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}
-const statsObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      animateCount(el, parseInt(el.dataset.count), el.dataset.suffix);
-      statsObs.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
-document.querySelectorAll('[data-count]').forEach(el => statsObs.observe(el));
-
-// ===== ACTIVITY TICKER =====
-const tickerPeople = [
-  { init: 'MA', name: 'Mohamed A.', city: 'Oslo' },
-  { init: 'FO', name: 'Fatima O.', city: 'London' },
-  { init: 'AH', name: 'Ayaan H.', city: 'Toronto' },
-  { init: 'IS', name: 'Ibrahim S.', city: 'Minneapolis' },
-  { init: 'HM', name: 'Hodan M.', city: 'Stockholm' },
-  { init: 'AY', name: 'Abdi Y.', city: 'Dubai' },
-  { init: 'SK', name: 'Sagal K.', city: 'Birmingham' }
-];
-let tickIdx = 0;
-const ticker = document.getElementById('activity-ticker');
-const times = ['just now', '1 min ago', '2 min ago', 'just now', '3 min ago'];
-function showTicker() {
-  if (window.scrollY < 300) return;
-  const p = tickerPeople[tickIdx % tickerPeople.length];
-  document.getElementById('ticker-avatar').textContent = p.init;
-  document.getElementById('ticker-text').innerHTML = `<strong>${p.name}</strong> joined from ${p.city}`;
-  ticker.querySelector('.ticker-time').textContent = times[tickIdx % times.length];
-  ticker.classList.add('show');
-  tickIdx++;
-  setTimeout(() => ticker.classList.remove('show'), 4500);
-}
-setTimeout(() => {
-  showTicker();
-  setInterval(showTicker, 11000);
-}, 5000);
-
-// ===== FAQ smooth max-height =====
-document.querySelectorAll('details.faq-item').forEach(d => {
-  d.addEventListener('toggle', () => {
-    const body = d.querySelector('.faq-body');
-    if (d.open) {
-      body.style.maxHeight = body.scrollHeight + 'px';
+  // ── HEADER SCROLL EFFECT ──
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 20) {
+      header.classList.add('scrolled');
     } else {
-      body.style.maxHeight = '0';
+      header.classList.remove('scrolled');
     }
   });
-});
 
-// ===== RESTORE SAVED LANGUAGE =====
-(function(){
-  const saved = localStorage.getItem('bh-lang');
-  if(saved === 'so') setLang('so', true);
-})();
+  // ── FORCE TOP ON REFRESH ──
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+  if (window.location.hash) {
+    window.history.replaceState(null, null, window.location.pathname);
+  }
+
+  // ── INITIALIZE LANGUAGE ──
+  setLang('en');
 </script>
 </body>
 </html>

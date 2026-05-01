@@ -1,0 +1,13 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- House Outline (Navy) -->
+  <path d="M80 260L256 84L432 260V440" stroke="#0B1C2C" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Window (Gold) -->
+  <rect x="220" y="180" width="28" height="28" fill="#C8A96A"/>
+  <rect x="264" y="180" width="28" height="28" fill="#C8A96A"/>
+  <rect x="220" y="224" width="28" height="28" fill="#C8A96A"/>
+  <rect x="264" y="224" width="28" height="28" fill="#C8A96A"/>
+
+  <!-- Inward Arrow (Gold) -->
+  <path d="M140 460C180 360 260 300 260 300L210 300M260 300L260 350" stroke="#C8A96A" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
