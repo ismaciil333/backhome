@@ -669,7 +669,7 @@
       .project-card { grid-template-columns: 1fr; }
       .why-grid, .trust-grid, .test-grid { grid-template-columns: 1fr; }
       .overlay-card { position: relative; width: 100%; border-radius: 0; padding: 40px; }
-      .overlay-wrapper { height: auto; display: flex; flex-direction: column-reverse; }
+      .overlay-wrapper { height: auto; display: flex; flex-direction: column; }
       .footer-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .process-timeline { display: none; } /* Hide complex process timeline on mobile */
@@ -697,15 +697,15 @@
     
     /* Right column components adjustments */
     #image-overlay .overlay-wrapper { height: 500px; border-radius: 24px; overflow: hidden; }
-    #image-overlay .overlay-card { width: 100%; position: relative; border-radius: 0; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; padding: 40px 32px; background: var(--dark-navy); }
-    #image-overlay .overlay-wrapper { display: flex; flex-direction: column-reverse; height: auto; }
+    #image-overlay .overlay-card { width: 100%; position: relative; border-radius: 0; border-top-left-radius: 40px; border-top-right-radius: 40px; padding: 40px 32px; background: var(--dark-navy); }
+    #image-overlay .overlay-wrapper { display: flex; flex-direction: column; height: auto; }
     #image-overlay .overlay-img { height: 200px; }
     
     /* Testimonials adjustments */
     #testimonials .test-header { margin-bottom: 24px; text-align: left; }
     #testimonials .test-header h2 { font-size: 28px; }
-    #testimonials .test-grid { display: flex; overflow-x: auto; gap: 16px; padding-bottom: 16px; scroll-snap-type: x mandatory; }
-    #testimonials .test-card { min-width: 85%; scroll-snap-align: start; }
+    #testimonials .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    #testimonials .test-card {  }
     
     /* FAQ adjustments */
     #faq .faq-header h2 { font-size: 28px; }
@@ -752,9 +752,9 @@
         <h1 class="hero-title">Find a place that feels like <span class="serif-italic">home</span>.</h1>
         <p class="hero-subtitle">BackHome makes it easy, transparent, and secure for the diaspora to co-own real estate in their home countries — with yield, community, and full ownership. Wherever you are.</p>
         
-        <div class="hero-actions">
+        <div class="hero-actions" style="display: flex; gap: 16px; align-items: center;">
           <a href="#bottom-cta" class="btn btn-dark">Join the waitlist &rarr;</a>
-          <a href="#how-it-works" class="link-arrow">Learn more &rarr;</a>
+          <a href="list-your-property.html" class="btn btn-outline" style="border: 1px solid var(--border-color); color: var(--text-main); font-weight: 600;">List your property</a>
         </div>
 
         <div class="hero-verify">
@@ -921,65 +921,7 @@
   </div>
 
   
-      <!-- WHY BACKHOME -->
-  <div id="why-backhome" class="dashboard-section">
-    <div class="container">
-      <div class="why-header">
-        <div class="section-label">WHY BACKHOME</div>
-        <h2>True value, <span class="serif-italic">low surprise.</span></h2>
-        <p>We cut the complexity, the hidden costs, and the risk. So you can invest back home with confidence and peace of mind.</p>
-      </div>
-
-      <div class="why-grid">
-        <div class="why-card">
-          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          <h4>Secure verification</h4>
-          <p>Every property goes through a rigorous legal and technical verification process.</p>
-        </div>
-        <div class="why-card">
-          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-          <h4>Full, clear ownership</h4>
-          <p>You own your share. It's yours. We make sure the paperwork connects and everything is clear.</p>
-        </div>
-        <div class="why-card">
-          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          <h4>Active with cashflows</h4>
-          <p>You earn more. We manage less. Sit back and enjoy your earnings with transparent updates.</p>
-        </div>
-        <div class="why-card">
-          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <h4>Local on-the-ground team</h4>
-          <p>Our team verifies every property on-site so you can invest with total confidence.</p>
-        </div>
-      </div>
-
-      <div class="section-label">OUR VERIFICATION PROCESS</div>
-      <div class="process-timeline">
-        <div class="process-step">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          1. Local team inspection
-        </div>
-        <div style="color:var(--border-color);">&rarr;</div>
-        <div class="process-step">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-          2. Photo & video documentation
-        </div>
-        <div style="color:var(--border-color);">&rarr;</div>
-        <div class="process-step">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-          3. Legal & title verification
-        </div>
-        <div style="color:var(--border-color);">&rarr;</div>
-        <div class="process-step">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          4. Approved & published
-        </div>
-      </div>
-    </div>
-  </div>
-
-  
-    </div>
+          </div>
     <div class="dashboard-right">
       <!-- IMAGE OVERLAY SECTION -->
   <div id="image-overlay" class="dashboard-section">
@@ -1006,103 +948,6 @@
               Only real opportunities
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  
-      <!-- TESTIMONIALS -->
-  <div id="testimonials" class="dashboard-section">
-    <div class="container">
-      <div class="test-header">
-        <h2>What the diaspora is <span class="serif-italic">saying</span></h2>
-      </div>
-      <div class="test-grid">
-        
-        <div class="test-card">
-          <div class="stars">★★★★★</div>
-          <div class="test-text">"I never knew I could co-own a villa back home. BackHome made it simple and possible."</div>
-          <div class="test-user">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Amina">
-            <div class="test-user-info">
-              <strong>Amina</strong>
-              <span>London</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="test-card">
-          <div class="stars">★★★★★</div>
-          <div class="test-text">"Finally, a platform I can trust with my hard-earned money."</div>
-          <div class="test-user">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Keenan">
-            <div class="test-user-info">
-              <strong>Keenan</strong>
-              <span>Toronto</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="test-card">
-          <div class="stars">★★★★★</div>
-          <div class="test-text">"I'm earning returns and creating generational wealth back home."</div>
-          <div class="test-user">
-            <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Fadila">
-            <div class="test-user-info">
-              <strong>Fadila</strong>
-              <span>Paris</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  
-      <!-- FAQ -->
-  <div id="faq" class="dashboard-section">
-    <div class="container">
-      <div class="faq-header">
-        <div class="section-label">FAQ</div>
-        <h2>Everything you're wondering.</h2>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div>
-            <h4>What's the minimum amount?</h4>
-            <div class="faq-answer">You can start with as little as $1,000 depending on the project. Each project has its own minimum investment explicitly stated in its details.</div>
-          </div>
-          <span class="icon-plus">+</span>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div>
-            <h4>How do payouts work?</h4>
-            <div class="faq-answer">Payouts from rental yield are distributed quarterly directly to your connected bank account or digital wallet.</div>
-          </div>
-          <span class="icon-plus">+</span>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div>
-            <h4>Can I sell my share if I need to?</h4>
-            <div class="faq-answer">Yes. While real estate is a long-term investment, we have a secondary market where you can list your shares to other investors after a 12-month lock-in period.</div>
-          </div>
-          <span class="icon-plus">+</span>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div>
-            <h4>What if something happens to my share?</h4>
-            <div class="faq-answer">Your shares are legally backed by a Special Purpose Vehicle (SPV) that owns the property. You have legal ownership rights equivalent to your share percentage.</div>
-          </div>
-          <span class="icon-plus">+</span>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div>
-            <h4>Is my investment from my bed?</h4>
-            <div class="faq-answer">Yes! You can review documents, sign legally binding contracts, and monitor your portfolio entirely online from anywhere in the world.</div>
-          </div>
-          <span class="icon-plus">+</span>
         </div>
       </div>
     </div>
@@ -1164,7 +1009,180 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
+  
+  <section class="full-width-section" style="padding: 100px 0;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+      <!-- TESTIMONIALS -->
+  <div id="testimonials" class="dashboard-section">
+    <div class="container">
+      <div class="test-header">
+        <h2>What the diaspora is <span class="serif-italic">saying</span></h2>
+      </div>
+      <div class="test-grid">
+        
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <div class="test-text">"I never knew I could co-own a villa back home. BackHome made it simple and possible."</div>
+          <div class="test-user">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Amina">
+            <div class="test-user-info">
+              <strong>Amina</strong>
+              <span>London</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <div class="test-text">"Finally, a platform I can trust with my hard-earned money."</div>
+          <div class="test-user">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Keenan">
+            <div class="test-user-info">
+              <strong>Keenan</strong>
+              <span>Toronto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <div class="test-text">"I'm earning returns and creating generational wealth back home."</div>
+          <div class="test-user">
+            <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Fadila">
+            <div class="test-user-info">
+              <strong>Fadila</strong>
+              <span>Paris</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  
+
+    </div>
+  </section>
+
+  <section class="full-width-section" style="padding: 100px 0;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+      <!-- FAQ -->
+  <div id="faq" class="dashboard-section">
+    <div class="container">
+      <div class="faq-header">
+        <div class="section-label">FAQ</div>
+        <h2>Everything you're wondering.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div>
+            <h4>What's the minimum amount?</h4>
+            <div class="faq-answer">You can start with as little as $1,000 depending on the project. Each project has its own minimum investment explicitly stated in its details.</div>
+          </div>
+          <span class="icon-plus">+</span>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div>
+            <h4>How do payouts work?</h4>
+            <div class="faq-answer">Payouts from rental yield are distributed quarterly directly to your connected bank account or digital wallet.</div>
+          </div>
+          <span class="icon-plus">+</span>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div>
+            <h4>Can I sell my share if I need to?</h4>
+            <div class="faq-answer">Yes. While real estate is a long-term investment, we have a secondary market where you can list your shares to other investors after a 12-month lock-in period.</div>
+          </div>
+          <span class="icon-plus">+</span>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div>
+            <h4>What if something happens to my share?</h4>
+            <div class="faq-answer">Your shares are legally backed by a Special Purpose Vehicle (SPV) that owns the property. You have legal ownership rights equivalent to your share percentage.</div>
+          </div>
+          <span class="icon-plus">+</span>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('active')">
+          <div>
+            <h4>Is my investment from my bed?</h4>
+            <div class="faq-answer">Yes! You can review documents, sign legally binding contracts, and monitor your portfolio entirely online from anywhere in the world.</div>
+          </div>
+          <span class="icon-plus">+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+    </div>
+  </section>
+
+  <section class="full-width-section" style="padding: 100px 0;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+<!-- WHY BACKHOME -->
+  <div id="why-backhome" class="dashboard-section">
+    <div class="container">
+      <div class="why-header">
+        <div class="section-label">WHY BACKHOME</div>
+        <h2>True value, <span class="serif-italic">low surprise.</span></h2>
+        <p>We cut the complexity, the hidden costs, and the risk. So you can invest back home with confidence and peace of mind.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <h4>Secure verification</h4>
+          <p>Every property goes through a rigorous legal and technical verification process.</p>
+        </div>
+        <div class="why-card">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <h4>Full, clear ownership</h4>
+          <p>You own your share. It's yours. We make sure the paperwork connects and everything is clear.</p>
+        </div>
+        <div class="why-card">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <h4>Active with cashflows</h4>
+          <p>You earn more. We manage less. Sit back and enjoy your earnings with transparent updates.</p>
+        </div>
+        <div class="why-card">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <h4>Local on-the-ground team</h4>
+          <p>Our team verifies every property on-site so you can invest with total confidence.</p>
+        </div>
+      </div>
+
+      <div class="section-label">OUR VERIFICATION PROCESS</div>
+      <div class="process-timeline">
+        <div class="process-step">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          1. Local team inspection
+        </div>
+        <div style="color:var(--border-color);">&rarr;</div>
+        <div class="process-step">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          2. Photo & video documentation
+        </div>
+        <div style="color:var(--border-color);">&rarr;</div>
+        <div class="process-step">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          3. Legal & title verification
+        </div>
+        <div style="color:var(--border-color);">&rarr;</div>
+        <div class="process-step">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          4. Approved & published
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+    </div>
+  </section>
+<!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-grid">
