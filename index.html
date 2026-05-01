@@ -92,13 +92,15 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 24px;
+      height: 48px;
+      padding: 0 24px;
       font-size: 14px;
       font-weight: 600;
       border-radius: 40px;
       cursor: pointer;
       transition: all 0.2s;
       border: 1px solid transparent;
+      box-sizing: border-box;
     }
     .btn-dark {
       background: var(--dark-navy);
@@ -700,17 +702,22 @@
     .lang-toggle {
       display: flex;
       background: var(--bg-light);
-      border-radius: 20px;
+      border-radius: 40px;
       padding: 4px;
       border: 1px solid var(--border-color);
+      height: 48px;
+      box-sizing: border-box;
     }
     .lang-btn {
       border: none;
       background: transparent;
-      padding: 6px 12px;
-      font-size: 13px;
+      padding: 0 16px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
       font-weight: 600;
-      border-radius: 16px;
+      border-radius: 36px;
       cursor: pointer;
       color: var(--text-muted);
       transition: all 0.2s;
@@ -765,16 +772,16 @@
           <span>Back</span><span>Home</span>
         </a>
         <div class="nav-links">
-          <a href="#how-it-works">How it works</a>
-          <a href="#investments">Investments</a>
-          <a href="#trust">About us</a>
+          <a href="#how-it-works" data-i18n="nav_how">How it works</a>
+          <a href="#investments" data-i18n="nav_invest">Investments</a>
+          <a href="#trust" data-i18n="nav_about">About us</a>
         </div>
         <div class="header-actions">
           <div class="lang-toggle">
-            <button class="lang-btn active">EN</button>
-            <button class="lang-btn">SO</button>
+            <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" id="btn-so" onclick="setLang('so')">SO</button>
           </div>
-          <a href="#bottom-cta" class="btn btn-dark">Join waitlist</a>
+          <a href="#bottom-cta" class="btn btn-dark" data-i18n="nav_waitlist">Join waitlist</a>
         </div>
       </nav>
     </div>
@@ -792,8 +799,8 @@
         <p class="hero-subtitle">BackHome makes it easy, transparent, and secure for the diaspora to co-own real estate in their home countries — with yield, community, and full ownership. Wherever you are.</p>
         
         <div class="hero-actions" style="display: flex; gap: 16px; align-items: center;">
-          <a href="#bottom-cta" class="btn btn-dark">Join the waitlist &rarr;</a>
-          <a href="list-your-property.html" class="btn btn-outline" style="border: 1px solid var(--border-color); color: var(--text-main); font-weight: 600;">List your property</a>
+          <a href="#bottom-cta" class="btn btn-dark" data-i18n="hero_join">Join the waitlist &rarr;</a>
+          <a href="list-your-property.html" class="btn btn-outline" style="border: 1px solid var(--border-color); color: var(--text-main); font-weight: 600;" data-i18n="hero_list">List your property</a>
         </div>
 
         <div class="hero-verify">
@@ -1281,6 +1288,45 @@
 
 
   <script>
+    const translations = {
+      en: {
+        nav_how: "How it works",
+        nav_invest: "Investments",
+        nav_about: "About us",
+        nav_waitlist: "Join waitlist",
+        hero_join: "Join the waitlist &rarr;",
+        hero_list: "List your property"
+      },
+      so: {
+        nav_how: "Sida ay u shaqeyso",
+        nav_invest: "Maalgashiga",
+        nav_about: "Kugusaabsan",
+        nav_waitlist: "Ku biir liiska",
+        hero_join: "Ku biir liiska &rarr;",
+        hero_list: "Diiwaangeli gurigaaga"
+      }
+    };
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-so').classList.toggle('active', lang === 'so');
+      
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+    }
+
+    // Initialize language
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      setLang(savedLang);
+    });
+
     document.querySelectorAll('.faq-item').forEach(item => {
       item.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
