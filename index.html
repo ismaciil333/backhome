@@ -7,25 +7,27 @@
   <link rel="icon" type="image/svg+xml" href="logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #F8F5F0;
-      --text-dark: #2B2927;
-      --text-muted: #736E67;
-      --accent: #BFA582;
-      --accent-light: #F4EFE8;
+      --bg-light: #FAFAFA;
       --white: #FFFFFF;
-      --border-color: #E6E1DA;
-      --max-width: 1300px;
+      --text-main: #111827;
+      --text-muted: #6B7280;
+      --dark-navy: #0B1C2C;
+      --green-accent: #22543D;
+      --green-light: #F0FDF4;
+      --border-color: #E5E7EB;
+      --gold: #C8A96A;
+      --max-width: 1200px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-dark);
+      background-color: var(--bg-light);
+      color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
@@ -35,16 +37,16 @@
     
     h1, h2, h3, h4 {
       font-family: 'Playfair Display', serif;
-      color: var(--text-dark);
+      color: var(--text-main);
       line-height: 1.2;
     }
     
-    .serif-italic { font-style: italic; color: var(--accent); }
+    .serif-italic { font-style: italic; color: var(--green-accent); }
 
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 40px;
+      padding: 0 32px;
     }
 
     /* NAVBAR */
@@ -53,7 +55,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(248, 245, 240, 0.9);
+      background: rgba(250, 250, 250, 0.9);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid transparent;
       transition: border-color 0.3s;
@@ -76,7 +78,7 @@
       font-family: 'Inter', sans-serif;
     }
     .logo-icon { width: 32px; height: 32px; flex-shrink: 0; }
-    .logo span { color: var(--accent); }
+    .logo span { color: var(--gold); }
     
     .nav-links {
       display: flex;
@@ -84,66 +86,53 @@
       font-size: 14px;
       font-weight: 600;
     }
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover { color: var(--green-accent); }
     
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 24px;
+      padding: 12px 24px;
       font-size: 14px;
       font-weight: 600;
-      border-radius: 12px;
+      border-radius: 40px;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all 0.2s;
       border: 1px solid transparent;
     }
     .btn-dark {
-      background: var(--text-dark);
+      background: var(--dark-navy);
       color: var(--white);
-      border-color: var(--text-dark);
     }
     .btn-dark:hover {
-      background: #3B3834;
-      border-color: #3B3834;
+      background: #081420;
       transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px rgba(11, 28, 44, 0.15);
     }
     .btn-outline {
       border-color: var(--border-color);
       background: var(--white);
-      color: var(--text-dark);
     }
     .btn-outline:hover {
-      background: rgba(0,0,0,0.03);
+      background: var(--bg-light);
     }
 
-    /* 2 COLUMN GRID */
-    .dashboard-container {
+    /* HERO SECTION */
+    #hero {
+      padding: 60px 0;
+    }
+    .hero-split {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 60px;
-      padding: 60px 0 100px;
+      align-items: center;
     }
-    .dashboard-left {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-    }
-    .dashboard-right {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    /* HERO */
     .hero-badge {
       display: inline-block;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 1.5px;
-      background: var(--white);
-      border: 1px solid var(--border-color);
+      background: var(--border-color);
       padding: 6px 12px;
       border-radius: 4px;
       margin-bottom: 24px;
@@ -173,7 +162,9 @@
       align-items: center;
       gap: 8px;
     }
-    .link-arrow:hover { color: var(--accent); }
+    .link-arrow:hover {
+      color: var(--green-accent);
+    }
     .hero-verify {
       display: flex;
       align-items: center;
@@ -182,13 +173,26 @@
       color: var(--text-muted);
       font-weight: 500;
     }
+    .hero-img-wrapper {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.08);
+    }
+    .hero-img-wrapper img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      display: block;
+    }
 
-    /* STATS */
+    /* STATS ROW */
     .stats-container {
+      margin-top: 60px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      padding: 32px;
+      padding: 40px;
       background: var(--white);
       border-radius: 16px;
       border: 1px solid var(--border-color);
@@ -210,20 +214,22 @@
       color: var(--text-muted);
     }
 
-    /* INVESTMENTS */
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 20px;
+    /* INVESTMENT OPPORTUNITIES */
+    #investments {
+      padding: 100px 0;
     }
     .section-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
+    }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-transform: uppercase;
     }
     .project-list {
       display: flex;
@@ -241,120 +247,483 @@
       border: 1px solid var(--border-color);
       transition: box-shadow 0.2s, transform 0.2s;
     }
+    .project-card:hover {
+      box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+      transform: translateY(-2px);
+    }
     .project-img {
       width: 120px;
       height: 80px;
       border-radius: 8px;
       object-fit: cover;
     }
-    .project-info h4 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-    .project-info .loc { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
-    .project-info .desc { font-size: 14px; color: var(--text-muted); }
-    .project-return { text-align: right; }
-    .return-label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
-    .return-val { font-size: 20px; font-weight: 700; color: var(--accent); }
+    .project-info h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .project-info .loc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .project-info .desc {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .project-return {
+      text-align: right;
+    }
+    .return-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .return-val {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--green-accent);
+    }
     .projects-footer {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 24px; background: var(--white); border-radius: 12px;
-      border: 1px solid var(--border-color); margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px;
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin-top: 16px;
     }
     .projects-footer span { font-size: 14px; color: var(--text-muted); }
 
     /* HOW IT WORKS */
-    .how-split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .how-left h2 { font-size: 32px; margin: 0 0 24px; }
-    .how-left p { color: var(--text-muted); }
-    .how-right { display: flex; flex-direction: column; gap: 16px; }
+    #how-it-works {
+      padding: 100px 0;
+      background: var(--white);
+      border-top: 1px solid var(--border-color);
+    }
+    .how-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+    .how-left h2 {
+      font-size: 40px;
+      margin: 16px 0 24px;
+    }
+    .how-left p {
+      color: var(--text-muted);
+      max-width: 400px;
+    }
+    .how-right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
     .feature-row {
-      display: flex; gap: 20px; padding: 24px;
-      border: 1px solid var(--border-color); border-radius: 16px; background: var(--white);
+      display: flex;
+      gap: 24px;
+      padding: 24px;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      background: var(--bg-light);
     }
     .feature-icon {
-      width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
-      background: var(--bg-color); border-radius: 12px; border: 1px solid var(--border-color); flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      flex-shrink: 0;
     }
-    .feature-text h4 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-    .feature-text p { font-size: 14px; color: var(--text-muted); }
+    .feature-text h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .feature-text p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
 
     /* WHY BACKHOME */
-    .why-header h2 { font-size: 32px; margin: 0 0 24px; }
-    .why-header p { color: var(--text-muted); margin-bottom: 40px; }
-    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 40px; }
-    .why-card { background: var(--white); padding: 32px 24px; border-radius: 16px; border: 1px solid var(--border-color); }
-    .why-card .icon { margin-bottom: 24px; }
-    .why-card h4 { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 12px; }
-    .why-card p { font-size: 13px; color: var(--text-muted); }
-
-    /* RIGHT COLUMN CARDS */
-    .side-card {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 32px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.02);
+    #why-backhome {
+      padding: 100px 0;
     }
-    
-    /* LAUNCHING CARD (from c691ea1) */
-    .card-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--text-muted); }
-    .city-row { display: flex; align-items: flex-start; justify-content: space-between; padding: 14px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 10px; }
-    .city-row-name { font-weight: 700; font-size: 14px; }
-    .badge-coming { background: var(--accent-light); color: #927555; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 20px; }
+    .why-header h2 {
+      font-size: 40px;
+      margin: 16px 0 24px;
+    }
+    .why-header p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 60px;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+    .why-card {
+      background: var(--white);
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+    }
+    .why-card .icon {
+      margin-bottom: 24px;
+    }
+    .why-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .why-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
 
-    /* VERIFICATION CARD */
-    .verify-card { background: var(--white); border: 1px solid var(--border-color); padding: 32px; border-radius: 24px; }
-    .verify-card h2 { font-size: 24px; margin-bottom: 20px; }
-    .verify-card ul { display: flex; flex-direction: column; gap: 16px; }
-    .verify-card li { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+    .process-timeline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 40px;
+      border-top: 1px solid var(--border-color);
+    }
+    .process-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* IMAGE OVERLAY SECTION */
+    #image-overlay {
+      padding: 60px 0;
+    }
+    .overlay-wrapper {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      height: 500px;
+    }
+    .overlay-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .overlay-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 400px;
+      background: var(--dark-navy);
+      color: var(--white);
+      padding: 60px 48px;
+      border-top-right-radius: 40px;
+      border-bottom-right-radius: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .overlay-card h2 {
+      color: var(--white);
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+    .overlay-card ul {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .overlay-card li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+    }
 
     /* TESTIMONIALS */
-    .test-card { padding: 24px; border: 1px solid var(--border-color); border-radius: 16px; background: var(--white); margin-bottom: 16px;}
-    .stars { color: var(--accent); margin-bottom: 16px; letter-spacing: 2px; }
-    .test-text { font-size: 14px; color: var(--text-muted); font-style: italic; margin-bottom: 24px; }
-    .test-user { display: flex; align-items: center; gap: 12px; }
-    .test-user img { width: 40px; height: 40px; border-radius: 50%; }
-    .test-user-info { font-size: 12px; }
-    .test-user-info strong { color: var(--text-dark); display: block;}
-    
-    /* FAQ */
-    .faq-container { background: var(--white); border-radius: 24px; padding: 32px; border: 1px solid var(--border-color); }
-    .faq-item { border-bottom: 1px solid var(--border-color); padding: 16px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-    .faq-item h4 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-muted); font-size: 13px; }
-    .faq-item.active .faq-answer { max-height: 200px; padding-top: 12px; }
-    
-    /* CTA WAITLIST CARD */
-    .cta-card { background: var(--white); border-radius: 24px; padding: 40px 32px; text-align: center; border: 1px solid var(--border-color); }
-    .cta-card h2 { font-size: 28px; margin-bottom: 16px; }
-    .cta-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
-    .cta-input { padding: 14px 20px; border-radius: 12px; border: 1px solid var(--border-color); font-size: 14px; width: 100%; margin-bottom: 12px; background: var(--bg-color); }
-    .cta-card .btn-dark { width: 100%; padding: 14px; border-radius: 12px; }
+    #testimonials {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .test-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .test-header h2 { font-size: 40px; }
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .test-card {
+      padding: 32px;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      background: var(--bg-light);
+    }
+    .stars {
+      color: var(--green-accent);
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+    .test-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 24px;
+      min-height: 80px;
+    }
+    .test-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .test-user img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .test-user-info {
+      font-size: 12px;
+    }
+    .test-user-info strong { color: var(--text-main); display: block;}
+    .test-user-info span { color: var(--text-muted); }
 
-    /* TRUST */
-    .trust-container { background: var(--white); border-radius: 24px; padding: 32px; border: 1px solid var(--border-color); text-align: center; }
-    .trust-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; margin-bottom: 24px; }
-    .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .trust-item h4 { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; margin: 12px 0 4px; }
-    .trust-item p { font-size: 11px; color: var(--text-muted); }
+    /* FAQ */
+    #faq {
+      padding: 100px 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-header { margin-bottom: 40px; }
+    .faq-header h2 { font-size: 36px; margin-top: 12px; }
+    .faq-item {
+      border-bottom: 1px solid var(--border-color);
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .faq-item h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: var(--text-muted);
+      font-size: 15px;
+      padding-top: 0;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding-top: 16px;
+    }
+    .faq-item.active .icon-plus {
+      transform: rotate(45deg);
+    }
+    .icon-plus {
+      transition: transform 0.3s ease;
+    }
+    
+    /* BOTTOM CTA */
+    #bottom-cta {
+      padding: 80px 0;
+    }
+    .cta-card {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      padding: 80px 60px;
+    }
+    .cta-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+    .cta-bg::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to right, rgba(34, 84, 61, 0.9) 0%, rgba(34, 84, 61, 0.7) 100%);
+    }
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      color: var(--white);
+      max-width: 500px;
+    }
+    .cta-content h2 {
+      color: var(--white);
+      font-size: 44px;
+      margin-bottom: 16px;
+    }
+    .cta-content p {
+      font-size: 15px;
+      opacity: 0.9;
+      margin-bottom: 40px;
+    }
+    .cta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cta-input {
+      padding: 16px 24px;
+      border-radius: 40px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      width: 100%;
+    }
+    .cta-form .btn-dark {
+      width: 100%;
+      padding: 16px;
+    }
+
+    /* TRUST BANNER */
+    #trust {
+      padding: 60px 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .trust-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .trust-item h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      margin: 16px 0 8px;
+    }
+    .trust-item p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
 
     /* FOOTER */
-    footer { background: var(--white); padding: 60px 0 40px; border-top: 1px solid var(--border-color); }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-    .footer-col h4 { font-family: 'Inter', sans-serif; font-size: 14px; margin-bottom: 20px; }
-    .footer-links { display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: var(--text-muted); }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid var(--border-color); font-size: 13px; color: var(--text-muted); }
+    footer {
+      background: var(--white);
+      padding: 80px 0 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+    .footer-col h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-color);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
 
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-      .dashboard-container { grid-template-columns: 1fr; gap: 40px; }
-      .how-split, .why-grid { grid-template-columns: 1fr; }
+      .hero-split, .how-split { grid-template-columns: 1fr; gap: 40px; }
       .stats-container { grid-template-columns: 1fr; }
       .project-card { grid-template-columns: 1fr; }
+      .why-grid, .trust-grid, .test-grid { grid-template-columns: 1fr; }
+      .overlay-card { position: relative; width: 100%; border-radius: 0; padding: 40px; }
+      .overlay-wrapper { height: auto; display: flex; flex-direction: column-reverse; }
       .footer-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
+      .process-timeline { display: none; } /* Hide complex process timeline on mobile */
+    }
+  
+    /* OVERRIDES FOR 2-COLUMN LAYOUT */
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px;
+      align-items: start;
+    }
+    .dashboard-left { display: flex; flex-direction: column; gap: 40px; }
+    .dashboard-right { display: flex; flex-direction: column; gap: 40px; }
+    
+    .dashboard-section { padding: 0 !important; border: none !important; }
+    .container { padding: 0; max-width: 100%; margin: 0; }
+    
+    /* Hero adjustments */
+    #hero .hero-img-wrapper img { height: 400px; }
+    #hero .hero-split { gap: 40px; }
+    
+    /* Right column components adjustments */
+    #image-overlay .overlay-wrapper { height: 500px; border-radius: 24px; overflow: hidden; }
+    #image-overlay .overlay-card { width: 100%; position: relative; border-radius: 0; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; padding: 40px 32px; background: var(--dark-navy); }
+    #image-overlay .overlay-wrapper { display: flex; flex-direction: column-reverse; height: auto; }
+    #image-overlay .overlay-img { height: 200px; }
+    
+    /* Testimonials adjustments */
+    #testimonials .test-header { margin-bottom: 24px; text-align: left; }
+    #testimonials .test-header h2 { font-size: 28px; }
+    #testimonials .test-grid { display: flex; overflow-x: auto; gap: 16px; padding-bottom: 16px; scroll-snap-type: x mandatory; }
+    #testimonials .test-card { min-width: 85%; scroll-snap-align: start; }
+    
+    /* FAQ adjustments */
+    #faq .faq-header h2 { font-size: 28px; }
+    
+    /* CTA adjustments */
+    #bottom-cta .cta-card { padding: 40px 32px; }
+    #bottom-cta .cta-content h2 { font-size: 32px; }
+    
+    /* Trust adjustments */
+    #trust .trust-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    
+    @media (max-width: 1100px) {
+      .dashboard-container { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-
+  <!-- NAVBAR -->
   <header id="header">
     <div class="container">
       <nav>
@@ -367,21 +736,19 @@
           <a href="#investments">Investments</a>
           <a href="#trust">About us</a>
         </div>
-        <div style="display:flex; gap:16px;">
-          <a href="list-your-property.html" class="btn btn-outline" style="padding: 10px 20px;">List your property</a>
-          <a href="#bottom-cta" class="btn btn-dark">Join waitlist</a>
-        </div>
+        <a href="#bottom-cta" class="btn btn-dark">Join waitlist</a>
       </nav>
     </div>
   </header>
 
-  <div class="container dashboard-container">
-    
-    <!-- LEFT COLUMN -->
+  
+  
+  <div class="dashboard-container">
     <div class="dashboard-left">
-      <!-- HERO -->
+      <div id="hero" class="dashboard-section">
+    <div class="container hero-split">
       <div class="hero-left">
-<span class="hero-badge">VERIFIED HOMES. REAL OWNERSHIP. BACK HOME.</span>
+        <span class="hero-badge">VERIFIED HOMES. REAL OWNERSHIP. BACK HOME.</span>
         <h1 class="hero-title">Find a place that feels like <span class="serif-italic">home</span>.</h1>
         <p class="hero-subtitle">BackHome makes it easy, transparent, and secure for the diaspora to co-own real estate in their home countries — with yield, community, and full ownership. Wherever you are.</p>
         
@@ -395,8 +762,14 @@
           Verified homes in Mogadishu, Hargeisa & Garowe
         </div>
       </div>
-      
-      <!-- STATS -->
+      <div class="hero-right">
+        <div class="hero-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Beautiful modern home exterior">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
       <div class="stats-container">
         <div class="stat-item">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
@@ -414,10 +787,12 @@
           <div class="stat-label">Secure & transparent</div>
         </div>
       </div>
+    </div>
+  </div>
 
+  
       <!-- INVESTMENTS -->
-      <!-- INVESTMENTS -->
-  <section id="investments">
+  <div id="investments" class="dashboard-section">
     <div class="container">
       <div class="section-header">
         <div class="section-label">INVESTMENT OPPORTUNITIES</div>
@@ -427,10 +802,10 @@
       <div class="project-list">
         
         <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" alt="Accra Heights" class="project-img">
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" alt="Mogadishu Heights" class="project-img">
           <div class="project-info">
-            <h4>Accra Heights</h4>
-            <div class="loc">Accra, Ghana</div>
+            <h4>Mogadishu Heights</h4>
+            <div class="loc">Mogadishu, Somalia</div>
             <div class="desc">Modern apartments in a prime location.</div>
           </div>
           <div class="project-return">
@@ -440,10 +815,10 @@
         </div>
 
         <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Sunset Villas" class="project-img">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Hargeisa Villas" class="project-img">
           <div class="project-info">
-            <h4>Sunset Villas</h4>
-            <div class="loc">Dakar, Senegal</div>
+            <h4>Hargeisa Villas</h4>
+            <div class="loc">Hargeisa, Somalia</div>
             <div class="desc">Luxury villas 5 min from the beach.</div>
           </div>
           <div class="project-return">
@@ -453,10 +828,10 @@
         </div>
 
         <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Kigali Serenity" class="project-img">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Garowe Serenity" class="project-img">
           <div class="project-info">
-            <h4>Kigali Serenity</h4>
-            <div class="loc">Kigali, Rwanda</div>
+            <h4>Garowe Serenity</h4>
+            <div class="loc">Garowe, Somalia</div>
             <div class="desc">Gated community with high rental demand.</div>
           </div>
           <div class="project-return">
@@ -466,10 +841,10 @@
         </div>
 
         <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09c15faa?auto=format&fit=crop&w=400&q=80" alt="Lagos Garden" class="project-img">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09c15faa?auto=format&fit=crop&w=400&q=80" alt="Kismayo Garden" class="project-img">
           <div class="project-info">
-            <h4>Lagos Garden</h4>
-            <div class="loc">Lagos, Nigeria</div>
+            <h4>Kismayo Garden</h4>
+            <div class="loc">Kismayo, Somalia</div>
             <div class="desc">Smart homes in a fast-growing area.</div>
           </div>
           <div class="project-return">
@@ -479,10 +854,10 @@
         </div>
 
         <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=400&q=80" alt="Nairobi Living" class="project-img">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=400&q=80" alt="Bosaso Living" class="project-img">
           <div class="project-info">
-            <h4>Nairobi Living</h4>
-            <div class="loc">Nairobi, Kenya</div>
+            <h4>Bosaso Living</h4>
+            <div class="loc">Bosaso, Somalia</div>
             <div class="desc">Affordable luxury in the heart of the city.</div>
           </div>
           <div class="project-return">
@@ -498,13 +873,11 @@
         <a href="#bottom-cta" class="link-arrow" style="font-size:14px; color:var(--text-main);">Join waitlist to get early access &rarr;</a>
       </div>
     </div>
-  </section>
+  </div>
 
   
-
       <!-- HOW IT WORKS -->
-      <!-- HOW IT WORKS -->
-  <section id="how-it-works">
+  <div id="how-it-works" class="dashboard-section">
     <div class="container how-split">
       <div class="how-left">
         <div class="section-label">HOW IT WORKS</div>
@@ -545,13 +918,11 @@
 
       </div>
     </div>
-  </section>
+  </div>
 
   
-
       <!-- WHY BACKHOME -->
-      <!-- WHY BACKHOME -->
-  <section id="why-backhome">
+  <div id="why-backhome" class="dashboard-section">
     <div class="container">
       <div class="why-header">
         <div class="section-label">WHY BACKHOME</div>
@@ -583,102 +954,72 @@
       </div>
 
       <div class="section-label">OUR VERIFICATION PROCESS</div>
-      
+      <div class="process-timeline">
+        <div class="process-step">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          1. Local team inspection
+        </div>
+        <div style="color:var(--border-color);">&rarr;</div>
+        <div class="process-step">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          2. Photo & video documentation
+        </div>
+        <div style="color:var(--border-color);">&rarr;</div>
+        <div class="process-step">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          3. Legal & title verification
+        </div>
+        <div style="color:var(--border-color);">&rarr;</div>
+        <div class="process-step">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          4. Approved & published
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- RIGHT COLUMN -->
+  
+    </div>
     <div class="dashboard-right">
-      <!-- LAUNCHING IN -->
-      <div class="launching-card" style="padding:24px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-          <div class="card-title" style="margin-bottom:0;" data-en="LAUNCHING IN" data-so="BILAABMAYA">LAUNCHING IN</div>
-          <span style="background: #E6F4EA; color: #1E8E3E; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 12px; display: inline-flex; align-items: center; gap: 4px;" data-en="Updated live" data-so="Toos loo cusbooneysiiyey"><span style="width:6px;height:6px;background:#1E8E3E;border-radius:50%;"></span>Updated live</span>
-        </div>
-
-        <div class="city-row" style="flex-direction:column; align-items:flex-start; gap:4px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-            <span class="city-row-name">Mogadishu</span>
-            <span class="badge-coming" data-en="Opening soon" data-so="Dhowaan furmaya">Opening soon</span>
-          </div>
-          <span style="font-size:12px; color:var(--text-muted);" data-en="Banaadir &middot; 47 homes lined up" data-so="Banaadir &middot; 47 guri ayaa diyaar ah">Banaadir &middot; 47 homes lined up</span>
-        </div>
-
-        <div class="city-row" style="flex-direction:column; align-items:flex-start; gap:4px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-            <span class="city-row-name">Hargeisa</span>
-            <span class="badge-coming" data-en="Opening soon" data-so="Dhowaan furmaya">Opening soon</span>
-          </div>
-          <span style="font-size:12px; color:var(--text-muted);" data-en="Maroodi Jeex &middot; 38 homes lined up" data-so="Maroodi Jeex &middot; 38 guri ayaa diyaar ah">Maroodi Jeex &middot; 38 homes lined up</span>
-        </div>
-
-        <div class="city-row" style="flex-direction:column; align-items:flex-start; gap:4px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-            <span class="city-row-name">Garowe</span>
-            <span class="badge-coming" data-en="Summer 2026" data-so="Xagaaga 2026" style="background:#F4EFE8; color:#927555;">Summer 2026</span>
-          </div>
-          <span style="font-size:12px; color:var(--text-muted);" data-en="Nugaal &middot; 24 homes lined up" data-so="Nugaal &middot; 24 guri ayaa diyaar ah">Nugaal &middot; 24 homes lined up</span>
-        </div>
-
-        <div class="city-row" style="flex-direction:column; align-items:flex-start; gap:4px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-            <span class="city-row-name">Kismayo</span>
-            <span class="badge-coming" data-en="Summer 2026" data-so="Xagaaga 2026" style="background:#F4EFE8; color:#927555;">Summer 2026</span>
-          </div>
-          <span style="font-size:12px; color:var(--text-muted);" data-en="Jubbada Hoose &middot; 18 homes lined up" data-so="Jubbada Hoose &middot; 18 guri ayaa diyaar ah">Jubbada Hoose &middot; 18 homes lined up</span>
-        </div>
-
-        <div class="city-row" style="flex-direction:column; align-items:flex-start; gap:4px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-            <span class="city-row-name">Galkayo</span>
-            <span class="badge-coming" data-en="Autumn 2026" data-so="Deyrta 2026" style="background:#F4EFE8; color:#927555;">Autumn 2026</span>
-          </div>
-          <span style="font-size:12px; color:var(--text-muted);" data-en="Mudug &middot; 12 homes lined up" data-so="Mudug &middot; 12 guri ayaa diyaar ah">Mudug &middot; 12 homes lined up</span>
-        </div>
-
-        <div class="city-row" style="flex-direction:column; align-items:flex-start; gap:4px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-            <span class="city-row-name">Bosaso</span>
-            <span class="badge-coming" data-en="Autumn 2026" data-so="Deyrta 2026" style="background:#F4EFE8; color:#927555;">Autumn 2026</span>
-          </div>
-          <span style="font-size:12px; color:var(--text-muted);" data-en="Bari &middot; 9 homes lined up" data-so="Bari &middot; 9 guri ayaa diyaar ah">Bari &middot; 9 homes lined up</span>
-        </div>
-
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; padding-top:16px; border-top:1px solid var(--border-color);">
-          <div style="display:flex; align-items:center;">
-            <div style="width:24px;height:24px;border-radius:50%;background:#BFA582;color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">AH</div>
-            <div style="width:24px;height:24px;border-radius:50%;background:#736E67;color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff;margin-left:-8px;">FM</div>
-            <div style="width:24px;height:24px;border-radius:50%;background:#2B2927;color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff;margin-left:-8px;">SO</div>
-            <div style="width:24px;height:24px;border-radius:50%;background:#E6E1DA;color:#2B2927;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff;margin-left:-8px;">+</div>
-          </div>
-          <div style="text-align:right;">
-            <div style="font-size:13px; font-weight:700; color:var(--text-dark);" data-en="1,800+ waiting" data-so="1,800+ ayaa sugaya">1,800+ waiting</div>
-            <div style="font-size:11px; color:var(--text-muted);" data-en="Avg. reply &middot; 4h" data-so="Celceliska jawaabta &middot; 4saac">Avg. reply &middot; 4h</div>
-          </div>
+      <!-- IMAGE OVERLAY SECTION -->
+  <div id="image-overlay" class="dashboard-section">
+    <div class="container">
+      <div class="overlay-wrapper">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80" alt="Home interior" class="overlay-img">
+        <div class="overlay-card">
+          <h2>Every home visited,<br>photographed,<br>measured.</h2>
+          <ul>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              In-person verification
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Detailed documentation
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              No guesswork
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Only real opportunities
+            </li>
+          </ul>
         </div>
       </div>
+    </div>
+  </div>
 
-      <!-- VERIFICATION CARD (From overlay) -->
-      <div class="verify-card">
-        <h2>Verified properties. Real ownership.</h2>
-        <ul>
-          <li>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-            Title deeds verified locally
-          </li>
-          <li>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-            Background checks on developers
-          </li>
-          <li>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-            Legal framework designed for the diaspora
-          </li>
-        </ul>
-      </div>
-
+  
       <!-- TESTIMONIALS -->
-      <div class="testimonials-container">
-        <div class="section-label">COMMUNITY</div>
+  <div id="testimonials" class="dashboard-section">
+    <div class="container">
+      <div class="test-header">
+        <h2>What the diaspora is <span class="serif-italic">saying</span></h2>
+      </div>
+      <div class="test-grid">
+        
         <div class="test-card">
           <div class="stars">★★★★★</div>
           <div class="test-text">"I never knew I could co-own a villa back home. BackHome made it simple and possible."</div>
@@ -715,12 +1056,19 @@
           </div>
         </div>
 
-      
       </div>
+    </div>
+  </div>
 
+  
       <!-- FAQ -->
-      <div class="faq-container" id="faq">
+  <div id="faq" class="dashboard-section">
+    <div class="container">
+      <div class="faq-header">
         <div class="section-label">FAQ</div>
+        <h2>Everything you're wondering.</h2>
+      </div>
+      <div class="faq-list">
         <div class="faq-item" onclick="this.classList.toggle('active')">
           <div>
             <h4>What's the minimum amount?</h4>
@@ -757,24 +1105,38 @@
           <span class="icon-plus">+</span>
         </div>
       </div>
-    
-      </div>
+    </div>
+  </div>
 
-      <!-- WAITLIST CTA -->
-      <div class="cta-card" id="bottom-cta">
-        <h2>Be part of<br>something bigger.</h2>
-        <p>Join the waitlist to get early access to vetted real estate opportunities in Somalia.</p>
-        <form class="cta-form">
-          <input type="email" placeholder="Enter your email address" class="cta-input" required>
-          <button type="submit" class="btn btn-dark">Join the waitlist</button>
-        </form>
+  
+      <!-- BOTTOM CTA -->
+  <div id="bottom-cta" class="dashboard-section">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-bg"></div>
+        <div class="cta-content">
+          <h2>Be part of<br>something bigger.</h2>
+          <p>Join thousands of people already on the waitlist and start building back home.</p>
+          <div class="cta-form">
+            <input type="email" placeholder="Enter your email address" class="cta-input">
+            <button class="btn btn-dark">Join the waitlist &rarr;</button>
+          </div>
+          <p style="font-size: 12px; margin-top: 16px; margin-bottom: 0;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            No spam. Early access only.
+          </p>
+        </div>
       </div>
+    </div>
+  </div>
 
-      <!-- TRUST -->
-      <div class="trust-container" id="trust">
-        <div class="trust-title">Built on Trust</div>
-        <div class="trust-grid">
-          <div class="trust-item">
+  
+      <!-- TRUST BANNER -->
+  <div id="trust" class="dashboard-section">
+    <div class="container">
+      <div class="trust-title">BackHome is built on trust</div>
+      <div class="trust-grid">
+        <div class="trust-item">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
           <h4>Diaspora-first</h4>
           <p>Built for us, by us.</p>
@@ -794,9 +1156,11 @@
           <h4>Transparent</h4>
           <p>No hidden fees. No guesswork.</p>
         </div>
-      
-        </div>
       </div>
+    </div>
+  </div>
+
+  
     </div>
   </div>
 
@@ -860,7 +1224,6 @@
 
 
   <script>
-    // FAQ Toggle
     document.querySelectorAll('.faq-item').forEach(item => {
       item.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
