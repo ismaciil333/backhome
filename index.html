@@ -793,7 +793,80 @@
     @media (max-width: 1100px) {
       .hero-grid { grid-template-columns: 1fr; }
     }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-color);
+      padding: 24px 0;
+      cursor: pointer;
+    }
+    .faq-header-click {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-header-click h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+    .faq-answer-wrapper {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+      opacity: 0;
+    }
+    .faq-item.active .faq-answer-wrapper {
+      max-height: 200px;
+      opacity: 1;
+      margin-top: 16px;
+    }
+    .icon-plus {
+      font-size: 24px;
+      transition: transform 0.3s ease;
+    }
+    .faq-item.active .icon-plus {
+      transform: rotate(45deg);
+    }
+    
+    /* Live Notification */
+    #live-notification {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: var(--dark-navy);
+      color: var(--white);
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      z-index: 1000;
+      pointer-events: none;
+    }
+    #live-notification.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green-accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--green-accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+      70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
 </style>
+
 </head>
 <body>
   <!-- NAVBAR -->
@@ -1112,6 +1185,48 @@
         "how_title_new": "Three steps. Zero surprises.",
         "cta_title_new": "Be first through the door.",
         "hero_learn": "Learn more &darr;",
+        "test_title": "What the diaspora is <span class=\"serif-italic\">saying</span>",
+        "test_1": "\"Last summer I lost €2,400 to a villa that didn't exist. If BackHome had been there, I'd have booked it twice.\"",
+        "test_1_name": "Amina H.",
+        "test_1_loc": "Minneapolis → Mogadishu",
+        "test_2": "\"Finally a platform that speaks Somali, uses the right neighborhoods, and doesn't treat us like tourists.\"",
+        "test_2_name": "Mohamed A.",
+        "test_2_loc": "Oslo → Hargeisa",
+        "test_3": "\"I own three homes in Garowe. BackHome gives me direct access to families I'd never reach — and handles the hard part.\"",
+        "test_3_name": "Fatima O.",
+        "test_3_loc": "Property owner, Garowe",
+        "faq_label": "FAQ",
+        "faq_title": "Everything you're wondering.",
+        "faq_1_q": "When does BackHome launch?",
+        "faq_1_a": "We are launching soon. Join the waitlist to get early access.",
+        "faq_2_q": "How are properties verified?",
+        "faq_2_a": "Our local team physically visits every property to inspect its condition and verify all legal documents.",
+        "faq_3_q": "Can I pay in USD, EUR or GBP?",
+        "faq_3_a": "Yes, our platform handles multiple international currencies for seamless transactions.",
+        "faq_4_q": "What if something goes wrong when I arrive?",
+        "faq_4_a": "Our on-the-ground support team is available 24/7 to resolve any issues quickly.",
+        "faq_5_q": "I own a property. How do I list?",
+        "faq_5_a": "Click \"List your property\" to provide your details. Our team will contact you to start the verification process.",
+        "cta_title_new": "Be first through the door.",
+        "cta_sub": "Join thousands of people already on the waitlist and start building back home.",
+        "cta_btn": "Join the waitlist &rarr;",
+        "cta_success": "Thank you! You have been added to the waitlist.",
+        "cta_spam": "No spam. Early access only.",
+        "footer_desc": "BackHome makes it easy, transparent, and secure to invest.",
+        "footer_why": "Why BackHome",
+        "footer_waitlist": "Waitlist",
+        "footer_plat": "Platform",
+        "footer_about": "About us",
+        "footer_careers": "Careers",
+        "footer_blog": "Blog",
+        "footer_contact": "Contact",
+        "footer_legal": "Legal",
+        "footer_terms": "Terms of service",
+        "footer_privacy": "Privacy policy",
+        "footer_cookie": "Cookie policy",
+        "footer_copy": "&copy; 2026 BackHome. All rights reserved.",
+        "cta_email": "Enter your email address"
+
         "cta_success": "Thank you! You have been added to the waitlist.",
 
         "nav_waitlist": "Join waitlist",
@@ -1381,5 +1496,12 @@
       if(success) success.style.display = 'block';
     });
   </script>
+
+  <!-- Live Notification -->
+  <div id="live-notification">
+    <div class="live-dot"></div>
+    <span id="live-notification-text">Mohamed A. joined from Oslo — just now</span>
+  </div>
 </body>
+
 </html>
