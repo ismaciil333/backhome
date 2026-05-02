@@ -23,7 +23,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-light);
@@ -753,6 +753,42 @@
       
     }
   
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-title h2 {
+      font-size: 40px;
+      margin-top: 12px;
+    }
+    .problem-card, .step-card {
+      padding: 32px;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      background: var(--white);
+    }
+    .problem-card h4, .step-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 16px 0 8px;
+    }
+    .problem-card p, .step-card p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    @media (max-width: 900px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+    
+    html { scroll-behavior: smooth; }
+
+
     .hero-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start; }
     @media (max-width: 1100px) {
       .hero-grid { grid-template-columns: 1fr; }
@@ -769,9 +805,9 @@
           <span>Back</span><span>Home</span>
         </a>
         <div class="nav-links">
+          <a href="#why-backhome" data-i18n="nav_why">Why BackHome</a>
           <a href="#how-it-works" data-i18n="nav_how">How it works</a>
-          <a href="#investments" data-i18n="nav_invest">Investments</a>
-          <a href="#why-backhome" data-i18n="nav_about">About us</a>
+          <a href="#faq" data-i18n="nav_faq">FAQ</a>
         </div>
         <div class="header-actions">
           <div class="lang-toggle">
@@ -784,9 +820,8 @@
     </div>
   </header>
 
-  
-  
-  
+  <main>
+  <!-- HERO -->
   <section id="hero" class="full-width-section" style="padding: 60px 0 100px;">
     <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
       <div class="hero-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
@@ -839,285 +874,118 @@
     </div>
   </section>
 
-  <section id="stats" class="full-width-section" style="padding: 60px 0;">
+  <!-- PROBLEM SECTION -->
+  <section id="why-backhome" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-      <div class="stats-container" style="display: flex; justify-content: center; gap: 60px;">
-        <div class="stat-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          <div class="stat-val">1,500+</div>
-          <div class="stat-label" data-i18n="stat_1">People on waitlist</div>
+      <div class="section-title">
+        <h2 data-i18n="prob_title">Renting back home shouldn't feel like a gamble.</h2>
+        <p style="color: var(--text-muted); font-size: 18px;" data-i18n="prob_sub">We cut the complexity, the hidden costs, and the risk.</p>
+      </div>
+      <div class="grid-3">
+        <div class="problem-card">
+          <svg class="icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <h4 data-i18n="why_1_t">Secure verification</h4>
+          <p data-i18n="why_1_d">Every property goes through a rigorous legal and technical verification process.</p>
         </div>
-        <div class="stat-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-          <div class="stat-val">12+</div>
-          <div class="stat-label" data-i18n="stat_2">Countries represented</div>
+        <div class="problem-card">
+          <svg class="icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <h4 data-i18n="why_2_t">Full, clear ownership</h4>
+          <p data-i18n="why_2_d">You own your share. It's yours. We make sure the paperwork connects and everything is clear.</p>
         </div>
-        <div class="stat-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
-          <div class="stat-val">100%</div>
-          <div class="stat-label" data-i18n="stat_3">Secure & transparent</div>
+        <div class="problem-card">
+          <svg class="icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <h4 data-i18n="why_3_t">Active with cashflows</h4>
+          <p data-i18n="why_3_d">You earn more. We manage less. Sit back and enjoy your earnings with transparent updates.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="full-width-section" style="padding: 100px 0; background: var(--white);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+      <div class="section-title">
+        <h2 data-i18n="how_title_new">Three steps. Zero surprises.</h2>
+      </div>
+      <div class="grid-3" style="margin-bottom: 60px;">
+        <div class="step-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+          <h4 data-i18n="how_1_t">Fewer shillings</h4>
+          <p data-i18n="how_1_d">You don't need millions to get started. Join with as little as you can and co-own high-quality real estate.</p>
+        </div>
+        <div class="step-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <h4 data-i18n="how_2_t">Maximum returns</h4>
+          <p data-i18n="how_2_d">We target high-yield properties in high-demand areas to give your money the best chance to grow.</p>
+        </div>
+        <div class="step-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <h4 data-i18n="how_3_t">Built for us</h4>
+          <p data-i18n="how_3_d">BackHome is built for the diaspora, by people who understand your journey. You're not just investing. You're building back home.</p>
+        </div>
+      </div>
+      
+      <div class="overlay-card">
+          <h2 data-i18n="card_t">Every home visited,<br>photographed,<br>measured.</h2>
+          <ul>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="card_1">In-person verification</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="card_2">Detailed documentation</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="card_3">No guesswork</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="card_4">Only real opportunities</span>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
       
     </div>
   </section>
 
-  <section id="investments" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-      <div class="container">
-      <div class="section-header">
-        <div class="section-label" data-i18n="inv_title">INVESTMENT OPPORTUNITIES</div>
-        <a href="#bottom-cta" class="link-arrow" style="font-size:13px;" data-i18n="inv_view_all">View all projects &rarr;</a>
-      </div>
-
-      <div class="project-list">
-        
-        <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" alt="Mogadishu Heights" class="project-img">
-          <div class="project-info">
-            <h4>Mogadishu Heights</h4>
-            <div class="loc" data-i18n="loc_mog">Mogadishu, Somalia</div>
-            <div class="desc" data-i18n="desc_mog">Modern apartments in a prime location.</div>
-          </div>
-          <div class="project-return">
-            <div class="return-label" data-i18n="proj_ret">Projected return</div>
-            <div class="return-val">12.4%<span style="font-size:14px;font-weight:600;" data-i18n="pa">p.a.</span></div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Hargeisa Villas" class="project-img">
-          <div class="project-info">
-            <h4>Hargeisa Villas</h4>
-            <div class="loc" data-i18n="loc_harg">Hargeisa, Somalia</div>
-            <div class="desc" data-i18n="desc_harg">Luxury villas 5 min from the beach.</div>
-          </div>
-          <div class="project-return">
-            <div class="return-label" data-i18n="proj_ret">Projected return</div>
-            <div class="return-val">11.8%<span style="font-size:14px;font-weight:600;" data-i18n="pa">p.a.</span></div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Garowe Serenity" class="project-img">
-          <div class="project-info">
-            <h4>Garowe Serenity</h4>
-            <div class="loc" data-i18n="loc_gar">Garowe, Somalia</div>
-            <div class="desc" data-i18n="desc_gar">Gated community with high rental demand.</div>
-          </div>
-          <div class="project-return">
-            <div class="return-label" data-i18n="proj_ret">Projected return</div>
-            <div class="return-val">10.9%<span style="font-size:14px;font-weight:600;" data-i18n="pa">p.a.</span></div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09c15faa?auto=format&fit=crop&w=400&q=80" alt="Kismayo Garden" class="project-img">
-          <div class="project-info">
-            <h4>Kismayo Garden</h4>
-            <div class="loc" data-i18n="loc_kis">Kismayo, Somalia</div>
-            <div class="desc" data-i18n="desc_kis">Smart homes in a fast-growing area.</div>
-          </div>
-          <div class="project-return">
-            <div class="return-label" data-i18n="proj_ret">Projected return</div>
-            <div class="return-val">13.2%<span style="font-size:14px;font-weight:600;" data-i18n="pa">p.a.</span></div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=400&q=80" alt="Bosaso Living" class="project-img">
-          <div class="project-info">
-            <h4>Bosaso Living</h4>
-            <div class="loc" data-i18n="loc_bos">Bosaso, Somalia</div>
-            <div class="desc" data-i18n="desc_bos">Affordable luxury in the heart of the city.</div>
-          </div>
-          <div class="project-return">
-            <div class="return-label" data-i18n="proj_ret">Projected return</div>
-            <div class="return-val">11.5%<span style="font-size:14px;font-weight:600;" data-i18n="pa">p.a.</span></div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="projects-footer">
-        <span data-i18n="more_proj">More projects coming soon</span>
-        <a href="#bottom-cta" class="link-arrow" style="font-size:14px; color:var(--text-main);" data-i18n="join_early">Join waitlist to get early access &rarr;</a>
-      </div>
-    
+  <!-- FAQ -->
+  <section id="faq" class="full-width-section" style="padding: 100px 0; background: var(--white);">
+    <div class="container" style="max-width: 800px; margin: 0 auto; padding: 0 40px;">
+      
     </div>
   </section>
 
-  <section id="bottom-cta" class="full-width-section" style="padding: 100px 0;">
+  <!-- FINAL CTA -->
+  <section id="bottom-cta" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
       <div class="cta-card">
         <div class="cta-bg"></div>
-        <div class="cta-content">
-          <h2 data-i18n="cta_title">Be part of<br>something bigger.</h2>
+        <div class="cta-content" style="max-width: 500px; margin: 0 auto; text-align: center;">
+          <h2 data-i18n="cta_title_new">Be first through the door.</h2>
           <p data-i18n="cta_sub">Join thousands of people already on the waitlist and start building back home.</p>
+          <div id="waitlist-success" style="display: none; padding: 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; margin-top: 16px; font-weight: 600;" data-i18n="cta_success">Thank you! You have been added to the waitlist.</div>
           <div class="cta-form" id="waitlist-form">
             <input type="email" id="waitlist-email" placeholder="Enter your email address" data-i18n-placeholder="cta_email" class="cta-input">
             <button class="btn btn-dark" id="waitlist-submit" data-i18n="cta_btn">Join the waitlist &rarr;</button>
-          </div>
-          <div id="waitlist-success" style="display: none; padding: 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; margin-top: 16px; font-weight: 600;" data-i18n="cta_success">
-            Thank you! You have been added to the waitlist.
           </div>
           <p id="waitlist-spam-text" style="font-size: 12px; margin-top: 16px; margin-bottom: 0;">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             <span data-i18n="cta_spam">No spam. Early access only.</span>
           </p>
+          <div id="waitlist-success" style="display: none; padding: 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; margin-top: 16px; font-weight: 600;" data-i18n="cta_success">Thank you! You have been added to the waitlist.</div>
         </div>
       
     </div>
   </section>
-
-  <section id="how-it-works" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-      <div class="container how-split">
-      <div class="how-left">
-        <div class="section-label" data-i18n="how_label">HOW IT WORKS</div>
-        <h2 data-i18n="how_title">Investing back home <span class="serif-italic">shouldn't</span> be hard.</h2>
-        <p data-i18n="how_desc">BackHome gives you a simple way to invest in real estate back home — with full transparency, shared ownership, and meaningful returns.</p>
-      </div>
-      <div class="how-right">
-        
-        <div class="feature-row">
-          <div class="feature-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          </div>
-          <div class="feature-text">
-            <h4 data-i18n="how_1_t">Fewer shillings</h4>
-            <p data-i18n="how_1_d">You don't need millions to get started. Join with as little as you can and co-own high-quality real estate.</p>
-          </div>
-        </div>
-
-        <div class="feature-row">
-          <div class="feature-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          </div>
-          <div class="feature-text">
-            <h4 data-i18n="how_2_t">Maximum returns</h4>
-            <p data-i18n="how_2_d">We target high-yield properties in high-demand areas to give your money the best chance to grow.</p>
-          </div>
-        </div>
-
-        <div class="feature-row">
-          <div class="feature-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-          </div>
-          <div class="feature-text">
-            <h4 data-i18n="how_3_t">Built for us</h4>
-            <p data-i18n="how_3_d">BackHome is built for the diaspora, by people who understand your journey. You're not just investing. You're <strong>building back home.</strong></p>
-          </div>
-        </div>
-
-      </div>
-    
-    </div>
-  </section>
-
-  <section id="testimonials" class="full-width-section" style="padding: 100px 0;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-      <div class="test-header">
-        <h2 data-i18n="test_title">What the diaspora is <span class="serif-italic">saying</span></h2>
-      </div>
-      <div class="test-grid">
-        
-        <div class="test-card">
-          <div class="stars">★★★★★</div>
-          <div class="test-text" data-i18n="test_1">"I never knew I could co-own a villa back home. BackHome made it simple and possible."</div>
-          <div class="test-user">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Amina">
-            <div class="test-user-info">
-              <strong>Amina</strong>
-              <span>London</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="test-card">
-          <div class="stars">★★★★★</div>
-          <div class="test-text" data-i18n="test_2">"Finally, a platform I can trust with my hard-earned money."</div>
-          <div class="test-user">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Keenan">
-            <div class="test-user-info">
-              <strong>Keenan</strong>
-              <span>Toronto</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="test-card">
-          <div class="stars">★★★★★</div>
-          <div class="test-text" data-i18n="test_3">"I'm earning returns and creating generational wealth back home."</div>
-          <div class="test-user">
-            <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Fadila">
-            <div class="test-user-info">
-              <strong>Fadila</strong>
-              <span>Paris</span>
-            </div>
-          </div>
-        </div>
-
-      
-    </div>
-  </section>
-
-  <section id="faq" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-      <div class="faq-header">
-        <div class="section-label" data-i18n="faq_label">FAQ</div>
-        <h2 data-i18n="faq_title">Everything you're wondering.</h2>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div>
-            <h4 data-i18n="faq_1_q">What's the minimum amount?</h4>
-            <div class="faq-answer" data-i18n="faq_1_a">You can start with as little as $1,000 depending on the project. Each project has its own minimum investment explicitly stated in its details.</div>
-          </div>
-          <span class="icon-plus">+</span>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div>
-            <h4 data-i18n="faq_2_q">How do payouts work?</h4>
-            <div class="faq-answer" data-i18n="faq_2_a">Payouts from rental yield are distributed quarterly directly to your connected bank account or digital wallet.</div>
-          </div>
-          <span class="icon-plus">+</span>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div>
-            <h4 data-i18n="faq_3_q">Can I sell my share if I need to?</h4>
-            <div class="faq-answer" data-i18n="faq_3_a">Yes. While real estate is a long-term investment, we have a secondary market where you can list your shares to other investors after a 12-month lock-in period.</div>
-          </div>
-          <span class="icon-plus">+</span>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div>
-            <h4 data-i18n="faq_4_q">What if something happens to my share?</h4>
-            <div class="faq-answer" data-i18n="faq_4_a">Your shares are legally backed by a Special Purpose Vehicle (SPV) that owns the property. You have legal ownership rights equivalent to your share percentage.</div>
-          </div>
-          <span class="icon-plus">+</span>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div>
-            <h4 data-i18n="faq_5_q">Is my investment from my bed?</h4>
-            <div class="faq-answer" data-i18n="faq_5_a">Yes! You can review documents, sign legally binding contracts, and monitor your portfolio entirely online from anywhere in the world.</div>
-          </div>
-          <span class="icon-plus">+</span>
-        </div>
-      
-    </div>
-  </section>
-
-  <section id="why-backhome" class="full-width-section" style="padding: 100px 0;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-      
-    </div>
-  </section>
-
-  <section id="trust" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-      
-    </div>
-  </section>
+  </main>
 <!-- FOOTER -->
   <footer>
     <div class="container">
@@ -1130,7 +998,7 @@
           <p style="font-size: 14px; color: var(--text-muted); max-width: 280px;" data-i18n="footer_desc">BackHome makes it easy, transparent, and secure to invest.</p>
           <div style="margin-top: 24px; display: flex; gap: 16px;">
             <a href="#" style="color:var(--text-muted);" data-i18n="footer_why">Why BackHome</a>
-            <a href="#" style="color:var(--text-muted);" data-i18n="footer_waitlist">Waitlist</a>
+            <a href="#bottom-cta" style="color:var(--text-muted);" data-i18n="footer_waitlist">Waitlist</a>
           </div>
         </div>
         <div class="footer-col">
@@ -1174,24 +1042,6 @@
         header.classList.remove('scrolled');
       }
     });
-
-    document.getElementById('waitlist-submit').addEventListener('click', function() {
-      const emailInput = document.getElementById('waitlist-email');
-      const email = emailInput.value.trim();
-      const form = document.getElementById('waitlist-form');
-      const success = document.getElementById('waitlist-success');
-      const spam = document.getElementById('waitlist-spam-text');
-
-      if (!email || !email.includes('@') || !email.includes('.')) {
-        emailInput.style.border = '2px solid #ef4444';
-        return;
-      }
-      
-      emailInput.style.border = 'none';
-      form.style.display = 'none';
-      spam.style.display = 'none';
-      success.style.display = 'block';
-    });
   </script>
 
 
@@ -1200,12 +1050,19 @@
       en: {
         "nav_how": "How it works",
         "nav_invest": "Investments",
-        "nav_about": "About us",
+        
+        "nav_why": "Why BackHome",
+        "nav_faq": "FAQ",
+        "prob_title": "Renting back home shouldn't feel like a gamble.",
+        "prob_sub": "We cut the complexity, the hidden costs, and the risk.",
+        "how_title_new": "Three steps. Zero surprises.",
+        "cta_title_new": "Be first through the door.",
+        "hero_learn": "Learn more &darr;",
+        "cta_success": "Thank you! You have been added to the waitlist.",
+
         "nav_waitlist": "Join waitlist",
         "hero_join": "Join the waitlist &rarr;",
         "hero_list": "List your property",
-        "hero_learn": "Learn more &darr;",
-        "cta_success": "Thank you! You have been added to the waitlist.",
         "hero_badge": "VERIFIED HOMES. REAL OWNERSHIP. BACK HOME.",
         "hero_title": "Find a place that feels like <span class=\"serif-italic\">home</span>.",
         "hero_sub": "BackHome makes it easy, transparent, and secure for the diaspora to co-own real estate in their home countries \u2014 with yield, community, and full ownership. Wherever you are.",
@@ -1310,8 +1167,6 @@
         "nav_waitlist": "Ku biir liiska",
         "hero_join": "Ku biir liiska &rarr;",
         "hero_list": "Diiwaangeli gurigaaga",
-        "hero_learn": "Baro wax badan &darr;",
-        "cta_success": "Waad mahadsan tahay! Liiska sugitaanka ayaad ku jirtaa.",
         "hero_badge": "GURYO LA XAQIIJIYAY. MILKIILENIMO DHAB AH. BACK HOME.",
         "hero_title": "Hel meel aad dareemayso inuu <span class=\"serif-italic\">guri</span> yahay.",
         "hero_sub": "BackHome waxay kuu fududeyneysaa si hufan, oo ammaan ah inaad qayb ku yeelato hantida maguurtada ah ee dalkaagii hooyo \u2014 adigoo helaya macaash, bulsho, iyo milkiilenimo buuxda. Meel kasta oo aad joogto.",
@@ -1467,9 +1322,9 @@
       }
       
       emailInput.style.border = 'none';
-      form.style.display = 'none';
-      spam.style.display = 'none';
-      success.style.display = 'block';
+      if(form) form.style.display = 'none';
+      if(spam) spam.style.display = 'none';
+      if(success) success.style.display = 'block';
     });
   </script>
 </body>
