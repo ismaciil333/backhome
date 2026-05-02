@@ -794,11 +794,19 @@
       .hero-grid { grid-template-columns: 1fr; }
     }
 
+    
     .faq-item {
       border-bottom: 1px solid var(--border-color);
-      padding: 24px 0;
+      padding: 32px 24px;
       cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      margin-bottom: 8px;
     }
+    .faq-item:hover {
+      background: var(--bg-light);
+    }
+
     .faq-header-click {
       display: flex;
       justify-content: space-between;
@@ -822,10 +830,10 @@
     }
     .icon-plus {
       font-size: 24px;
-      transition: transform 0.3s ease;
-    }
-    .faq-item.active .icon-plus {
-      transform: rotate(45deg);
+      font-weight: 300;
+      display: inline-block;
+      width: 24px;
+      text-align: right;
     }
     
     /* Live Notification */
@@ -941,6 +949,47 @@
     </div>
 </section>
 
+  <!-- CITIES SECTION -->
+  <section id="cities" class="full-width-section" style="padding: 100px 0; background: var(--white);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+      <div class="section-title">
+        <h2 data-i18n="cities_title">Launching across Somalia</h2>
+      </div>
+      <div class="cities-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px;">
+        <!-- Card 1 -->
+        <div class="city-card" style="background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; display: flex; justify-content: space-between; align-items: center;">
+          <h3 data-i18n="city_1" style="margin: 0; font-size: 24px; font-weight: 600;">Mogadishu</h3>
+          <span data-i18n="city_badge" style="background: var(--dark-navy); color: var(--white); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">Opening soon</span>
+        </div>
+        <!-- Card 2 -->
+        <div class="city-card" style="background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; display: flex; justify-content: space-between; align-items: center;">
+          <h3 data-i18n="city_2" style="margin: 0; font-size: 24px; font-weight: 600;">Hargeisa</h3>
+          <span data-i18n="city_badge" style="background: var(--dark-navy); color: var(--white); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">Opening soon</span>
+        </div>
+        <!-- Card 3 -->
+        <div class="city-card" style="background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; display: flex; justify-content: space-between; align-items: center;">
+          <h3 data-i18n="city_3" style="margin: 0; font-size: 24px; font-weight: 600;">Garowe</h3>
+          <span data-i18n="city_badge" style="background: var(--dark-navy); color: var(--white); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">Opening soon</span>
+        </div>
+        <!-- Card 4 -->
+        <div class="city-card" style="background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; display: flex; justify-content: space-between; align-items: center;">
+          <h3 data-i18n="city_4" style="margin: 0; font-size: 24px; font-weight: 600;">Kismayo</h3>
+          <span data-i18n="city_badge" style="background: var(--dark-navy); color: var(--white); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">Opening soon</span>
+        </div>
+        <!-- Card 5 -->
+        <div class="city-card" style="background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; display: flex; justify-content: space-between; align-items: center;">
+          <h3 data-i18n="city_5" style="margin: 0; font-size: 24px; font-weight: 600;">Galkayo</h3>
+          <span data-i18n="city_badge" style="background: var(--dark-navy); color: var(--white); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">Opening soon</span>
+        </div>
+        <!-- Card 6 -->
+        <div class="city-card" style="background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; display: flex; justify-content: space-between; align-items: center;">
+          <h3 data-i18n="city_6" style="margin: 0; font-size: 24px; font-weight: 600;">Bosaso</h3>
+          <span data-i18n="city_badge" style="background: var(--dark-navy); color: var(--white); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">Opening soon</span>
+        </div>
+      </div>
+    </div>
+
+
   <!-- PROBLEM SECTION -->
   <section id="why-backhome" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
@@ -1053,7 +1102,7 @@
             <span class="icon-plus">+</span>
           </div>
           <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_1_a">We are launching soon. Join the waitlist to get early access.</div>
+            <div class="faq-answer" data-i18n="faq_1_a">We are launching city by city starting 2026. Join the waitlist to get early access.</div>
           </div>
         </div>
         <div class="faq-item">
@@ -1062,7 +1111,7 @@
             <span class="icon-plus">+</span>
           </div>
           <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_2_a">Our local team physically visits every property to inspect its condition and verify all legal documents.</div>
+            <div class="faq-answer" data-i18n="faq_2_a">Every property is physically inspected, documented, and approved before going live.</div>
           </div>
         </div>
         <div class="faq-item">
@@ -1071,7 +1120,7 @@
             <span class="icon-plus">+</span>
           </div>
           <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_3_a">Yes, our platform handles multiple international currencies for seamless transactions.</div>
+            <div class="faq-answer" data-i18n="faq_3_a">Yes. We support international payments with secure processing.</div>
           </div>
         </div>
         <div class="faq-item">
@@ -1080,7 +1129,7 @@
             <span class="icon-plus">+</span>
           </div>
           <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_4_a">Our on-the-ground support team is available 24/7 to resolve any issues quickly.</div>
+            <div class="faq-answer" data-i18n="faq_4_a">Our local team is available to support you throughout your stay.</div>
           </div>
         </div>
         <div class="faq-item">
@@ -1089,7 +1138,7 @@
             <span class="icon-plus">+</span>
           </div>
           <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_5_a">Click "List your property" to provide your details. Our team will contact you to start the verification process.</div>
+            <div class="faq-answer" data-i18n="faq_5_a">Click "List your property" and submit your details. Our team will review and contact you.</div>
           </div>
         </div>
       
@@ -1140,7 +1189,7 @@
             <a href="#" data-i18n="footer_about">About us</a>
             
             <a href="#" data-i18n="footer_blog">Blog</a>
-            <a href="mailto:hello@backhome.so" data-i18n="footer_contact">Contact</a>
+            <a href="mailto:hello@backhomeco.com" data-i18n="footer_contact">Contact</a>
           </div>
         </div>
         <div class="footer-col">
@@ -1190,6 +1239,15 @@
         "prob_sub": "We cut the complexity, the hidden costs, and the risk.",
         "how_title_new": "Three steps. Zero surprises.",
         "cta_title_new": "Be first through the door.",
+        "cities_title": "Launching across Somalia",
+        "city_badge": "Opening soon",
+        "city_1": "Mogadishu",
+        "city_2": "Hargeisa",
+        "city_3": "Garowe",
+        "city_4": "Kismayo",
+        "city_5": "Galkayo",
+        "city_6": "Bosaso",
+
         "hero_learn": "Learn more &darr;",
         "test_title": "What the diaspora is <span class=\"serif-italic\">saying</span>",
         "test_1": "\"Last summer I lost €2,400 to a villa that didn't exist. If BackHome had been there, I'd have booked it twice.\"",
@@ -1204,16 +1262,25 @@
         "faq_label": "FAQ",
         "faq_title": "Everything you're wondering.",
         "faq_1_q": "When does BackHome launch?",
-        "faq_1_a": "We are launching soon. Join the waitlist to get early access.",
+        "faq_1_a": "We are launching city by city starting 2026. Join the waitlist to get early access.",
         "faq_2_q": "How are properties verified?",
-        "faq_2_a": "Our local team physically visits every property to inspect its condition and verify all legal documents.",
+        "faq_2_a": "Every property is physically inspected, documented, and approved before going live.",
         "faq_3_q": "Can I pay in USD, EUR or GBP?",
-        "faq_3_a": "Yes, our platform handles multiple international currencies for seamless transactions.",
+        "faq_3_a": "Yes. We support international payments with secure processing.",
         "faq_4_q": "What if something goes wrong when I arrive?",
-        "faq_4_a": "Our on-the-ground support team is available 24/7 to resolve any issues quickly.",
+        "faq_4_a": "Our local team is available to support you throughout your stay.",
         "faq_5_q": "I own a property. How do I list?",
-        "faq_5_a": "Click \"List your property\" to provide your details. Our team will contact you to start the verification process.",
+        "faq_5_a": "Click \"List your property\" and submit your details. Our team will review and contact you.",
         "cta_title_new": "Be first through the door.",
+        "cities_title": "Launching across Somalia",
+        "city_badge": "Opening soon",
+        "city_1": "Mogadishu",
+        "city_2": "Hargeisa",
+        "city_3": "Garowe",
+        "city_4": "Kismayo",
+        "city_5": "Galkayo",
+        "city_6": "Bosaso",
+
         "cta_sub": "Join thousands of people already on the waitlist and start building back home.",
         "cta_btn": "Join the waitlist &rarr;",
         "cta_success": "Thank you! You have been added to the waitlist.",
@@ -1467,13 +1534,26 @@
       setLang(savedLang);
     });
 
+
     document.querySelectorAll('.faq-item').forEach(item => {
       item.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-        if (!isActive) item.classList.add('active');
+        
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('active');
+          const icon = i.querySelector('.icon-plus');
+          if (icon) icon.textContent = '+';
+        });
+        
+        if (!isActive) {
+          item.classList.add('active');
+          const icon = item.querySelector('.icon-plus');
+          if (icon) icon.textContent = '−';
+        }
       });
     });
+
 
     window.addEventListener('scroll', () => {
       const header = document.getElementById('header');
@@ -1501,6 +1581,45 @@
       if(spam) spam.style.display = 'none';
       if(success) success.style.display = 'block';
     });
+
+    // Live Notification Logic
+    const notificationsEn = [
+      "Ahmed H. joined from Oslo — just now",
+      "Amina H. joined from Minneapolis — 2 mins ago",
+      "Khadija F. joined from London — 5 mins ago",
+      "Hassan O. listed a property in Garowe — 10 mins ago",
+      "Ali Y. joined from Toronto — just now"
+    ];
+    const notificationsSo = [
+      "Ahmed H. ayaa kaga soo biiray Oslo — hadda",
+      "Amina H. ayaa kaga soo biirtay Minneapolis — 2 daqiiqo kahor",
+      "Khadija F. ayaa kaga soo biirtay London — 5 daqiiqo kahor",
+      "Hassan O. ayaa guri ku diiwaangeliyay Garoowe — 10 daqiiqo kahor",
+      "Ali Y. ayaa kaga soo biiray Toronto — hadda"
+    ];
+    
+    let notifIndex = 0;
+    const notifElement = document.getElementById('live-notification');
+    const notifText = document.getElementById('live-notification-text');
+    
+    function showNotification() {
+      const currentLang = localStorage.getItem('lang') || 'en';
+      const messages = currentLang === 'en' ? notificationsEn : notificationsSo;
+      
+      notifText.innerText = messages[notifIndex];
+      notifElement.classList.add('show');
+      
+      setTimeout(() => {
+        notifElement.classList.remove('show');
+        notifIndex = (notifIndex + 1) % messages.length;
+      }, 4000); // Visible for 4 seconds
+    }
+    
+    // Start notification loop
+    setTimeout(() => {
+      showNotification();
+      setInterval(showNotification, 9000); // Show every 9 seconds
+    }, 3000);
   </script>
 
   <!-- Live Notification -->
