@@ -23,7 +23,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-light);
@@ -678,17 +678,9 @@
     }
   
     /* OVERRIDES FOR 2-COLUMN LAYOUT */
-    .dashboard-container {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 40px;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 40px;
-      align-items: start;
-    }
-    .dashboard-left { display: flex; flex-direction: column; gap: 40px; }
-    .dashboard-right { display: flex; flex-direction: column; gap: 40px; }
+    
+    
+    
     
     .dashboard-section { padding: 0 !important; border: none !important; }
     .dashboard-section .container { padding: 0; max-width: 100%; margin: 0; }
@@ -758,9 +750,14 @@
     #trust .trust-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
     
     @media (max-width: 1100px) {
-      .dashboard-container { grid-template-columns: 1fr; }
+      
     }
-  </style>
+  
+    .hero-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start; }
+    @media (max-width: 1100px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+</style>
 </head>
 <body>
   <!-- NAVBAR -->
@@ -773,8 +770,8 @@
         </a>
         <div class="nav-links">
           <a href="#how-it-works" data-i18n="nav_how">How it works</a>
-          <a href="#bottom-cta" data-i18n="nav_waitlist_link">Waitlist</a>
-          <a href="#trust" data-i18n="nav_about">About us</a>
+          <a href="#investments" data-i18n="nav_invest">Investments</a>
+          <a href="#why-backhome" data-i18n="nav_about">About us</a>
         </div>
         <div class="header-actions">
           <div class="lang-toggle">
@@ -789,18 +786,19 @@
 
   
   
-  <div class="dashboard-container">
-    <div class="dashboard-left">
-      <div id="hero" class="dashboard-section">
-    <div class="container hero-split">
-      <div class="hero-left">
+  
+  <section id="hero" class="full-width-section" style="padding: 60px 0 100px;">
+    <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
+      <div class="hero-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
+        <div class="hero-left">
         <span class="hero-badge" data-i18n="hero_badge">VERIFIED HOMES. REAL OWNERSHIP. BACK HOME.</span>
         <h1 class="hero-title" data-i18n="hero_title">Find a place that feels like <span class="serif-italic">home</span>.</h1>
         <p class="hero-subtitle" data-i18n="hero_sub">BackHome makes it easy, transparent, and secure for the diaspora to co-own real estate in their home countries — with yield, community, and full ownership. Wherever you are.</p>
         
-        <div class="hero-actions" style="display: flex; gap: 16px; align-items: center;">
+        <div class="hero-actions" style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
           <a href="#bottom-cta" class="btn btn-dark" data-i18n="hero_join">Join the waitlist &rarr;</a>
           <a href="list-your-property.html" class="btn btn-outline" style="border: 1px solid var(--border-color); color: var(--text-main); font-weight: 600;" data-i18n="hero_list">List your property</a>
+          <a href="#how-it-works" class="link-arrow" style="font-size: 14px; font-weight: 600; color: var(--text-main); margin-left: 8px;" data-i18n="hero_learn">Learn more &darr;</a>
         </div>
 
         <div class="hero-verify">
@@ -812,11 +810,38 @@
         <div class="hero-img-wrapper">
           <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Beautiful modern home exterior">
         </div>
+      </div
+        <div class="overlay-wrapper">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80" alt="Home interior" class="overlay-img">
+        <div class="overlay-card">
+          <h2 data-i18n="card_t">Every home visited,<br>photographed,<br>measured.</h2>
+          <ul>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="card_1">In-person verification</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="card_2">Detailed documentation</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="card_3">No guesswork</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="card_4">Only real opportunities</span>
+            </li>
+          </ul>
+        </div>
+      
       </div>
     </div>
+  </section>
 
-    <div class="container">
-      <div class="stats-container">
+  <section id="stats" class="full-width-section" style="padding: 60px 0;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+      <div class="stats-container" style="display: flex; justify-content: center; gap: 60px;">
         <div class="stat-item">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
           <div class="stat-val">1,500+</div>
@@ -832,36 +857,121 @@
           <div class="stat-val">100%</div>
           <div class="stat-label" data-i18n="stat_3">Secure & transparent</div>
         </div>
-      </div>
+      
     </div>
-  </div>
+  </section>
 
-  
-      <!-- BOTTOM CTA -->
-  <div id="bottom-cta" class="dashboard-section">
-    <div class="container">
+  <section id="investments" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+      <div class="container">
+      <div class="section-header">
+        <div class="section-label" data-i18n="inv_title">INVESTMENT OPPORTUNITIES</div>
+        <a href="#bottom-cta" class="link-arrow" style="font-size:13px;" data-i18n="inv_view_all">View all projects &rarr;</a>
+      </div>
+
+      <div class="project-list">
+        
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80" alt="Mogadishu Heights" class="project-img">
+          <div class="project-info">
+            <h4>Mogadishu Heights</h4>
+            <div class="loc" data-i18n="loc_mog">Mogadishu, Somalia</div>
+            <div class="desc" data-i18n="desc_mog">Modern apartments in a prime location.</div>
+          </div>
+          <div class="project-return">
+            <div class="return-label" data-i18n="proj_ret">Projected return</div>
+            <div class="return-val">12.4%<span style="font-size:14px;font-weight:600;" data-i18n="pa">p.a.</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Hargeisa Villas" class="project-img">
+          <div class="project-info">
+            <h4>Hargeisa Villas</h4>
+            <div class="loc" data-i18n="loc_harg">Hargeisa, Somalia</div>
+            <div class="desc" data-i18n="desc_harg">Luxury villas 5 min from the beach.</div>
+          </div>
+          <div class="project-return">
+            <div class="return-label" data-i18n="proj_ret">Projected return</div>
+            <div class="return-val">11.8%<span style="font-size:14px;font-weight:600;" data-i18n="pa">p.a.</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Garowe Serenity" class="project-img">
+          <div class="project-info">
+            <h4>Garowe Serenity</h4>
+            <div class="loc" data-i18n="loc_gar">Garowe, Somalia</div>
+            <div class="desc" data-i18n="desc_gar">Gated community with high rental demand.</div>
+          </div>
+          <div class="project-return">
+            <div class="return-label" data-i18n="proj_ret">Projected return</div>
+            <div class="return-val">10.9%<span style="font-size:14px;font-weight:600;" data-i18n="pa">p.a.</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09c15faa?auto=format&fit=crop&w=400&q=80" alt="Kismayo Garden" class="project-img">
+          <div class="project-info">
+            <h4>Kismayo Garden</h4>
+            <div class="loc" data-i18n="loc_kis">Kismayo, Somalia</div>
+            <div class="desc" data-i18n="desc_kis">Smart homes in a fast-growing area.</div>
+          </div>
+          <div class="project-return">
+            <div class="return-label" data-i18n="proj_ret">Projected return</div>
+            <div class="return-val">13.2%<span style="font-size:14px;font-weight:600;" data-i18n="pa">p.a.</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=400&q=80" alt="Bosaso Living" class="project-img">
+          <div class="project-info">
+            <h4>Bosaso Living</h4>
+            <div class="loc" data-i18n="loc_bos">Bosaso, Somalia</div>
+            <div class="desc" data-i18n="desc_bos">Affordable luxury in the heart of the city.</div>
+          </div>
+          <div class="project-return">
+            <div class="return-label" data-i18n="proj_ret">Projected return</div>
+            <div class="return-val">11.5%<span style="font-size:14px;font-weight:600;" data-i18n="pa">p.a.</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="projects-footer">
+        <span data-i18n="more_proj">More projects coming soon</span>
+        <a href="#bottom-cta" class="link-arrow" style="font-size:14px; color:var(--text-main);" data-i18n="join_early">Join waitlist to get early access &rarr;</a>
+      </div>
+    
+    </div>
+  </section>
+
+  <section id="bottom-cta" class="full-width-section" style="padding: 100px 0;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
       <div class="cta-card">
         <div class="cta-bg"></div>
         <div class="cta-content">
           <h2 data-i18n="cta_title">Be part of<br>something bigger.</h2>
           <p data-i18n="cta_sub">Join thousands of people already on the waitlist and start building back home.</p>
-          <div class="cta-form">
-            <input type="email" placeholder="Enter your email address" data-i18n-placeholder="cta_email" class="cta-input">
-            <button class="btn btn-dark" data-i18n="cta_btn">Join the waitlist &rarr;</button>
+          <div class="cta-form" id="waitlist-form">
+            <input type="email" id="waitlist-email" placeholder="Enter your email address" data-i18n-placeholder="cta_email" class="cta-input">
+            <button class="btn btn-dark" id="waitlist-submit" data-i18n="cta_btn">Join the waitlist &rarr;</button>
           </div>
-          <p style="font-size: 12px; margin-top: 16px; margin-bottom: 0;">
+          <div id="waitlist-success" style="display: none; padding: 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; margin-top: 16px; font-weight: 600;" data-i18n="cta_success">
+            Thank you! You have been added to the waitlist.
+          </div>
+          <p id="waitlist-spam-text" style="font-size: 12px; margin-top: 16px; margin-bottom: 0;">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             <span data-i18n="cta_spam">No spam. Early access only.</span>
           </p>
         </div>
-      </div>
+      
     </div>
-  </div>
+  </section>
 
-  
-      <!-- HOW IT WORKS -->
-  <div id="how-it-works" class="dashboard-section">
-    <div class="container how-split">
+  <section id="how-it-works" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+      <div class="container how-split">
       <div class="how-left">
         <div class="section-label" data-i18n="how_label">HOW IT WORKS</div>
         <h2 data-i18n="how_title">Investing back home <span class="serif-italic">shouldn't</span> be hard.</h2>
@@ -900,82 +1010,12 @@
         </div>
 
       </div>
+    
     </div>
-  </div>
+  </section>
 
-  
-          </div>
-    <div class="dashboard-right">
-      <!-- IMAGE OVERLAY SECTION -->
-  <div id="image-overlay" class="dashboard-section">
-    <div class="container">
-      <div class="overlay-wrapper">
-        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80" alt="Home interior" class="overlay-img">
-        <div class="overlay-card">
-          <h2 data-i18n="card_t">Every home visited,<br>photographed,<br>measured.</h2>
-          <ul>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span data-i18n="card_1">In-person verification</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span data-i18n="card_2">Detailed documentation</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span data-i18n="card_3">No guesswork</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span data-i18n="card_4">Only real opportunities</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  
-      <!-- TRUST BANNER -->
-  <div id="trust" class="dashboard-section">
-    <div class="container">
-      <div class="trust-title" data-i18n="trust_title">BackHome is built on trust</div>
-      <div class="trust-grid">
-        <div class="trust-item">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          <h4 data-i18n="trust_1_t">Diaspora-first</h4>
-          <p data-i18n="trust_1_d">Built for us, by us.</p>
-        </div>
-        <div class="trust-item">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
-          <h4 data-i18n="trust_2_t">Verified properties</h4>
-          <p data-i18n="trust_2_d">100% verified before it goes live.</p>
-        </div>
-        <div class="trust-item">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-          <h4 data-i18n="trust_3_t">Real ownership</h4>
-          <p data-i18n="trust_3_d">You own your share fully.</p>
-        </div>
-        <div class="trust-item">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-          <h4 data-i18n="trust_4_t">Transparent</h4>
-          <p data-i18n="trust_4_d">No hidden fees. No guesswork.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  
-    </div>
-  </div>
-
-  
-  <section class="full-width-section" style="padding: 100px 0;">
+  <section id="testimonials" class="full-width-section" style="padding: 100px 0;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-      <!-- TESTIMONIALS -->
-  <div id="testimonials" class="dashboard-section">
-    <div class="container">
       <div class="test-header">
         <h2 data-i18n="test_title">What the diaspora is <span class="serif-italic">saying</span></h2>
       </div>
@@ -1017,20 +1057,12 @@
           </div>
         </div>
 
-      </div>
-    </div>
-  </div>
-
-  
-
+      
     </div>
   </section>
 
-  <section class="full-width-section" style="padding: 100px 0;">
+  <section id="faq" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-      <!-- FAQ -->
-  <div id="faq" class="dashboard-section">
-    <div class="container">
       <div class="faq-header">
         <div class="section-label" data-i18n="faq_label">FAQ</div>
         <h2 data-i18n="faq_title">Everything you're wondering.</h2>
@@ -1071,76 +1103,19 @@
           </div>
           <span class="icon-plus">+</span>
         </div>
-      </div>
-    </div>
-  </div>
-
-  
-
+      
     </div>
   </section>
 
-  <section class="full-width-section" style="padding: 100px 0;">
+  <section id="why-backhome" class="full-width-section" style="padding: 100px 0;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-<!-- WHY BACKHOME -->
-  <div id="why-backhome" class="dashboard-section">
-    <div class="container">
-      <div class="why-header">
-        <div class="section-label" data-i18n="why_label">WHY BACKHOME</div>
-        <h2 data-i18n="why_title">True value, <span class="serif-italic">low surprise.</span></h2>
-        <p data-i18n="why_sub">We cut the complexity, the hidden costs, and the risk. So you can invest back home with confidence and peace of mind.</p>
-      </div>
-
-      <div class="why-grid">
-        <div class="why-card">
-          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          <h4 data-i18n="why_1_t">Secure verification</h4>
-          <p data-i18n="why_1_d">Every property goes through a rigorous legal and technical verification process.</p>
-        </div>
-        <div class="why-card">
-          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-          <h4 data-i18n="why_2_t">Full, clear ownership</h4>
-          <p data-i18n="why_2_d">You own your share. It's yours. We make sure the paperwork connects and everything is clear.</p>
-        </div>
-        <div class="why-card">
-          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          <h4 data-i18n="why_3_t">Active with cashflows</h4>
-          <p data-i18n="why_3_d">You earn more. We manage less. Sit back and enjoy your earnings with transparent updates.</p>
-        </div>
-        <div class="why-card">
-          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <h4 data-i18n="why_4_t">Local on-the-ground team</h4>
-          <p data-i18n="why_4_d">Our team verifies every property on-site so you can invest with total confidence.</p>
-        </div>
-      </div>
-
-      <div class="section-label" data-i18n="ver_label">OUR VERIFICATION PROCESS</div>
-      <div class="process-timeline">
-        <div class="process-step">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          <span data-i18n="ver_1">1. Local team inspection</span>
-        </div>
-        <div style="color:var(--border-color);">&rarr;</div>
-        <div class="process-step">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-          <span data-i18n="ver_2">2. Photo & video documentation</span>
-        </div>
-        <div style="color:var(--border-color);">&rarr;</div>
-        <div class="process-step">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-          <span data-i18n="ver_3">3. Legal & title verification</span>
-        </div>
-        <div style="color:var(--border-color);">&rarr;</div>
-        <div class="process-step">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span data-i18n="ver_4">4. Approved & published</span>
-        </div>
-      </div>
+      
     </div>
-  </div>
+  </section>
 
-  
-
+  <section id="trust" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+      
     </div>
   </section>
 <!-- FOOTER -->
@@ -1155,7 +1130,7 @@
           <p style="font-size: 14px; color: var(--text-muted); max-width: 280px;" data-i18n="footer_desc">BackHome makes it easy, transparent, and secure to invest.</p>
           <div style="margin-top: 24px; display: flex; gap: 16px;">
             <a href="#" style="color:var(--text-muted);" data-i18n="footer_why">Why BackHome</a>
-            <a href="#bottom-cta" style="color:var(--text-muted);" data-i18n="footer_waitlist">Waitlist</a>
+            <a href="#" style="color:var(--text-muted);" data-i18n="footer_waitlist">Waitlist</a>
           </div>
         </div>
         <div class="footer-col">
@@ -1199,6 +1174,24 @@
         header.classList.remove('scrolled');
       }
     });
+
+    document.getElementById('waitlist-submit').addEventListener('click', function() {
+      const emailInput = document.getElementById('waitlist-email');
+      const email = emailInput.value.trim();
+      const form = document.getElementById('waitlist-form');
+      const success = document.getElementById('waitlist-success');
+      const spam = document.getElementById('waitlist-spam-text');
+
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        emailInput.style.border = '2px solid #ef4444';
+        return;
+      }
+      
+      emailInput.style.border = 'none';
+      form.style.display = 'none';
+      spam.style.display = 'none';
+      success.style.display = 'block';
+    });
   </script>
 
 
@@ -1206,11 +1199,13 @@
     const translations = {
       en: {
         "nav_how": "How it works",
-        "nav_waitlist_link": "Waitlist",
+        "nav_invest": "Investments",
         "nav_about": "About us",
         "nav_waitlist": "Join waitlist",
         "hero_join": "Join the waitlist &rarr;",
         "hero_list": "List your property",
+        "hero_learn": "Learn more &darr;",
+        "cta_success": "Thank you! You have been added to the waitlist.",
         "hero_badge": "VERIFIED HOMES. REAL OWNERSHIP. BACK HOME.",
         "hero_title": "Find a place that feels like <span class=\"serif-italic\">home</span>.",
         "hero_sub": "BackHome makes it easy, transparent, and secure for the diaspora to co-own real estate in their home countries \u2014 with yield, community, and full ownership. Wherever you are.",
@@ -1310,11 +1305,13 @@
 },
       so: {
         "nav_how": "Sida ay u shaqeyso",
-        "nav_waitlist_link": "Liiska sugitaanka",
+        "nav_invest": "Maalgashiga",
         "nav_about": "Kugusaabsan",
         "nav_waitlist": "Ku biir liiska",
         "hero_join": "Ku biir liiska &rarr;",
         "hero_list": "Diiwaangeli gurigaaga",
+        "hero_learn": "Baro wax badan &darr;",
+        "cta_success": "Waad mahadsan tahay! Liiska sugitaanka ayaad ku jirtaa.",
         "hero_badge": "GURYO LA XAQIIJIYAY. MILKIILENIMO DHAB AH. BACK HOME.",
         "hero_title": "Hel meel aad dareemayso inuu <span class=\"serif-italic\">guri</span> yahay.",
         "hero_sub": "BackHome waxay kuu fududeyneysaa si hufan, oo ammaan ah inaad qayb ku yeelato hantida maguurtada ah ee dalkaagii hooyo \u2014 adigoo helaya macaash, bulsho, iyo milkiilenimo buuxda. Meel kasta oo aad joogto.",
@@ -1455,6 +1452,24 @@
       } else {
         header.classList.remove('scrolled');
       }
+    });
+
+    document.getElementById('waitlist-submit').addEventListener('click', function() {
+      const emailInput = document.getElementById('waitlist-email');
+      const email = emailInput.value.trim();
+      const form = document.getElementById('waitlist-form');
+      const success = document.getElementById('waitlist-success');
+      const spam = document.getElementById('waitlist-spam-text');
+
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        emailInput.style.border = '2px solid #ef4444';
+        return;
+      }
+      
+      emailInput.style.border = 'none';
+      form.style.display = 'none';
+      spam.style.display = 'none';
+      success.style.display = 'block';
     });
   </script>
 </body>
