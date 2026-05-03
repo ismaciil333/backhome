@@ -10,15 +10,32 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-light: #FAFAFA;
-      --white: #FFFFFF;
-      --text-main: #111827;
-      --text-muted: #6B7280;
-      --dark-navy: #0B1C2C;
-      --green-accent: #22543D;
-      --green-light: #F0FDF4;
-      --border-color: #E5E7EB;
-      --gold: #C8A96A;
+      /* ─── Color Palette ─── */
+      --bg-page:      #F5F1EA;   /* warm parchment — base page background */
+      --bg-section-b: #EDE9E0;   /* slightly darker warm tone — alternating sections */
+      --bg-section-c: #EFEEEC;   /* neutral warm gray — subtle contrast sections */
+      --bg-light:     #F5F1EA;   /* kept as alias for old references */
+      --white:        #FFFFFF;
+      --card-bg:      #FDFCF9;   /* cards pop off page: slightly brighter than page */
+
+      /* ─── Text ─── */
+      --text-main:    #0E0E0D;   /* near-black — strong heading contrast */
+      --text-body:    #3D3D3A;   /* warm dark gray — body copy */
+      --text-muted:   #7A7770;   /* warm mid gray — secondary info */
+      --text-faint:   #ADA9A2;   /* light warm gray — placeholders, timestamps */
+
+      /* ─── Brand Colors ─── */
+      --dark-navy:    #0D1F2D;   /* deepened navy — primary dark surfaces */
+      --navy-mid:     #1A3044;   /* mid navy — button hover, hover states */
+      --green-accent: #1E4D35;   /* deep forest green — accent highlights */
+      --green-light:  #EAF5EE;
+      --gold:         #B8924A;   /* slightly deeper, more premium gold */
+      --gold-light:   #F7EDD8;   /* warm gold tint for backgrounds */
+
+      /* ─── Borders & Shadows ─── */
+      --border-color: #DDD9D0;   /* warm border — warmer than default gray */
+      --border-strong:#C8C4BB;   /* stronger border for dividers */
+
       --max-width: 1200px;
     }
 
@@ -874,110 +891,206 @@
       100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
     }
 
-    /* --- PREMIUM VISUAL ENHANCEMENTS --- */
-    
-    /* Global subtle background */
+    /* ═══════════════════════════════════════════
+       PREMIUM DESIGN SYSTEM — BackHome 2026
+       Full color, contrast & hierarchy upgrade
+    ═══════════════════════════════════════════ */
+
+    /* ── Global Body ── */
     body {
-      background-color: var(--bg-light);
-      background-image: radial-gradient(circle at top right, rgba(34, 84, 61, 0.02) 0%, transparent 40%),
-                        radial-gradient(circle at bottom left, rgba(11, 28, 44, 0.02) 0%, transparent 40%);
+      background-color: var(--bg-page);
+      color: var(--text-body);
     }
 
-    /* Hero Section Gradient */
-    #hero {
-      background: linear-gradient(180deg, var(--white) 0%, #f7f9f8 100%);
-      border-bottom: 1px solid rgba(0,0,0,0.02);
+    /* ── Typography Hierarchy ── */
+    h1, h2, h3, h4 { color: var(--text-main); }
+    p { color: var(--text-body); }
+
+    /* ── Navbar ── */
+    header {
+      background: rgba(245, 241, 234, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+    }
+    header.scrolled {
+      border-bottom: 1px solid var(--border-strong);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
     }
 
-    /* Card Shadows & Hover States */
-    .project-card, .why-card, .feature-row, .test-card, .step-card, .problem-card, .city-card {
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-      border: 1px solid rgba(0,0,0,0.04);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    /* ── SECTION BACKGROUNDS (Alternating) ── */
+    /* Section A — warm parchment (default) */
+    #hero       { background: var(--bg-page); }
+
+    /* Section B — Stats are inside hero, gets border separation */
+    .stats-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     }
-    
-    .project-card:hover, .why-card:hover, .feature-row:hover, .test-card:hover, .step-card:hover, .problem-card:hover, .city-card:hover {
+
+    /* Section C — slightly deeper warm tone */
+    #why-backhome { background: var(--bg-section-b); }
+
+    /* Section D — white */
+    #how-it-works { background: var(--white); }
+
+    /* Section E — Trust strip: deep dark */
+    #trust-strip  { background: var(--bg-page); }
+
+    /* Section F — warm neutral */
+    #testimonials { background: var(--bg-section-c); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+
+    /* Section G — FAQ: white */
+    #faq { background: var(--white); }
+
+    /* ── CARDS — Premium Base ── */
+    .project-card, .why-card, .feature-row, .test-card,
+    .step-card, .problem-card, .city-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.04);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.3s ease;
+    }
+    .project-card:hover, .why-card:hover, .feature-row:hover, .test-card:hover,
+    .step-card:hover, .problem-card:hover, .city-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
-      border-color: rgba(0,0,0,0.08);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+      border-color: var(--border-strong);
     }
 
-    /* Button Enhancements */
+    /* Problem Cards — warm tinted background */
+    .problem-card {
+      background: var(--gold-light) !important;
+      border: 1px solid rgba(184, 146, 74, 0.15) !important;
+    }
+    .problem-card:hover {
+      border-color: rgba(184, 146, 74, 0.3) !important;
+    }
+
+    /* Step Cards — white elevated */
+    .step-card {
+      background: var(--white) !important;
+      border: 1px solid var(--border-color) !important;
+    }
+
+    /* Testimonial Cards */
+    .test-card {
+      background: var(--white) !important;
+      border: 1px solid var(--border-color) !important;
+    }
+
+    /* ── BUTTONS ── */
     .btn-dark {
-      background: linear-gradient(135deg, var(--dark-navy) 0%, #162a3d 100%);
-      box-shadow: 0 4px 14px rgba(11, 28, 44, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: var(--dark-navy);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(13, 31, 45, 0.2), 0 1px 3px rgba(13, 31, 45, 0.15);
+      border: 1px solid rgba(255,255,255,0.05);
       position: relative;
       overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .btn-dark::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(rgba(255,255,255,0.1), transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .btn-dark:hover::after {
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
       opacity: 1;
     }
     .btn-dark:hover {
+      background: var(--navy-mid);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(11, 28, 44, 0.25);
+      box-shadow: 0 10px 28px rgba(13, 31, 45, 0.28), 0 2px 6px rgba(13, 31, 45, 0.15);
     }
+    .btn-dark:active { transform: translateY(0); }
 
     .btn-outline {
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-      transition: all 0.3s ease;
+      background: transparent;
+      border: 1.5px solid var(--border-strong);
+      color: var(--text-main);
+      transition: all 0.25s ease;
     }
     .btn-outline:hover {
       background: var(--white);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-      border-color: #d1d5db;
+      border-color: var(--dark-navy);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
       transform: translateY(-1px);
     }
 
-    /* FAQ Hover Enhancement */
+    /* ── TRUST STRIP (dark feature block) ── */
+    #trust-strip .container > div {
+      background: var(--dark-navy);
+      box-shadow: 0 20px 60px rgba(13, 31, 45, 0.25),
+                  inset 0 1px 0 rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* ── FAQ Section ── */
+    #faq {
+      border-top: 1px solid var(--border-color);
+    }
     .faq-item {
-      transition: all 0.3s ease;
-      background: var(--white);
-      border: 1px solid transparent;
       border-bottom: 1px solid var(--border-color);
+      background: transparent;
+      transition: all 0.3s ease;
+      border-radius: 0;
+      padding: 24px 8px;
     }
     .faq-item:hover {
-      background: linear-gradient(to right, var(--white), #f8fafc);
-      border-color: #e2e8f0;
-      border-radius: 8px;
-      padding-left: 28px; /* Slight indent effect */
+      background: var(--gold-light);
+      border-radius: 10px;
+      border-color: rgba(184,146,74,0.2);
+      padding-left: 20px;
     }
+    .faq-item.active {
+      background: var(--gold-light);
+      border-radius: 10px;
+      border-color: rgba(184,146,74,0.25);
+      padding-left: 20px;
+    }
+    .faq-item .icon-plus { color: var(--text-muted); }
+    .faq-item.active .icon-plus { color: var(--dark-navy); }
+    .faq-item.active h4 { color: var(--text-main); }
 
-    /* CTA Section Depth */
+    /* ── BOTTOM CTA ── */
     #bottom-cta .cta-bg::after {
-      background: linear-gradient(135deg, rgba(11, 28, 44, 0.95) 0%, rgba(34, 84, 61, 0.85) 100%);
+      background: linear-gradient(135deg,
+        rgba(13, 31, 45, 0.96) 0%,
+        rgba(30, 77, 53, 0.90) 100%
+      );
     }
     #bottom-cta .cta-card {
-      box-shadow: 0 24px 64px rgba(11, 28, 44, 0.2);
-      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 32px 80px rgba(13, 31, 45, 0.28),
+                  0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
-    /* Visual Hierarchy / Alternating Backgrounds */
-    #why-backhome {
-      background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
+    /* ── Footer ── */
+    footer {
+      background: var(--dark-navy) !important;
+      color: var(--white);
     }
-    #testimonials {
-      background: linear-gradient(180deg, var(--white) 0%, var(--bg-light) 100%);
-      border-top: 1px solid rgba(0,0,0,0.02);
+    footer h4, footer .footer-col h4 { color: rgba(255,255,255,0.85) !important; }
+    footer .footer-links a, footer .footer-links { color: rgba(255,255,255,0.55) !important; }
+    footer .footer-links a:hover { color: rgba(255,255,255,0.9) !important; }
+    footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08) !important; color: rgba(255,255,255,0.4) !important; }
+    footer .logo { color: var(--white) !important; }
+    footer .footer-desc { color: rgba(255,255,255,0.5) !important; }
+
+    /* ── Launch Card (Hero right) ── */
+    .launch-card {
+      background: var(--white);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.04);
     }
-    #faq {
-      background: var(--bg-light);
-    }
-    
-    /* Live Notification Premium Feel */
+
+    /* ── Live Notification ── */
     #live-notification {
-      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-      border: 1px solid rgba(0,0,0,0.05);
-      background: rgba(255,255,255,0.98);
-      backdrop-filter: blur(12px);
+      background: var(--dark-navy);
+      color: var(--white);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.07);
     }
 </style>
 
