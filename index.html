@@ -1092,7 +1092,18 @@
       box-shadow: 0 16px 40px rgba(0,0,0,0.18);
       border: 1px solid rgba(255,255,255,0.07);
     }
-</style>
+
+    /* CTA Two-col responsive */
+    @media (max-width: 900px) {
+      .cta-card[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+      .cta-card[style*="grid-template-columns"] > div:last-child { min-height: 220px; }
+    }
+    /* Hero stats inline */
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr !important; }
+    }
+
+  </style>
 
 </head>
 <body>
@@ -1135,6 +1146,23 @@
             <a href="#bottom-cta" class="btn btn-dark" data-i18n="hero_join">Join the waitlist &rarr;</a>
             <a href="list-your-property.html" class="btn btn-outline" style="border: 1px solid var(--border-color); color: var(--text-main); font-weight: 600;" data-i18n="hero_list">List your property</a>
           </div>
+
+          <!-- STATS INLINE -->
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; padding-top:32px; border-top:1px solid var(--border-color);">
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1; color:var(--text-main);" data-i18n="stat_1_val">1,847</div>
+              <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" data-i18n="stat_1_lbl">On the waitlist</div>
+            </div>
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1; color:var(--text-main);" data-i18n="stat_2_val">6</div>
+              <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" data-i18n="stat_2_lbl">Cities at launch</div>
+            </div>
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1; color:var(--text-main);" data-i18n="stat_3_val">100%</div>
+              <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" data-i18n="stat_3_lbl">Verified listings</div>
+            </div>
+          </div>
+
         </div>
         
         <div class="hero-right">
@@ -1235,28 +1263,55 @@
           </div>
         </div>
       </div>
-      
-      <!-- STATS ROW -->
-      <div class="stats-container" style="margin-top: 60px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.05);">
-        <div class="stat-item" style="text-align: left; align-items: flex-start;">
-          <div class="stat-val" data-i18n="stat_1_val" style="font-size: 40px; line-height: 1;">1,847</div>
-          <div class="stat-label" data-i18n="stat_1_lbl" style="font-size: 13px; color: var(--text-muted);">On the waitlist</div>
-        </div>
-        <div class="stat-item" style="text-align: left; align-items: flex-start;">
-          <div class="stat-val" data-i18n="stat_2_val" style="font-size: 40px; line-height: 1;">6</div>
-          <div class="stat-label" data-i18n="stat_2_lbl" style="font-size: 13px; color: var(--text-muted);">Cities at launch</div>
-        </div>
-        <div class="stat-item" style="text-align: left; align-items: flex-start;">
-          <div class="stat-val" data-i18n="stat_3_val" style="font-size: 40px; line-height: 1;">100%</div>
-          <div class="stat-label" data-i18n="stat_3_lbl" style="font-size: 13px; color: var(--text-muted);">Verified listings</div>
-        </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="full-width-section" style="padding: 100px 0; background: var(--bg-section-c);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+      <div class="test-header" style="margin-bottom:48px;">
+        <span style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--gold);text-transform:uppercase;">EARLY VOICES</span>
+        <h2 data-i18n="test_title">What the diaspora is <span class="serif-italic">saying</span></h2>
       </div>
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <div class="test-text" data-i18n="test_1">"Last summer I lost €2,400 to a villa that didn't exist. If BackHome had been there, I'd have booked it twice."</div>
+          <div class="test-user">
+            <div class="test-user-info">
+              <strong data-i18n="test_1_name">Amina H.</strong>
+              <span data-i18n="test_1_loc">Minneapolis → Mogadishu</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <div class="test-text" data-i18n="test_2">"Finally a platform that speaks Somali, uses the right neighborhoods, and doesn't treat us like tourists."</div>
+          <div class="test-user">
+            <div class="test-user-info">
+              <strong data-i18n="test_2_name">Mohamed A.</strong>
+              <span data-i18n="test_2_loc">Oslo → Hargeisa</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <div class="test-text" data-i18n="test_3">"I own three homes in Garowe. BackHome gives me direct access to families I'd never reach — and handles the hard part."</div>
+          <div class="test-user">
+            <div class="test-user-info">
+              <strong data-i18n="test_3_name">Fatima O.</strong>
+              <span data-i18n="test_3_loc">Property owner, Garowe</span>
+            </div>
+          </div>
+        </div>
+
       
     </div>
   </section>
 
   <!-- PROBLEM SECTION -->
-  <section id="why-backhome" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
+  <section id="why-backhome" class="full-width-section" style="padding: 100px 0; background: var(--bg-section-b);">
     <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
       <div style="margin-bottom: 60px; max-width: 600px;">
         <span style="font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--gold); text-transform: uppercase;">THE PROBLEM</span>
@@ -1297,7 +1352,7 @@
       </div>
     </div>
   </section>
-  
+
   <!-- HOW IT WORKS SECTION -->
   <section id="how-it-works" class="full-width-section" style="padding: 100px 0; background: var(--white);">
     <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
@@ -1355,49 +1410,6 @@
           </li>
         </ul>
       </div>
-    </div>
-  </section>
-
-<section id="testimonials" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-      <div class="test-header">
-        <h2 data-i18n="test_title">What the diaspora is <span class="serif-italic">saying</span></h2>
-      </div>
-      <div class="test-grid">
-        <div class="test-card">
-          <div class="stars">★★★★★</div>
-          <div class="test-text" data-i18n="test_1">"Last summer I lost €2,400 to a villa that didn't exist. If BackHome had been there, I'd have booked it twice."</div>
-          <div class="test-user">
-            <div class="test-user-info">
-              <strong data-i18n="test_1_name">Amina H.</strong>
-              <span data-i18n="test_1_loc">Minneapolis → Mogadishu</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="test-card">
-          <div class="stars">★★★★★</div>
-          <div class="test-text" data-i18n="test_2">"Finally a platform that speaks Somali, uses the right neighborhoods, and doesn't treat us like tourists."</div>
-          <div class="test-user">
-            <div class="test-user-info">
-              <strong data-i18n="test_2_name">Mohamed A.</strong>
-              <span data-i18n="test_2_loc">Oslo → Hargeisa</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="test-card">
-          <div class="stars">★★★★★</div>
-          <div class="test-text" data-i18n="test_3">"I own three homes in Garowe. BackHome gives me direct access to families I'd never reach — and handles the hard part."</div>
-          <div class="test-user">
-            <div class="test-user-info">
-              <strong data-i18n="test_3_name">Fatima O.</strong>
-              <span data-i18n="test_3_loc">Property owner, Garowe</span>
-            </div>
-          </div>
-        </div>
-
-      
     </div>
   </section>
 
@@ -1459,28 +1471,43 @@
   </section>
 
   <!-- FINAL CTA -->
-  <section id="bottom-cta" class="full-width-section" style="padding: 100px 0; background: var(--bg-light);">
+  <section id="bottom-cta" class="full-width-section" style="padding: 100px 0; background: var(--bg-section-b);">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-      <div class="cta-card">
-        <div class="cta-bg"></div>
-        <div class="cta-content" style="max-width: 500px; margin: 0 auto; text-align: center;">
-          <h2 data-i18n="cta_title_new">Be first through the door.</h2>
-          <p data-i18n="cta_sub">Join thousands of people already on the waitlist and start building back home.</p>
-          <div id="waitlist-success" style="display: none; padding: 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; margin-top: 16px; font-weight: 600;" data-i18n="cta_success">Thank you! You have been added to the waitlist.</div>
-          <div class="cta-form" id="waitlist-form">
-            <input type="email" id="waitlist-email" placeholder="Enter your email address" data-i18n-placeholder="cta_email" class="cta-input">
-            <button class="btn btn-dark" id="waitlist-submit" data-i18n="cta_btn">Join the waitlist &rarr;</button>
+
+      <div class="cta-two-col" style="display:grid; grid-template-columns:1fr 1fr; border-radius:24px; overflow:hidden; box-shadow:0 32px 80px rgba(13,31,45,0.22), 0 4px 12px rgba(0,0,0,0.08); min-height:460px;">
+
+        <!-- LEFT: Dark content -->
+        <div style="background:var(--dark-navy); padding:64px 56px; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden;">
+          <div style="position:absolute;top:-80px;right:-80px;width:260px;height:260px;background:radial-gradient(circle, rgba(184,146,74,0.10) 0%, transparent 70%);border-radius:50%;pointer-events:none;"></div>
+          <span style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:block;">JOIN THE WAITLIST</span>
+          <h2 data-i18n="cta_title_new" style="color:var(--white); font-size:40px; line-height:1.15; margin-bottom:16px; position:relative;">Be first through the door.</h2>
+          <p data-i18n="cta_sub" style="color:rgba(255,255,255,0.6); font-size:15px; margin-bottom:36px; max-width:340px; line-height:1.7; position:relative;">Join thousands of people already on the waitlist and start building back home.</p>
+
+          <div id="waitlist-success" style="display:none; padding:16px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:12px; margin-bottom:16px; font-weight:600; color:var(--white);" data-i18n="cta_success">Thank you! You have been added to the waitlist.</div>
+
+          <div class="cta-form" id="waitlist-form" style="display:flex; flex-direction:column; gap:12px;">
+            <input type="email" id="waitlist-email" placeholder="Enter your email address" data-i18n-placeholder="cta_email" class="cta-input" style="background:rgba(255,255,255,0.08); border:1.5px solid rgba(255,255,255,0.15); color:var(--white); border-radius:40px; padding:16px 24px; font-size:15px; outline:none; width:100%; box-sizing:border-box;">
+            <button class="btn" id="waitlist-submit" data-i18n="cta_btn" style="height:52px; background:var(--gold); color:var(--dark-navy); font-weight:700; border-radius:40px; font-size:15px; border:none; cursor:pointer; transition:all 0.25s ease; box-shadow:0 4px 16px rgba(184,146,74,0.35);">Join the waitlist &rarr;</button>
           </div>
-          <p id="waitlist-spam-text" style="font-size: 12px; margin-top: 16px; margin-bottom: 0;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+
+          <p id="waitlist-spam-text" style="font-size:12px; margin-top:16px; color:rgba(255,255,255,0.4); display:flex; align-items:center; gap:6px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             <span data-i18n="cta_spam">No spam. Early access only.</span>
           </p>
-          <div id="waitlist-success" style="display: none; padding: 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; margin-top: 16px; font-weight: 600;" data-i18n="cta_success">Thank you! You have been added to the waitlist.</div>
         </div>
-      
+
+        <!-- RIGHT: Image -->
+        <div style="position:relative; overflow:hidden; min-height:300px;">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Verified home interior" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(13,31,45,0.25) 0%, transparent 60%);"></div>
+        </div>
+
+      </div>
     </div>
   </section>
-  </main>
+
+</main>
+
 <!-- FOOTER -->
   <footer>
     <div class="container">
