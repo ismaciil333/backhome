@@ -1620,37 +1620,14 @@
 
 
   <!-- FINAL CTA -->
-  <section id="bottom-cta" class="full-width-section" style="padding: 100px 0; background: var(--bg-section-b);">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-
-      <div class="cta-two-col" style="display:grid; grid-template-columns:1fr 1fr; border-radius:24px; overflow:hidden; box-shadow:0 32px 80px rgba(13,31,45,0.22), 0 4px 12px rgba(0,0,0,0.08); min-height:460px;">
-
-        <!-- LEFT: Dark content -->
-        <div style="background:var(--dark-navy); padding:64px 56px; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden;">
-          <div style="position:absolute;top:-80px;right:-80px;width:260px;height:260px;background:radial-gradient(circle, rgba(184,146,74,0.10) 0%, transparent 70%);border-radius:50%;pointer-events:none;"></div>
-          <span style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:block;">JOIN THE WAITLIST</span>
-          <h2 data-i18n="cta_title_new" style="color:var(--white); font-size:40px; line-height:1.15; margin-bottom:16px; position:relative;">Be first through the door.</h2>
-          <p data-i18n="cta_sub" style="color:rgba(255,255,255,0.6); font-size:15px; margin-bottom:36px; max-width:340px; line-height:1.7; position:relative;">Join thousands of people already on the waitlist and start building back home.</p>
-
-          <div id="waitlist-success" style="display:none; padding:16px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:12px; margin-bottom:16px; font-weight:600; color:var(--white);" data-i18n="cta_success">Thank you! You have been added to the waitlist.</div>
-
-          <div class="cta-form" id="waitlist-form" style="display:flex; flex-direction:column; gap:12px;">
-            <input type="email" id="waitlist-email" placeholder="Enter your email address" data-i18n-placeholder="cta_email" class="cta-input" style="background:rgba(255,255,255,0.08); border:1.5px solid rgba(255,255,255,0.15); color:var(--white); border-radius:40px; padding:16px 24px; font-size:15px; outline:none; width:100%; box-sizing:border-box;">
-            <button class="btn" id="waitlist-submit" data-i18n="cta_btn" style="height:52px; background:var(--gold); color:var(--dark-navy); font-weight:700; border-radius:40px; font-size:15px; border:none; cursor:pointer; transition:all 0.25s ease; box-shadow:0 4px 16px rgba(184,146,74,0.35);">Join the waitlist &rarr;</button>
-          </div>
-
-          <p id="waitlist-spam-text" style="font-size:12px; margin-top:16px; color:rgba(255,255,255,0.4); display:flex; align-items:center; gap:6px;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            <span data-i18n="cta_spam">No spam. Early access only.</span>
-          </p>
-        </div>
-
-        <!-- RIGHT: Image -->
-        <div style="position:relative; overflow:hidden; min-height:300px;">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Verified home interior" style="width:100%; height:100%; object-fit:cover; display:block;">
-          <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(13,31,45,0.25) 0%, transparent 60%);"></div>
-        </div>
-
+  <section id="bottom-cta" class="full-width-section" style="background:#0F1626; padding:120px 0; text-align:center;">
+    <div class="container" style="max-width:800px; margin:0 auto; padding:0 40px;">
+      <h2 style="color:#FFF; font-size:clamp(32px, 4vw, 44px); margin:0 0 16px; font-family:'Playfair Display', serif; line-height:1.2;" data-i18n="cta_title_new">Be first through <span class="serif-italic" style="color:var(--amber); font-style:italic;">the door.</span></h2>
+      <p style="color:rgba(255,255,255,0.6); font-size:14px; margin:0 auto 40px; max-width:480px; line-height:1.6;" data-i18n="cta_sub">Waitlist members get seven days of exclusive access before public launch, plus zero booking fees on their first stay.</p>
+      
+      <div style="display:flex; justify-content:center; gap:12px; max-width:440px; margin:0 auto;">
+        <input type="email" placeholder="Your email address" style="flex:1; height:44px; border-radius:6px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); padding:0 16px; color:#FFF; font-size:13px; outline:none;" data-i18n-placeholder="cta_email">
+        <button style="height:44px; padding:0 24px; border-radius:6px; border:none; background:#FFF; color:#0F1626; font-weight:600; font-size:13px; cursor:pointer;" data-i18n="cta_btn">Join waitlist ></button>
       </div>
     </div>
   </section>
@@ -1658,47 +1635,61 @@
 </main>
 
 <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
+  <footer style="background:var(--bg-page); padding:80px 0 40px;">
+    <div class="container" style="max-width:1200px; margin:0 auto; padding:0 40px;">
+      <div style="display:grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap:40px; margin-bottom:80px;">
+        
         <div>
-          <a href="#" class="logo" style="margin-bottom: 24px;" onclick="window.scrollTo(0,0)">
-            <img src="logo.svg" alt="BackHome Logo" class="logo-icon">
-            <span>Back</span><span>Home</span>
+          <a href="#" class="logo" style="display:inline-flex; align-items:center; gap:6px; font-size:15px; font-weight:800; letter-spacing:-0.5px; color:var(--navy-dark); text-decoration:none; margin-bottom:16px;">
+            Back<span style="color:var(--amber);">Home</span>
           </a>
-          <p style="font-size: 14px; color: var(--text-muted); max-width: 280px;" data-i18n="footer_desc">BackHome makes it easy, transparent, and secure to invest.</p>
-          <div style="margin-top: 24px; display: flex; gap: 16px;">
-            <a href="#why-backhome" style="color:var(--text-muted);" data-i18n="footer_why">Why BackHome</a>
-            <a href="#bottom-cta" style="color:var(--text-muted);" data-i18n="footer_waitlist">Waitlist</a>
-          </div>
+          <p style="font-size:11px; color:var(--text-muted); max-width:240px; line-height:1.8;" data-i18n="footer_desc_new">Connecting the Somali diaspora with verified homes across Mogadishu, Hargeisa, Garowe, Kismayo, Galkayo and Bosaso.</p>
         </div>
-        <div class="footer-col">
-          <h4 data-i18n="footer_plat">Platform</h4>
-          <div class="footer-links">
-            <a href="#" data-i18n="footer_about">About us</a>
-            
-            <a href="#" data-i18n="footer_blog">Blog</a>
-            <a href="mailto:hello@backhomeco.com" data-i18n="footer_contact">Contact</a>
-          </div>
+        
+        <div>
+          <h5 style="font-size:10px; font-weight:700; letter-spacing:1px; color:var(--text-muted); text-transform:uppercase; margin-bottom:24px;">PLATFORM</h5>
+          <ul style="display:flex; flex-direction:column; gap:12px; list-style:none; padding:0; margin:0;">
+            <li><a href="#how-it-works" style="font-size:12px; font-weight:600; color:var(--text-main); text-decoration:none;">How it works</a></li>
+            <li><a href="#bottom-cta" style="font-size:12px; font-weight:600; color:var(--text-main); text-decoration:none;">Join waitlist</a></li>
+            <li><a href="#" style="font-size:12px; font-weight:600; color:var(--text-main); text-decoration:none;">For owners</a></li>
+          </ul>
         </div>
-        <div class="footer-col">
-          <h4 data-i18n="footer_legal">Legal</h4>
-          <div class="footer-links">
-            <a href="#" data-i18n="footer_terms">Terms of service</a>
-            <a href="#" data-i18n="footer_privacy">Privacy policy</a>
-            <a href="#" data-i18n="footer_cookie">Cookie policy</a>
-          </div>
+        
+        <div>
+          <h5 style="font-size:10px; font-weight:700; letter-spacing:1px; color:var(--text-muted); text-transform:uppercase; margin-bottom:24px;">COMPANY</h5>
+          <ul style="display:flex; flex-direction:column; gap:12px; list-style:none; padding:0; margin:0;">
+            <li><a href="mailto:hello@backhome.so" style="font-size:12px; font-weight:600; color:var(--text-main); text-decoration:none;">hello@backhome.so</a></li>
+            <li><a href="#faq" style="font-size:12px; font-weight:600; color:var(--text-main); text-decoration:none;">FAQ</a></li>
+            <li><a href="#" style="font-size:12px; font-weight:600; color:var(--text-main); text-decoration:none;">Careers</a></li>
+            <li><a href="#" style="font-size:12px; font-weight:600; color:var(--text-main); text-decoration:none;">Press</a></li>
+          </ul>
         </div>
+        
+        <div>
+          <h5 style="font-size:10px; font-weight:700; letter-spacing:1px; color:var(--text-muted); text-transform:uppercase; margin-bottom:24px;">LEGAL</h5>
+          <ul style="display:flex; flex-direction:column; gap:12px; list-style:none; padding:0; margin:0;">
+            <li><a href="#" style="font-size:12px; font-weight:600; color:var(--text-main); text-decoration:none;">Privacy policy</a></li>
+            <li><a href="#" style="font-size:12px; font-weight:600; color:var(--text-main); text-decoration:none;">Terms</a></li>
+            <li><a href="#" style="font-size:12px; font-weight:600; color:var(--text-main); text-decoration:none;">Cookies</a></li>
+            <li><a href="#" style="font-size:12px; font-weight:600; color:var(--text-main); text-decoration:none;">Unsubscribe</a></li>
+          </ul>
+        </div>
+        
       </div>
       
-      <div class="footer-bottom">
-        <div style="display:flex; gap:16px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:24px; border-top:1px solid rgba(0,0,0,0.06);">
+        <p style="font-size:10px; color:var(--text-muted); margin:0;">© 2026 BackHome. Made with care for the Somali diaspora.</p>
+        <div style="display:flex; gap:8px;">
+          <div style="width:22px; height:22px; border-radius:50%; border:1px solid rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center;">
+             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </div>
+          <div style="width:22px; height:22px; border-radius:50%; border:1px solid rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center;">
+             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg>
+          </div>
+          <div style="width:22px; height:22px; border-radius:50%; border:1px solid rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center;">
+             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </div>
         </div>
-        <div data-i18n="footer_copy">&copy; 2026 BackHome. All rights reserved.</div>
       </div>
     </div>
   </footer>
