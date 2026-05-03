@@ -1187,6 +1187,18 @@
       .hero-grid { grid-template-columns: 1fr !important; }
     }
 
+  
+    /* ── Hero responsive ── */
+    @media (max-width: 900px) {
+      #hero > div:first-child { grid-template-columns: 1fr !important; }
+      #hero > div:first-child > div:first-child { padding: 60px 28px 40px !important; }
+      #hero > div:first-child > div:last-child { min-height: 300px !important; }
+      #hero > div:last-child { padding: 28px !important; grid-template-columns: repeat(2,1fr) !important; }
+    }
+    @media (max-width: 580px) {
+      #hero > div:last-child { grid-template-columns: 1fr !important; }
+    }
+
   </style>
 
 </head>
@@ -1218,137 +1230,123 @@
   
   <main>
   <!-- HERO -->
-  <section id="hero" class="full-width-section" style="padding: 60px 0 100px;">
-    <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
-      <div class="hero-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center;">
-        <div class="hero-left">
-          <span class="hero-badge" data-i18n="hero_badge">VERIFIED HOMES. REAL OWNERSHIP. BACK HOME.</span>
-          <h1 class="hero-title" data-i18n="hero_title">Find a place that feels like <span class="serif-italic">home</span>.</h1>
-          <p class="hero-subtitle" data-i18n="hero_sub" style="font-size: 16px; margin-bottom: 32px; max-width: 500px;">Verified rentals across Somalia, built for the diaspora. No scams, no middlemen, no inflated prices — just safe, trusted homes booked securely through BackHome.</p>
-          
-          <div class="hero-actions" style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-            <a href="#bottom-cta" class="btn btn-dark" data-i18n="hero_join">Join the waitlist &rarr;</a>
-            <a href="list-your-property.html" class="btn btn-outline" style="border: 1px solid var(--border-color); color: var(--text-main); font-weight: 600;" data-i18n="hero_list">List your property</a>
-          </div>
+  <section id="hero" class="full-width-section" style="padding: 0; background: var(--white); overflow: hidden;">
 
-          <!-- STATS INLINE -->
-          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; padding-top:32px; border-top:1px solid var(--border-color);">
-            <div>
-              <div style="font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1; color:var(--text-main);" data-i18n="stat_1_val">1,847</div>
-              <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" data-i18n="stat_1_lbl">On the waitlist</div>
-            </div>
-            <div>
-              <div style="font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1; color:var(--text-main);" data-i18n="stat_2_val">6</div>
-              <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" data-i18n="stat_2_lbl">Cities at launch</div>
-            </div>
-            <div>
-              <div style="font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1; color:var(--text-main);" data-i18n="stat_3_val">100%</div>
-              <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" data-i18n="stat_3_lbl">Verified listings</div>
-            </div>
-          </div>
+    <!-- TOP SPLIT: text left, image right -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; min-height: 600px;">
 
+      <!-- LEFT -->
+      <div style="display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 60px 80px;">
+        <span class="hero-badge" data-i18n="hero_badge" style="margin-bottom: 20px; display: block;">VERIFIED HOMES. REAL OWNERSHIP. BACK HOME.</span>
+        <h1 class="hero-title" data-i18n="hero_title" style="font-size: clamp(36px,4vw,56px); line-height: 1.1; margin-bottom: 20px;">Find a place that feels like <span class="serif-italic">home</span>.</h1>
+        <p class="hero-subtitle" data-i18n="hero_sub" style="font-size: 16px; max-width: 480px; margin-bottom: 32px; color: var(--text-muted); line-height: 1.7;">Verified rentals across Somalia, built for the diaspora. No scams, no middlemen, no inflated prices — just safe, trusted homes booked securely through BackHome.</p>
+
+        <!-- Buttons -->
+        <div class="hero-actions" style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 36px;">
+          <a href="#bottom-cta" class="btn btn-dark" data-i18n="hero_join">Join the waitlist &rarr;</a>
+          <a href="list-your-property.html" class="btn btn-outline" style="font-weight: 600;" data-i18n="hero_list">List your property</a>
         </div>
-        
-        <div class="hero-right">
-          <!-- LAUNCHING IN CARD -->
-          <div class="launch-card" style="background: var(--white); border-radius: 20px; box-shadow: 0 16px 40px rgba(0,0,0,0.06); padding: 32px; border: 1px solid rgba(0,0,0,0.04);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px dashed var(--border-color); padding-bottom: 16px;">
-              <span style="font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--text-muted);">LAUNCHING IN</span>
-              <span style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: flex; align-items: center; gap: 6px;"><div style="width:6px; height:6px; background:var(--green-accent); border-radius:50%; display:inline-block;"></div> Updated live</span>
-            </div>
-            
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-              <!-- City 1 -->
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; gap: 12px; align-items: center;">
-                  <div style="width: 40px; height: 40px; background: var(--bg-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color);">🏠</div>
-                  <div>
-                    <div style="font-weight: 600; font-size: 15px;" data-i18n="city_1">Mogadishu</div>
-                    <div style="font-size: 12px; color: var(--text-muted);">Banaadir · 47 homes lined up</div>
-                  </div>
-                </div>
-                <span data-i18n="city_badge" style="background: var(--bg-light); color: var(--text-muted); font-size: 11px; padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border-color); font-weight: 600;">Opening soon</span>
-              </div>
-              
-              <!-- City 2 -->
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; gap: 12px; align-items: center;">
-                  <div style="width: 40px; height: 40px; background: var(--bg-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color);">🏠</div>
-                  <div>
-                    <div style="font-weight: 600; font-size: 15px;" data-i18n="city_2">Hargeisa</div>
-                    <div style="font-size: 12px; color: var(--text-muted);">Maroodi Jeex · 38 homes lined up</div>
-                  </div>
-                </div>
-                <span data-i18n="city_badge" style="background: var(--bg-light); color: var(--text-muted); font-size: 11px; padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border-color); font-weight: 600;">Opening soon</span>
-              </div>
-              
-              <!-- City 3 -->
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; gap: 12px; align-items: center;">
-                  <div style="width: 40px; height: 40px; background: var(--bg-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color);">🏠</div>
-                  <div>
-                    <div style="font-weight: 600; font-size: 15px;" data-i18n="city_3">Garowe</div>
-                    <div style="font-size: 12px; color: var(--text-muted);">Nugaal · 24 homes lined up</div>
-                  </div>
-                </div>
-                <span style="background: var(--bg-light); color: var(--text-muted); font-size: 11px; padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border-color); font-weight: 600;">Summer 2026</span>
-              </div>
-              
-              <!-- City 4 -->
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; gap: 12px; align-items: center;">
-                  <div style="width: 40px; height: 40px; background: var(--bg-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color);">🏠</div>
-                  <div>
-                    <div style="font-weight: 600; font-size: 15px;" data-i18n="city_4">Kismayo</div>
-                    <div style="font-size: 12px; color: var(--text-muted);">Jubbada Hoose · 18 homes lined up</div>
-                  </div>
-                </div>
-                <span style="background: var(--bg-light); color: var(--text-muted); font-size: 11px; padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border-color); font-weight: 600;">Summer 2026</span>
-              </div>
-              
-              <!-- City 5 -->
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; gap: 12px; align-items: center;">
-                  <div style="width: 40px; height: 40px; background: var(--bg-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color);">🏠</div>
-                  <div>
-                    <div style="font-weight: 600; font-size: 15px;" data-i18n="city_5">Galkayo</div>
-                    <div style="font-size: 12px; color: var(--text-muted);">Mudug · 12 homes lined up</div>
-                  </div>
-                </div>
-                <span style="background: var(--bg-light); color: var(--text-muted); font-size: 11px; padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border-color); font-weight: 600;">Autumn 2026</span>
-              </div>
-              
-              <!-- City 6 -->
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; gap: 12px; align-items: center;">
-                  <div style="width: 40px; height: 40px; background: var(--bg-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color);">🏠</div>
-                  <div>
-                    <div style="font-weight: 600; font-size: 15px;" data-i18n="city_6">Bosaso</div>
-                    <div style="font-size: 12px; color: var(--text-muted);">Bari · 9 homes lined up</div>
-                  </div>
-                </div>
-                <span style="background: var(--bg-light); color: var(--text-muted); font-size: 11px; padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border-color); font-weight: 600;">Autumn 2026</span>
-              </div>
-              
-            </div>
-            
-            <div style="margin-top: 24px; padding-top: 16px; border-top: 1px dashed var(--border-color); display: flex; justify-content: space-between; align-items: center;">
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <div style="display: flex; align-items: center;">
-                  <div style="width: 24px; height: 24px; border-radius: 50%; background: #e2e8f0; font-size: 9px; display: flex; align-items: center; justify-content: center; font-weight: 700; border: 2px solid var(--white);">AH</div>
-                  <div style="width: 24px; height: 24px; border-radius: 50%; background: #fed7aa; font-size: 9px; display: flex; align-items: center; justify-content: center; font-weight: 700; border: 2px solid var(--white); margin-left: -8px;">FM</div>
-                  <div style="width: 24px; height: 24px; border-radius: 50%; background: #d9f99d; font-size: 9px; display: flex; align-items: center; justify-content: center; font-weight: 700; border: 2px solid var(--white); margin-left: -8px;">+</div>
-                </div>
-                <span style="font-size: 12px; font-weight: 600;">1,800+ waiting</span>
-              </div>
-              <span style="font-size: 11px; color: var(--text-muted);">Avg. reply · 4h</span>
-            </div>
-            
+
+        <!-- Search bar -->
+        <div style="display: flex; align-items: center; background: var(--white); border: 1.5px solid var(--border-color); border-radius: 50px; padding: 6px 6px 6px 22px; max-width: 460px; box-shadow: 0 4px 20px rgba(75,92,228,0.08);">
+          <svg style="width:18px;height:18px;flex-shrink:0;color:var(--text-muted);margin-right:10px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" placeholder="Search by city — Mogadishu, Hargeisa…" style="flex:1; border:none; outline:none; font-size:14px; background:transparent; color:var(--text-main); font-family:inherit;" />
+          <button style="background:var(--brand-blue); color:#fff; border:none; border-radius:40px; padding:10px 22px; font-size:14px; font-weight:700; cursor:pointer; transition:background 0.2s ease; white-space:nowrap;">Search</button>
+        </div>
+
+        <!-- Stats -->
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:40px; padding-top:32px; border-top:1px solid var(--border-color);">
+          <div>
+            <div style="font-family:'Playfair Display',serif; font-size:32px; font-weight:700; color:var(--brand-blue);" data-i18n="stat_1_val">1,847</div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" data-i18n="stat_1_lbl">On the waitlist</div>
+          </div>
+          <div>
+            <div style="font-family:'Playfair Display',serif; font-size:32px; font-weight:700; color:var(--brand-blue);" data-i18n="stat_2_val">6</div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" data-i18n="stat_2_lbl">Cities at launch</div>
+          </div>
+          <div>
+            <div style="font-family:'Playfair Display',serif; font-size:32px; font-weight:700; color:var(--brand-blue);" data-i18n="stat_3_val">100%</div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" data-i18n="stat_3_lbl">Verified listings</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: property image -->
+      <div style="position:relative; overflow:hidden; min-height:500px;">
+        <img
+          src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=1200&q=85"
+          alt="Verified home in Somalia"
+          style="width:100%; height:100%; object-fit:cover; display:block;"
+        >
+        <!-- Subtle overlay gradient -->
+        <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(246,247,252,0.35) 0%, transparent 40%);"></div>
+        <!-- Floating verification badge -->
+        <div style="position:absolute; bottom:32px; left:32px; background:var(--white); border-radius:16px; padding:16px 20px; box-shadow:0 8px 32px rgba(0,0,0,0.12); display:flex; align-items:center; gap:14px;">
+          <div style="width:40px;height:40px;background:var(--brand-blue-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" fill="none" stroke="var(--brand-blue)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--text-main);">BackHome Verified</div>
+            <div style="font-size:12px;color:var(--text-muted);">Inspected · Photographed · Approved</div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- FEATURE STRIP -->
+    <div style="border-top:1px solid var(--border-color); background:var(--white); padding:32px 80px;">
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:32px; max-width:1200px; margin:0 auto;">
+
+        <!-- 1 -->
+        <div style="display:flex; align-items:flex-start; gap:16px;">
+          <div style="width:44px;height:44px;flex-shrink:0;background:var(--brand-blue-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" fill="none" stroke="var(--brand-blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-main);margin-bottom:4px;" data-i18n="feat_1_t">Verified homes</div>
+            <div style="font-size:13px;color:var(--text-muted);line-height:1.5;" data-i18n="feat_1_d">Every place is verified for your peace of mind.</div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div style="display:flex; align-items:flex-start; gap:16px;">
+          <div style="width:44px;height:44px;flex-shrink:0;background:var(--brand-blue-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" fill="none" stroke="var(--brand-blue)" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-main);margin-bottom:4px;" data-i18n="feat_2_t">Safe payments</div>
+            <div style="font-size:13px;color:var(--text-muted);line-height:1.5;" data-i18n="feat_2_d">Your safety is our priority.</div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div style="display:flex; align-items:flex-start; gap:16px;">
+          <div style="width:44px;height:44px;flex-shrink:0;background:var(--brand-blue-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" fill="none" stroke="var(--brand-blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-main);margin-bottom:4px;" data-i18n="feat_3_t">Local support</div>
+            <div style="font-size:13px;color:var(--text-muted);line-height:1.5;" data-i18n="feat_3_d">We're here when you need us.</div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div style="display:flex; align-items:flex-start; gap:16px;">
+          <div style="width:44px;height:44px;flex-shrink:0;background:var(--brand-blue-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" fill="none" stroke="var(--brand-blue)" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-main);margin-bottom:4px;" data-i18n="feat_4_t">Trusted platform</div>
+            <div style="font-size:13px;color:var(--text-muted);line-height:1.5;" data-i18n="feat_4_d">Connecting you to what matters.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </section>
+
+
 
   <section id="testimonials" class="full-width-section" style="padding: 100px 0; background: var(--bg-section-c);">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
@@ -1660,6 +1658,10 @@
         "nav_faq": "FAQ",
         "nav_waitlist": "Join waitlist",
         
+        "feat_1_t": "Verified homes", "feat_1_d": "Every place is verified for your peace of mind.",
+        "feat_2_t": "Safe payments", "feat_2_d": "Your safety is our priority.",
+        "feat_3_t": "Local support", "feat_3_d": "We\'re here when you need us.",
+        "feat_4_t": "Trusted platform", "feat_4_d": "Connecting you to what matters.",
         "stat_1_val": "1,847", "stat_1_lbl": "On the waitlist",
         "stat_2_val": "6", "stat_2_lbl": "Cities at launch",
         "stat_3_val": "100%", "stat_3_lbl": "Verified listings",
@@ -1768,6 +1770,10 @@
         "nav_faq": "Su'aalaha",
         "nav_waitlist": "Liiska sugitaanka",
         
+        "feat_1_t": "Guryo la xaqiijiyay", "feat_1_d": "Guri kasta waa la xaqiijiyaa si nabadgelyo ah.",
+        "feat_2_t": "Bixinta ammaan ah", "feat_2_d": "Ammaankaagu waa mudnaanteena.",
+        "feat_3_t": "Taageero maxalli ah", "feat_3_d": "Waxaan halkan u joognaa marka aad noogu baahato.",
+        "feat_4_t": "Barnaamij la isku halayn karo", "feat_4_d": "Kuu xidha waxa muhiimka ah.",
         "stat_1_val": "1,847", "stat_1_lbl": "Liiska sugitaanka",
         "stat_2_val": "6", "stat_2_lbl": "Magaalooyin lagu bilaabayo",
         "stat_3_val": "100%", "stat_3_lbl": "Guryo la xaqiijiyay",
