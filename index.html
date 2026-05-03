@@ -10,57 +10,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* ════════════════════════════════════════════
-         BackHome — Logo-derived Color System
-         Logo blues: #5B8FF5 (light) · #3A41CC (deep)
-         Logo peach: #E8B898 (accent only)
-      ════════════════════════════════════════════ */
-
-      /* ── PRIMARY: Brand Blue (from logo) ── */
-      --brand-blue:       #4B5CE4;   /* balanced primary — between logo's two blues */
-      --brand-blue-light: #6B7BEC;   /* lighter tint — hover highlights */
-      --brand-blue-pale:  #EEF0FC;   /* very light blue tint — card backgrounds */
-      --brand-blue-deep:  #1E2280;   /* dark sections, feature blocks */
-      --brand-blue-mid:   #2C3AB8;   /* button hover state */
-
-      /* ── ACCENT: Brand Orange/Peach (logo peach, used sparingly) ── */
-      --brand-orange:     #E09A6A;   /* warm peach accent — italic highlights, icons */
-      --brand-orange-light:#FEF0E8;  /* very light tint — never dominant */
-
-      /* ── BACKGROUNDS — cool-neutral, no beige ── */
-      --bg-page:      #F6F7FC;   /* near-white with blue whisper */
-      --bg-section-b: #EDF0FA;   /* light blue-tinted section */
-      --bg-section-c: #E5E8F6;   /* slightly deeper cool section */
-      --bg-dark:      #1A1F78;   /* deep brand blue — dark feature sections */
-      --bg-dark-mid:  #222890;   /* slightly lighter dark blue — card surfaces */
-      --bg-light:     #F6F7FC;   /* alias for old references */
+      /* BackHome — warm cream palette (reference-matched) */
+      --bg-page:      #EDE8DF;
+      --bg-section-b: #E8E2D8;
+      --bg-section-c: #E2DBD0;
+      --bg-dark:      #1C1410;
+      --bg-dark-mid:  #2A1F17;
+      --bg-light:     #EDE8DF;
       --white:        #FFFFFF;
-      --card-bg:      #FFFFFF;   /* pure white cards pop off every section */
+      --card-bg:      #FFFFFF;
 
-      /* ── TEXT ── */
-      --text-main:    #080B1A;   /* near-black with blue undertone */
-      --text-body:    #2A2E54;   /* dark blue-gray — confident body copy */
-      --text-muted:   #636899;   /* muted blue — secondary info */
-      --text-faint:   #A8ADC8;   /* light blue-gray — timestamps, captions */
-      --text-on-dark: rgba(255,255,255,0.92);
+      --text-main:    #1A1410;
+      --text-body:    #2E2720;
+      --text-muted:   #7A6E64;
+      --text-faint:   #B0A89E;
+      --text-on-dark: rgba(255,255,255,0.90);
       --text-on-dark-muted: rgba(255,255,255,0.55);
 
-      /* ── BACKWARD-COMPAT ALIASES (old variable names → brand values) ── */
-      --dark-navy:    #1A1F78;   /* was old navy → now brand deep blue */
-      --navy-mid:     #2C3AB8;   /* was old mid-navy → brand blue hover */
-      --amber:        #E09A6A;   /* was amber → brand orange */
-      --amber-light:  #FEF0E8;
-      --amber-glow:   rgba(224, 154, 106, 0.14);
-      --green-accent: #4B5CE4;   /* was green → brand blue (used for checkmarks etc.) */
-      --green-light:  #EEF0FC;
-      --gold:         #E09A6A;   /* was gold → brand orange */
-      --gold-light:   #FEF0E8;
+      /* Brand amber/warm (reference logo + accents) */
+      --amber:        #C8783A;
+      --amber-light:  #FEF3E8;
+      --amber-glow:   rgba(200,120,58,0.15);
+      --gold:         #C8783A;
+      --gold-light:   #FEF3E8;
 
-      /* ── BORDERS ── */
-      --border-color: #D8DCF2;   /* soft blue-tinted border */
-      --border-strong:#B8BEDD;   /* stronger divider */
+      /* Blue kept for backward compat but not dominant */
+      --brand-blue:       #C8783A;
+      --brand-blue-light: #D8905A;
+      --brand-blue-pale:  #FEF3E8;
+      --brand-blue-deep:  #1C1410;
+      --brand-blue-mid:   #A86030;
+      --brand-orange:     #C8783A;
+      --brand-orange-light:#FEF3E8;
+      --dark-navy:    #1C1410;
+      --navy-mid:     #2A1F17;
+      --green-accent: #1E5C3A;
+      --green-light:  #EBF6F0;
+
+      --border-color: rgba(0,0,0,0.08);
+      --border-strong:rgba(0,0,0,0.14);
       --border-dark:  rgba(255,255,255,0.09);
-
       --max-width: 1200px;
     }
 
@@ -98,7 +87,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(250, 250, 250, 0.9);
+      background: rgba(237,232,223,0.96);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid transparent;
       transition: border-color 0.3s;
@@ -123,7 +112,7 @@
     }
     .logo-icon { width: 38px; height: 44px; flex-shrink: 0; object-fit: contain; }
     /* 'Back' = brand blue, 'Home' = brand orange accent */
-    .logo span { color: var(--brand-blue); }
+    .logo span { color: var(--amber); }
     
     .nav-links {
       display: flex;
@@ -938,7 +927,7 @@
 
     /* ── Navbar ── */
     header {
-      background: rgba(255,255,255,0.96);
+      background: rgba(237,232,223,0.96);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-color);
@@ -1151,8 +1140,8 @@
       border-top: 1px solid rgba(255,255,255,0.07) !important;
       color: rgba(255,255,255,0.35) !important;
     }
-    footer .logo span:first-of-type { color: rgba(255,255,255,0.90) !important; }
-    footer .logo span:last-of-type  { color: var(--brand-orange) !important; }
+    footer .logo span { color: var(--amber); }
+    footer .logo span { color: var(--amber); }
     footer .footer-desc { color: rgba(255,255,255,0.42) !important; }
 
     /* ─────────────────────────────────────────────
@@ -1192,17 +1181,8 @@
     header { transition: background 0.3s ease; }
   
   
-    /* ── Hero two-col ── */
-    #hero > div { min-height: 600px; }
-    @media (max-width: 900px) {
-      #hero > div { grid-template-columns: 1fr !important; }
-      #hero > div > div:first-child { padding: 64px 32px !important; }
-      #hero > div > div:last-child { min-height: 280px; }
-      #hero-stats { padding: 28px 32px !important; }
-      #hero-stats > div { max-width: 100% !important; }
-    }
     /* Navbar always clean white */
-    header { background: rgba(255,255,255,0.97) !important; }
+    
 
   </style>
 
@@ -1235,65 +1215,144 @@
   
   <main>
   <!-- HERO -->
-  <section id="hero" style="background:#ffffff; overflow:hidden; border-bottom:1px solid var(--border-color);">
-    <div style="display:grid; grid-template-columns:1fr 1fr; min-height:600px; max-width:100%;">
+  <section id="hero" class="full-width-section" style="padding:56px 0 72px; background:var(--bg-page);">
+    <div class="container" style="max-width:1240px; margin:0 auto; padding:0 48px;">
+      <div style="display:grid; grid-template-columns:1.15fr 1fr; gap:64px; align-items:start;">
 
-      <!-- LEFT: text content -->
-      <div style="display:flex; flex-direction:column; justify-content:center; padding:80px 64px 80px 80px; background:#ffffff;">
+        <!-- LEFT -->
+        <div>
+          <!-- Pre-launch badge -->
+          <div style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,0,0,0.14);border-radius:50px;padding:5px 14px;font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:28px;background:rgba(255,255,255,0.40);">
+            <span style="font-size:10px;">&#8592;</span>
+            <span>Pre-launch &middot; Spring 2026</span>
+          </div>
 
-        <h1 class="hero-title" data-i18n="hero_title"
-            style="font-size:clamp(32px,3.2vw,52px); line-height:1.1; font-weight:800; letter-spacing:-1.5px; color:var(--text-main); margin-bottom:20px; max-width:480px;">
-          Find a place that feels like <em class="serif-italic" style="font-style:italic;">home.</em>
-        </h1>
+          <h1 class="hero-title" data-i18n="hero_title"
+              style="font-family:'Playfair Display',serif;font-size:clamp(36px,3.8vw,54px);line-height:1.1;font-weight:700;letter-spacing:-0.5px;color:var(--text-main);margin-bottom:20px;max-width:460px;">
+            Find a place that feels like <em class="serif-italic" style="font-style:italic;">home.</em>
+          </h1>
 
-        <p class="hero-subtitle" data-i18n="hero_sub"
-           style="font-size:16px; line-height:1.75; color:var(--text-muted); max-width:400px; margin-bottom:40px; font-weight:400;">
-          Verified rentals across Somalia, built for the diaspora. No scams, no middlemen, no inflated prices — just safe, trusted homes booked securely through BackHome.
-        </p>
+          <p class="hero-subtitle" data-i18n="hero_sub"
+             style="font-size:15px;line-height:1.75;color:var(--text-muted);max-width:420px;margin-bottom:36px;">
+            Verified rentals across Somalia, built for the diaspora. No scams, no middlemen, no inflated prices — just safe, trusted homes booked securely through BackHome.
+          </p>
 
-        <!-- CTAs -->
-        <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
-          <a href="#bottom-cta" class="btn btn-dark" data-i18n="hero_join"
-             style="padding:14px 28px; font-size:15px; font-weight:700;">
-            Join the waitlist &rarr;
-          </a>
-          <a href="list-your-property.html" class="btn btn-outline" data-i18n="hero_list"
-             style="padding:14px 24px; font-size:15px; font-weight:600; color:var(--text-body); border-color:var(--border-strong);">
-            List your property
-          </a>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:52px;">
+            <a href="#bottom-cta" class="btn btn-dark" data-i18n="hero_join">Join the waitlist &rarr;</a>
+            <a href="list-your-property.html" class="btn btn-outline" style="font-weight:600;" data-i18n="hero_list">List your property</a>
+          </div>
+
+          <!-- Stats -->
+          <div style="display:grid;grid-template-columns:repeat(3,auto);gap:36px;padding-top:24px;border-top:1px solid var(--border-color);width:fit-content;">
+            <div>
+              <div style="font-family:'Playfair Display',serif;font-size:34px;font-weight:700;line-height:1;color:var(--text-main);" data-i18n="stat_1_val">1,847</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:5px;" data-i18n="stat_1_lbl">On the waitlist</div>
+            </div>
+            <div>
+              <div style="font-family:'Playfair Display',serif;font-size:34px;font-weight:700;line-height:1;color:var(--text-main);" data-i18n="stat_2_val">6</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:5px;" data-i18n="stat_2_lbl">Cities at launch</div>
+            </div>
+            <div>
+              <div style="font-family:'Playfair Display',serif;font-size:34px;font-weight:700;line-height:1;color:var(--text-main);" data-i18n="stat_3_val">100%</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:5px;" data-i18n="stat_3_lbl">Verified listings</div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- RIGHT: image -->
-      <div style="position:relative; overflow:hidden;">
-        <img
-          src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=88"
-          alt="Verified coastal home"
-          style="width:100%; height:100%; object-fit:cover; display:block; object-position:center 35%;">
-        <!-- Very subtle dark vignette on left edge to separate from text -->
-        <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,0.18) 0%, transparent 20%);pointer-events:none;"></div>
-      </div>
+        <!-- RIGHT: LAUNCHING IN card (exact reference) -->
+        <div style="background:#ffffff;border-radius:18px;padding:26px 24px 20px;border:1px solid rgba(0,0,0,0.07);box-shadow:0 8px 40px rgba(0,0,0,0.06),0 1px 4px rgba(0,0,0,0.04);">
 
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;padding-bottom:14px;border-bottom:1px dashed rgba(0,0,0,0.10);">
+            <span style="font-size:9px;font-weight:800;letter-spacing:1.8px;color:var(--text-muted);text-transform:uppercase;">Launching in</span>
+            <span style="font-size:10px;font-weight:600;color:var(--text-muted);display:flex;align-items:center;gap:5px;">
+              <span style="width:6px;height:6px;background:#22c55e;border-radius:50%;display:inline-block;"></span>
+              Updated Live
+            </span>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:13px;">
+            <!-- City rows -->
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <div style="width:36px;height:36px;background:#F0E8DC;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🏠</div>
+                <div>
+                  <div style="font-weight:700;font-size:13px;color:var(--text-main);" data-i18n="city_1">Mogadishu</div>
+                  <div style="font-size:11px;color:var(--text-muted);">Banaadir &middot; 47 homes lined up</div>
+                </div>
+              </div>
+              <span style="background:#FEF3E8;color:var(--amber);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;" data-i18n="city_badge">Opening soon</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <div style="width:36px;height:36px;background:#F0E8DC;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🏠</div>
+                <div>
+                  <div style="font-weight:700;font-size:13px;color:var(--text-main);" data-i18n="city_2">Hargeisa</div>
+                  <div style="font-size:11px;color:var(--text-muted);">Maroodi Jeex &middot; 38 homes lined up</div>
+                </div>
+              </div>
+              <span style="background:#FEF3E8;color:var(--amber);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;" data-i18n="city_badge">Opening soon</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <div style="width:36px;height:36px;background:#F0E8DC;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🏠</div>
+                <div>
+                  <div style="font-weight:700;font-size:13px;color:var(--text-main);" data-i18n="city_3">Garowe</div>
+                  <div style="font-size:11px;color:var(--text-muted);">Nugaal &middot; 24 homes lined up</div>
+                </div>
+              </div>
+              <span style="background:rgba(0,0,0,0.05);color:var(--text-muted);font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap;">Summer 2026</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <div style="width:36px;height:36px;background:#F0E8DC;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🏠</div>
+                <div>
+                  <div style="font-weight:700;font-size:13px;color:var(--text-main);" data-i18n="city_4">Kismayo</div>
+                  <div style="font-size:11px;color:var(--text-muted);">Jubbada Hoose &middot; 18 homes lined up</div>
+                </div>
+              </div>
+              <span style="background:rgba(0,0,0,0.05);color:var(--text-muted);font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap;">Summer 2026</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <div style="width:36px;height:36px;background:#F0E8DC;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🏠</div>
+                <div>
+                  <div style="font-weight:700;font-size:13px;color:var(--text-main);" data-i18n="city_5">Galkayo</div>
+                  <div style="font-size:11px;color:var(--text-muted);">Mudug &middot; 12 homes lined up</div>
+                </div>
+              </div>
+              <span style="background:rgba(0,0,0,0.05);color:var(--text-muted);font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap;">Autumn 2026</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <div style="width:36px;height:36px;background:#F0E8DC;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🏠</div>
+                <div>
+                  <div style="font-weight:700;font-size:13px;color:var(--text-main);" data-i18n="city_6">Bosaso</div>
+                  <div style="font-size:11px;color:var(--text-muted);">Bari &middot; 9 homes lined up</div>
+                </div>
+              </div>
+              <span style="background:rgba(0,0,0,0.05);color:var(--text-muted);font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap;">Autumn 2026</span>
+            </div>
+          </div>
+
+          <!-- Card footer -->
+          <div style="margin-top:16px;padding-top:12px;border-top:1px dashed rgba(0,0,0,0.08);display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:7px;">
+              <div style="display:flex;">
+                <div style="width:20px;height:20px;border-radius:50%;background:#e2e8f0;font-size:7px;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #fff;">AH</div>
+                <div style="width:20px;height:20px;border-radius:50%;background:#fed7aa;font-size:7px;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #fff;margin-left:-6px;">FM</div>
+                <div style="width:20px;height:20px;border-radius:50%;background:#d9f99d;font-size:7px;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #fff;margin-left:-6px;">+</div>
+              </div>
+              <span style="font-size:11px;font-weight:700;color:var(--text-main);">1,800+ waiting</span>
+            </div>
+            <span style="font-size:10px;color:var(--text-muted);">Avg. reply &middot; 4h</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <!-- STATS STRIP (moved below hero) -->
-  <section id="hero-stats" style="background:var(--bg-page); border-bottom:1px solid var(--border-color); padding:32px 80px;">
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); max-width:600px; gap:0;">
-      <div style="text-align:center; padding:0 24px; border-right:1px solid var(--border-color);">
-        <div style="font-family:'Playfair Display',serif; font-size:36px; font-weight:700; color:var(--brand-blue); line-height:1;" data-i18n="stat_1_val">1,847</div>
-        <div style="font-size:12px; color:var(--text-muted); margin-top:6px; font-weight:500;" data-i18n="stat_1_lbl">On the waitlist</div>
-      </div>
-      <div style="text-align:center; padding:0 24px; border-right:1px solid var(--border-color);">
-        <div style="font-family:'Playfair Display',serif; font-size:36px; font-weight:700; color:var(--brand-blue); line-height:1;" data-i18n="stat_2_val">6</div>
-        <div style="font-size:12px; color:var(--text-muted); margin-top:6px; font-weight:500;" data-i18n="stat_2_lbl">Cities at launch</div>
-      </div>
-      <div style="text-align:center; padding:0 24px;">
-        <div style="font-family:'Playfair Display',serif; font-size:36px; font-weight:700; color:var(--brand-blue); line-height:1;" data-i18n="stat_3_val">100%</div>
-        <div style="font-size:12px; color:var(--text-muted); margin-top:6px; font-weight:500;" data-i18n="stat_3_lbl">Verified listings</div>
-      </div>
-    </div>
-  </section>
+
 
 
 
