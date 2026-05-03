@@ -851,17 +851,8 @@
       font-weight: 600;
       margin: 0;
     }
-    .faq-answer-wrapper {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
-      opacity: 0;
-    }
-    .faq-item.active .faq-answer-wrapper {
-      max-height: 200px;
-      opacity: 1;
-      margin-top: 16px;
-    }
+    
+    .faq-item.active 
     .icon-plus {
       font-size: 24px;
       font-weight: 300;
@@ -1185,15 +1176,51 @@
     
 
   
-    /* ── FAQ premium accordion ── */
-    .faq-item .faq-header-click { transition: background 0.15s ease; border-radius: 4px; margin: 0 -8px; padding-left: 8px; padding-right: 8px; }
-    .faq-item .faq-header-click:hover { background: rgba(0,0,0,0.025); }
-    .faq-item.open .faq-header-click h4 { font-weight: 600; }
-    .faq-item.open .icon-plus { transform: rotate(45deg); color: var(--amber); }
-    .faq-answer-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
-    .faq-item.open .faq-answer-wrapper { max-height: 300px; }
     /* ── How it works: grid border trick ── */
     #how-it-works .grid-3 > div:hover { background: #FAFAF8; }
+
+  
+    /* ── FAQ accordion (clean & premium) ── */
+    .faq-list { border-top: 1px solid var(--border-color); }
+    .faq-item { border-bottom: 1px solid var(--border-color); }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
+      cursor: pointer;
+      user-select: none;
+      transition: opacity 0.15s;
+    }
+    .faq-q:hover { opacity: 0.72; }
+    .faq-q span {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+    .faq-item.open .faq-q span { font-weight: 600; }
+    .faq-icon {
+      flex-shrink: 0;
+      color: var(--text-muted);
+      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1), color 0.2s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--amber); }
+    .faq-a-wrap {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.32s cubic-bezier(0.4,0,0.2,1);
+    }
+    .faq-item.open .faq-a-wrap { grid-template-rows: 1fr; }
+    .faq-a-wrap > p {
+      overflow: hidden;
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+    .faq-item.open .faq-a-wrap > p { padding-bottom: 22px; }
 
   </style>
 
@@ -1522,68 +1549,70 @@
 
   <!-- FAQ -->
   <section id="faq" class="full-width-section" style="padding:100px 0; background:var(--bg-page);">
-    <div class="container" style="max-width:720px;margin:0 auto;padding:0 48px;">
+    <div class="container" style="max-width:680px; margin:0 auto; padding:0 40px;">
 
       <div style="margin-bottom:56px;">
-        <span class="section-label" data-i18n="faq_label" style="font-size:10px;font-weight:700;letter-spacing:1.8px;color:var(--amber);text-transform:uppercase;display:block;margin-bottom:14px;">QUESTIONS</span>
-        <h2 data-i18n="faq_title" style="font-size:clamp(26px,2.8vw,40px);letter-spacing:-0.5px;margin:0;">Everything you're wondering.</h2>
+        <span style="font-size:10px;font-weight:700;letter-spacing:1.8px;color:var(--amber);text-transform:uppercase;display:block;margin-bottom:14px;" data-i18n="faq_label">QUESTIONS</span>
+        <h2 data-i18n="faq_title" style="font-size:clamp(26px,3vw,40px);letter-spacing:-0.5px;margin:0;line-height:1.1;">Everything you're wondering.</h2>
       </div>
 
-      <div class="faq-list" style="border-top:1px solid var(--border-color);">
+      <div class="faq-list">
 
-        <div class="faq-item" style="border-bottom:1px solid var(--border-color);">
-          <div class="faq-header-click" style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:24px;">
-            <h4 data-i18n="faq_1_q" style="font-size:15px;font-weight:500;color:var(--text-main);margin:0;line-height:1.4;">When does BackHome launch?</h4>
-            <span class="icon-plus" style="font-size:20px;font-weight:300;color:var(--text-muted);flex-shrink:0;line-height:1;transition:transform 0.25s ease;">+</span>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span data-i18n="faq_1_q">When does BackHome launch?</span>
+            <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </div>
-          <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_1_a" style="font-size:14px;line-height:1.8;color:var(--text-muted);padding-bottom:22px;">We are launching city by city starting 2026. Join the waitlist to get early access.</div>
+          <div class="faq-a-wrap">
+            <p class="faq-a" data-i18n="faq_1_a">We are launching city by city starting 2026. Join the waitlist to get early access.</p>
           </div>
         </div>
 
-        <div class="faq-item" style="border-bottom:1px solid var(--border-color);">
-          <div class="faq-header-click" style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:24px;">
-            <h4 data-i18n="faq_2_q" style="font-size:15px;font-weight:500;color:var(--text-main);margin:0;line-height:1.4;">How are properties verified?</h4>
-            <span class="icon-plus" style="font-size:20px;font-weight:300;color:var(--text-muted);flex-shrink:0;line-height:1;transition:transform 0.25s ease;">+</span>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span data-i18n="faq_2_q">How are properties verified?</span>
+            <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </div>
-          <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_2_a" style="font-size:14px;line-height:1.8;color:var(--text-muted);padding-bottom:22px;">Every property is physically inspected, documented, and approved before going live.</div>
-          </div>
-        </div>
-
-        <div class="faq-item" style="border-bottom:1px solid var(--border-color);">
-          <div class="faq-header-click" style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:24px;">
-            <h4 data-i18n="faq_3_q" style="font-size:15px;font-weight:500;color:var(--text-main);margin:0;line-height:1.4;">Can I pay in USD, EUR or GBP?</h4>
-            <span class="icon-plus" style="font-size:20px;font-weight:300;color:var(--text-muted);flex-shrink:0;line-height:1;transition:transform 0.25s ease;">+</span>
-          </div>
-          <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_3_a" style="font-size:14px;line-height:1.8;color:var(--text-muted);padding-bottom:22px;">Yes. We support international payments with secure processing.</div>
+          <div class="faq-a-wrap">
+            <p class="faq-a" data-i18n="faq_2_a">Every property is physically inspected, documented, and approved before going live.</p>
           </div>
         </div>
 
-        <div class="faq-item" style="border-bottom:1px solid var(--border-color);">
-          <div class="faq-header-click" style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:24px;">
-            <h4 data-i18n="faq_4_q" style="font-size:15px;font-weight:500;color:var(--text-main);margin:0;line-height:1.4;">What if something goes wrong when I arrive?</h4>
-            <span class="icon-plus" style="font-size:20px;font-weight:300;color:var(--text-muted);flex-shrink:0;line-height:1;transition:transform 0.25s ease;">+</span>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span data-i18n="faq_3_q">Can I pay in USD, EUR or GBP?</span>
+            <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </div>
-          <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_4_a" style="font-size:14px;line-height:1.8;color:var(--text-muted);padding-bottom:22px;">Our local team is available to support you throughout your stay.</div>
+          <div class="faq-a-wrap">
+            <p class="faq-a" data-i18n="faq_3_a">Yes. We support international payments with secure processing.</p>
           </div>
         </div>
 
-        <div class="faq-item" style="border-bottom:1px solid var(--border-color);">
-          <div class="faq-header-click" style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:24px;">
-            <h4 data-i18n="faq_5_q" style="font-size:15px;font-weight:500;color:var(--text-main);margin:0;line-height:1.4;">I own a property. How do I list?</h4>
-            <span class="icon-plus" style="font-size:20px;font-weight:300;color:var(--text-muted);flex-shrink:0;line-height:1;transition:transform 0.25s ease;">+</span>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span data-i18n="faq_4_q">What if something goes wrong when I arrive?</span>
+            <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </div>
-          <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_5_a" style="font-size:14px;line-height:1.8;color:var(--text-muted);padding-bottom:22px;">Click "List your property" and submit your details. Our team will review and contact you.</div>
+          <div class="faq-a-wrap">
+            <p class="faq-a" data-i18n="faq_4_a">Our local team is available to support you throughout your stay.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            <span data-i18n="faq_5_q">I own a property. How do I list?</span>
+            <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <div class="faq-a-wrap">
+            <p class="faq-a" data-i18n="faq_5_a">Click "List your property" and submit your details. Our team will review and contact you.</p>
           </div>
         </div>
 
       </div>
     </div>
   </section>
+
+
 
 
 
@@ -1681,6 +1710,17 @@
         header.classList.remove('scrolled');
       }
     });
+  
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
   </script>
 
 
