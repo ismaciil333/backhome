@@ -1184,6 +1184,17 @@
     /* Navbar always clean white */
     
 
+  
+    /* ── FAQ premium accordion ── */
+    .faq-item .faq-header-click { transition: background 0.15s ease; border-radius: 4px; margin: 0 -8px; padding-left: 8px; padding-right: 8px; }
+    .faq-item .faq-header-click:hover { background: rgba(0,0,0,0.025); }
+    .faq-item.open .faq-header-click h4 { font-weight: 600; }
+    .faq-item.open .icon-plus { transform: rotate(45deg); color: var(--amber); }
+    .faq-answer-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
+    .faq-item.open .faq-answer-wrapper { max-height: 300px; }
+    /* ── How it works: grid border trick ── */
+    #how-it-works .grid-3 > div:hover { background: #FAFAF8; }
+
   </style>
 
 </head>
@@ -1454,41 +1465,43 @@
   </section>
 
   <!-- HOW IT WORKS SECTION -->
-  <section id="how-it-works" class="full-width-section" style="padding: 100px 0; background: var(--white);">
-    <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
-      <div style="margin-bottom: 60px; max-width: 600px;">
-        <span style="font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--gold); text-transform: uppercase;">HOW IT WORKS</span>
-        <h2 data-i18n="how_title" style="font-size: 40px; margin: 16px 0 24px;">Three steps. <span class="serif-italic" style="color: var(--gold);">Zero surprises.</span></h2>
-        <p data-i18n="how_sub" style="color: var(--text-muted); font-size: 16px;">We visit every property, verify every owner, and stay with you through the whole stay. That's the whole promise.</p>
+  <section id="how-it-works" class="full-width-section" style="padding:100px 0; background:var(--white);">
+    <div class="container" style="max-width:1100px; margin:0 auto; padding:0 48px;">
+
+      <div style="margin-bottom:64px; max-width:560px;">
+        <span style="font-size:10px;font-weight:700;letter-spacing:1.8px;color:var(--amber);text-transform:uppercase;display:block;margin-bottom:14px;">HOW IT WORKS</span>
+        <h2 data-i18n="how_title" style="font-size:clamp(28px,3vw,42px);line-height:1.1;margin:0 0 20px;letter-spacing:-0.5px;">Three steps. <em class="serif-italic" style="font-style:italic;">Zero surprises.</em></h2>
+        <p data-i18n="how_sub" style="color:var(--text-muted);font-size:15px;line-height:1.75;margin:0;">We visit every property, verify every owner, and stay with you through the whole stay. That's the whole promise.</p>
       </div>
-      
-      <div class="grid-3">
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border-color);">
+
         <!-- Step 1 -->
-        <div class="step-card" style="border: none; border-radius: 20px; box-shadow: 0 12px 32px rgba(0,0,0,0.03); padding: 40px;">
-          <div data-i18n="how_1_st" style="font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1px; margin-bottom: 16px;">STEP 01 —</div>
-          <h4 data-i18n="how_1_t" style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Browse verified homes</h4>
-          <p data-i18n="how_1_d" style="font-size: 14px; color: var(--text-muted); margin-bottom: 32px; min-height: 60px;">Every listing has been walked by a BackHome team member. Real photos, real measurements, real neighborhoods.</p>
-          <div style="background: #f5f3ec; height: 160px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 40px;">🏡</div>
+        <div style="background:var(--white);padding:48px 36px 52px;">
+          <div data-i18n="how_1_st" style="font-size:10px;font-weight:700;letter-spacing:1.6px;color:var(--amber);text-transform:uppercase;margin-bottom:28px;">STEP 01 —</div>
+          <h4 data-i18n="how_1_t" style="font-size:19px;font-weight:700;color:var(--text-main);margin:0 0 14px;letter-spacing:-0.3px;">Browse verified homes</h4>
+          <p data-i18n="how_1_d" style="font-size:14px;line-height:1.75;color:var(--text-muted);margin:0;">Every listing has been walked by a BackHome team member. Real photos, real measurements, real neighborhoods.</p>
         </div>
-        
+
         <!-- Step 2 -->
-        <div class="step-card" style="border: none; border-radius: 20px; box-shadow: 0 12px 32px rgba(0,0,0,0.03); padding: 40px;">
-          <div data-i18n="how_2_st" style="font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1px; margin-bottom: 16px;">STEP 02 —</div>
-          <h4 data-i18n="how_2_t" style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Book directly through BackHome</h4>
-          <p data-i18n="how_2_d" style="font-size: 14px; color: var(--text-muted); margin-bottom: 32px; min-height: 60px;">No agents, no hidden fees. You deal directly with the BackHome team. We handle paperwork, payments, and protection — start to finish.</p>
-          <div style="background: #f5f3ec; height: 160px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 40px;">📱</div>
+        <div style="background:var(--white);padding:48px 36px 52px;">
+          <div data-i18n="how_2_st" style="font-size:10px;font-weight:700;letter-spacing:1.6px;color:var(--amber);text-transform:uppercase;margin-bottom:28px;">STEP 02 —</div>
+          <h4 data-i18n="how_2_t" style="font-size:19px;font-weight:700;color:var(--text-main);margin:0 0 14px;letter-spacing:-0.3px;">Book directly through BackHome</h4>
+          <p data-i18n="how_2_d" style="font-size:14px;line-height:1.75;color:var(--text-muted);margin:0;">No agents, no hidden fees. You deal directly with the BackHome team. We handle paperwork, payments, and protection — start to finish.</p>
         </div>
-        
+
         <!-- Step 3 -->
-        <div class="step-card" style="border: none; border-radius: 20px; box-shadow: 0 12px 32px rgba(0,0,0,0.03); padding: 40px;">
-          <div data-i18n="how_3_st" style="font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1px; margin-bottom: 16px;">STEP 03 —</div>
-          <h4 data-i18n="how_3_t" style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Arrive with confidence</h4>
-          <p data-i18n="how_3_d" style="font-size: 14px; color: var(--text-muted); margin-bottom: 32px; min-height: 60px;">Keys are ready. The house matches the photos. If anything's off, our local team is an hour away, every day of your stay.</p>
-          <div style="background: #f5f3ec; height: 160px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 40px;">🔑</div>
+        <div style="background:var(--white);padding:48px 36px 52px;">
+          <div data-i18n="how_3_st" style="font-size:10px;font-weight:700;letter-spacing:1.6px;color:var(--amber);text-transform:uppercase;margin-bottom:28px;">STEP 03 —</div>
+          <h4 data-i18n="how_3_t" style="font-size:19px;font-weight:700;color:var(--text-main);margin:0 0 14px;letter-spacing:-0.3px;">Arrive with confidence</h4>
+          <p data-i18n="how_3_d" style="font-size:14px;line-height:1.75;color:var(--text-muted);margin:0;">Keys are ready. The house matches the photos. If anything's off, our local team is an hour away, every day of your stay.</p>
         </div>
+
       </div>
     </div>
   </section>
+
+
 
   <!-- TRUST STRIP -->
   <section id="trust-strip" class="full-width-section" style="padding: 60px 0; background: var(--bg-light);">
@@ -1514,61 +1527,71 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="full-width-section" style="padding: 100px 0; background: var(--white);">
-    <div class="container" style="max-width: 800px; margin: 0 auto; padding: 0 40px;">
-      <div class="faq-header section-title">
-        <div class="section-label" data-i18n="faq_label">FAQ</div>
-        <h2 data-i18n="faq_title">Everything you're wondering.</h2>
+  <section id="faq" class="full-width-section" style="padding:100px 0; background:var(--bg-page);">
+    <div class="container" style="max-width:720px;margin:0 auto;padding:0 48px;">
+
+      <div style="margin-bottom:56px;">
+        <span class="section-label" data-i18n="faq_label" style="font-size:10px;font-weight:700;letter-spacing:1.8px;color:var(--amber);text-transform:uppercase;display:block;margin-bottom:14px;">QUESTIONS</span>
+        <h2 data-i18n="faq_title" style="font-size:clamp(26px,2.8vw,40px);letter-spacing:-0.5px;margin:0;">Everything you're wondering.</h2>
       </div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-header-click">
-            <h4 data-i18n="faq_1_q">When does BackHome launch?</h4>
-            <span class="icon-plus">+</span>
+
+      <div class="faq-list" style="border-top:1px solid var(--border-color);">
+
+        <div class="faq-item" style="border-bottom:1px solid var(--border-color);">
+          <div class="faq-header-click" style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:24px;">
+            <h4 data-i18n="faq_1_q" style="font-size:15px;font-weight:500;color:var(--text-main);margin:0;line-height:1.4;">When does BackHome launch?</h4>
+            <span class="icon-plus" style="font-size:20px;font-weight:300;color:var(--text-muted);flex-shrink:0;line-height:1;transition:transform 0.25s ease;">+</span>
           </div>
           <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_1_a">We are launching city by city starting 2026. Join the waitlist to get early access.</div>
+            <div class="faq-answer" data-i18n="faq_1_a" style="font-size:14px;line-height:1.8;color:var(--text-muted);padding-bottom:22px;">We are launching city by city starting 2026. Join the waitlist to get early access.</div>
           </div>
         </div>
-        <div class="faq-item">
-          <div class="faq-header-click">
-            <h4 data-i18n="faq_2_q">How are properties verified?</h4>
-            <span class="icon-plus">+</span>
+
+        <div class="faq-item" style="border-bottom:1px solid var(--border-color);">
+          <div class="faq-header-click" style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:24px;">
+            <h4 data-i18n="faq_2_q" style="font-size:15px;font-weight:500;color:var(--text-main);margin:0;line-height:1.4;">How are properties verified?</h4>
+            <span class="icon-plus" style="font-size:20px;font-weight:300;color:var(--text-muted);flex-shrink:0;line-height:1;transition:transform 0.25s ease;">+</span>
           </div>
           <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_2_a">Every property is physically inspected, documented, and approved before going live.</div>
+            <div class="faq-answer" data-i18n="faq_2_a" style="font-size:14px;line-height:1.8;color:var(--text-muted);padding-bottom:22px;">Every property is physically inspected, documented, and approved before going live.</div>
           </div>
         </div>
-        <div class="faq-item">
-          <div class="faq-header-click">
-            <h4 data-i18n="faq_3_q">Can I pay in USD, EUR or GBP?</h4>
-            <span class="icon-plus">+</span>
+
+        <div class="faq-item" style="border-bottom:1px solid var(--border-color);">
+          <div class="faq-header-click" style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:24px;">
+            <h4 data-i18n="faq_3_q" style="font-size:15px;font-weight:500;color:var(--text-main);margin:0;line-height:1.4;">Can I pay in USD, EUR or GBP?</h4>
+            <span class="icon-plus" style="font-size:20px;font-weight:300;color:var(--text-muted);flex-shrink:0;line-height:1;transition:transform 0.25s ease;">+</span>
           </div>
           <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_3_a">Yes. We support international payments with secure processing.</div>
+            <div class="faq-answer" data-i18n="faq_3_a" style="font-size:14px;line-height:1.8;color:var(--text-muted);padding-bottom:22px;">Yes. We support international payments with secure processing.</div>
           </div>
         </div>
-        <div class="faq-item">
-          <div class="faq-header-click">
-            <h4 data-i18n="faq_4_q">What if something goes wrong when I arrive?</h4>
-            <span class="icon-plus">+</span>
+
+        <div class="faq-item" style="border-bottom:1px solid var(--border-color);">
+          <div class="faq-header-click" style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:24px;">
+            <h4 data-i18n="faq_4_q" style="font-size:15px;font-weight:500;color:var(--text-main);margin:0;line-height:1.4;">What if something goes wrong when I arrive?</h4>
+            <span class="icon-plus" style="font-size:20px;font-weight:300;color:var(--text-muted);flex-shrink:0;line-height:1;transition:transform 0.25s ease;">+</span>
           </div>
           <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_4_a">Our local team is available to support you throughout your stay.</div>
+            <div class="faq-answer" data-i18n="faq_4_a" style="font-size:14px;line-height:1.8;color:var(--text-muted);padding-bottom:22px;">Our local team is available to support you throughout your stay.</div>
           </div>
         </div>
-        <div class="faq-item">
-          <div class="faq-header-click">
-            <h4 data-i18n="faq_5_q">I own a property. How do I list?</h4>
-            <span class="icon-plus">+</span>
+
+        <div class="faq-item" style="border-bottom:1px solid var(--border-color);">
+          <div class="faq-header-click" style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:24px;">
+            <h4 data-i18n="faq_5_q" style="font-size:15px;font-weight:500;color:var(--text-main);margin:0;line-height:1.4;">I own a property. How do I list?</h4>
+            <span class="icon-plus" style="font-size:20px;font-weight:300;color:var(--text-muted);flex-shrink:0;line-height:1;transition:transform 0.25s ease;">+</span>
           </div>
           <div class="faq-answer-wrapper">
-            <div class="faq-answer" data-i18n="faq_5_a">Click "List your property" and submit your details. Our team will review and contact you.</div>
+            <div class="faq-answer" data-i18n="faq_5_a" style="font-size:14px;line-height:1.8;color:var(--text-muted);padding-bottom:22px;">Click "List your property" and submit your details. Our team will review and contact you.</div>
           </div>
         </div>
-      
+
+      </div>
     </div>
   </section>
+
+
 
   <!-- FINAL CTA -->
   <section id="bottom-cta" class="full-width-section" style="padding: 100px 0; background: var(--bg-section-b);">
