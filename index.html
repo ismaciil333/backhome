@@ -873,6 +873,112 @@
       70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
       100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
     }
+
+    /* --- PREMIUM VISUAL ENHANCEMENTS --- */
+    
+    /* Global subtle background */
+    body {
+      background-color: var(--bg-light);
+      background-image: radial-gradient(circle at top right, rgba(34, 84, 61, 0.02) 0%, transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(11, 28, 44, 0.02) 0%, transparent 40%);
+    }
+
+    /* Hero Section Gradient */
+    #hero {
+      background: linear-gradient(180deg, var(--white) 0%, #f7f9f8 100%);
+      border-bottom: 1px solid rgba(0,0,0,0.02);
+    }
+
+    /* Card Shadows & Hover States */
+    .project-card, .why-card, .feature-row, .test-card, .step-card, .problem-card, .city-card {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    }
+    
+    .project-card:hover, .why-card:hover, .feature-row:hover, .test-card:hover, .step-card:hover, .problem-card:hover, .city-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+      border-color: rgba(0,0,0,0.08);
+    }
+
+    /* Button Enhancements */
+    .btn-dark {
+      background: linear-gradient(135deg, var(--dark-navy) 0%, #162a3d 100%);
+      box-shadow: 0 4px 14px rgba(11, 28, 44, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-dark::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(rgba(255,255,255,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .btn-dark:hover::after {
+      opacity: 1;
+    }
+    .btn-dark:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(11, 28, 44, 0.25);
+    }
+
+    .btn-outline {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      background: var(--white);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      border-color: #d1d5db;
+      transform: translateY(-1px);
+    }
+
+    /* FAQ Hover Enhancement */
+    .faq-item {
+      transition: all 0.3s ease;
+      background: var(--white);
+      border: 1px solid transparent;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .faq-item:hover {
+      background: linear-gradient(to right, var(--white), #f8fafc);
+      border-color: #e2e8f0;
+      border-radius: 8px;
+      padding-left: 28px; /* Slight indent effect */
+    }
+
+    /* CTA Section Depth */
+    #bottom-cta .cta-bg::after {
+      background: linear-gradient(135deg, rgba(11, 28, 44, 0.95) 0%, rgba(34, 84, 61, 0.85) 100%);
+    }
+    #bottom-cta .cta-card {
+      box-shadow: 0 24px 64px rgba(11, 28, 44, 0.2);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Visual Hierarchy / Alternating Backgrounds */
+    #why-backhome {
+      background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
+    }
+    #testimonials {
+      background: linear-gradient(180deg, var(--white) 0%, var(--bg-light) 100%);
+      border-top: 1px solid rgba(0,0,0,0.02);
+    }
+    #faq {
+      background: var(--bg-light);
+    }
+    
+    /* Live Notification Premium Feel */
+    #live-notification {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.05);
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+    }
 </style>
 
 </head>
