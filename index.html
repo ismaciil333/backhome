@@ -123,8 +123,7 @@
     }
     .logo-icon { width: 38px; height: 44px; flex-shrink: 0; object-fit: contain; }
     /* 'Back' = brand blue, 'Home' = brand orange accent */
-    .logo span:first-of-type { color: var(--brand-blue); }
-    .logo span:last-of-type  { color: var(--brand-orange); }
+    .logo span { color: var(--brand-blue); }
     
     .nav-links {
       display: flex;
@@ -939,7 +938,7 @@
 
     /* ── Navbar ── */
     header {
-      background: rgba(240, 234, 224, 0.96);
+      background: rgba(255,255,255,0.96);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-color);
@@ -1192,11 +1191,15 @@
     /* Transparent header over hero image */
     header { transition: background 0.3s ease; }
   
-    /* ── Hero split responsive ── */
-    @media (max-width: 900px) {
-      #hero > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 40px !important; }
-      #hero { padding: 60px 0 !important; }
-      #hero > div { padding: 0 24px !important; }
+    /* ── Hero responsive ── */
+    #hero { background: var(--bg-page); }
+    @media (max-width:900px) {
+      #hero > div:nth-child(2) { padding:80px 24px 56px !important; max-width:100% !important; }
+      #hero > div:last-child { padding:24px !important; }
+      #hero > div:last-child > div { grid-template-columns:repeat(2,1fr) !important; }
+    }
+    @media (max-width:540px) {
+      #hero > div:last-child > div { grid-template-columns:1fr !important; }
     }
 
   </style>
@@ -1230,150 +1233,85 @@
   
   <main>
   <!-- HERO -->
-  <section id="hero" class="full-width-section" style="padding: 70px 0 80px; background: #F0EAE0;">
-    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 48px;">
-      <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center;">
+  <section id="hero" style="position:relative; overflow:hidden; min-height:580px; display:flex; flex-direction:column;">
 
-        <!-- LEFT -->
+    <!-- Full-bleed coastal image -->
+    <div style="position:absolute;inset:0;z-index:0;">
+      <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1800&q=90"
+           alt="Coastal home view"
+           style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 40%;">
+      <!-- Light gradient: opaque left → transparent right (dark text readable) -->
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,0.94) 0%,rgba(255,255,255,0.80) 35%,rgba(255,255,255,0.30) 60%,rgba(255,255,255,0.00) 82%);"></div>
+    </div>
+
+    <!-- Content -->
+    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center;padding:110px 8vw 80px;max-width:660px;">
+
+      <span class="hero-badge" data-i18n="hero_badge" style="margin-bottom:24px;display:inline-block;">VERIFIED HOMES. REAL OWNERSHIP. BACK HOME.</span>
+
+      <h1 class="hero-title" data-i18n="hero_title" style="font-size:clamp(36px,4vw,60px);line-height:1.07;margin-bottom:20px;letter-spacing:-1.5px;">
+        Find a place that feels like <em class="serif-italic" style="font-style:italic;">home.</em>
+      </h1>
+
+      <p class="hero-subtitle" data-i18n="hero_sub" style="font-size:16px;max-width:460px;margin-bottom:40px;color:var(--text-muted);line-height:1.8;">
+        Verified rentals across Somalia, built for the diaspora. No scams, no middlemen, no inflated prices — just safe, trusted homes booked securely through BackHome.
+      </p>
+
+      <!-- Buttons -->
+      <div class="hero-actions" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:56px;">
+        <a href="#bottom-cta" class="btn btn-dark" data-i18n="hero_join">Join the waitlist &rarr;</a>
+        <a href="list-your-property.html" class="btn btn-outline" style="font-weight:600;" data-i18n="hero_list">List your property</a>
+      </div>
+
+      <!-- Stats -->
+      <div style="display:grid;grid-template-columns:repeat(3,auto);gap:40px;padding-top:28px;border-top:1px solid rgba(0,0,0,0.10);width:fit-content;">
         <div>
-          <!-- Pre-launch badge -->
-          <div style="display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(0,0,0,0.15); border-radius:50px; padding:6px 16px; font-size:12px; font-weight:600; color:var(--text-body); margin-bottom:28px; background:rgba(255,255,255,0.45);">
-            <span style="font-size:11px;">&#8592;</span>
-            <span data-i18n="hero_badge_short">Pre-launch &middot; Spring 2026</span>
-          </div>
-
-          <h1 class="hero-title" data-i18n="hero_title" style="font-size: clamp(36px,4vw,58px); line-height: 1.08; margin-bottom: 22px; letter-spacing: -1px;">
-            Find a place that feels like <em class="serif-italic" style="font-style:italic;">home.</em>
-          </h1>
-
-          <p class="hero-subtitle" data-i18n="hero_sub" style="font-size: 15px; max-width: 440px; margin-bottom: 36px; color: var(--text-muted); line-height: 1.75;">
-            Verified rentals across Somalia, built for the diaspora. No scams, no middlemen, no inflated prices — just safe, trusted homes booked securely through BackHome.
-          </p>
-
-          <!-- Buttons -->
-          <div class="hero-actions" style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 52px;">
-            <a href="#bottom-cta" class="btn btn-dark" data-i18n="hero_join">Join the waitlist &rarr;</a>
-            <a href="list-your-property.html" class="btn btn-outline" style="font-weight: 600;" data-i18n="hero_list">List your property</a>
-          </div>
-
-          <!-- Stats -->
-          <div style="display: grid; grid-template-columns: repeat(3,auto); gap: 40px; padding-top: 28px; border-top: 1px solid rgba(0,0,0,0.10); width: fit-content;">
-            <div>
-              <div style="font-family:'Playfair Display',serif; font-size: 32px; font-weight: 700; line-height:1; color:var(--text-main);" data-i18n="stat_1_val">1,847</div>
-              <div style="font-size:12px; color:var(--text-muted); margin-top:5px;" data-i18n="stat_1_lbl">On the waitlist</div>
-            </div>
-            <div>
-              <div style="font-family:'Playfair Display',serif; font-size: 32px; font-weight: 700; line-height:1; color:var(--text-main);" data-i18n="stat_2_val">6</div>
-              <div style="font-size:12px; color:var(--text-muted); margin-top:5px;" data-i18n="stat_2_lbl">Cities at launch</div>
-            </div>
-            <div>
-              <div style="font-family:'Playfair Display',serif; font-size: 32px; font-weight: 700; line-height:1; color:var(--text-main);" data-i18n="stat_3_val">100%</div>
-              <div style="font-size:12px; color:var(--text-muted); margin-top:5px;" data-i18n="stat_3_lbl">Verified listings</div>
-            </div>
-          </div>
+          <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--brand-blue);" data-i18n="stat_1_val">1,847</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;" data-i18n="stat_1_lbl">On the waitlist</div>
         </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--brand-blue);" data-i18n="stat_2_val">6</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;" data-i18n="stat_2_lbl">Cities at launch</div>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--brand-blue);" data-i18n="stat_3_val">100%</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;" data-i18n="stat_3_lbl">Verified listings</div>
+        </div>
+      </div>
+    </div>
 
-        <!-- RIGHT: LAUNCHING IN card -->
-        <div class="launch-card" style="background: #ffffff; border-radius: 20px; padding: 28px 28px 22px; border: 1px solid rgba(0,0,0,0.07); box-shadow: 0 12px 48px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.04);">
-
-          <!-- Card header -->
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding-bottom:16px; border-bottom:1px dashed rgba(0,0,0,0.10);">
-            <span style="font-size:10px; font-weight:800; letter-spacing:1.5px; color:var(--text-muted); text-transform:uppercase;">Launching in</span>
-            <span style="font-size:11px; font-weight:600; color:var(--text-muted); display:flex; align-items:center; gap:6px;">
-              <span style="width:6px;height:6px;background:#22c55e;border-radius:50%;display:inline-block;box-shadow:0 0 0 2px rgba(34,197,94,0.2);"></span>
-              Updated Live
-            </span>
+    <!-- Feature strip -->
+    <div style="position:relative;z-index:1;background:rgba(255,255,255,0.97);border-top:1px solid var(--border-color);padding:26px 8vw;">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:28px;max-width:1100px;">
+        <div style="display:flex;align-items:flex-start;gap:13px;">
+          <div style="width:38px;height:38px;flex-shrink:0;background:var(--brand-blue-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+            <svg width="18" height="18" fill="none" stroke="var(--brand-blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
           </div>
-
-          <!-- Cities -->
-          <div style="display:flex; flex-direction:column; gap:14px;">
-
-            <!-- City row template -->
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <div style="display:flex; gap:11px; align-items:center;">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=60&h=60&q=75" alt="Mogadishu" style="width:38px;height:38px;border-radius:8px;object-fit:cover;flex-shrink:0;">
-                <div>
-                  <div style="font-weight:700; font-size:13px; color:var(--text-main);" data-i18n="city_1">Mogadishu</div>
-                  <div style="font-size:11px; color:var(--text-muted);">Banaadir &middot; 47 homes lined up</div>
-                </div>
-              </div>
-              <span style="background:#FEF0E8;color:var(--brand-orange);font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;" data-i18n="city_badge">Opening soon</span>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <div style="display:flex; gap:11px; align-items:center;">
-                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=60&h=60&q=75" alt="Hargeisa" style="width:38px;height:38px;border-radius:8px;object-fit:cover;flex-shrink:0;">
-                <div>
-                  <div style="font-weight:700; font-size:13px; color:var(--text-main);" data-i18n="city_2">Hargeisa</div>
-                  <div style="font-size:11px; color:var(--text-muted);">Maroodi Jeex &middot; 38 homes lined up</div>
-                </div>
-              </div>
-              <span style="background:#FEF0E8;color:var(--brand-orange);font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;" data-i18n="city_badge">Opening soon</span>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <div style="display:flex; gap:11px; align-items:center;">
-                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=60&h=60&q=75" alt="Garowe" style="width:38px;height:38px;border-radius:8px;object-fit:cover;flex-shrink:0;">
-                <div>
-                  <div style="font-weight:700; font-size:13px; color:var(--text-main);" data-i18n="city_3">Garowe</div>
-                  <div style="font-size:11px; color:var(--text-muted);">Nugaal &middot; 24 homes lined up</div>
-                </div>
-              </div>
-              <span style="background:var(--bg-section-b);color:var(--text-muted);font-size:10px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap;">Summer 2026</span>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <div style="display:flex; gap:11px; align-items:center;">
-                <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=60&h=60&q=75" alt="Kismayo" style="width:38px;height:38px;border-radius:8px;object-fit:cover;flex-shrink:0;">
-                <div>
-                  <div style="font-weight:700; font-size:13px; color:var(--text-main);" data-i18n="city_4">Kismayo</div>
-                  <div style="font-size:11px; color:var(--text-muted);">Jubbada Hoose &middot; 18 homes lined up</div>
-                </div>
-              </div>
-              <span style="background:var(--bg-section-b);color:var(--text-muted);font-size:10px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap;">Summer 2026</span>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <div style="display:flex; gap:11px; align-items:center;">
-                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=60&h=60&q=75" alt="Galkayo" style="width:38px;height:38px;border-radius:8px;object-fit:cover;flex-shrink:0;">
-                <div>
-                  <div style="font-weight:700; font-size:13px; color:var(--text-main);" data-i18n="city_5">Galkayo</div>
-                  <div style="font-size:11px; color:var(--text-muted);">Mudug &middot; 12 homes lined up</div>
-                </div>
-              </div>
-              <span style="background:var(--bg-section-b);color:var(--text-muted);font-size:10px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap;">Autumn 2026</span>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <div style="display:flex; gap:11px; align-items:center;">
-                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=60&h=60&q=75" alt="Bosaso" style="width:38px;height:38px;border-radius:8px;object-fit:cover;flex-shrink:0;">
-                <div>
-                  <div style="font-weight:700; font-size:13px; color:var(--text-main);" data-i18n="city_6">Bosaso</div>
-                  <div style="font-size:11px; color:var(--text-muted);">Bari &middot; 9 homes lined up</div>
-                </div>
-              </div>
-              <span style="background:var(--bg-section-b);color:var(--text-muted);font-size:10px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap;">Autumn 2026</span>
-            </div>
-
+          <div><div style="font-size:13px;font-weight:700;color:var(--text-main);" data-i18n="feat_1_t">Verified homes</div><div style="font-size:12px;color:var(--text-muted);line-height:1.5;margin-top:3px;" data-i18n="feat_1_d">Every place is verified for your peace of mind.</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:13px;">
+          <div style="width:38px;height:38px;flex-shrink:0;background:var(--brand-blue-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+            <svg width="18" height="18" fill="none" stroke="var(--brand-blue)" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
-
-          <!-- Card footer -->
-          <div style="margin-top:18px; padding-top:14px; border-top:1px dashed rgba(0,0,0,0.08); display:flex; justify-content:space-between; align-items:center;">
-            <div style="display:flex; align-items:center; gap:8px;">
-              <div style="display:flex;">
-                <div style="width:22px;height:22px;border-radius:50%;background:#e2e8f0;font-size:8px;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #fff;">AH</div>
-                <div style="width:22px;height:22px;border-radius:50%;background:#fed7aa;font-size:8px;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #fff;margin-left:-7px;">FM</div>
-                <div style="width:22px;height:22px;border-radius:50%;background:#a5f3fc;font-size:8px;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #fff;margin-left:-7px;">+</div>
-              </div>
-              <span style="font-size:12px;font-weight:700;color:var(--text-main);">1,800+ waiting</span>
-            </div>
-            <span style="font-size:11px;color:var(--text-muted);">Avg. reply &middot; 4h</span>
+          <div><div style="font-size:13px;font-weight:700;color:var(--text-main);" data-i18n="feat_2_t">Safe payments</div><div style="font-size:12px;color:var(--text-muted);line-height:1.5;margin-top:3px;" data-i18n="feat_2_d">Your safety is our priority.</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:13px;">
+          <div style="width:38px;height:38px;flex-shrink:0;background:var(--brand-blue-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+            <svg width="18" height="18" fill="none" stroke="var(--brand-blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-
+          <div><div style="font-size:13px;font-weight:700;color:var(--text-main);" data-i18n="feat_3_t">Local support</div><div style="font-size:12px;color:var(--text-muted);line-height:1.5;margin-top:3px;" data-i18n="feat_3_d">We're here when you need us.</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:13px;">
+          <div style="width:38px;height:38px;flex-shrink:0;background:var(--brand-blue-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+            <svg width="18" height="18" fill="none" stroke="var(--brand-blue)" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div><div style="font-size:13px;font-weight:700;color:var(--text-main);" data-i18n="feat_4_t">Trusted platform</div><div style="font-size:12px;color:var(--text-muted);line-height:1.5;margin-top:3px;" data-i18n="feat_4_d">Connecting you to what matters.</div></div>
         </div>
       </div>
     </div>
   </section>
+
+
 
 
 
